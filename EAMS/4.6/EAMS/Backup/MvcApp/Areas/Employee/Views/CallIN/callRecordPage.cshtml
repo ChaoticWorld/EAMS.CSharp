@@ -1,0 +1,21 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<CallInfo.Phone_Records>
+@{  Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml"; }
+@{
+    ViewBag.Title = "callRecordPage";
+}
+
+<h2>callRecordPage</h2>
+<fieldset style="display:none">
+  @using (Ajax.BeginForm("callRecordPage", 
+      new RouteValueDictionary { { "id", ViewData["dwcode"] }, { "param", "" } },
+      new AjaxOptions { UpdateTargetId = "callRecordLists", InsertionMode = InsertionMode.Replace },
+      new { id = "searchForm" } ))
+  {
+      @Html.Hidden("dwcode1",ViewData["dwcode"]) 
+      @Html.TextBox("dwcode2", ViewData["dwcode"], new { style="display:none"})
+  }
+</fieldset>
+<div id='callRecordLists'>@Html.Partial("callRecordTable", Model) </div>
+<script type="text/javascript" src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

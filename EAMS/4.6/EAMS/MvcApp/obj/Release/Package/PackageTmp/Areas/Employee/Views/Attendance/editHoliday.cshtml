@@ -1,0 +1,164 @@
+﻿@using Attendance.Model
+@model List<HolidayModel>
+@{
+    ViewBag.MainTitle = "考勤 管理";
+    ViewBag.Title = "节假日编辑";
+}
+<div>
+@{ if(@Model != null) 
+    { <input type="text" readonly="readonly" id="Year" value="@Model.First().iYear" /> }
+    else
+    { <input type="text" readonly="readonly" id="Year" value="@DateTime.Now.Year" /> }
+    } 年度 </div>
+<table>
+<tr>
+<th>操作</th>
+<th>日期</th>
+<th>星期</th>
+<th>节日</th>
+<th>节日描述</th>
+</tr>
+
+@{
+if (Model != null)
+  {
+      foreach (HolidayModel ah in Model)
+      {
+    <tr>
+    <td> <input type="button" style="display:block" value="编辑" onclick="edit(this)" />
+    <input type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+    <input type="button" style="display:none" onclick="delRowClick(this)" value="删除" /> 
+    <input type="hidden" id="autoid" value="@ah.autoid" /></td>
+    <td> <input type="text" readonly="readonly" disabled="disabled" onblur="verifyDate(this)" value="@ah.sDate.Value.ToShortDateString()" /></td>
+    <td> <input type="text" readonly="readonly" disabled="disabled" value="@ah.sDate.Value.DayOfWeek" /> </td>
+    <td> <input type="text" readonly="readonly" disabled="disabled" value="@ah.sName" /> </td>
+    <td> <input type="text" readonly="readonly" disabled="disabled" value="@ah.sDescription" /> </td>
+    </tr> 
+      }
+  }
+  }
+<tr >
+    <td> <input type="button" value="新增" onclick="edit(this)"/> 
+    <input type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+    <input type="button" style="display:none" value="删除" onclick="delRowClick(this)" /> 
+    <input type="hidden" value="-1" /></td>
+    <td ><input type="text" onblur="verifyDate(this)" readonly="readonly" disabled="disabled" /></td>
+    <td ><input type="text" readonly="readonly" disabled="disabled" /></td>
+    <td ><input type="text" readonly="readonly" disabled="disabled" /></td>
+    <td ><input type="text" readonly="readonly" disabled="disabled" /></td>
+    </tr>
+</table>
+<div>
+    <input class ="btn btn-default" type="button" value="保存本页所有行" onclick="saveAllRows()" />
+    <input class="btn btn-default" type="button" value="删除本页所有行" onclick="delAllRows()" />
+<a class="btn btn-default" href="~/Employee/Attendance">返回考勤页</a>
+@if (ViewBag.currUserRoleNames.Contains("AttendanceManager"))
+{<a class="btn btn-default" href="~/Employee/Attendance/ManagerPage">返回管理页</a>}
+</div>
+
+@Scripts.Render("~/bundles/jqueryDateExt");
+<script type="text/javascript">
+ function edit(c) {
+            var newrow = $(c).parent().parent();
+            $(c).next().css("display", "block");
+            $(c).next().next().css("display", "block");
+            $(c).css("display", "none");
+            $(newrow[0]).children().children(":text").removeAttr("readOnly");
+            $(newrow[0]).children().children(":text").removeAttr("disabled");
+        };
+        function verifyDate(d) {
+            var date = $(d).val();
+            var weekText = $(d).parent().next().children()[0];
+            var id = $(d).parent().parent().children().first().children(":last").val();
+            var r = CheckDate(date);
+            //alert(err);
+            if (r) {
+                var ddate = StringToDate(date);
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    cache: false,
+                    url: "/Employee/Attendance/isExistHoliday/",
+                    data: { id: id, sdate: date },
+                    success: function (f) {
+                        if (f == "False") {
+                            $(weekText).val(ddate.getDay());
+                            $(d).parent().parent().children().first().children(":eq(1)").removeAttr("disabled");
+                        }
+                        else {
+                            alert("节假日期重复");
+                            $(d).parent().parent().children().first().children(":eq(1)").attr("disabled", "disabled");
+                            $(d).focus();
+                        }
+                    }
+                });
+            }
+            else {
+                alert("日期无效！");
+                $(d).focus();
+            }
+        }
+</script>
+<script type="text/javascript">
+    function saveRowClick(c) {
+        if (doRow(c, "SaveRow"))
+        reflushPage();
+    }
+    function delRowClick(c) {
+        if (doRow(c, "DeleteRow"))
+            reflushPage();
+    }
+    function doRow(c,operation) {
+        var row = $(c).parent().parent()[0];
+        
+        var id = $(row.children[0]).children("input:last").val();
+        var date = $(row.children[1]).children("input:first").val();
+        var holiday = $(row).children("td:eq(3)").children("input:first").val();
+        var holidayDescription = $(row).children("td:eq(4)").children("input:first").val();
+
+        if (CheckDate(date)) {
+            $.ajax({
+                type: "post",
+                url: "/Employee/Attendance/editHoliday/" + id,
+                data: { id: id, date: date, holiday: holiday, holidayDescription: holidayDescription, Operation: operation },
+                async: false,
+                success: function (DoMsg) {
+                    if (DoMsg) alert(DoMsg);
+                },
+                error: function (msg) { alert(msg); }
+            });
+            return true;
+        }
+        else {alert('日期无效，请重新输入。');return false;}
+    }
+    function reflushPage() {
+        //刷新当前页面
+        location.reload() 
+    }
+</script>
+<script type="text/javascript">
+    function saveAllRows() {
+        var rows = $("table tr");
+        $(rows).each(function (index) {
+            if (index > 0) {
+                var c = $(this).children("td:first").children("input:visible")[0];
+                if ($(c).val() == "保存") {
+                    doRow(c, "SaveALL");
+                } 
+            }
+        });
+        reflushPage();
+    }
+    function delAllRows() {
+        var rows = $("table tr");
+        if (confirm("将删除本年所有节假日设定！")) {
+            $(rows).each(function (index) {
+                if (index > 0) {
+                    var c = $(this).children("td:first").children("input:first");
+                    doRow(c, "DeleteALL");
+                }
+            });
+            reflushPage();
+        }
+    }
+</script>

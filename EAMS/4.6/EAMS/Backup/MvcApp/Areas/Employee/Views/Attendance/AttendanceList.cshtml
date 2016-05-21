@@ -1,0 +1,128 @@
+﻿@using Attendance;
+@model IEnumerable<v_Attendance>
+@{
+    ViewBag.Title = "AttendanceList";
+}
+@{Layout = null;}
+<div style="width:680px;">
+<style>
+table{width:678px;}
+tr{height:20px;}
+    th {
+        font-size: 14px;
+        padding:4px;
+	//padding-bottom:4px;
+        //padding-top:4px;
+        //padding-left:4px;
+        //padding-right:4px; 
+    }
+td { font-size:14px; }
+.col0{width:80px;}
+.col1{width:30px;}
+.col2{width:40px;}
+.col3{width:60px;}
+.col4{width:40px;}
+.col5{width:60px;}
+.col6{width:170px;}
+.col7{width:35px;}
+.col8{width:55px;}
+tbody .col6 { font-size:12px;}
+thead .col7 { font-size:10px;}
+thead .col8 { font-size:10px;}
+</style>
+<table class="table-striped table-hover">
+    <thead>
+    <tr>
+        <th class="col0">日期</th>
+        <th class="col1">星期</th>
+        <th class="col2">上班</th>
+        <th class="col3">早到</th>
+	<th class="col8">上班出勤审批</th>
+        <th class="col4">下班</th>
+        <th class="col5">加班</th>
+	    <th class="col8">下班出勤审批</th>
+	    <th class="col6">加班事项</th>
+	    <th class="col7">费用</th>
+    </tr>    </thead>
+    @if (Model != null)
+{
+    int feeOver = 0;
+    int feeAbs = 0;
+    int n = 0;
+    foreach (v_Attendance r in Model)
+    {
+        string bevent = "";
+        string eevent = "";
+        decimal feeO = 0;
+        decimal feeA = 0;
+        string evt = "";
+
+        feeA = ((r.bOffsetFee.HasValue && r.bOffsetFee.Value < 0 ? r.bOffsetFee.Value : 0)
+               + (r.eOffsetFee.HasValue && r.eOffsetFee.Value < 0 ? r.eOffsetFee.Value : 0));
+        feeA = feeA < -60 ? -60 : feeA;
+        foreach (v_AttendanceEvent e in @r.EventList)
+        {
+            if (e.isBeginTime)
+            {
+                if (!string.IsNullOrEmpty(e.EventDescription))
+                { bevent += (e.EventDescription + ";\n "); }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(e.EventDescription))
+                { eevent += (e.EventDescription + ";\n"); }
+            }
+            feeO += (e.FeeOther.HasValue && e.FeeOther.Value > 0 ? e.FeeOther.Value : 0);
+        }
+        evt = (string.IsNullOrEmpty(bevent) ? "" : "早:" + bevent)
+            + (string.IsNullOrEmpty(eevent) ? "" : "晚:" + eevent);
+
+            <tr>
+                <td class="col0"> @r.sDate.Value.ToShortDateString().Trim() </td>
+                <td class="col1"> @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(r.sDate.Value.DayOfWeek).Substring(2, 1).Trim() </td>
+                <td class="col2"> @r.bAttTimeStr </td>
+                <td class="col3" title='@bevent' eventnum="@(bevent.Length>0?1:0)"
+                    style='background-color:@((-9999 < r.bOffset && r.bOffset < 0) ? "red" : "blank")'>
+                    @switch (r.bOffset)
+                    { //Min-周末:Max-节日
+                        case int.MinValue:
+                            {<span>周末</span>　break;
+                            }
+                        case int.MaxValue:
+                            {
+                                AttendanceHolidayBLL ahBll = new AttendanceHolidayBLL();
+                                <span>@ahBll.filter(r.sDate.Value.Year, r.sDate.Value).First().sName.Trim()</span>
+                                break;
+                            }
+                        default:
+                            {<a href="~/Employee/Attendance/editEvent/@r.autoid/True">@r.bOffset.ToString().Trim()</a> break;
+                            }
+                    }
+                </td><td class="col8"></td>
+                <td class="col4"> @r.eAttTimeStr.Trim() </td>
+                <td class="col5" title='@eevent' eventnum='@(eevent.Length>0?1:0)'
+                    style='background-color:@((-9999 < r.eOffset && r.eOffset < 0) ? "red" : "blank")'>
+                    @if (r.eOffset == 0)
+                    {<span>0</span>}
+                    else
+                    {<a href="~/Employee/Attendance/editEvent/@r.autoid/False">@r.eOffset.ToString().Trim()</a>}
+                </td>
+		<td class="col8"></td>
+		<td class="col6">@evt.Trim()</td>
+		<td class="col7">@*@(feeO==0?"":feeO.ToString().Trim())@(feeA == 0 ? "" :(feeO!=0?","+((int)feeA).ToString().Trim():((int)feeA).ToString().Trim()))*@ @(feeO==0?"":feeO.ToString().Trim())</td>
+            </tr>
+            if (bevent.Length > 0) { n++; }
+            if (eevent.Length > 0) { n++; }
+            ViewBag.events = n;
+            feeOver += (int)feeO;
+            feeAbs += (int)feeA;
+        }
+	ViewBag.feeOver = feeOver;ViewBag.feeAbs = feeAbs;
+    }
+</table>
+<div style="display:inline; border-top:10px solid #FFF">
+<div style="float:left; border-top:10px solid #FFF"><label>共有考勤事件申请：@ViewBag.events 条</label></div>
+<div style="float:right; border-top:10px solid #FFF"><label>加班费用：@ViewBag.feeOver 元 &nbsp;&nbsp;&nbsp; &nbsp;加班审批:__________ </label>@* 缺勤费用：<label>@ViewBag.feeAbs</label>*@</div>
+</div><br>
+</div>
+

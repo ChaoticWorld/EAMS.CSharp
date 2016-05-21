@@ -1,0 +1,220 @@
+﻿
+@using report
+@model List<OrderField>
+@{Layout = "";}
+<table id="orderTable">
+    <caption>排序字段</caption>
+    <thead>
+        <tr>
+            <th>字段标题</th>
+            <th>字段名</th>
+            <th>升降序</th>
+            <th>排序字符串</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        { foreach (OrderField of in Model)
+            { <tr title="@of.orderID">
+                    <td onclick="selectOField(this)"><span data-fieldID="@of.fieldID" data-fieldName="@of.field.fieldNameCompute">@of.field.fieldTitle</span></td>
+                    <td><input style="width:80px" readonly="readonly" value="@of.fieldName" /></td>
+                    <td onclick="selectOComparison(this)"><span title="@of.isAsc.ToString()">@(of.isAsc?"升序":"降序")</span></td>
+                    <td><input style="width:80px" value="@of.orderString" /></td>
+                    <td><button onclick="OupTop(this)">&#x21C8;</button><button onclick="Oup(this)">&uarr;</button><button onclick="Odown(this)">&darr;</button><button onclick="OdownBottom(this)">&#x21CA;</button>
+                        <button onclick="OAddRow(this)">新增</button><button onclick="ODelRow(this)">删除</button>
+                    </td>
+                </tr>}   }
+        else {<tr title='-1'><td colspan="5"><button onclick="OAddRow(this),ODelRow(this)">新增</button></td></tr>}
+    </tbody>
+</table>
+<button class="btn btn-default" onclick="OrderSave(false)">保存</button>
+<button class="btn btn-default" onclick="Osubmit()">保存并提交</button>
+<select style="display:none" id="selOField" onblur="blurOField(this)">
+    <option data-fieldID="" data-fieldName=""></option>
+    @if (ViewData["Fields"] != null)
+    {
+        foreach (Field f in (List<Field>)ViewData["Fields"])
+        {
+        <option data-fieldID="@f.fieldID" data-fieldName="@f.fieldNameCompute">@f.fieldTitle</option>
+        }
+    }
+</select>
+<select style="display:none" id="selOComparison" onblur="blurOComp(this)">
+    <option value="1" selected="selected">升序</option>
+    <option value="0">降序</option>
+</select>
+
+<script type="text/javascript">
+    function OrderSave(isSubmit) {
+        var Orders = new Array();
+        var Order = new Object();
+        var isDefault = ($("#isDefault").length>0);
+        var rows = $("#orderTable tbody tr");
+        $(rows).each(function () {
+            Order = new Object();
+            //Order.fieldTitle = $(this).children("td").eq(0).children("span").eq(0).text();
+            Order.orderID = $(this).attr("title");
+            Order.fieldID = $(this).children("td").eq(0).children("span").eq(0).attr("data-fieldID");
+            Order.fieldName = $(this).children("td").eq(1).children("input").eq(0).val();
+            Order.isAsc = Boolean($(this).children("td").eq(2).children("span").eq(0).attr("title"));
+            Order.orderString = $(this).children("td").eq(3).children("input").eq(0).val();
+            Order.OrderIndex = $(this).index();
+            Order.isDefault = isDefault;
+            $(this).children("td").eq(4).attr("title", Order.OrderIndex);
+            //Order.logicOperator = "";
+            //Order.UserID = null;
+            Order.reportID = $("#rptID").text();
+            if (Order.orderString != null)
+                Orders.push(Order);
+        });
+        var url = "/employee/report/saveOrder/" + $("#rptID").text();
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            data: { "Orders": Orders },
+            success: function (data) {
+                //alert($(data).length+";"+data);
+                for (var i = 0; i < $(data).length; i++) {
+                    $(rows).eq(i).attr("title", data[i]);
+                }
+                if(isSubmit)
+                submitPost();
+            },
+            error: function (e) { alert("Error!" + e);}
+        });
+    }
+    function Osubmit() {
+        OrderSave(true);
+    }
+</script>
+<script type="text/javascript">
+    function selectOField(td) {
+        var selField = $("#selOField")[0];
+        var tdposition = $(td).position();
+       {//selField显示定位
+        $(selField).css("position", "absolute");
+        $(selField).css("left", tdposition.left);
+        $(selField).css("top", tdposition.top);
+        $(selField).css("width", $(td).css("width"));
+        $(selField).css("height", $(td).css("height"));
+        $(selField).css("display", "table-cell"); }
+       {//selField取原值
+           var orderID = $(td).parent().attr("title");
+           $(selField).attr("data-cell", $(td).index());
+           $(selField).attr("data-row", $(td).parent().index());
+           $(selField).attr("data-trid", orderID);
+           $(selField).attr("data-tdFieldID", $(td).children("span:first").attr("data-fieldid"));
+           $(selField).attr("data-tdFieldName", $(td).children("span:first").attr("data-fieldName"));
+           $(selField).attr("data-tdFieldTitle", $(td).children("span:first").text());
+       }
+
+        $(selField).children("option").removeAttr("selected");
+        if (orderID <= 0) {
+            $(selField).children("option:first").attr("selected", "selected");
+        }
+        else {
+            var selOption = "option[data-fieldid='" + $(selField).attr("data-tdFieldID")+"']:first";
+            $(selField).children(selOption).attr("selected", "selected");
+        }
+    }
+    function blurOField(td) {
+        var selField = $(td).children("option:selected");
+        var cell = $("#orderTable").children("tbody").eq(0).children("tr").eq($(td).attr("data-row")).children("td").eq($(td).attr("data-cell"));
+        var span = $(cell).children("span").eq(0);
+        $(span).text($(selField).text());
+        $(span).attr("data-fieldID", $(selField).attr("data-fieldID"));
+        $(span).attr("data-fieldName", $(selField).attr("data-fieldName"));
+        $(cell).next().children("input:first").val($(selField).attr("data-fieldName"));
+        $(td).css("display", "none");
+        $(cell).parent().children("td:eq(3)").children("input:first").val(getOrderString(cell));
+    }
+    function selectOComparison(td) {
+        var selcomp = $("#selOComparison")[0];
+        var tdposition = $(td).position();
+        $(selcomp).css("position", "absolute");
+        $(selcomp).css("left", tdposition.left);
+        $(selcomp).css("top", tdposition.top);
+        $(selcomp).css("width", $(td).css("width"));
+        $(selcomp).css("height", $(td).css("height"));
+        $(selcomp).css("display", "table-cell");
+
+        $(selcomp).attr("data-cell", $(td).index());
+        $(selcomp).attr("data-row", $(td).parent().index());
+        $(selcomp).attr("data-tdFieldComparison", $(td).children("span:first").text());
+
+        var orderID = $(td).parent().attr("title");
+        $(selcomp).children("option").removeAttr("selected");
+        if (orderID <= 0) {
+            $(selcomp).children("option").eq(0).attr("selected", "selected");
+        }
+        else {
+            var selOption = "option:contains(" + $(selcomp).attr("data-tdFieldComparison") + ")";
+            $(selcomp).children(selOption).eq(0).attr("selected", "selected");
+        }
+    }
+    function blurOComp(td) {
+        var selComparison = $(td).children("option:selected");
+        var cell = $("#orderTable").children("tbody").eq(0).children("tr").eq($(td).attr("data-row")).children("td").eq($(td).attr("data-cell"));
+        $(cell).children("span").eq(0).text($(selComparison).text());
+        $(cell).children("span").eq(0).attr("title", $(selComparison).val());
+        $(td).css("display", "none");
+        $(cell).parent().children("td:eq(3)").children("input:first").val(getOrderString(cell));
+    }
+    function getOrderString(td) {
+        var row = $(td).parent();
+        var fName = $(row).children("td:eq(1)").children("input:first").val();
+        var asc = $(row).children("td:eq(2)").children("span:first").attr("title");
+        var ascStr = eval(asc) ? "asc" : "desc";
+        var str = " " + fName + " " + ascStr;
+        return str;
+    }
+
+</script>
+<script type="text/javascript">
+    function OAddRow(td) {
+        var tr = $(td).parent().parent();
+        var newRow = '<tr title="-1"> <td onclick="selectOField(this)"><span data-fieldID="" data-fieldName=""></span></td>'
+            + '<td><input style="width:80px"  /></td>'
+            + '<td onclick="selectOComparison(this)"><span title="true">升序</span></td>'
+            + '<td><input style="width:80px"  /></td>'
+            + '<td><button onclick="OupTop(this)">&#x21C8;</button><button onclick="Oup(this)">&uarr;</button>'
+            + ' <button onclick="Odown(this)">&darr;</button><button onclick="OdownBottom(this)">&#x21CA;</button>'
+            + '<button onclick="OAddRow(this)">新增</button><button onclick="ODelRow(this)">删除</button></td> </tr>';
+        $(tr).after(newRow);
+    }
+    function ODelRow(td) {
+        var tr = $(td).parent().parent();
+        var orderID = $(tr).attr("title");
+        //alert(filterID);
+        if (orderID => 0) {
+            var url = "/employee/report/deleteOrder/" + orderID;
+            $.post(url, function () { });
+        }
+        $(tr).remove();
+    }
+    function OupTop(td) {
+        var tr = $(td).parent().parent();
+        var trFirst = $("#orderTable tbody tr:first");
+        $(trFirst).insertAfter(tr[0]);
+    }
+    function Oup(td) {
+        var tr = $(td).parent().parent();
+        var prevTr = $(tr).prev();
+        if (prevTr && $(prevTr).length > 0 && $(tr).index() > $(prevTr).index() )
+            $(prevTr).insertAfter(tr[0]);
+    }
+    function Odown(td) {
+        var tr = $(td).parent().parent();
+        var nextTr = $(tr).next();
+        if (nextTr && $(nextTr).length > 0 && $(nextTr).index() < $("#orderTable tbody tr").length)
+            $(nextTr).insertBefore(tr[0]);
+    }
+    function OdownBottom(td) {
+        var tr = $(td).parent().parent();
+        var trEnd = $("#orderTable tbody tr:last");
+        $(trEnd).insertBefore(tr[0]);
+    }
+</script>

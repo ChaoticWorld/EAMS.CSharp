@@ -1,0 +1,186 @@
+﻿@using report
+@model List<PivotView>
+@{ if (ViewBag.isDefault) { Layout = ""; }
+    ViewBag.Title = "汇总表";
+}
+<script type="text/javascript" src="/Scripts/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/Scripts/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Scripts/pivot/pivot.min.css" />
+<link rel="stylesheet" type="text/css" href="/Scripts/pivot/c3.min.css" />
+<script type="text/javascript" src="/Scripts/pivot/pivot.min.js"></script>
+@*<script type="text/javascript" src="/Scripts/pivot/pivot.js"></script>*@
+<script type="text/javascript" src="/Scripts/pivot/d3.min.js"></script>
+<script type="text/javascript" src="/Scripts/pivot/c3.min.js"></script>
+<script type="text/javascript" src="/Scripts/pivot/c3_renderers.min.js"></script>
+<!-- optional: mobile support with jqueryui-touch-punch -->
+<script type="text/javascript" src="/Scripts/jquery.ui.touch-punch.min.js"></script>
+<script src="/Scripts/pivot/pivot.zh.min.js"></script>
+<style>
+    body {
+        font-family: Verdana;
+    }
+    #outputPivotTable input {
+        width: 40px;
+    }
+
+    #viewParam :after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+</style>
+<h2>Report @TempData["rptTitle"]</h2><label id="rptID" hidden="hidden">@ViewData["rptID"]</label>
+@if (!ViewBag.isDefault) { 
+<div id="ViewFilters" class="collapse">
+    <div id='ViewFilters' style="float:left">@Html.Action("ViewFilter", new { id = ViewData["rptID"], isDefault = ViewBag.isDefault })</div>
+</div>
+<div id="viewFilter" class="container">
+    <a href="#ViewFilters" class="btn btn-primary" data-toggle="collapse">查寻参数 &dArr;</a>
+</div>
+}
+
+    <div id="outputPivotTable" style="margin: 30px;"></div>
+    <div class="row-fluid">
+        <div style="float:left">共 @ViewData["records"] 条记录；数据查询日期：@ViewData["DataTime"]；</div>
+        <div style="float:right">
+            <label>格式名：</label>
+            @{if (Model != null && Model.Count > 0)
+                {
+                    //缺省值
+                    long lastID = -1;
+                    PivotView pp = null;
+                    if (ViewBag.isDefault) { pp = Model.Find(pf => pf.isDefault); }
+                    else { pp = Model.Find(f => f.isLast); if (pp==null) { pp = Model.Find(pf => pf.isDefault); } }
+                    if (pp != null)
+                    {
+                        lastID = pp.autoid;
+                        <select id="pivotFormat" onchange="pivotFormatChange(this)">
+                            @foreach (PivotView pv in Model)
+                            {
+                                if (pv.autoid == pp.autoid)
+                                {
+                                    <option value="@pv.autoid" data-param="@pv.pivotParams" selected="selected">@pv.pivotName</option>}
+                                else
+                                {
+                                    <option value="@pv.autoid" data-param="@pv.pivotParams"> @pv.pivotName </option>}
+                            }
+                        </select>
+
+                        <div id="pivotParamLast" data-isLast="@pp.isLast.ToString().ToLower()" data-lastID="@lastID" hidden="hidden">@pp.pivotParams</div> }
+                }
+                else
+                {
+                    <select id="pivotFormat" onchange="pivotFormatChange(this)"></select>
+                    <div id="pivotParamLast" data-lastID="-1" hidden="hidden"></div>
+                }            }
+            <button onclick="saveAS()">另保存</button>
+            <button onclick="deletePersonal()">删除</button>
+        </div>
+        <div hidden="hidden">
+            <div id="dataSource" hidden="hidden">@ViewData["dataSource"]</div>
+        </div>
+    </div>
+
+    @if (!ViewBag.isDefault)
+    {
+        <div style="float:left;width:30%" class="container-fluid btn-group">
+            <a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default" href="~/employee/report/">返回</a>
+        </div>}
+    <script type="text/javascript">
+        function getPVModel(name) {
+            var pivotParams = $("#pivotParamLast").text();
+            var pivotViewModel = new Object();
+            pivotViewModel.reportID = $("#rptID").text();
+            pivotViewModel.pivotParams = pivotParams;
+            pivotViewModel.isDefault = ($("#defaultPivot").length > 0);
+            if (pivotViewModel.isDefault) {
+                pivotViewModel.pivotName = "缺省";
+                if (eval($("#pivotParamLast").attr("data-isLast")))
+                    pivotViewModel.autoid = -1;
+                else
+                    pivotViewModel.autoid = $("#pivotParamLast").attr("data-lastID");
+            }
+            else {
+                if (name) {
+                    pivotViewModel.pivotName = name;
+                    pivotViewModel.autoid = -1;
+                }
+                else {
+                    pivotViewModel.pivotName = "上次查询";
+                    if (eval($("#pivotParamLast").attr("data-isLast"))) {
+                        pivotViewModel.isLast = true;
+                        pivotViewModel.autoid = $("#pivotParamLast").attr("data-lastID");
+                    }
+                    else {
+                        pivotViewModel.isLast = true;
+                        pivotViewModel.autoid = -1;
+                    }
+                }
+            }
+            return pivotViewModel;
+        }
+        function saveAS() {
+            var name = prompt("请输入新格式的名字", "新格式");
+            var url = "/Employee/report/savePivotParam/-1";
+            var pivotParams = $("#pivotParamLast").text();
+            var pivotViewModel = getPVModel(name);
+            $.post(url, { "pv": pivotViewModel }, function () { window.location.reload(); });
+            //方案二，将lastID,Name作为参数，传服务端；服务端读取lastID的PivotModel改id=-1,name=Name;Save();
+        }
+        function saveParamLast() {
+            var isDefault = $("#defaultPivot").length > 0;
+            if (isDefault) return;
+            var lastID = $("#pivotParamLast").attr("data-lastID");
+            var url = "/Employee/report/savePivotParam/" + lastID;
+            var pivotViewModel = getPVModel();
+            $.post(url, { "pv": pivotViewModel }, function (data) {
+                if (lastID < 0) {
+                    $("#pivotParamLast").attr("data-lastID", data);
+                }
+                $("#pivotParamLast").attr("data-isLast", isDefault ? "false" : "true");
+            });
+        }
+        function deletePersonal() {
+            var delID = $(c).children("option:selected").val()
+            var url = "/Employee/report/deletePivotParam/" + delID;
+            $.post(url, {}, function () {
+                $(c).children("option:selected").remove();
+            });
+        }
+        function pivotFormatChange(c) {
+            var strParam = $(c).children("option:selected").attr("data-param");
+            $("#pivotParamLast").text(strParam);
+            loadFormat();
+        }
+    </script>
+    <script type="text/javascript">
+        // This example loads data from the HTML table below.
+        var ds;
+        $(function () {
+            var dstxt = $("#dataSource").text();
+            ds = eval(dstxt);
+            loadFormat();
+        });
+    </script>
+    <script type="text/javascript">
+        function loadFormat() {
+            var pivotParamsTxt = $("#pivotParamLast").text();
+            var pivotParams = pivotParamsTxt ? JSON.parse(pivotParamsTxt) : new Object();
+            pivotParams.onRefresh = getPivotParams;
+            $("#outputPivotTable").pivotUI(ds,
+            pivotParams
+            , !1, "zh"
+            );
+        }
+        function getPivotParams(config) {
+            var config_copy = JSON.parse(JSON.stringify(config));
+            //delete some values which are functions
+            delete config_copy["aggregators"];
+            delete config_copy["renderers"];
+            //delete some bulky default values
+            delete config_copy["rendererOptions"];
+            delete config_copy["localeStrings"];
+            $("#pivotParamLast").text(JSON.stringify(config_copy));
+            saveParamLast();
+        }
+    </script>

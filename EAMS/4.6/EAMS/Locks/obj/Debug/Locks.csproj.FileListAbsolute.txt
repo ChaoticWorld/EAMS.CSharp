@@ -1,0 +1,24 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\Locks.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\Locks.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\bin\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\obj\Debug\Locks.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\obj\Debug\Locks.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Locks\obj\Debug\Locks.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\Locks.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\Locks.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\bin\Debug\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\obj\Debug\Locks.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\obj\Debug\Locks.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Locks\obj\Debug\Locks.pdb

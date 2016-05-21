@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+
+</head>
+<body>
+    <style>
+        #myTable {
+            border: 1px solid green;
+            text-align: center;
+            display: table;
+            margin: auto;
+        }
+
+        table {
+            margin: auto;
+        }
+        td th {
+            margin: auto;border: 1px solid CadetBlue;text-align: center;
+        }
+    </style>
+    <div id='myTable' style='width:500px'>
+        <!--<div id="loadPageHead"></div>-->
+        <div>我的标题</div>
+        <div sytle='display:inline'>
+            <div style='float:left'>filter </div>
+            <div style='float:right'>filter string</div>
+        </div>
+        <table style='width:100%' border='1'>
+            <!--<div id="loadRowHead"></div>-->
+            <thead><tr><td>标题1</td><td>标题2</td><td>标题3</td><td>标题4</td><td>标题5</td></tr></thead>
+            <!--<div id="loadRowBodys"></div>-->
+            <tbody><tr><td>cell1</td><td>cell2</td><td>cell3</td><td>cell4</td><td>cell5</td></tr></tbody>
+        </table>
+        <!--<div id="loadPageStrip"></div>-->
+
+<div id="foot" sytle='display:inline'>
+<div style='float:left;display:inline;width:45%'>
+<div style='float:left'>制单人:<span id="maker">m</span></div>
+<div style='float:right'>日期:<span id="sdate">d</span></div>
+</div>
+<div id='pageStrip' style='float:right'>
+<span>页数：</span>
+<input style='width:40px' type='text' id='pageIndexp' value='1' />/<span>pageCount</span>
+</div>
+</div>
+        <div id='pageStrip' style='float:right'>
+            <span>页数：</span>
+            <input style='width:40px' type='text' id='pageIndex' value='1' />/<span>pageCount</span>
+            <div id='btnStrips' class='btn-group'>
+                <button id='pageGo' class='btn btn-default btn-sm' data-Idx='1'>Go</button>
+                <button id='pageFirst' class='btn btn-default btn-sm' data-Idx='1'>|<1</button>
+                <button id='pagePrev' class='btn btn-default btn-sm'><<</button>
+                <button id='page0' class='btn btn-default btn-sm' onclick='changePageIdx(this)'>1</button>
+                <button id='page1' class='btn btn-default btn-sm' onclick='changePageIdx(this)'>2</button>
+                <button id='page2' class='btn btn-default btn-sm' onclick='changePageIdx(this)'>3</button>
+                <button id='page3' class='btn btn-default btn-sm' onclick='changePageIdx(this)'>4</button>
+                <button id='page4' class='btn btn-default btn-sm' onclick='changePageIdx(this)'>5</button>
+                <button id='pageNext' class='btn btn-default btn-sm'>>></button>
+                <button id='pageEnd' class='btn btn-default btn-sm' data-Idx='pageCount'>pageCount>|</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

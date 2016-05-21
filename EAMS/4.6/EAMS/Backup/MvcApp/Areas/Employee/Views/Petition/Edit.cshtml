@@ -1,0 +1,436 @@
+﻿@model MvcApp.Areas.Employee.Models.petitionEditModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+@Scripts.Render("~/bundles/jqueryPrintArea")
+@*@Styles.Render("~/Content/PrintPage.css")*@
+<style type="text/css">
+    .page {
+        width: 95%;
+        margin: auto;
+        /*font-size:smaller;*/
+    }
+</style>
+
+<div class="page prnpage">
+    <style type="text/css">
+        input[type="date"] {
+            height: 25px;
+            width: 140px;
+        }
+
+        #head {
+            display: inline;
+        }
+
+        div {
+            /*border: 1px solid red;*/
+        }
+
+        .inline {
+            float: left;
+        }
+
+        .grid {
+            width: 100%;
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            BORDER-COLLAPSE: collapse;
+            float: left;
+        }
+
+            table tr td {
+                border-style: solid;
+                border-color: gray;
+                border-width: 1px;
+                font-size: 15px;
+            }
+
+        .nullrow {
+            border-width: 0px;
+            border-color: white;
+        }
+    </style>
+
+    <style type="text/css" media="print">
+        .noprint {
+            display: none;
+        }
+
+        .print {
+            /*font-size:smaller;*/
+            display: inline;
+        }
+    </style>
+
+    <input type="hidden" id="QCID" value='@Model.QCM.Id' />
+    <div style="clear: both;">
+        <p style=" float: left; border: 0px; margin: auto auto;">
+            分类:@Html.DropDownList("PetitionClass", TempData["PetitionClass"] as SelectList)
+        </p>
+        <p style=" float: right; border: 0px; margin: auto auto;" title='@Model.QCM.Id'>编号:<span id="QCcode">@Model.QCM.cCode</span></p><br>
+    </div>
+    <h1>签呈</h1>
+    <div id='head'>
+        <div>
+            <div class='inline' style=" width: 25%;">提交给:徐经理</div>
+            <div class='inline' style=" width: 49%;">提案人:<span id="QCCusManager">@Model.QCM.cCusManager</span></div>
+            <div class='inline' style=" width: 25%;">创建人:@Model.QCM.cCreateMan</div>
+        </div>
+        <div class="noprint">
+            <div class='inline' style=" width: 25%;">
+                日期:
+                <input id="QCdate" type="date" value="@(Model.QCM.dCreateDate.HasValue ? Model.QCM.dCreateDate.Value.ToString("yyyy-MM-dd")
+			: DateTime.Now.ToString("yyyy-MM-dd"))" />
+            </div>
+            <div class='inline' style=" width: 49%;">
+                客户名称:
+                <input style=" width: 180px" id="QCname" type="text" value="@Model.QCM.cCusName" onblur="getcusInfo()" />
+                <button class="noprint" style=" width: 25px" onclick="opensearchResultDialog()">...</button>
+            </div>
+            <div class='inline' style="width: 25%;">客户联系人:<input style="width:80px" id="QCcontact" type="text" value="@Model.QCM.cCusPerson" /></div>
+        </div>
+        <div class="print" style="display:none">
+            <div class='inline' style=" width: 25%;">
+                <label>日期:</label><span id="prnDate"></span>
+            </div>
+            <div class='inline' style=" width: 49%;">
+                <label>客户名称:</label><span id="prncusName"></span>
+            </div>
+            <div class='inline' style="width: 25%;">
+                <label>客户联系人:</label><span id="prncusContact"></span>
+            </div>
+        </div>
+        <div id="QCsubject" class="inline" style="clear:both;font-size:20px;margin-top:8px;">
+            <b>关于: <span id="cusName">@Model.QCM.cCusName</span> 的政策申请</b>
+        </div>
+    </div>
+    <div class='grid'>
+        <table>
+            <tr><td></td><td style=" width: 90%;margin: auto;">内&nbsp;&nbsp;容</td></tr>
+            <tr height='40px'><td>提案依据</td><td>鉴于该客户一直与我司保持良好合作关系</td></tr>
+            <tr height='80px'>
+                <td>拟定方案</td>
+                <td style="height:100%;padding:10px">
+                    特申请该客户订购:
+                    <div style="min-height:300px; max-height:500px;margin-left:20px">
+                        <div class="noprint">
+                            <table id="QCContent">
+                                <tr>
+                                    <td style=" width: 60px" class="noprint">操作符</td>
+                                    <td style=" width: 40px">序号</td>
+                                    <td>内容</td>
+                                </tr>
+                                @if (Model.QCtxt != null)
+                                {
+                                    foreach (var txt in Model.QCtxt.OrderBy(to => to.order))
+                                    {
+                                        <tr>
+                                            <td class="autoid noprint" onclick="delRow(this)" title="@txt.autoid.ToString()" style="color:blue;"><u>删除</u></td>
+                                            <td><input style='width:35px' value="@txt.order.ToString()" /></td>
+                                            <td><textarea style='width:100%'>@txt.plan.ToString()</textarea></td>
+                                        </tr>
+                                    }
+                                }
+                                <tr><td onclick="addRow(this)" style="color:blue;"><u>新增</u></td><td colspan="2"></td></tr>
+                            </table>
+                        </div>
+
+                        <div id="printTextArea" style="display:none;font-size:13.5px;" class="print">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr height='40px'>
+                <td>限单</td>
+                <td>
+                    <div style="float:left;width:100%">
+                        <input class="noprint" id='cvouchCode' style="min-width: 600px; width: 100%" type='text' value="@Model.QCM.cVouchCode" />
+                        <span class="print" id="prnVouchCode" style="display:none"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr height='40px'>
+                <td>时效</td>
+                <td>
+                    <div style="float:left;display:inline-block">
+                        生效日期:
+                        <label id="strEffDate" style="display: none;" class="print"></label>
+                        <input id="effDate" type="date" class="noprint"
+                               value="@(Model.QCM.dEffDate.HasValue?Model.QCM.dEffDate.Value.ToString("yyyy-MM-dd")
+					 : DateTime.Now.ToString("yyyy-MM-dd"))" />
+                        |失效日期:
+                        <label id="strExpDate" style="display:none;" class="print"></label>
+                        <input id="expDate" type="date" class="noprint"
+                               value="@(Model.QCM.dExpDate.HasValue?Model.QCM.dExpDate.Value.ToString("yyyy-MM-dd")
+					 : DateTime.Now.ToString("yyyy-MM-dd"))" />
+                    </div>
+                </td>
+            </tr>
+            <tr height='40px'><td>目标</td><td>维系良好合作关系</td></tr>
+            <tr height='40px'><td colspan="2">提案人（签字）：</td></tr>
+            <tr class='nullrow'><td class='nullrow' colspan="2"></td></tr>
+            <tr height='60px'><td colspan="2">经理批示（同意否）：<span>@Model.QCM.cResult</span></td></tr>
+        </table>
+    </div>
+    <div class='buttonLine noprint btn btn-group' style="float:left">
+        <button class="btn btn-default" id="Save" style="display:@(Model.isReply?"none":"block")" onclick="save()">保存</button>
+        <button class="btn btn-default" id="Reply" style="display:@(Model.isNew?"none":Model.isReply?"none":"block")" onclick="update()">同意</button>
+        <button id="Delete" style="display:@(Model.isReply?"none":Model.isNew?"none":"block")" class="btn btn-default" onclick="del()">删除</button>
+        <button id="Clone" style="display:@(Model.isNew?"none":"block")" class="btn btn-default" onclick="clone()">复制</button>
+        <button id="Print" class="btn btn-default" onclick="print()">打印</button>
+        <a class="btn btn-default" href="/Employee/Petition">返回签呈列表</a>
+    </div>
+</div>
+@*<script src="~/Scripts/jquery.json.min.js"></script> //for $.toJSON()*@
+<script type="text/javascript">
+    function content(o, t) {
+        this.orderid = o;
+        this.text = t;
+    }
+    function compareContent(value1, value2) {
+        return value1.orderid - value2.orderid;
+    }
+    function doPrintPage() {
+        $("#prnVouchCode").text($("#cvouchCode").val());
+        $("#prnDate").text($("#QCdate").val());
+        $("#prncusName").text($("#QCname").val());
+        $("#prncusContact").text($("#QCcontact").val());
+        $("#strEffDate").text($("#effDate").val());
+        $("#strExpDate").text($("#expDate").val());
+        var contents = new Array();
+        var o, t;
+        var rows = $("#QCContent").children('tbody').children('tr');
+        var cols;
+        if (rows) {
+            for (var i = 1; i < rows.length - 1; i++) {
+                var cols = $(rows[i]).children();
+                var txt = $(cols).eq(2).children(0).val().trim();
+                if (txt) {
+                    o = $(cols).eq(1).children(0).val();
+                    t = txt;
+                    contents.push(new content(o, t));
+                }
+            }
+        }
+        contents.sort(compareContent);
+        var p = ""; $("#printTextArea").html(p);
+        for (var i = 0; i < contents.length; i++) {
+            var c = contents[i];
+            p = "<p style='line-height:15px;margin:8px'><span>" + c.orderid + ".  </span><span>" + c.text + "</span></p>";
+            $("#printTextArea").append(p);
+        }
+        /*PageSetup();*/
+    }
+    function PageSetup() {
+        var HKEY_Root = "HKEY_CURRENT_USER";
+        var HKEY_Path = "\\Software\\Microsoft\\Internet Explorer\\PageSetup\\";
+        try {
+            var Wsh = new ActiveXObject("WScript.Shell");
+            var HKEY_key = "header";
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_key, "");
+            HKEY_key = "footer";
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_key, "");
+        }
+        catch (e) { }
+    }
+    function print() {
+        /*参数设置：
+        1、mode：模式，当点击打印按钮时触发模式，默认为iframe，当设置为popup则会新开一个窗口页面打印。
+        2、popTitle：设置新开窗口的标题，默认为空。
+        3、popClose：完成打印后是否关闭窗口，默认为false。ExtraCss:""外部CSS*/
+        doPrintPage();
+        $(".noprint").hide();
+        $(".print").show();
+        var option = { mode: "popup", extraCss: "~/Content/PrintPage.css", popTitle: "Print", popClose: false };
+        $(".prnpage").printArea(option);
+        $(".print").hide();
+        $(".noprint").show();
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("tr input").on("click", function () { this.focus(); });
+        $("tr input").on("blur", function () {
+            var ctitle = $(this).attr("title");
+            var cval = $(this).val();
+            var tr = $(this).parent().parent()[0];
+            if (ctitle != cval) {
+                $(tr).attr("title", "modified");
+                $(this).attr("title", cval);
+            }
+        })
+    });
+    function addRow(c) {
+        var thisrow = $(c).parent();
+        var rowcount = $(thisrow).parent().children().length;
+        var neworder = rowcount - 1;
+        //alert(neworder.toString().trim());
+
+        var newrow = "<tr><td class='autoid' title='-1' onclick='delRow(this)' style='color:blue;'><u>删除</u></td><td><input style='width:35px' value='" + neworder.toString().trim() + "'/></td><td><textarea style='width:100%' /></td></tr>";
+        $(thisrow).before(newrow);
+
+    }
+    function delRow(c) {
+        var thisrow = $(c).parent();
+        var autoid = $(c).attr("title");
+        var $content = $(thisrow).children().eq(2).children(0).val().trim();
+        if (autoid < 0) $(thisrow).remove();
+        //alert($content.trim());
+        if ($content && $content.trim() != "") {
+            $(thisrow).attr("title", "deleted");
+            $(thisrow).hide();
+        }
+        else $(thisrow).remove();
+    }
+</script>
+<script type="text/javascript">
+
+    function getcusInfo(){
+        //获得客户信息，如果唯一，更新客户经理，客户联系人，新签呈更新签呈编号
+        var ctxt = $("#QCname").val();
+        if (ctxt) {
+            $.ajax({
+                url: "/Employee/Petition/cusInfoJson/" + ctxt,
+                type: "GET",
+                dataType: "json",
+                data: { id: ctxt },
+                success: function (data) {
+                    //alert(ctxt+";"+data.cCusName + ";" + data.ContactName + ";" + data.employeeName);
+                    $('#QCname').attr("title", ctxt);
+                    $('#QCname').val(data.cCusAbbName);
+                    $('#QCcontact').val(data.ContactName);
+                    $('#QCCusManager').text(data.employeeName);
+                    $('#cusName').text(data.cCusName);
+                }
+            });
+        }
+    }
+
+    function getHead() {
+        var h = new Object();
+        h["m.Id"] = $('#QCID').val();
+        h["m.cCode"] = $('#QCcode').text();
+        h["m.cCusName"] = $('#QCname').val();
+        h["m.cCusCode"] = $('#QCname').attr('title');
+        h["m.cCusManager"] = $('#QCCusManager').text();
+        h["m.dCreateDate"] = $('#QCdate').val();
+        h["m.cCusPerson"] = $('#QCcontact').val();
+        h["m.cSubject"] = $('#QCsubject').text();
+        h["m.cVouchCode"] = $('#cvouchCode').val();
+        h["m.dEffDate"] = $('#effDate').val();
+        h["m.dExpDate"] = $('#expDate').val();
+        h["m.cClsFlag"] = $('#PetitionClass').val();
+        //alert($('#QCdate').val());
+        //alert($.toJSON(h));
+        return h;//$.toJSON(h);
+
+    }
+    function getBody() {
+        var id = $('#QCID').val();
+        var b = new Object();
+        var Contents = $('#QCContent').children('tbody').children('tr');
+        var j = 0;
+        if (Contents) {
+            for (var i = 1; i < Contents.length - 1; i++) {
+                var cols = $(Contents[i]).children();
+                var txt = $(cols).eq(2).children(0).val().trim();
+                if (txt) {
+                    b["Contents[" + (j) + "].id"] = id;
+                    b["Contents[" + (j) + "].autoid"] = $(cols).eq(0).attr('title');
+                    b["Contents[" + (j) + "].order"] = $(cols).eq(1).children(0).val();
+                    b["Contents[" + (j) + "].plan"] = txt;
+                    b["Contents[" + (j) + "].saveState"] = $(Contents[i]).attr('title');
+                    j++;
+                }
+            };
+        };
+        return b;
+    }
+
+    function save(){
+        //保存签呈内容
+        //Save QCHead
+        $.ajaxSetup({ async: false });
+        var QChead = getHead();
+        var urlSaveHead = '@Url.Action("saveHead")';
+        $.post(urlSaveHead, QChead, function (date) {
+            var d = eval("(" + date + ")");
+            $('#QCID').val(d.id);
+            $('#QCcode').text(d.code);
+        });
+
+        //Save QCBody
+        var QCbody = getBody();
+        var urlSaveBody = '@Url.Action("saveBody")';
+        $.post(urlSaveBody, QCbody, function () {
+        });
+        $.ajaxSetup({ async: true });
+        var id = $('#QCID').val();
+        var url = '/Employee/Petition/Edit/' + id;
+        window.location.href = url;
+    }
+
+    function update(){
+        //更新同意
+        var url = '@Url.Action("saveReply")';
+        $.post(url,{id:$('#QCID').val()},function(){
+            window.location.reload(true);
+        })
+    }
+
+    function del() {
+        //删除此签呈
+        var id = $("#QCID").val();
+        var url = '@Url.Action("Delete")';
+        var isNew = eval('@Model.isNew.ToString().ToLower()');
+        if (isNew) { alert("新建页面未保存！不能删除"); }
+        else { window.location.href = url + "/" + id; }
+    }
+
+
+
+    function clone() {
+        $("#QCID").val(-1);
+        $("#Save").show();
+        $("#Reply").hide();
+        $("#Delete").hide();
+        $("#Clone").hide();
+
+        //autoid = -1
+        $(".autoid").attr("title","-1");
+        $("#QCcode").text("新签呈");
+    }
+    //生效时间,失效时间;使用SQLServer计划任务
+
+</script>
+
+<script type="text/javascript">
+    function opensearchResultDialog() {    //对话框定义
+        var key = $('#QCname').val();
+        var url = "";
+        if (!key) {
+            url = "/Employee/CallIn/searchGo";
+            //alert(encodeURI(url));
+            JqueryDialog.Open1('搜索参照', encodeURI(url), 800, 400);
+        }
+        else {
+            url = "/Employee/CallIn/searchGo/" + key;
+            JqueryDialog.Open1('搜索参照', url, 800, 400);
+        }
+    }
+    function callbackDialog(p) {
+        JqueryDialog.Close();
+        if (p) {
+            $('#QCname').val(p);
+            getcusInfo();
+        }
+        else alert("无选择结果");
+    }
+</script>

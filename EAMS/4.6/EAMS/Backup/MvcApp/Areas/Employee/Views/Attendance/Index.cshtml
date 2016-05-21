@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Attendance.v_Attendance>
+
+@{
+    ViewBag.MainTitle = "考勤";
+    ViewBag.Title = "Index Attendance ver20150601";
+}
+
+<div id="page" class="container-fulid">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div class="row-fluid">
+            <div class="container-fluid">
+                <div  style="float: left; " id="Manager">
+                    <span style="display: none; font: bold 36px arial; float:left" id="PrintTitle">考勤</span>
+                    @{if (SystemBLL.UserBLL.getUser(int.Parse(Context.User.Identity.Name)).RoleNames.Contains("AttendanceManager"))
+                    { <div class="printNoDisplay"><a class="btn btn-primary form-control" style="width:200px;" href="/Employee/Attendance/ManagerPage/">管理</a></div>}
+                    }
+                    <span class="printNoDisplay">本次更新 @TempData["updateAtts"] 条考勤记录。</span>
+                
+                </div><div style="float: left; min-width: 18%;"></div>
+                <div style="float: left; width: 50%;" id="changeAttYearMonth">
+                    <fieldset>
+                        @using (Ajax.BeginForm(
+                          new AjaxOptions
+                          {
+                              UpdateTargetId = "MyAttendanceList",
+                              InsertionMode = InsertionMode.Replace,
+                              HttpMethod = "Post"
+                          }))
+                        { SelectListItem sli =((SelectList)ViewBag.Employees).First(f => f.Selected); 
+                            <div>
+                                <label>当前员工:</label>
+                                <input id="selEmployee" type="text" onclick="clickSelect(this)"
+                                       title="@sli.Value"
+                                       value="@sli.Text" />
+                                <input id="selEmpId" name="selEmpId" type="hidden" value="@sli.Value" />
+                                <br />
+                                <span>指定年月:</span>
+                                <input type="text" style="width:50px" id="Year" name="Year" value="@(((DateTime)ViewBag.date).Year)" />
+                                年
+                                <input type="text" style="width:60px" id="Month" name="Month" value="@(((DateTime)ViewBag.date).Month)" />
+                                月
+                                <div class="btn-group">
+                                    <input class="btn btn-default btn-sm printNoDisplay" type="button" id="prevMonth" value="上月" />
+                                    <input class="btn btn-default btn-sm printNoDisplay" type="button" id="NowMonth" value="本月" />
+                                    <input class="btn btn-default btn-sm printNoDisplay" type="submit" id="go" value="GO" />
+                                </div>
+                            </div>
+                        }
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="MyAttendanceList" style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; ">
+                @Html.Partial("AttendanceList", Model)
+            </div>
+            </div>
+        <div class="row-fluid">
+            <div id="Funcation" class="printNoDisplay" style=" width:70%;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;">
+                <button class="btn btn-default" type="button">提交审核</button>
+                <button class="btn btn-default" type="button" id="toPrint">打印本页</button>
+                <a class="btn btn-default" id="eventOverLstHref" onclick="eventOverLst()" href="#">加班事件列表</a>
+                <a class="btn btn-default" id="eventAbsenceLstHref" onclick="eventAbsenceLst()" href="#">缺勤事件列表</a>
+
+            </div>
+        </div>
+        </div>
+    <div class="col-lg-1"></div>
+</div>
+
+<script type="text/javascript">
+        function clickSelect(cs) {
+            $("#Selecter").remove();
+            var suposition = $(cs).position();
+            var currUserId = $(cs).attr('title');
+            $(cs).after('<div id="Selecter" style="z-index:9999;"></div>');
+            $("#Selecter").css("position", "absolute");
+            $("#Selecter").css("height", "100px");
+            $("#Selecter").css("left", suposition.left);
+            $("#Selecter").css("top", suposition.top);
+            var ds = "<select class='form-control input-sm' id='sel'> <option value=-1>  </option> ";
+            ds += "@foreach (SelectListItem sli in (SelectList)ViewBag.Employees)
+                { <option value='@sli.Value' @((sli.Selected)?"selected='selected'":"") >@sli.Text</option> }";
+            ds += "</select>";
+            $("#Selecter").append(ds);
+
+            $("#sel").children("[value=" + $(cs).attr("title") + "]").first().prop("selected", "selected");
+
+            $("#sel").css("width", $(cs).css("width"));
+            $("#sel").change(function () {
+                r = new Object();
+                r.t = $(this).find('option:selected').text();
+                r.v = $(this).val();
+                var textInput = $(this).parent().prev();
+                $(textInput).val(r.t);
+                $(textInput).attr("title", r.v);
+                $("#selEmpId").val(r.v);
+                $(this).parent().remove();
+                //$("#eventLstHref").attr("href","~/Employee/Attendance/eventList/"+r.v);
+            });
+            $("#sel").blur(function () {
+                $(this).parent().remove();
+            });
+        }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#prevMonth").on("click", function () {
+            var y = $("#Year").val();
+            var m = $("#Month").val();
+            if (m <= 1) { y = y - 1; m = 12; }
+            else { y = y; m = m - 1; }
+
+            $("#Year").val(y);
+            $("#Month").val(m);
+            $("#go").click();
+        });
+        $("#NowMonth").on("click", function () {
+            var y = $("#Year").val();
+            var m = $("#Month").val();
+            var myDate = new Date();
+            y = myDate.getFullYear();
+            m = myDate.getMonth() + 1;
+            $("#Year").val(y);
+            $("#Month").val(m);
+            $("#go").click();
+        });
+        $("#Year").on("blur", function () {
+            var y = $("#Year").val();
+            if (y && y > 1975)
+            { $("#go").removeAttr("disabled"); }
+            else
+            { alert("年份不能为空！请修改"); $("#go").attr("disabled", "disabled"); }
+        });
+        $("#Month").on("blur", function () {
+            var m = $("#Month").val();
+            if (!m) { alert("月份不能为空！请修改"); $("#go").attr("disabled", "disabled"); }
+            else { $("#go").removeAttr("disabled"); }
+            if (1 <= m && m <= 12) { $("#go").removeAttr("disabled"); }
+            else { alert("月份不合法！请修改"); $("#go").attr("disabled", "disabled"); }
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    function eventAbsenceLst() {
+        var url = "/Employee/Attendance/eventAbsenceList";
+        var empId = $("#selEmpId").val();
+        var date = $("#Year").val() + "-" + $("#Month").val() + "-" + "1";
+        window.location.href = url + "/" + empId + "/" + date;
+    }
+    function eventOverLst() {
+        var url = "/Employee/Attendance/eventOverList";
+        var empId = $("#selEmpId").val();
+        var date = $("#Year").val() + "-" + $("#Month").val() + "-" + "1";
+        window.location.href = url + "/" + empId + "/" + date;
+    }
+</script>
+@Scripts.Render("~/bundles/jqueryPrintArea")
+<script type="text/javascript">
+    $(function () {
+        $("#toPrint").on("click", function () {
+            /*参数设置：
+            1、mode：模式，当点击打印按钮时触发模式，默认为iframe，当设置为popup则会新开一个窗口页面打印。
+            2、popTitle：设置新开窗口的标题，默认为空。
+            3、popClose：完成打印后是否关闭窗口，默认为false。ExtraCss:""外部CSS*/
+            var option = { mode: "popup", extraCss: "~/Content/PrintPage.css", popTitle: "Print", popClose: false };
+
+            //printNoDisplay
+            $(".printNoDisplay").css("display", "none");
+            var pp = $("#page").clone();
+            $(pp).find("#PrintTitle").css("display", "block");
+            $(pp).find("table tr th td").css("border-width", "3px");
+            $(pp).find("table tr th td").css("border-color", "black");
+            $(pp).find("table tr td").css("background-color","white");
+            $(pp).children("#headLine").css("FLOAT", "RIGHT");
+            $(pp).children(".printNoDisplay").remove();
+            $(pp).find("#Funcation").remove();
+            $(pp).printArea(option);
+            $(".printNoDisplay").css("display", "block");
+            $("#PrintTitle").css("display", "none");
+        });
+    });
+</script>

@@ -1,0 +1,178 @@
+﻿@using Attendance.Model
+@model List<EventDeclaredModel>
+@{
+    ViewBag.Title = "editEvent";
+}
+<style>    
+.col0{ width:40px;}
+.col1{ width:auto;}
+.col2{ width:40px;}
+.col3{ width:160px;}
+.col4{ width:60px;}
+textarea {overflow-y:auto;padding:0;width:100%;height:100%;border:1px solid gray;}
+</style>
+
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/themes/base/css")
+@Scripts.Render("~/bundles/jqueryTable")
+<h2>编辑考勤事件</h2>
+<div style="display:inline-block">
+@{ RecordModel ar = ViewBag.record;
+    bool isOnTime = ViewBag.isOnTime;
+    Attendance.DAL.ClassPlanDAL acpDal = new Attendance.DAL.ClassPlanDAL();
+
+    ClassPlanModel acp = acpDal.selects(new ClassPlanModel() { classId = ar.classID.Value, periodNo = ar.periodNo.Value }).First();
+<div>日期：@ar.sDate.Value.ToShortDateString();
+时间段：@if (isOnTime){
+ <span>@ar.bAttTimeStr 到 @acp.bTime</span>}else{
+<span>@acp.eTime 到 @ar.eAttTimeStr</span>}
+ 时长：<label id="OverTime">@(isOnTime ? ar.bOffset : ar.eOffset)</label>
+ 费用:<label id="Fee">@(isOnTime ? ar.bOffsetFee.Value.ToString("#.##") : ar.eOffsetFee.Value.ToString("#.##"))</label>
+<input type="hidden" id="record" value="@ar.autoid" title="@isOnTime.ToString()" />
+</div>
+    }
+</div>
+<table>
+<thead><tr>
+<th>操作</th>
+<th>事件描述</th>
+<th>费用</th>
+<th>其它</th>
+<th>审核</th>
+</tr>
+</thead>
+<tbody>
+@if (Model != null)
+{ 
+    foreach (EventDeclaredModel aed in Model)
+    {
+    <tr>
+    <td class="col0"><input type="button" style="display:block" value="编辑" onclick="edit(this)" />
+    <input type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+    <input type="button" style="display:none" onclick="delRowClick(this)" value="删除" /> 
+    <input type="hidden" id="autoid" value="@aed.autoID" />
+    </td>
+    <td class="col1"><textarea style="max-width:580px" cols="60" rows="3" readonly="readonly"  >@aed.EventDescription</textarea></td>
+    <td class="col2">@aed.FeeOther</td>
+    <td class="col3"><textarea cols="30" rows="3" readonly="readonly"  >@aed.Memo</textarea></td>
+    <td class="col4"><label >@aed.checkMan </label></td>
+    </tr>
+    }
+}
+    <tr>
+    <td class="col0"><input type="button" value="新增" onclick="edit(this)"/> 
+    <input type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+    <input type="button" style="display:none" value="删除" onclick="delRowClick(this)" /> 
+    <input type="hidden" value="-1" /></td>
+    <td class="col1"><textarea cols="40" rows="3" readonly="readonly"></textarea></td>
+    <td class="col2"></td>
+    <td class="col3"><textarea cols="40" rows="3" readonly="readonly"></textarea></td>
+    <td class="col4"><label></label></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+<input type="button" value="保存本页所有行" onclick="saveAllRows()" />
+<input type="button" value="删除本页所有行" onclick="delAllRows()" />
+<br />
+  <a href="~/Employee/Attendance">返回考勤页</a>
+@if (ViewBag.currUserRoleNames.Contains("AttendanceManager"))
+{ <a href="~/Employee/Attendance/ManagerPage">返回管理页</a> }
+</div>
+<script type="text/javascript">
+    function edit(c) {
+        var newrow = $(c).parent().parent()[0];
+        $(c).next().css("display", "block");
+        $(c).next().next().css("display", "block");
+        $(c).css("display", "none");
+        $(newrow).children().children(":text").removeAttr("readOnly");
+        $(newrow).children().children("textarea").removeAttr("readOnly");
+        if ($(c).parent().parent().parent("tr").lenght > 2)
+            $(c).parent().parent().children("eq(2)").text("0");
+            //$("#OverTime").text("0");
+        else {
+            $(c).parent().parent().children("eq(2)").text($("#Fee").text());
+        }
+    };
+</script>
+<script type="text/javascript">
+    function doRow(c, operation) {
+    //SELECT autoID,EventDescription,FeeCar,FeeMeals,FeeOther,isCar,Other,Memo,chechMan,Manager,recordID,isBeginTime
+        var row = $(c).parent().parent()[0];
+        var id = $(row.children[0]).children("input:last").val();
+        var description = $(row).children("td:eq(1)").children("textarea:first").val()
+        //var fee = $(row).children("td:eq(2)").children("input:first").val();
+        var fee = $(row).children("td:eq(2)").text();
+        var memo = $(row).children("td:eq(3)").children("textarea:first").val();
+        var check = $(row).children("td:eq(4)").children("label:first").text();
+        var isOnTime = $("#record").attr("title");
+        var recordId = $("#record").val();
+
+        if (true) {
+            $.ajax({
+                type: "post",
+                url: "/Employee/Attendance/editEvent/" + id,
+                data: { id: id, description: description, fee: fee, memo: memo, check: check, isOnTime: isOnTime, recordId: recordId, Operation: operation },
+                async: false,
+                cache: false,
+                success: function (DoMsg) {
+                    alert("Success:" + DoMsg);
+                    //if (DoMsg) alert(DoMsg);
+                },
+                error: function (msg) { alert("Error:" + msg.data) }
+            });
+            return true;
+        }
+        else {
+            alert('失败？！');
+            return false;
+        }
+    }</script>
+<script type="text/javascript">
+    function saveRowClick(c) {
+        if (doRow(c, "SaveRow"))
+            reflushPage();
+    }
+    function delRowClick(c) {
+        if (doRow(c, "DeleteRow"))
+            reflushPage();
+    }
+    function reflushPage() {
+        //刷新当前页面
+        location.reload()
+    }
+</script>
+<script type="text/javascript">
+    function saveAllRows() {
+        var rows = $("table tr");
+        $(rows).each(function (index) {
+            if (index > 0) {
+                var c = $(this).children("td:first").children("input:visible")[0];
+                if ($(c).val() == "保存") {
+                    doRow(c, "SaveALL");
+                }
+            }
+        });
+        reflushPage();
+    }
+    function delAllRows() {
+        var rows = $("table tr");
+        if (confirm("将删除本页所有记录！")) {
+            $(rows).each(function (index) {
+                if (index > 0) {
+                    var c = $(this).children("td:first").children("input:first");
+                    doRow(c, "DeleteALL");
+                }
+            });
+            reflushPage();
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var f = $("#Fee").text();
+        var trs = $("table tbody tr");
+        $(trs).children("td:eq(2)").text(0);
+        $(trs[0]).children("td:eq(2)").text(f);
+    });
+</script>

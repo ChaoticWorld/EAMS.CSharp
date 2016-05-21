@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppSystemModelStoreContainer" CdmEntityContainer="AppSystemEntities">
+    <EntitySetMapping Name="Actions">
+      <EntityTypeMapping TypeName="AppSystemModel.Actions">
+        <MappingFragment StoreEntitySet="Actions">
+          <ScalarProperty Name="iActionId" ColumnName="iActionId" />
+          <ScalarProperty Name="cActionName" ColumnName="cActionName" />
+          <ScalarProperty Name="cActionDescription" ColumnName="cActionDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Functions">
+      <EntityTypeMapping TypeName="AppSystemModel.Functions">
+        <MappingFragment StoreEntitySet="Functions">
+          <ScalarProperty Name="iFunctionId" ColumnName="iFunctionId" />
+          <ScalarProperty Name="cFunctionLevel" ColumnName="cFunctionLevel" />
+          <ScalarProperty Name="cFunctionName" ColumnName="cFunctionName" />
+          <ScalarProperty Name="cFunctionDescription" ColumnName="cFunctionDescription" />
+          <ScalarProperty Name="cFunctionCommandGo" ColumnName="cFunctionCommandGo" />
+          <ScalarProperty Name="bLog" ColumnName="bLog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="AppSystemModel.Logs">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="cUserName" ColumnName="cUserName" />
+          <ScalarProperty Name="cException" ColumnName="cException" />
+          <ScalarProperty Name="cReturn" ColumnName="cReturn" />
+          <ScalarProperty Name="cClass" ColumnName="cClass" />
+          <ScalarProperty Name="cParams" ColumnName="cParams" />
+          <ScalarProperty Name="cFunction" ColumnName="cFunction" />
+          <ScalarProperty Name="cModule" ColumnName="cModule" />
+          <ScalarProperty Name="iLogId" ColumnName="iLogId" />
+          <ScalarProperty Name="dLogDate" ColumnName="dLogDate" />
+          <ScalarProperty Name="iUserID" ColumnName="iUserID" />
+          <ScalarProperty Name="cWorkStation" ColumnName="cWorkStation" />
+          <ScalarProperty Name="cIP" ColumnName="cIP" />
+          <ScalarProperty Name="iFunctionId" ColumnName="iFunctionId" />
+          <ScalarProperty Name="iActionId" ColumnName="iActionId" />
+          <ScalarProperty Name="cLastValue" ColumnName="cLastValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="AppSystemModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="iUserId" ColumnName="iUserId" />
+          <ScalarProperty Name="cUserCode" ColumnName="cUserCode" />
+          <ScalarProperty Name="cUserName" ColumnName="cUserName" />
+          <ScalarProperty Name="cUserPassWord" ColumnName="cUserPassWord" />
+          <ScalarProperty Name="cUserEMail" ColumnName="cUserEMail" />
+          <ScalarProperty Name="cUserMobile" ColumnName="cUserMobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserExt">
+      <EntityTypeMapping TypeName="AppSystemModel.UserExt">
+        <MappingFragment StoreEntitySet="UserExt">
+          <ScalarProperty Name="cUserMasterPage" ColumnName="cUserMasterPage" />
+          <ScalarProperty Name="cUserIM" ColumnName="cUserIM" />
+          <ScalarProperty Name="cUserPhone" ColumnName="cUserPhone" />
+          <ScalarProperty Name="cUserAddress" ColumnName="cUserAddress" />
+          <ScalarProperty Name="iUserId" ColumnName="iUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="AppSystemModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="cRoleDescription" ColumnName="cRoleDescription" />
+          <ScalarProperty Name="cRoleName" ColumnName="cRoleName" />
+          <ScalarProperty Name="iRoleId" ColumnName="iRoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoleRefs">
+      <EntityTypeMapping TypeName="AppSystemModel.UserRoleRef">
+        <MappingFragment StoreEntitySet="UserRoleRef">
+          <ScalarProperty Name="iURRefId" ColumnName="iURRefId" />
+          <ScalarProperty Name="iUserId" ColumnName="iUserId" />
+          <ScalarProperty Name="iRoleId" ColumnName="iRoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="AppSystemModel.Permission">
+        <MappingFragment StoreEntitySet="Permissions">
+          <ScalarProperty Name="cType" ColumnName="cType" />
+          <ScalarProperty Name="iId" ColumnName="iId" />
+          <ScalarProperty Name="iFunctionId" ColumnName="iFunctionId" />
+          <ScalarProperty Name="iActionId" ColumnName="iActionId" />
+          <ScalarProperty Name="iPermissionId" ColumnName="iPermissionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="AppSystemModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="groupDescription" ColumnName="groupDescription" />
+          <ScalarProperty Name="groupName" ColumnName="groupName" />
+          <ScalarProperty Name="groupid" ColumnName="groupid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroupRefs">
+      <EntityTypeMapping TypeName="AppSystemModel.UserGroupRef">
+        <MappingFragment StoreEntitySet="UserGroupRef">
+          <ScalarProperty Name="isManager" ColumnName="isManager" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locks">
+      <EntityTypeMapping TypeName="AppSystemModel.Lock">
+        <MappingFragment StoreEntitySet="Lock">
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="locker" ColumnName="locker" />
+          <ScalarProperty Name="module" ColumnName="module" />
+          <ScalarProperty Name="autoId" ColumnName="autoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="AppSystemModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="module" ColumnName="module" />
+          <ScalarProperty Name="contenType" ColumnName="contenType" />
+          <ScalarProperty Name="receivDate" ColumnName="receivDate" />
+          <ScalarProperty Name="sendDate" ColumnName="sendDate" />
+          <ScalarProperty Name="markRead" ColumnName="markRead" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

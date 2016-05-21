@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CDD4898-B8BB-4D93-BABB-1D69004085E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Attendance</RootNamespace>
+    <AssemblyName>Attendance</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FluentData.3.0.1.0\lib\FluentData.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL.cs" />
+    <Compile Include="DAL\ClassPlanDAL.cs" />
+    <Compile Include="DAL\EmployeeRefSchemeClassDAL.cs" />
+    <Compile Include="DAL\EventDeclaredDAL.cs" />
+    <Compile Include="DAL\FeeCalculatorDAL.cs" />
+    <Compile Include="DAL\HolidayDAL.cs" />
+    <Compile Include="DAL\DAL.cs" />
+    <Compile Include="DAL\RecordDAL.cs" />
+    <Compile Include="DAL\SchemeClassDAL.cs" />
+    <Compile Include="DAL\SchemeDAL.cs" />
+    <Compile Include="DAL\vAttEventDAL.cs" />
+    <Compile Include="ICalcAttrTime.cs" />
+    <Compile Include="Model\CardTimeModel.cs" />
+    <Compile Include="Model\ClassPlan.cs" />
+    <Compile Include="Model\EmployeeRefSchemeClass.cs" />
+    <Compile Include="Model\EventDeclared.cs" />
+    <Compile Include="Model\FeeCalculator.cs" />
+    <Compile Include="Model\Holiday.cs" />
+    <Compile Include="Model\Record.cs" />
+    <Compile Include="Model\Scheme.cs" />
+    <Compile Include="Model\SchemeClass.cs" />
+    <Compile Include="Model\v_AttendanceEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\viewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AttendanceDeviceFactory\AttendanceDeviceFactory.csproj">
+      <Project>{e21308cd-e958-456e-ae65-6404b2037de3}</Project>
+      <Name>AttendanceDeviceFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fb887690-5fe9-453c-95e4-e85312714da6}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAttendanceDevice\IAttendanceDevice.csproj">
+      <Project>{ed1a4305-2281-4615-97b9-5a4ffe10a80b}</Project>
+      <Name>IAttendanceDevice</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataAccess\IDataAccess.csproj">
+      <Project>{f6bbfab4-23cf-45e1-a974-994896818167}</Project>
+      <Name>IDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locks\Locks.csproj">
+      <Project>{1dd5ed22-c240-4d79-b977-647c7ded1368}</Project>
+      <Name>Locks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logs\Logs.csproj">
+      <Project>{df50aa05-53f4-4c1d-b39d-07f9b3d812c0}</Project>
+      <Name>Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrganizationBase\OrganizationBase.csproj">
+      <Project>{a87ea7d2-fde1-442f-8615-72b01a05111f}</Project>
+      <Name>OrganizationBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemBLL\SystemBLL.csproj">
+      <Project>{0b3f59b2-85b5-4417-8933-cf7b6488e400}</Project>
+      <Name>SystemBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\SystemDB.csproj">
+      <Project>{e1678884-1051-4bb1-aecf-43e5037ba095}</Project>
+      <Name>SystemDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBLL\UserBLL.csproj">
+      <Project>{e72c0419-0b53-428b-8df4-5afd88348922}</Project>
+      <Name>UserBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserInfo\UserInfo.csproj">
+      <Project>{32e8b390-c57a-41e1-a280-fc6c385da4bd}</Project>
+      <Name>UserInfo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

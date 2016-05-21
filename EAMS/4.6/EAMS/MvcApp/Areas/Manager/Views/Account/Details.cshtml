@@ -1,0 +1,117 @@
+﻿@using OrganizationBase
+@{
+    ViewBag.Title = "Details";
+}
+<style type="text/css">
+    #column1 {
+        float: left;
+        border: 2px solid lightgreen;
+    }
+
+    #column2 {
+        float: left;
+        border: 2px solid lightYellow;
+    }
+
+    #column3 {
+        float: left;
+        border: 2px solid lightgreen;
+    }
+    select {
+        min-height:320px;
+    height:auto;
+    }
+</style>
+<div>
+    <h2>帐户角色分配</h2>
+    <div>
+        <legend>用户角色分配</legend>
+        <div>
+            当前用户:
+            <input id="userID" name="userID" type="hidden" value='@TempData["userID"].ToString()' />
+            <input id="userName" name="userName" type="text" readonly="readonly" value='@TempData["userName"].ToString()' />
+        </div>
+        <div id="column1">
+            <p>待分配用户</p>
+            <select id="UnSelectRoleList" name="UnSelectRoleList" multiple="multiple">
+                @if (ViewBag.UnSelectRoles != null && ((List<roleModel>)ViewBag.UnSelectRoles).Count > 0)
+                {
+                    foreach (roleModel rm in ViewBag.UnSelectRoles)
+                    {
+                        <option value="@rm.iRoleId">@rm.cRoleName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div id="column2">
+            <p>操作按钮</p>
+            <input id="AddToRole" name="AddToRole" type="button" value="增加&gt;" onclick="addToRole()" />
+            <br />
+            <input id="SubToRole" name="SubToRole" type="button" value="&lt;减少" onclick="subToRole()" />
+        </div>
+        <div id="column3">
+            <p>已分配用户</p>
+            <select id="SelectedRoleList" name="SelectedRoleList" multiple="multiple">
+                @if (ViewBag.SelectedRoles != null && ((List<roleModel>)ViewBag.SelectedRoles).Count > 0)
+            {
+                foreach (roleModel rm in ViewBag.SelectedRoles)
+                {
+                        <option value="@rm.iRoleId">@rm.cRoleName</option>
+                    }
+                }
+            </select>
+
+        </div>
+    </div>
+
+    <div style="clear:both;">
+        <button onclick="submit()">保存</button> |
+        @Html.ActionLink("用户列表", "Index")
+    </div>
+</div>
+<script type="text/javascript">
+    function submit() {
+        var url = "/Manager/Account/Details";
+        var seled = "";
+        $("#SelectedRoleList").children("option").each(function () { seled = seled + $(this).val() + "," });
+        seled = seled.substring(0, seled.length - 1);
+        var unsel = "";
+        $("#UnSelectRoleList").children("option").each(function () { unsel = unsel + $(this).val() + "," });
+        unsel = unsel.substring(0, unsel.length - 1);
+        $.post(url, { "userID": $("#userID").val(), "userName": $("#userName").val(), "SelectedRoleList": seled, "UnSelectRoleList": unsel },
+            function () { window.location.reload(); });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#SelectedRoleList").on("dbclick", function () {
+            subToRole();
+        });
+        $("#UnSelectRoleList").on("dbclick", function () {
+            addToRole();
+        });
+    });
+</script>
+<script type="text/javascript">
+    //ListBox间数据移动以下是代码片段
+    function ListBox_Move(listfrom, listto) {
+        var size = $("#" + listfrom + " option").size();
+        var selsize = $("#" + listfrom + " option:selected").size();
+        if (size > 0 && selsize > 0) {
+            $.each($("#" + listfrom + " option:selected"), function (i, own) {
+                $(own).appendTo($("#" + listto));
+            });
+        }
+        $("#submit").attr('disabled', false);
+    }
+
+
+    function addToRole() {
+        //从UnSelectRoleList将选中的项移到SelectedRoleList
+        ListBox_Move("UnSelectRoleList", "SelectedRoleList");
+    }
+    function subToRole() {
+        //从SelectedRoleList将选中的项移到UnSelectRoleList
+        ListBox_Move("SelectedRoleList", "UnSelectRoleList");
+    }
+</script>

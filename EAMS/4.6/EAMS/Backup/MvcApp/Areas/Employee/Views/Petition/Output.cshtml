@@ -1,0 +1,70 @@
+﻿@model Petition.QC_Main
+@{
+    ViewBag.Title = "输出";
+}
+
+    @Scripts.Render("~/bundles/jqueryPrintArea")
+    @Styles.Render("~/Content/PrintPage.css")
+<style type="text/css" media="print">
+    .noprint { display:none; } 
+    </style> 
+<h1 class="noprint">输出</h1>
+<div class="noprint">@Html.ActionLink("返回签呈列表","Index")|
+<input type="button" value="打  印" id='toPrint' />
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#toPrint").on("click", function () {
+            /*参数设置：
+            1、mode：模式，当点击打印按钮时触发模式，默认为iframe，当设置为popup则会新开一个窗口页面打印。
+            2、popTitle：设置新开窗口的标题，默认为空。
+            3、popClose：完成打印后是否关闭窗口，默认为false。ExtraCss:""外部CSS*/
+            var option = { mode: "popup", extraCss: "~/Content/PrintPage.css", popTitle: "Print", popClose: true };
+            $("#page").printArea(option);
+        });
+    });</script>
+    <div style="border:1px solid #000000;width:649px;height:978px;">
+<div id="page">
+
+@if (Model != null)
+{
+<div style="float:right; display:block; border:6px solid blue; background-color:Black; font-size:medium; color:Yellow;" class="subTitle" id="pCode">编号：@Model.cCode</div>
+
+    <div style="margin: 40px 0px 10px 18px; font-size:xx-large; font-family:宋体; font-weight:bolder">签呈</div>
+     <div class="pageContent">
+<table>
+<tr>
+<td>提交至：@if (Model.QC_Replys != null && Model.QC_Replys.Count > 0)
+             {@SystemBLL.UserBLL.getUser(int.Parse(Model.QC_Replys.OrderByDescending(m => m.AutoId).First().QC_ReplyMan)).cUserName }</td>
+<td>客户经理：@if (Model.cCusManager != null)
+              { @Model.cCusManager}</td>
+<td>制单：@if (Model.cModifyMan != null)
+            { @Model.cModifyMan}</td>
+</tr>
+<tr>
+<td>提交日期：@Model.dModifyDate.Value.ToShortDateString()</td>
+@if (Model.dEffDate.HasValue)
+{ <td>生效日期： @Model.dEffDate.Value.ToShortDateString() </td>}
+else { <td>生效日期：--</td> }
+@if (Model.dExpDate.HasValue)
+{ <td>失效日期：@Model.dExpDate.Value.ToShortDateString()</td>}
+else { <td>失效日期：--</td> }
+</tr>
+<tr>
+<td colspan='2'>客户名称：@Model.cCusName</td>
+<td>客户联系人：@Model.cCusPerson</td>
+</tr></table>
+</div>
+    <br /><div class="subTitle">拟定方案</div>
+    <div class="pageContent" ><pre>@Model.remark.Replace("<br/>", "\n")</pre></div>
+<br />
+   <div class="subTitle">审批过程</div>
+<div class="pageContent"  ><pre>@Model.resultTitle.Replace("<br/>", "\n")</pre></div>
+<br />
+    <div class="subTitle">审批结果</div>
+    <div class="pageContent" ><pre>@Model.result.Replace("<br/>", "\n")</pre></div>
+}
+else
+{ <h2>无此序号的签呈！</h2> }
+</div>
+</div>

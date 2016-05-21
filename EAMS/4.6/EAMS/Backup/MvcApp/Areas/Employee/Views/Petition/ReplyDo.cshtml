@@ -1,0 +1,47 @@
+﻿@model Petition.QC_Replys
+
+@{
+    ViewBag.Title = "ReplyDo";
+}
+<script type="text/javascript">
+<!--
+    //注：每个嵌入页必须定义该方法，供父窗口调用
+    function Ok(p) {
+        window.parent.callbackDialog(p);
+    }
+//-->
+</script>
+<h2>审批</h2>
+<div id="rDo">
+        @Html.HiddenFor(model => model.AutoId)
+        @Html.HiddenFor(model => model.QC_MainID)
+
+        <div >批示：<br />
+            @Html.EditorFor(model => model.QC_ReplyContent)
+        </div>        
+        <div > 
+        <input type="checkbox" id="QC_ReplyPass"  value = "@(Model.QC_ReplyPass ?? false)" />是否通过
+        </div>
+        <div id='ReplyNext'>选择转交审批人：@Html.DropDownList("NextReplyMan", (SelectList)ViewData["ReplyEmployees"])</div>
+        <p><input type="button" id="Do" value="完成" /> </p>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#Do").on("click", function () {
+            var aid = $("#AutoId").val();
+            var mid = $("#QC_MainID").val();
+            var content = $("#QC_ReplyContent").val();
+            var pass = $("#QC_ReplyPass").prop("checked");
+            var nextMan = $("#NextReplyMan").val();
+            alert("Do! aid:" + aid + ";mid:" + mid + ";content:" + content + ";pass:" + pass + ";next:" + nextMan);
+            var _doPost = { aid: aid, mid: mid, content: content, pass: pass, nextman: nextMan };
+            Ok(_doPost);
+        });
+
+        var p = $("#QC_ReplyPass").val();
+        if (p)
+            $("#QC_ReplyPass").prop("checked", p);
+        $("#NextReplyMan").prepend("<option value='-1' selected='selected'></option>");  //为Select插入一个Option(第一个位置)
+        $("#NextReplyMan").val(-1);
+    });
+</script>

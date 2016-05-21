@@ -1,0 +1,172 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\csc.exe
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\System.Collections.Immutable.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\System.Reflection.Metadata.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\vbc.exe
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\VBCSCompiler.exe
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\roslyn\VBCSCompiler.exe.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\MvcApp.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\MvcApp.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\MvcApp.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Antlr3.Runtime.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDevice.HWATT.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDeviceFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\IAttendanceDevice.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Locks.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Logs.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Microsoft.Web.Infrastructure.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Newtonsoft.Json.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\OrganizationBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Helpers.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Mvc.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Optimization.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Deployment.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\UserBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\UserInfo.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\WebGrease.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDevice.HWATT.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDeviceFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\IAttendanceDevice.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Locks.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Logs.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\OrganizationBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\UserBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\UserInfo.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Antlr3.Runtime.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\Newtonsoft.Json.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Optimization.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Razor.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Deployment.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Razor.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Helpers.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Mvc.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Webpages.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\obj\Release\MvcApp.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\obj\Release\MvcApp.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\obj\Release\MvcApp.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\strategyLib.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\VouchType.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\ERPFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\strategyLib.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\VouchType.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\ERPFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.U8.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.U8.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\report.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\MvcApp\bin\report.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\csc.exe
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\System.Collections.Immutable.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\System.Reflection.Metadata.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\vbc.exe
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\VBCSCompiler.exe
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\roslyn\VBCSCompiler.exe.config
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\MvcApp.dll.config
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\MvcApp.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\MvcApp.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Antlr3.Runtime.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Attendance.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDevice.HWATT.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDeviceFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.U8.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\ERPFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\IAttendanceDevice.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Locks.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Logs.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Microsoft.Web.Infrastructure.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Newtonsoft.Json.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\OrganizationBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\report.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\strategyLib.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Helpers.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Mvc.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Optimization.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Razor.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Deployment.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Razor.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\UserBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\UserInfo.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\VouchType.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\WebGrease.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\WebCommon.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDevice.HWATT.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\AttendanceDeviceFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Attendance.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.U8.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\ERPFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\IAttendanceDevice.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Locks.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Logs.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\OrganizationBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\report.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\strategyLib.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\UserBLL.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\UserInfo.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\VouchType.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Antlr3.Runtime.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\Newtonsoft.Json.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Optimization.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Razor.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Deployment.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Webpages.Razor.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Helpers.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\System.Web.Mvc.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\WebCommon.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Webpages.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\obj\Release\MvcApp.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\obj\Release\MvcApp.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\MvcApp\obj\Release\MvcApp.pdb

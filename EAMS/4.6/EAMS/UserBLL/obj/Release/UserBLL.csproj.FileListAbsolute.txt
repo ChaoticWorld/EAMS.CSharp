@@ -1,0 +1,40 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\UserBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\UserBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\OrganizationBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\UserInfo.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\Logs.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\OrganizationBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\UserInfo.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\bin\Release\Logs.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\obj\Release\UserBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\obj\Release\UserBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\UserBLL\obj\Release\UserBLL.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\UserBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\UserBLL.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\OrganizationBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\UserInfo.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\WebCommon.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\Logs.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\OrganizationBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\UserInfo.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\WebCommon.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\bin\Release\Logs.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\obj\Release\UserBLL.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\obj\Release\UserBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\UserBLL\obj\Release\UserBLL.pdb

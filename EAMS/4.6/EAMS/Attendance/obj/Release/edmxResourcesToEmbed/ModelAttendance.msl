@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDataAttendanceModelStoreContainer" CdmEntityContainer="AppDataAttendanceEntities">
+    <EntitySetMapping Name="Attendance_ClassPlan">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_ClassPlan">
+        <MappingFragment StoreEntitySet="Attendance_ClassPlan">
+          <ScalarProperty Name="sdate" ColumnName="sdate" />
+          <ScalarProperty Name="upTime" ColumnName="upTime" />
+          <ScalarProperty Name="eTime" ColumnName="eTime" />
+          <ScalarProperty Name="bTime" ColumnName="bTime" />
+          <ScalarProperty Name="periodNo" ColumnName="periodNo" />
+          <ScalarProperty Name="classId" ColumnName="classId" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Holiday">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_Holiday">
+        <MappingFragment StoreEntitySet="Attendance_Holiday">
+          <ScalarProperty Name="sDescription" ColumnName="sDescription" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="sDate" ColumnName="sDate" />
+          <ScalarProperty Name="iYear" ColumnName="iYear" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Scheme">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_Scheme">
+        <MappingFragment StoreEntitySet="Attendance_Scheme">
+          <ScalarProperty Name="classs" ColumnName="classs" />
+          <ScalarProperty Name="periods" ColumnName="periods" />
+          <ScalarProperty Name="schemeDescription" ColumnName="schemeDescription" />
+          <ScalarProperty Name="schemeName" ColumnName="schemeName" />
+          <ScalarProperty Name="schemeID" ColumnName="schemeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_SchemeClass">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_SchemeClass">
+        <MappingFragment StoreEntitySet="Attendance_SchemeClass">
+          <ScalarProperty Name="className" ColumnName="className" />
+          <ScalarProperty Name="schemeId" ColumnName="schemeId" />
+          <ScalarProperty Name="classId" ColumnName="classId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Attendance">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.v_Attendance">
+        <MappingFragment StoreEntitySet="v_Attendance">
+          <ScalarProperty Name="eOffsetFee" ColumnName="eOffsetFee" />
+          <ScalarProperty Name="bOffsetFee" ColumnName="bOffsetFee" />
+          <ScalarProperty Name="eOffset" ColumnName="eOffset" />
+          <ScalarProperty Name="bOffset" ColumnName="bOffset" />
+          <ScalarProperty Name="eAttTimeStr" ColumnName="eAttTimeStr" />
+          <ScalarProperty Name="bAttTimeStr" ColumnName="bAttTimeStr" />
+          <ScalarProperty Name="sDate" ColumnName="sDate" />
+          <ScalarProperty Name="periodNo" ColumnName="periodNo" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_EventDeclared">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_EventDeclared">
+        <MappingFragment StoreEntitySet="Attendance_EventDeclared">
+          <ScalarProperty Name="isBeginTime" ColumnName="isBeginTime" />
+          <ScalarProperty Name="recordID" ColumnName="recordID" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="checkMan" ColumnName="checkMan" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="isCar" ColumnName="isCar" />
+          <ScalarProperty Name="FeeOther" ColumnName="FeeOther" />
+          <ScalarProperty Name="FeeMeals" ColumnName="FeeMeals" />
+          <ScalarProperty Name="FeeCar" ColumnName="FeeCar" />
+          <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+          <ScalarProperty Name="autoID" ColumnName="autoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_FeeCalculator">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_FeeCalculator">
+        <MappingFragment StoreEntitySet="Attendance_FeeCalculator">
+          <ScalarProperty Name="dateEnum" ColumnName="dateEnum" />
+          <ScalarProperty Name="classId" ColumnName="classId" />
+          <ScalarProperty Name="MaxFee" ColumnName="MaxFee" />
+          <ScalarProperty Name="UnitFee" ColumnName="UnitFee" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Records">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_Records">
+        <MappingFragment StoreEntitySet="Attendance_Records">
+          <ScalarProperty Name="eOffsetFee" ColumnName="eOffsetFee" />
+          <ScalarProperty Name="bOffsetFee" ColumnName="bOffsetFee" />
+          <ScalarProperty Name="dateType" ColumnName="dateType" />
+          <ScalarProperty Name="eOffset" ColumnName="eOffset" />
+          <ScalarProperty Name="bOffset" ColumnName="bOffset" />
+          <ScalarProperty Name="eAttTimeStr" ColumnName="eAttTimeStr" />
+          <ScalarProperty Name="bAttTimeStr" ColumnName="bAttTimeStr" />
+          <ScalarProperty Name="sDate" ColumnName="sDate" />
+          <ScalarProperty Name="periodNo" ColumnName="periodNo" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_EmployeeRefSchemeClass">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.Attendance_EmployeeRefSchemeClass">
+        <MappingFragment StoreEntitySet="Attendance_EmployeeRefSchemeClass">
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="isVaild" ColumnName="isVaild" />
+          <ScalarProperty Name="periodNo" ColumnName="periodNo" />
+          <ScalarProperty Name="EffDate" ColumnName="EffDate" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_AttendanceEvent">
+      <EntityTypeMapping TypeName="AppDataAttendanceModel.v_AttendanceEvent">
+        <MappingFragment StoreEntitySet="v_AttendanceEvent">
+          <ScalarProperty Name="eTime" ColumnName="eTime" />
+          <ScalarProperty Name="bTime" ColumnName="bTime" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="sDate" ColumnName="sDate" />
+          <ScalarProperty Name="eOffset" ColumnName="eOffset" />
+          <ScalarProperty Name="bOffset" ColumnName="bOffset" />
+          <ScalarProperty Name="eAttTimeStr" ColumnName="eAttTimeStr" />
+          <ScalarProperty Name="bAttTimeStr" ColumnName="bAttTimeStr" />
+          <ScalarProperty Name="periodNo" ColumnName="periodNo" />
+          <ScalarProperty Name="isBeginTime" ColumnName="isBeginTime" />
+          <ScalarProperty Name="recordID" ColumnName="recordID" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="checkMan" ColumnName="checkMan" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="isCar" ColumnName="isCar" />
+          <ScalarProperty Name="FeeOther" ColumnName="FeeOther" />
+          <ScalarProperty Name="FeeMeals" ColumnName="FeeMeals" />
+          <ScalarProperty Name="FeeCar" ColumnName="FeeCar" />
+          <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+          <ScalarProperty Name="autoID" ColumnName="autoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

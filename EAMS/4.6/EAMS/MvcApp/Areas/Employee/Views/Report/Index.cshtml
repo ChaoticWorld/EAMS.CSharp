@@ -1,0 +1,66 @@
+﻿@using MvcApp.Areas.Employee.Models
+@using report;
+@model  reportViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@*Dictionary<Module,Dictionary<Class,List<Report>>>*@
+<style>
+    div:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+</style>
+<h2>Index</h2>
+<div>
+    @if (null != TempData["isAdmin"] && (bool)TempData["isAdmin"])
+    {
+        <div style="display:inline;float:left"><a class="btn btn-default" href="~/Employee/report/edit/-1">创建</a> </div>
+        <div class="btn-group" style="display:inline;float:right">
+            <a class="btn btn-default" href="~/Employee/report/reportPermissions">权限</a>
+        </div>
+    }
+</div>
+<div>
+    @{ var Modules = Model.ViewModel == null ? null : Model.ViewModel.Keys;
+        if (Modules != null && Modules.Count > 0)
+        {
+            var mdsOrder = Modules.OrderBy(o => o.ID).ToArray();
+            for (int i = 0; i < mdsOrder.Count(); i++)
+            {
+                var Module = Model.ViewModel[mdsOrder[i]];
+                <label>@mdsOrder[i].Name</label>
+                <div style="border:cyan 1px solid  ">
+                    @{var classs = Module.Keys;
+                        if (classs != null && classs.Count > 0)
+                        {
+                            var clsOrder = classs.OrderBy(o => o.ID).ToArray();
+                            for (int j = 0; j < classs.Count; j++)
+                            {
+                                var _class = Module.FirstOrDefault(f => f.Key.ID == clsOrder[j].ID).Value;
+                                <label>@clsOrder[j].ClassName</label>
+                                <div style="border:cyan 1px solid ">
+                                    @{ if (_class != null && _class.Count > 0)
+                                        {
+                                            <ul>
+                                                @foreach (Report rpt in _class)
+                                                {
+                                                    <li title="@rpt.Description">
+                                                        <a href="~/Employee/report/view/@rpt.reportID">@rpt.Name</a>
+                                                        @if (null != TempData["isAdmin"] && (bool)TempData["isAdmin"])
+                                                        {
+                                                            <a class="btn btn-default btn-sm " href="~/Employee/report/edit/@rpt.reportID">编辑</a>}
+                                                    </li> }
+                                            </ul>
+                                        }
+                                    }
+                                </div>
+                                            }
+                                        }
+                    }
+                </div>
+                                            }
+                                        }
+    }
+</div>

@@ -1,0 +1,79 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using strategyLib
+@model  PagedList<strategyLib.vwStrategy>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>销售政策列表</h2>
+<div id="List">
+    <table id='tb'>
+        <tr role="head">
+            <th sort="true">操作</th>
+            <th sort="true">地区</th>
+            <th sort="true">客户</th>
+            <th sort="true">联系人</th>
+            <th sort="true">有效日期</th>
+            <th sort="true">存货名称</th>
+            <th sort="true">存货型号</th>
+            <th sort="true">价格</th>
+            <th sort="true">来源</th>
+            <th sort="true">来源编号</th>
+            @*<th></th>*@
+        </tr>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class='tip' title="来源：@item.cSourceType ">
+                        <a href="~/Employee/strategy/edit/@item.ID" class="btn btn-default">编辑</a>
+                        <a href="~/Employee/strategy/edit/@item.ID/copy" class="btn btn-default">复制</a>
+                        @*@if (item.cSourceType == "期初")
+                                { <a href="~/Employee/strategy/edit/@item.ID" class="btn btn-default" >编辑</a>}
+                            else
+                                {<button class="btn btn-default" disabled="disabled">编辑</button>}*@
+                    </td>
+                    <td> @Html.DisplayFor(modelItem => item.cDCName) </td>
+                    <td> @Html.DisplayFor(modelItem => item.cDWName) </td>
+                    <td> @Html.DisplayFor(modelItem => item.cDWContact) </td>
+                    <td>
+                        @item.dEffDate.ToString("yyyy-MM-dd") - @item.dExpDate.ToString("yyyy-MM-dd")
+                    </td>
+                    @*<td> @Html.DisplayFor(modelItem => d.cinvACode) </td>*@
+                    <td>@Html.DisplayFor(modelItem => item.cinvAName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.cinvAStd)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.invAPrice)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.cSourceType)</td>
+                    <td>@Html.DisplayFor(modelItem => item.cSourceCode)</td>
+                </tr>
+            }
+        }
+    </table>
+    <div>
+        <div style="float:left;width:30%" class="btn-group"><a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default hide" href="~/employee/strategy/">返回</a></div>
+        <div style="float:left;width:30%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div>
+        @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "Lists", HttpMethod = "Post", DataFormId = "searchForm" }, new { style = "float:right" })
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).tooltip();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#tb").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+    });
+</script>

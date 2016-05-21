@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataPetitionsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AppDataPetitionsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="QC_DetailClass" EntityType="AppDataPetitionsModel.QC_DetailClass" />
+    <EntitySet Name="QC_Details" EntityType="AppDataPetitionsModel.QC_Details" />
+    <EntitySet Name="QC_Main" EntityType="AppDataPetitionsModel.QC_Main" />
+    <EntitySet Name="QC_Replys" EntityType="AppDataPetitionsModel.QC_Replys" />
+    <AssociationSet Name="FK__QC_Detail__QC_RC__108B795B" Association="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B">
+      <End Role="QC_DetailClass" EntitySet="QC_DetailClass" />
+      <End Role="QC_Details" EntitySet="QC_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QC_Detail__QC_Ma__0F975522" Association="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522">
+      <End Role="QC_Main" EntitySet="QC_Main" />
+      <End Role="QC_Details" EntitySet="QC_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QC_Replys__QC_Ma__117F9D94" Association="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94">
+      <End Role="QC_Main" EntitySet="QC_Main" />
+      <End Role="QC_Replys" EntitySet="QC_Replys" />
+    </AssociationSet>
+    <EntitySet Name="Logs" EntityType="AppDataPetitionsModel.Log" />
+    <EntitySet Name="sqlQueries" EntityType="AppDataPetitionsModel.sqlQuery" />
+    <EntitySet Name="v_petitionList" EntityType="AppDataPetitionsModel.v_petitionList" />
+    <EntitySet Name="QC_txtContent" EntityType="AppDataPetitionsModel.QC_txtContent" />
+    <EntitySet Name="v_petitionTxtList" EntityType="AppDataPetitionsModel.v_petitionTxtList" />
+    <AssociationSet Name="FK__QC_txtConten__id__45F365D3" Association="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3">
+      <End Role="QC_Main" EntitySet="QC_Main" />
+      <End Role="QC_txtContent" EntitySet="QC_txtContent" />
+    </AssociationSet>
+    <EntitySet Name="QC_Class" EntityType="AppDataPetitionsModel.QC_Class" />
+    <EntitySet Name="QC_CodeIdentity" EntityType="AppDataPetitionsModel.QC_CodeIdentity" />
+  </EntityContainer>
+  <EntityType Name="QC_DetailClass">
+    <Key>
+      <PropertyRef Name="QC_RCID" />
+    </Key>
+    <Property Type="String" Name="QC_RCName" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="QC_RCDescription" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="QC_RCIndex" />
+    <Property Type="Int32" Name="QC_RCID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="QC_Details" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B" FromRole="QC_DetailClass" ToRole="QC_Details" />
+  </EntityType>
+  <EntityType Name="QC_Details">
+    <Key>
+      <PropertyRef Name="QC_Autoid" />
+    </Key>
+    <Property Type="Int32" Name="QC_Autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="QC_RCID" />
+    <Property Type="String" Name="QC_OrderCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cInvCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cInvName" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cInvStd" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="iQuentity" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="iPrice" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="iSum" Precision="19" Scale="4" />
+    <Property Type="String" Name="cMemo" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="bDaiShouKuan" />
+    <Property Type="Int32" Name="QC_MainID" />
+    <NavigationProperty Name="QC_DetailClass" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B" FromRole="QC_Details" ToRole="QC_DetailClass" />
+    <NavigationProperty Name="QC_Main" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522" FromRole="QC_Details" ToRole="QC_Main" />
+    <Property Type="DateTime" Name="dSaleSumStartDate" Precision="3" />
+    <Property Type="DateTime" Name="dSaleSumFinishDate" Precision="3" />
+  </EntityType>
+  <EntityType Name="QC_Main">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="cCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cCreateMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="dCreateDate" Precision="3" />
+    <Property Type="String" Name="cCusManager" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cModifyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="dModifyDate" Precision="3" />
+    <Property Type="String" Name="cCusCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cCusName" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cCusPerson" MaxLength="16" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QC_Details" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522" FromRole="QC_Main" ToRole="QC_Details" />
+    <NavigationProperty Name="QC_Replys" Relationship="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94" FromRole="QC_Main" ToRole="QC_Replys" />
+    <Property Type="DateTime" Name="dExpDate" Precision="3" />
+    <Property Type="DateTime" Name="dEffDate" Precision="3" />
+    <Property Type="String" Name="cMemo" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QC_txtContent" Relationship="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3" FromRole="QC_Main" ToRole="QC_txtContent" />
+    <Property Name="cResult" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="cSubject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="cVouchCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="cClsFlag" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QC_Replys">
+    <Key>
+      <PropertyRef Name="AutoId" />
+    </Key>
+    <Property Type="Int32" Name="AutoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="QC_MainID" />
+    <Property Type="String" Name="QC_SubmitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="QC_SubmitDate" Precision="3" />
+    <Property Type="String" Name="QC_ReplyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="QC_ReplyDate" Precision="3" />
+    <Property Type="String" Name="QC_ReplyContent" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="QC_ReplyPass" />
+    <Property Type="Int32" Name="QC_NextID" />
+    <NavigationProperty Name="QC_Main" Relationship="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94" FromRole="QC_Replys" ToRole="QC_Main" />
+    <Property Type="String" Name="submitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="replyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__QC_Detail__QC_RC__108B795B">
+    <End Type="AppDataPetitionsModel.QC_DetailClass" Role="QC_DetailClass" Multiplicity="0..1" />
+    <End Type="AppDataPetitionsModel.QC_Details" Role="QC_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_DetailClass">
+        <PropertyRef Name="QC_RCID" />
+      </Principal>
+      <Dependent Role="QC_Details">
+        <PropertyRef Name="QC_RCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QC_Detail__QC_Ma__0F975522">
+    <End Type="AppDataPetitionsModel.QC_Main" Role="QC_Main" Multiplicity="0..1" />
+    <End Type="AppDataPetitionsModel.QC_Details" Role="QC_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_Main">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QC_Details">
+        <PropertyRef Name="QC_MainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QC_Replys__QC_Ma__117F9D94">
+    <End Type="AppDataPetitionsModel.QC_Main" Role="QC_Main" Multiplicity="0..1" />
+    <End Type="AppDataPetitionsModel.QC_Replys" Role="QC_Replys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_Main">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QC_Replys">
+        <PropertyRef Name="QC_MainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="iLogId" />
+    </Key>
+    <Property Type="Int32" Name="iLogId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="dLogDate" Nullable="false" Precision="3" />
+    <Property Type="Int32" Name="iUserID" />
+    <Property Type="String" Name="cWorkStation" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cIP" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="iFunctionId" />
+    <Property Type="Int32" Name="iActionId" />
+    <Property Type="String" Name="cLastValue" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sqlQuery">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="sQueryName" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sQueryMain" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sQueryWhere" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sQueryGroup" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sQueryOrder" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sMemo" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="v_petitionList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="cCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cCreateMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="dCreateDate" Precision="3" />
+    <Property Type="String" Name="cCusManager" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cModifyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="dModifyDate" Precision="3" />
+    <Property Type="String" Name="cCusCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cCusName" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cCusPerson" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="dExpDate" Precision="3" />
+    <Property Type="DateTime" Name="dEffDate" Precision="3" />
+    <Property Type="String" Name="mainMemo" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="QC_RCID" />
+    <Property Type="String" Name="QC_OrderCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cInvCode" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cInvName" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cInvStd" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="iQuentity" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="iPrice" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="iSum" Precision="19" Scale="4" />
+    <Property Type="String" Name="detailsMemo" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="bDaiShouKuan" />
+    <Property Type="DateTime" Name="dSaleSumStartDate" Precision="3" />
+    <Property Type="DateTime" Name="dSaleSumFinishDate" Precision="3" />
+    <Property Type="String" Name="QC_SubmitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="QC_SubmitDate" Precision="3" />
+    <Property Type="String" Name="QC_ReplyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="QC_ReplyDate" Precision="3" />
+    <Property Type="String" Name="QC_ReplyContent" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="QC_ReplyPass" />
+    <Property Type="Int32" Name="QC_NextID" />
+    <Property Type="String" Name="submitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="replyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QC_txtContent">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QC_Main" Relationship="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3" FromRole="QC_txtContent" ToRole="QC_Main" />
+    <Property Name="order" Type="Int32" />
+  </EntityType>
+  <EntityType Name="v_petitionTxtList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="cCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="cCreateMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="dCreateDate" Type="DateTime" Precision="3" />
+    <Property Name="cCusManager" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="cModifyMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="dModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="cCusCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="cCusName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="cCusPerson" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="dExpDate" Type="DateTime" Precision="3" />
+    <Property Name="dEffDate" Type="DateTime" Precision="3" />
+    <Property Name="mainMemo" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vouchCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="QC_SubmitMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="QC_SubmitDate" Type="DateTime" Precision="3" />
+    <Property Name="QC_ReplyMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="QC_ReplyDate" Type="DateTime" Precision="3" />
+    <Property Name="QC_ReplyContent" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="QC_ReplyPass" Type="Boolean" />
+    <Property Name="QC_NextID" Type="Int32" />
+    <Property Name="submitMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="replyMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__QC_txtConten__id__45F365D3">
+    <End Type="AppDataPetitionsModel.QC_Main" Role="QC_Main" Multiplicity="0..1" />
+    <End Type="AppDataPetitionsModel.QC_txtContent" Role="QC_txtContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_Main">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QC_txtContent">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QC_Class">
+    <Key>
+      <PropertyRef Name="iClsAutoId" />
+    </Key>
+    <Property Name="cClsName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="cClsFlag" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="dToDay" Type="DateTime" Precision="3" />
+    <Property Name="iToDayMax" Type="Int32" />
+    <Property Name="iClsAutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="QC_CodeIdentity">
+    <Key>
+      <PropertyRef Name="autoID" />
+    </Key>
+    <Property Name="autoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cClsFlag" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="dDate" Type="DateTime" Precision="3" />
+    <Property Name="cManager" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="iSN" Type="Int32" />
+  </EntityType>
+</Schema>

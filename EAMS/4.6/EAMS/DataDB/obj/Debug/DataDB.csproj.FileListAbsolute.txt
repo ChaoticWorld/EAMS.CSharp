@@ -1,0 +1,78 @@
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\obj\Debug\ResolveAssemblyReference.cache
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\bin\Debug\DataDB.dll.config
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\bin\Debug\DataDB.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\bin\Debug\DataDB.pdb
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\bin\Debug\EntityFramework.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\bin\Debug\EntityFramework.xml
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\bin\Debug\zh-Hans\EntityFramework.resources.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\obj\Debug\DataDB.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DataDB\obj\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\obj\Debug\DataDB.pdb
+d:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DataDB\obj\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DataDB\obj\Debug\DataDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\obj\Debug\DataDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DataDB\obj\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DataDB\obj\Debug\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\obj\Debug\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\obj\Debug\DataDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\税票2ERP\v2.0\DataDB\obj\Debug\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\obj\Debug\DataDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataDB\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\bin\Debug\DataDB.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\bin\Debug\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\bin\Debug\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\obj\Debug\DataDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\obj\Debug\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataDB\obj\Debug\DataDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\bin\Debug\DataDB.dll.config
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\bin\Debug\DataDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\bin\Debug\DataDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\bin\Debug\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\bin\Debug\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\bin\Debug\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\obj\Debug\DataDB.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\obj\Debug\DataDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataDB\obj\Debug\DataDB.pdb

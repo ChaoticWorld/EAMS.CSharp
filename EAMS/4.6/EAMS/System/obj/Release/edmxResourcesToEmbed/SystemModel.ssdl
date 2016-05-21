@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Actions">
+    <Key>
+      <PropertyRef Name="iActionId" />
+    </Key>
+    <Property Name="iActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cActionName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="cActionDescription" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Functions">
+    <Key>
+      <PropertyRef Name="iFunctionId" />
+    </Key>
+    <Property Name="iFunctionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cFunctionLevel" Type="nvarchar" MaxLength="24" Nullable="false" />
+    <Property Name="cFunctionName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="cFunctionDescription" Type="nvarchar" MaxLength="256" />
+    <Property Name="cFunctionCommandGo" Type="nvarchar(max)" />
+    <Property Name="bLog" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="groupid" />
+    </Key>
+    <Property Name="groupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupName" Type="nvarchar" MaxLength="32" />
+    <Property Name="groupDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Lock">
+    <Key>
+      <PropertyRef Name="autoId" />
+    </Key>
+    <Property Name="autoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="module" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="locker" Type="nvarchar" MaxLength="255" />
+    <Property Name="key" Type="nvarchar" MaxLength="255" />
+    <Property Name="id" Type="nvarchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="iLogId" />
+    </Key>
+    <Property Name="iLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dLogDate" Type="datetime" Nullable="false" />
+    <Property Name="iUserID" Type="int" />
+    <Property Name="cWorkStation" Type="nvarchar" MaxLength="128" />
+    <Property Name="cIP" Type="nvarchar" MaxLength="24" />
+    <Property Name="iFunctionId" Type="int" />
+    <Property Name="iActionId" Type="int" />
+    <Property Name="cLastValue" Type="nvarchar(max)" />
+    <Property Name="cModule" Type="nvarchar" MaxLength="128" />
+    <Property Name="cFunction" Type="nvarchar" MaxLength="128" />
+    <Property Name="cParams" Type="nvarchar" MaxLength="1024" />
+    <Property Name="cClass" Type="nvarchar" MaxLength="128" />
+    <Property Name="cReturn" Type="nvarchar" MaxLength="2048" />
+    <Property Name="cException" Type="nvarchar" MaxLength="2048" />
+    <Property Name="cUserName" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="sender" Type="nvarchar" MaxLength="255" />
+    <Property Name="receiver" Type="nvarchar" MaxLength="255" />
+    <Property Name="markRead" Type="bit" />
+    <Property Name="sendDate" Type="datetime" />
+    <Property Name="receivDate" Type="datetime" />
+    <Property Name="contenType" Type="nvarchar" MaxLength="255" />
+    <Property Name="module" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="iPermissionId" />
+    </Key>
+    <Property Name="iPermissionId" Type="int" Nullable="false" />
+    <Property Name="iActionId" Type="int" Nullable="false" />
+    <Property Name="iFunctionId" Type="int" Nullable="false" />
+    <Property Name="iId" Type="int" Nullable="false" />
+    <Property Name="cType" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="iRoleId" />
+    </Key>
+    <Property Name="iRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cRoleName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="cRoleDescription" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="iUserId" />
+    </Key>
+    <Property Name="iUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cUserCode" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="cUserName" Type="nvarchar" MaxLength="64" />
+    <Property Name="cUserPassWord" Type="nvarchar" MaxLength="64" />
+    <Property Name="cUserEMail" Type="nvarchar" MaxLength="64" />
+    <Property Name="cUserMobile" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“AppSystem.dbo.UserExt”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="UserExt">
+    <Key>
+      <PropertyRef Name="iUserId" />
+    </Key>
+    <Property Name="iUserId" Type="int" Nullable="false" />
+    <Property Name="cUserAddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="cUserPhone" Type="nvarchar" MaxLength="128" />
+    <Property Name="cUserIM" Type="nvarchar" MaxLength="64" />
+    <Property Name="cUserMasterPage" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="UserGroupRef">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="isManager" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserRoleRef">
+    <Key>
+      <PropertyRef Name="iURRefId" />
+    </Key>
+    <Property Name="iRoleId" Type="int" Nullable="false" />
+    <Property Name="iUserId" Type="int" Nullable="false" />
+    <Property Name="iURRefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Logs__iActionId__21B6055D">
+    <End Role="Actions" Type="Self.Actions" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actions">
+        <PropertyRef Name="iActionId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="iActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissions__iId__2B3F6F97">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="iRoleId" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="iId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissions__iId__2C3393D0">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="iId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Functions">
+    <End Role="Functions" Type="Self.Functions" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Functions">
+        <PropertyRef Name="iFunctionId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="iFunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="iUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_Actions">
+    <End Role="Actions" Type="Self.Actions" Multiplicity="1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actions">
+        <PropertyRef Name="iActionId" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="iActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_Functions">
+    <End Role="Functions" Type="Self.Functions" Multiplicity="1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Functions">
+        <PropertyRef Name="iFunctionId" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="iFunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserExt_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserExt" Type="Self.UserExt" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="UserExt">
+        <PropertyRef Name="iUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UGRgroupId">
+    <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
+    <End Role="UserGroupRef" Type="Self.UserGroupRef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupid" />
+      </Principal>
+      <Dependent Role="UserGroupRef">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRoleRefRoleId">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="UserRoleRef" Type="Self.UserRoleRef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="iRoleId" />
+      </Principal>
+      <Dependent Role="UserRoleRef">
+        <PropertyRef Name="iRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRoleRefUserId">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRoleRef" Type="Self.UserRoleRef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="UserRoleRef">
+        <PropertyRef Name="iUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppSystemModelStoreContainer">
+    <EntitySet Name="Actions" EntityType="Self.Actions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lock" EntityType="Self.Lock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroupRef" EntityType="Self.UserGroupRef" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRoleRef" EntityType="Self.UserRoleRef" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserExt" EntityType="Self.UserExt" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[UserExt].[iUserId] AS [iUserId], 
+[UserExt].[cUserAddress] AS [cUserAddress], 
+[UserExt].[cUserPhone] AS [cUserPhone], 
+[UserExt].[cUserIM] AS [cUserIM], 
+[UserExt].[cUserMasterPage] AS [cUserMasterPage]
+FROM [dbo].[UserExt] AS [UserExt]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Logs__iActionId__21B6055D" Association="Self.FK__Logs__iActionId__21B6055D">
+      <End Role="Actions" EntitySet="Actions" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissions__iId__2B3F6F97" Association="Self.FK__Permissions__iId__2B3F6F97">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissions__iId__2C3393D0" Association="Self.FK__Permissions__iId__2C3393D0">
+      <End Role="User" EntitySet="User" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Functions" Association="Self.FK_Logs_Functions">
+      <End Role="Functions" EntitySet="Functions" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_User" Association="Self.FK_Logs_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_Actions" Association="Self.FK_RolePermissions_Actions">
+      <End Role="Actions" EntitySet="Actions" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_Functions" Association="Self.FK_RolePermissions_Functions">
+      <End Role="Functions" EntitySet="Functions" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserExt_User" Association="Self.FK_UserExt_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserExt" EntitySet="UserExt" />
+    </AssociationSet>
+    <AssociationSet Name="UGRgroupId" Association="Self.UGRgroupId">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="UserGroupRef" EntitySet="UserGroupRef" />
+    </AssociationSet>
+    <AssociationSet Name="UserRoleRefRoleId" Association="Self.UserRoleRefRoleId">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoleRef" EntitySet="UserRoleRef" />
+    </AssociationSet>
+    <AssociationSet Name="UserRoleRefUserId" Association="Self.UserRoleRefUserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRoleRef" EntitySet="UserRoleRef" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

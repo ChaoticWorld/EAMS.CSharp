@@ -1,0 +1,80 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model  PagedList<strategyLib.vwStrategy>
+@{
+    ViewBag.Title = "策略库";
+}
+
+<div class="container-fluid">
+    <div class="row-fluid" style="margin-top:8px">
+
+        <fieldset>
+            @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } },
+      new AjaxOptions { UpdateTargetId = "Lists", InsertionMode = InsertionMode.Replace },
+      new RouteValueDictionary { { "id", "searchForm" } }))
+            {
+                <div style="display:inline-block">
+                    <div id="searchKey" style="float:left" class="collapse">
+                        <div>
+                            @*main*@
+                            <div style="display:inline"><label>单位编码:</label><input id="DWCode" name="DWCode" type="text" /></div>
+                            <div style="display:inline"><label>单位名称:</label><input id="DWName" name="DWName" type="text" /></div>
+                            <div style="display:inline"><label>单位联系人:</label><input id="DWContact" name="DWContact" type="text" /></div>
+                            <div style="display:inline"><label>单位地区:</label><input id="DCName" name="DCName" type="text" /></div>
+                            <br />
+                            <div style="display:inline"><label>来源编号:</label><input id="SourceCode" name="SourceCode" type="text" /></div>
+                            <div style="display:inline"><label>限单编号:</label><input id="VouchCode" name="VouchCode" type="text" /></div>
+                            <div>
+                                <label>有效日期范围:</label>
+                                <input id="EffDate" type="datetime-local" />
+                                -<input id="ExpDate" type="datetime-local" />
+                            </div>
+                        </div>
+                        <div>
+                            @*detail*@
+                            <div>
+                                一般 存货
+                                <div style="display:inline"><label>存货编码:</label><input id="InvACode" name="InvACode" type="text" /></div>
+                                <div style="display:inline"><label>存货名称:</label><input id="InvAName" name="InvAName" type="text" /></div>
+                                <div style="display:inline"><label>存货型号:</label><input id="InvAStd" name="InvAStd" type="text" /></div>
+                            </div>
+                            <div>
+                                配比,赠送
+                                <div style="display:inline"><label>存货编码:</label><input id="InvBCode" name="InvBCode"  type="text" /></div>
+                                <div style="display:inline"><label>存货名称:</label><input id="InvBName" name="InvBName" type="text" /></div>
+                                <div style="display:inline"><label>存货型号:</label><input id="InvBStd" name="InvBStd" type="text" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn btn-group" style="float:right">
+                        <a href="#searchKey" class="btn btn-primary " data-toggle="collapse">查寻条件 &dArr;</a>
+                        <input type="submit" class="btn btn-default" id="btnSearch" value="查寻" />
+                        @Html.ActionLink("创建", "Edit", new { id = -1 }, new { @class = "btn btn-default" })
+                        @*@if ((bool)TempData["enableDetailsClassEdit"])
+                            { @Html.ActionLink("明细分类管理", "DetailsClassEdit", new { }, new { @class = "btn btn-default" }); }*@
+                        <a class="btn btn-default" href="@Url.Action("InvStdRatePrice")">存货型号间价格转换率</a>
+                    </div>
+                </div>
+            }
+        </fieldset>
+    </div>
+    <div class="row-fluid">
+        <div id='Lists'>@Html.Partial("List", Model) </div>
+    </div>
+    <script type="text/javascript" src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tb").sorttable({
+                ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                ascImgSize: "8px",
+                descImgSize: "8px",
+                onSorted: function (cell) {
+                    //alert(cell.index() + " -- " + cell.text());
+                }
+            });
+        });
+    </script>
+</div>
+
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

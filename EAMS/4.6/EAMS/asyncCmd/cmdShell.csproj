@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD1E453B-96EC-43AA-B86A-C430D9142659}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cmdShell</RootNamespace>
+    <AssemblyName>cmdShell</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>cmdShell.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AttendanceDevice.HWATT\AttendanceDevice.HWATT.csproj">
+      <Project>{90c6af4c-346e-4439-b55e-0cae8efb5062}</Project>
+      <Name>AttendanceDevice.HWATT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AttendanceDeviceFactory\AttendanceDeviceFactory.csproj">
+      <Project>{e21308cd-e958-456e-ae65-6404b2037de3}</Project>
+      <Name>AttendanceDeviceFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attendance\Attendance.csproj">
+      <Project>{3cdd4898-b8bb-4d93-babb-1d69004085e9}</Project>
+      <Name>Attendance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess.U8\DataAccess.U8.csproj">
+      <Project>{784be030-501b-4bdf-a604-aee0a9b67de1}</Project>
+      <Name>DataAccess.U8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fb887690-5fe9-453c-95e4-e85312714da6}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{beea297c-9875-4b61-b075-0b2d007df276}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERPFactory\ERPFactory.csproj">
+      <Project>{fd6b862a-c6c6-4b67-8ea3-01154fe937c5}</Project>
+      <Name>ERPFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAttendanceDevice\IAttendanceDevice.csproj">
+      <Project>{ed1a4305-2281-4615-97b9-5a4ffe10a80b}</Project>
+      <Name>IAttendanceDevice</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataAccess\IDataAccess.csproj">
+      <Project>{f6bbfab4-23cf-45e1-a974-994896818167}</Project>
+      <Name>IDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locks\Locks.csproj">
+      <Project>{1dd5ed22-c240-4d79-b977-647c7ded1368}</Project>
+      <Name>Locks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logs\Logs.csproj">
+      <Project>{df50aa05-53f4-4c1d-b39d-07f9b3d812c0}</Project>
+      <Name>Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrganizationBase\OrganizationBase.csproj">
+      <Project>{a87ea7d2-fde1-442f-8615-72b01a05111f}</Project>
+      <Name>OrganizationBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\report\report.csproj">
+      <Project>{17870678-59c6-4d47-bba7-355a2a5f8483}</Project>
+      <Name>report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBLL\UserBLL.csproj">
+      <Project>{e72c0419-0b53-428b-8df4-5afd88348922}</Project>
+      <Name>UserBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserInfo\UserInfo.csproj">
+      <Project>{32e8b390-c57a-41e1-a280-fc6c385da4bd}</Project>
+      <Name>UserInfo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

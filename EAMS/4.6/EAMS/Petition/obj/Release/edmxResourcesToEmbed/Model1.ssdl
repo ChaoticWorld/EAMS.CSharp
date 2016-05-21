@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="iLogId" />
+    </Key>
+    <Property Name="iLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dLogDate" Type="datetime" Nullable="false" />
+    <Property Name="iUserID" Type="int" />
+    <Property Name="cWorkStation" Type="nvarchar" MaxLength="128" />
+    <Property Name="cIP" Type="nvarchar" MaxLength="24" />
+    <Property Name="iFunctionId" Type="int" />
+    <Property Name="iActionId" Type="int" />
+    <Property Name="cLastValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="QC_Class">
+    <Key>
+      <PropertyRef Name="iClsAutoId" />
+    </Key>
+    <Property Name="iClsAutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cClsName" Type="nvarchar" MaxLength="64" />
+    <Property Name="cClsFlag" Type="nvarchar" MaxLength="8" />
+    <Property Name="dToDay" Type="datetime" />
+    <Property Name="iToDayMax" Type="int" />
+  </EntityType>
+  <EntityType Name="QC_CodeIdentity">
+    <Key>
+      <PropertyRef Name="autoID" />
+    </Key>
+    <Property Name="autoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cClsFlag" Type="varchar" MaxLength="2" />
+    <Property Name="dDate" Type="datetime" />
+    <Property Name="cManager" Type="nvarchar" MaxLength="20" />
+    <Property Name="iSN" Type="int" />
+  </EntityType>
+  <EntityType Name="QC_DetailClass">
+    <Key>
+      <PropertyRef Name="QC_RCID" />
+    </Key>
+    <Property Name="QC_RCName" Type="nvarchar" MaxLength="64" />
+    <Property Name="QC_RCDescription" Type="nvarchar" MaxLength="128" />
+    <Property Name="QC_RCIndex" Type="int" />
+    <Property Name="QC_RCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QC_Details">
+    <Key>
+      <PropertyRef Name="QC_Autoid" />
+    </Key>
+    <Property Name="QC_Autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QC_RCID" Type="int" />
+    <Property Name="QC_OrderCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cInvCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cInvName" Type="nvarchar" MaxLength="32" />
+    <Property Name="cInvStd" Type="nvarchar" MaxLength="64" />
+    <Property Name="iQuentity" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="iPrice" Type="money" />
+    <Property Name="iSum" Type="money" />
+    <Property Name="cMemo" Type="nvarchar" MaxLength="512" />
+    <Property Name="bDaiShouKuan" Type="bit" />
+    <Property Name="QC_MainID" Type="int" />
+    <Property Name="dSaleSumStartDate" Type="datetime" />
+    <Property Name="dSaleSumFinishDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="QC_Main">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cCreateMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="dCreateDate" Type="datetime" />
+    <Property Name="cCusManager" Type="nvarchar" MaxLength="16" />
+    <Property Name="cModifyMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="dModifyDate" Type="datetime" />
+    <Property Name="cCusCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cCusName" Type="nvarchar" MaxLength="64" />
+    <Property Name="cCusPerson" Type="nvarchar" MaxLength="16" />
+    <Property Name="dExpDate" Type="datetime" />
+    <Property Name="dEffDate" Type="datetime" />
+    <Property Name="cMemo" Type="nvarchar" MaxLength="1024" />
+    <Property Name="cResult" Type="nvarchar" MaxLength="255" />
+    <Property Name="cSubject" Type="nvarchar" MaxLength="255" />
+    <Property Name="cVouchCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="cClsFlag" Type="nvarchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="QC_Replys">
+    <Key>
+      <PropertyRef Name="AutoId" />
+    </Key>
+    <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QC_MainID" Type="int" />
+    <Property Name="QC_SubmitMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="QC_SubmitDate" Type="datetime" />
+    <Property Name="QC_ReplyMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="QC_ReplyDate" Type="datetime" />
+    <Property Name="QC_ReplyContent" Type="nvarchar" MaxLength="128" />
+    <Property Name="QC_ReplyPass" Type="bit" />
+    <Property Name="QC_NextID" Type="int" />
+    <Property Name="submitMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="replyMan" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="QC_txtContent">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" />
+    <Property Name="plan" Type="nvarchar(max)" />
+    <Property Name="order" Type="int" />
+  </EntityType>
+  <EntityType Name="sqlQuery">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sQueryName" Type="nvarchar" MaxLength="128" />
+    <Property Name="sQueryMain" Type="nvarchar(max)" />
+    <Property Name="sQueryWhere" Type="nvarchar(max)" />
+    <Property Name="sQueryGroup" Type="nvarchar(max)" />
+    <Property Name="sQueryOrder" Type="nvarchar(max)" />
+    <Property Name="sMemo" Type="nvarchar(max)" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“AppData.dbo.v_petitionList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="v_petitionList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="cCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cCreateMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="dCreateDate" Type="datetime" />
+    <Property Name="cCusManager" Type="nvarchar" MaxLength="16" />
+    <Property Name="cModifyMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="dModifyDate" Type="datetime" />
+    <Property Name="cCusCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cCusName" Type="nvarchar" MaxLength="64" />
+    <Property Name="cCusPerson" Type="nvarchar" MaxLength="16" />
+    <Property Name="dExpDate" Type="datetime" />
+    <Property Name="dEffDate" Type="datetime" />
+    <Property Name="mainMemo" Type="nvarchar" MaxLength="1024" />
+    <Property Name="QC_RCID" Type="int" />
+    <Property Name="QC_OrderCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cInvCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cInvName" Type="nvarchar" MaxLength="32" />
+    <Property Name="cInvStd" Type="nvarchar" MaxLength="64" />
+    <Property Name="iQuentity" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="iPrice" Type="money" />
+    <Property Name="iSum" Type="money" />
+    <Property Name="detailsMemo" Type="nvarchar" MaxLength="512" />
+    <Property Name="bDaiShouKuan" Type="bit" />
+    <Property Name="dSaleSumStartDate" Type="datetime" />
+    <Property Name="dSaleSumFinishDate" Type="datetime" />
+    <Property Name="QC_SubmitMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="QC_SubmitDate" Type="datetime" />
+    <Property Name="QC_ReplyMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="QC_ReplyDate" Type="datetime" />
+    <Property Name="QC_ReplyContent" Type="nvarchar" MaxLength="128" />
+    <Property Name="QC_ReplyPass" Type="bit" />
+    <Property Name="QC_NextID" Type="int" />
+    <Property Name="submitMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="replyMan" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“AppData.dbo.v_petitionTxtList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="v_petitionTxtList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="cCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cCreateMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="dCreateDate" Type="datetime" />
+    <Property Name="cCusManager" Type="nvarchar" MaxLength="16" />
+    <Property Name="cModifyMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="dModifyDate" Type="datetime" />
+    <Property Name="cCusCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="cCusName" Type="nvarchar" MaxLength="64" />
+    <Property Name="cCusPerson" Type="nvarchar" MaxLength="16" />
+    <Property Name="dExpDate" Type="datetime" />
+    <Property Name="dEffDate" Type="datetime" />
+    <Property Name="mainMemo" Type="nvarchar" MaxLength="1024" />
+    <Property Name="plan" Type="nvarchar(max)" />
+    <Property Name="vouchCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="QC_SubmitMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="QC_SubmitDate" Type="datetime" />
+    <Property Name="QC_ReplyMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="QC_ReplyDate" Type="datetime" />
+    <Property Name="QC_ReplyContent" Type="nvarchar" MaxLength="128" />
+    <Property Name="QC_ReplyPass" Type="bit" />
+    <Property Name="QC_NextID" Type="int" />
+    <Property Name="submitMan" Type="nvarchar" MaxLength="16" />
+    <Property Name="replyMan" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <Association Name="FK__QC_Detail__QC_Ma__0F975522">
+    <End Role="QC_Main" Type="Self.QC_Main" Multiplicity="0..1" />
+    <End Role="QC_Details" Type="Self.QC_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_Main">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QC_Details">
+        <PropertyRef Name="QC_MainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QC_Detail__QC_RC__108B795B">
+    <End Role="QC_DetailClass" Type="Self.QC_DetailClass" Multiplicity="0..1" />
+    <End Role="QC_Details" Type="Self.QC_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_DetailClass">
+        <PropertyRef Name="QC_RCID" />
+      </Principal>
+      <Dependent Role="QC_Details">
+        <PropertyRef Name="QC_RCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QC_Replys__QC_Ma__117F9D94">
+    <End Role="QC_Main" Type="Self.QC_Main" Multiplicity="0..1" />
+    <End Role="QC_Replys" Type="Self.QC_Replys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_Main">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QC_Replys">
+        <PropertyRef Name="QC_MainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QC_txtConten__id__45F365D3">
+    <End Role="QC_Main" Type="Self.QC_Main" Multiplicity="0..1" />
+    <End Role="QC_txtContent" Type="Self.QC_txtContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QC_Main">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QC_txtContent">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppDataModelStoreContainer">
+    <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_Class" EntityType="Self.QC_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_CodeIdentity" EntityType="Self.QC_CodeIdentity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_DetailClass" EntityType="Self.QC_DetailClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_Details" EntityType="Self.QC_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_Main" EntityType="Self.QC_Main" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_Replys" EntityType="Self.QC_Replys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QC_txtContent" EntityType="Self.QC_txtContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sqlQuery" EntityType="Self.sqlQuery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_petitionList" EntityType="Self.v_petitionList" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_petitionList].[Id] AS [Id], 
+[v_petitionList].[cCode] AS [cCode], 
+[v_petitionList].[cCreateMan] AS [cCreateMan], 
+[v_petitionList].[dCreateDate] AS [dCreateDate], 
+[v_petitionList].[cCusManager] AS [cCusManager], 
+[v_petitionList].[cModifyMan] AS [cModifyMan], 
+[v_petitionList].[dModifyDate] AS [dModifyDate], 
+[v_petitionList].[cCusCode] AS [cCusCode], 
+[v_petitionList].[cCusName] AS [cCusName], 
+[v_petitionList].[cCusPerson] AS [cCusPerson], 
+[v_petitionList].[dExpDate] AS [dExpDate], 
+[v_petitionList].[dEffDate] AS [dEffDate], 
+[v_petitionList].[mainMemo] AS [mainMemo], 
+[v_petitionList].[QC_RCID] AS [QC_RCID], 
+[v_petitionList].[QC_OrderCode] AS [QC_OrderCode], 
+[v_petitionList].[cInvCode] AS [cInvCode], 
+[v_petitionList].[cInvName] AS [cInvName], 
+[v_petitionList].[cInvStd] AS [cInvStd], 
+[v_petitionList].[iQuentity] AS [iQuentity], 
+[v_petitionList].[iPrice] AS [iPrice], 
+[v_petitionList].[iSum] AS [iSum], 
+[v_petitionList].[detailsMemo] AS [detailsMemo], 
+[v_petitionList].[bDaiShouKuan] AS [bDaiShouKuan], 
+[v_petitionList].[dSaleSumStartDate] AS [dSaleSumStartDate], 
+[v_petitionList].[dSaleSumFinishDate] AS [dSaleSumFinishDate], 
+[v_petitionList].[QC_SubmitMan] AS [QC_SubmitMan], 
+[v_petitionList].[QC_SubmitDate] AS [QC_SubmitDate], 
+[v_petitionList].[QC_ReplyMan] AS [QC_ReplyMan], 
+[v_petitionList].[QC_ReplyDate] AS [QC_ReplyDate], 
+[v_petitionList].[QC_ReplyContent] AS [QC_ReplyContent], 
+[v_petitionList].[QC_ReplyPass] AS [QC_ReplyPass], 
+[v_petitionList].[QC_NextID] AS [QC_NextID], 
+[v_petitionList].[submitMan] AS [submitMan], 
+[v_petitionList].[replyMan] AS [replyMan]
+FROM [dbo].[v_petitionList] AS [v_petitionList]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_petitionTxtList" EntityType="Self.v_petitionTxtList" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_petitionTxtList].[Id] AS [Id], 
+[v_petitionTxtList].[cCode] AS [cCode], 
+[v_petitionTxtList].[cCreateMan] AS [cCreateMan], 
+[v_petitionTxtList].[dCreateDate] AS [dCreateDate], 
+[v_petitionTxtList].[cCusManager] AS [cCusManager], 
+[v_petitionTxtList].[cModifyMan] AS [cModifyMan], 
+[v_petitionTxtList].[dModifyDate] AS [dModifyDate], 
+[v_petitionTxtList].[cCusCode] AS [cCusCode], 
+[v_petitionTxtList].[cCusName] AS [cCusName], 
+[v_petitionTxtList].[cCusPerson] AS [cCusPerson], 
+[v_petitionTxtList].[dExpDate] AS [dExpDate], 
+[v_petitionTxtList].[dEffDate] AS [dEffDate], 
+[v_petitionTxtList].[mainMemo] AS [mainMemo], 
+[v_petitionTxtList].[plan] AS [plan], 
+[v_petitionTxtList].[vouchCode] AS [vouchCode], 
+[v_petitionTxtList].[QC_SubmitMan] AS [QC_SubmitMan], 
+[v_petitionTxtList].[QC_SubmitDate] AS [QC_SubmitDate], 
+[v_petitionTxtList].[QC_ReplyMan] AS [QC_ReplyMan], 
+[v_petitionTxtList].[QC_ReplyDate] AS [QC_ReplyDate], 
+[v_petitionTxtList].[QC_ReplyContent] AS [QC_ReplyContent], 
+[v_petitionTxtList].[QC_ReplyPass] AS [QC_ReplyPass], 
+[v_petitionTxtList].[QC_NextID] AS [QC_NextID], 
+[v_petitionTxtList].[submitMan] AS [submitMan], 
+[v_petitionTxtList].[replyMan] AS [replyMan]
+FROM [dbo].[v_petitionTxtList] AS [v_petitionTxtList]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__QC_Detail__QC_Ma__0F975522" Association="Self.FK__QC_Detail__QC_Ma__0F975522">
+      <End Role="QC_Main" EntitySet="QC_Main" />
+      <End Role="QC_Details" EntitySet="QC_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QC_Detail__QC_RC__108B795B" Association="Self.FK__QC_Detail__QC_RC__108B795B">
+      <End Role="QC_DetailClass" EntitySet="QC_DetailClass" />
+      <End Role="QC_Details" EntitySet="QC_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QC_Replys__QC_Ma__117F9D94" Association="Self.FK__QC_Replys__QC_Ma__117F9D94">
+      <End Role="QC_Main" EntitySet="QC_Main" />
+      <End Role="QC_Replys" EntitySet="QC_Replys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QC_txtConten__id__45F365D3" Association="Self.FK__QC_txtConten__id__45F365D3">
+      <End Role="QC_Main" EntitySet="QC_Main" />
+      <End Role="QC_txtContent" EntitySet="QC_txtContent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

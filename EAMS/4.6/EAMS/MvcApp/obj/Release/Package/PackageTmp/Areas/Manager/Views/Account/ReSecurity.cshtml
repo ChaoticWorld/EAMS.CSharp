@@ -1,0 +1,77 @@
+﻿@using System.Web.Optimization
+@model MvcApp.Models.ReSecurity
+
+@{
+    ViewBag.Title = "ReSecurity";
+}
+
+<h2>密码重置</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend>ReSecurity</legend>
+
+        @Html.HiddenFor(model => model.id)
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oldpw)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oldpw)
+            @Html.ValidationMessageFor(model => model.oldpw)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pw)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pw)
+            @Html.ValidationMessageFor(model => model.pw)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConfirmPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+    <script src="/Scripts/jquery.md5.js"></script>
+    <script src="/Scripts/jquery.base64.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#oldpw").on("blur", function () {
+                var pwkey = $("#oldpw").val();
+                var crypt = $.md5($.base64.btoa(pwkey));
+                var reg = /^_[\w]*_$/;
+                if (!reg.test(pwkey))
+                $("#oldpw").val(crypt);
+            });
+            $("#pw").on("blur", function () {
+                var pwkey = $("#pw").val();
+                var crypt = $.md5($.base64.btoa(pwkey));
+                $("#pw").val(crypt);
+            });
+            $("#ConfirmPassword").on("blur", function () {
+                var pwkey = $("#ConfirmPassword").val();
+                var crypt = $.md5($.base64.btoa(pwkey));
+                $("#ConfirmPassword").val(crypt);
+            });
+        })
+    </script>
+}
+
+<div>
+    @Html.ActionLink("用户列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dencrypt")
+}

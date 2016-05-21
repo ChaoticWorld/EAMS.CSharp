@@ -1,0 +1,18 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\IDataAccess\bin\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\IDataAccess\bin\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\IDataAccess\obj\Debug\IDataAccess.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\IDataAccess\obj\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\IDataAccess\obj\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\IDataAccess\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\bin\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\bin\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\obj\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\obj\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\obj\Debug\IDataAccess.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\bin\Debug\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\bin\Debug\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\bin\Debug\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\obj\Debug\IDataAccess.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\obj\Debug\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\obj\Debug\IDataAccess.pdb

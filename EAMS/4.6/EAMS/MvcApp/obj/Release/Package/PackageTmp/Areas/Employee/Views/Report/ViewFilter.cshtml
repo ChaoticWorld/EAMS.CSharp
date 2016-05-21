@@ -1,0 +1,217 @@
+﻿@using report
+@model List<FilterField>
+@{Layout = "";}
+<table id="filterTable">
+    <caption>过滤条件</caption>
+    <thead>
+        <tr>
+            <th>字段标题</th>
+            <th>字段名</th>
+            <th>比较符</th>
+            <th>值</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (FilterField ff in Model)
+            {
+                <tr title="@ff.filterID">
+                    <td onclick="selectField(this)"><span data-isDefault="@(ff.UserID < 0 ? "true":"false")" data-fieldID="@ff.fieldID">@ff.field.fieldTitle</span></td>
+                    <td><input style="width:80px" value="@ff.fieldName" /></td>
+                    <td onclick="selectComparison(this)"><span>@ff.comparisonOperator</span></td>
+                    <td><input style="width:80px" value="@ff.Value" /></td>
+                    <td><button onclick="AddRow(this)">新增</button><button onclick="DelRow(this)">删除</button></td>
+                </tr>}
+        }
+        else
+        {
+            <tr title='-1'><td colspan="5"><button onclick="AddRow(this),DelRow(this)">新增</button></td></tr>}
+    </tbody>
+</table>
+<button class="btn btn-default" onclick="FilterSave(false)">保存</button>
+<button class="btn btn-default" onclick="submit()">保存并提交</button>
+
+
+<select style="display:none" id="selField" onblur="blurField(this)">
+    <option data-fieldID="" data-fieldName=""></option>
+    @if (ViewData["Fields"] != null)
+    {
+        foreach (Field f in (List<Field>)ViewData["Fields"])
+        {
+            <option data-fieldID="@f.fieldID" data-fieldName="@f.fieldNameCompute">@f.fieldTitle</option>
+        }
+    }
+</select>
+<select style="display:none" id="selComparison" onblur="blurComp(this)">
+    <option> </option>
+    <option><</option>
+    <option><=</option>
+    <option>=</option>
+    <option>>=</option>
+    <option>></option>
+    <option>!=</option>
+    <option>like</option>
+</select>
+@*<script src="/Scripts/jquery.json.min.js"></script>*@
+<script type="text/javascript">
+    function FilterSave(isSubmit) {
+        var Filters = new Array();
+        var filter = new Object();
+        var isDefault = ($("#defaultFilter").length > 0);
+        var rows = $("#filterTable").children("tbody:first");
+        $(rows).children("tr").each(function () {
+            filter = new Object();
+            //filter.fieldTitle = $(this).children("td").eq(0).children("span").eq(0).text();
+            filter.filterID = $(this).attr("title");
+            filter.fieldID = $(this).children("td").eq(0).children("span").eq(0).attr("data-fieldID");
+            filter.fieldName = $(this).children("td").eq(1).children("input").eq(0).val();
+            filter.comparisonOperator = $(this).children("td").eq(2).children("span").eq(0).text();
+            filter.Value = $(this).children("td").eq(3).children("input").eq(0).val();
+            filter.filterIndex = $(this).index();
+            filter.isDefault = isDefault;
+            var data_isDefault = $(this).children("td").eq(0).children("span").eq(0).attr("data-isDefault");
+            if (data_isDefault === undefined) filter.filterID = -1;
+
+            else if(eval(data_isDefault) ^ isDefault) filter.filterID = -1;
+            $(this).children("td").eq(4).attr("title", filter.filterIndex);
+            //filter.logicOperator = "";
+            //filter.UserID = null;
+            filter.reportID = $("#rptID").text();
+            if (filter.Value != null)
+                Filters.push(filter);
+        });
+        //alert($.toJSON(Filters));
+        var url = "/employee/report/saveFilter/" + $("#rptID").text();
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            //async: false,
+            data: { "Filters": Filters },
+            success: function (data) {
+                for (var i = 0; i < $(data).length; i++) {
+                    $(rows).children("tr").eq(i).attr("title", data[i]);
+                    if(!isDefault)
+                    $(rows).children("tr").eq(i).children("td").eq(0).children("span").eq(0).attr("data-isDefault","false");
+                }
+                if (isSubmit)
+                    submitPost();
+            }
+        });
+    }
+    function submit() {
+        FilterSave(true);
+        //submitPost();
+    }
+    function submitPost() {
+        var url = "/employee/report/submitFilters/" + $("#rptID").text();
+
+        var isDefault = ($("#defaultFilter").length > 0);
+        $.post(url, { "isDefault": isDefault }, function (rdata) {
+            if (rdata) {
+                switch (rdata[0]) {
+                    case "true":
+                        window.location.reload();
+                        break;
+                    case "false":
+                    case "error":
+                        alert(rdata[1]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else { alert("提交失败！"); }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function selectField(td) {
+        var selField = $("#selField")[0];
+        var tdposition = $(td).position();
+        $(selField).css("position", "absolute");
+        $(selField).css("left", tdposition.left);
+        $(selField).css("top", tdposition.top);
+        $(selField).css("width", $(td).css("width"));
+        $(selField).css("height", $(td).css("height"));
+        $(selField).css("display", "table-cell");
+
+        var filterID = $(td).parent().attr("title");
+        $(selField).attr("data-cell", $(td).index());
+        $(selField).attr("data-row", $(td).parent().index());
+        $(selField).attr("data-trid", $(td).parent().attr("title"));
+        $(selField).attr("data-tdFieldID", $(td).children("span:first").attr("data-fieldid"));
+        $(selField).attr("data-tdFieldName", $(td).children("span:first").attr("data-fieldName"));
+        $(selField).attr("data-tdFieldTitle", $(td).children("span:first").text());
+
+        $(selField).children("option").removeAttr("selected");
+        if (filterID <= 0) {
+            $(selField).children("option:first").attr("selected", "selected");
+        }
+        else {
+            var selOption = "option[data-fieldid='" + $(selField).attr("data-tdFieldID") + "']:first";
+            $(selField).children(selOption).attr("selected", "selected");
+        }
+    }
+    function blurField(td) {
+        var selField = $(td).children("option:selected");
+        var cell = $("#filterTable").children("tbody").eq(0).children("tr").eq($(td).attr("data-row")).children("td").eq($(td).attr("data-cell"));
+        var span = $(cell).children("span").eq(0);
+        $(span).text($(selField).text());
+        $(span).attr("data-fieldID", $(selField).attr("data-fieldID"));
+        $(span).attr("data-fieldName", $(selField).attr("data-fieldName"));
+        $(cell).next().children("input:first").val($(selField).attr("data-fieldName"));
+        $(td).css("display", "none");
+    }
+    function selectComparison(td) {
+        var selcomp = $("#selComparison")[0];
+        var tdposition = $(td).position();
+        $(selcomp).css("position", "absolute");
+        $(selcomp).css("left", tdposition.left);
+        $(selcomp).css("top", tdposition.top);
+        $(selcomp).css("width", $(td).css("width"));
+        $(selcomp).css("height", $(td).css("height"));
+        $(selcomp).css("display", "table-cell");
+
+        $(selcomp).attr("data-cell", $(td).index());
+        $(selcomp).attr("data-row", $(td).parent().index());
+        $(selcomp).attr("data-trid", $(td).parent().attr("title"));
+        $(selcomp).attr("data-tdFieldComparison", $(td).children("span:first").text());
+
+        var filterID = $(td).parent().attr("title");
+        $(selcomp).children("option").removeAttr("selected");
+        if (filterID <= 0) {
+            $(selcomp).children("option").eq(0).attr("selected", "selected");
+        }
+        else {
+            var selOption = "option:contains(" + $(selcomp).attr("data-tdFieldComparison") + ")";
+            $(selcomp).children(selOption).eq(0).attr("selected", "selected");
+        }
+    }
+    function blurComp(td) {
+        var selComparison = $(td).children("option:selected").text();
+        var cell = $("#filterTable").children("tbody").eq(0).children("tr").eq($(td).attr("data-row")).children("td").eq($(td).attr("data-cell"));
+        $(cell).children("span").eq(0).text(selComparison);
+        $(td).css("display", "none");
+    }
+    function AddRow(td) {
+        var tr = $(td).parent().parent();
+        var newRow = '<tr title="-1"> <td onclick="selectField(this)"><span data-fieldID="" data-fieldName=""></span></td>'
+            + '<td><input style="width:80px"  /></td>'
+            + '<td onclick="selectComparison(this)"><span></span></td>'
+            + '<td><input style="width:80px"  /></td>  <td><button onclick="AddRow(this)">新增</button><button onclick="DelRow(this)">删除</button></td> </tr>';
+        $(tr).after(newRow);
+    }
+    function DelRow(td) {
+        var tr = $(td).parent().parent();
+        var filterID = $(tr).attr("title");
+        //alert(filterID);
+        if (filterID => 0) {
+            var url = "/employee/report/deleteFilter/" + filterID;
+            $.post(url, function () { });
+        }
+        $(tr).remove();
+    }
+</script>

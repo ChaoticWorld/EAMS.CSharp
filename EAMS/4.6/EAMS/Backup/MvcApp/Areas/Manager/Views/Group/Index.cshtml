@@ -1,0 +1,29 @@
+﻿@using SystemDB;
+@model IEnumerable<Group>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="filter">
+<fieldset>
+  @using (Ajax.BeginForm(
+      new AjaxOptions
+      {
+          UpdateTargetId = "groupListDiv",
+          InsertionMode = InsertionMode.Replace,
+          HttpMethod = "Post"
+      }))
+  {
+  <div>查找
+    <input id="filterkey" name="filterkey" title="组名或组描述，模糊查寻" type="text" style="width:80px" />
+    <input class="printNoDisplay" type="submit" id="go" value="GO" />
+  </div>
+  }
+</fieldset>
+</div>
+
+<div id="groupListDiv">
+@Html.Partial("groupList",@Model)
+</div>

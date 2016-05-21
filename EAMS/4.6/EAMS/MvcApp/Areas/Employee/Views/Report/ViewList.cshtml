@@ -1,0 +1,41 @@
+﻿@using System.Data
+@model DataTable
+@{
+    ViewBag.Title = "View";
+}
+@{ Layout = ""; }
+<table id="viewListTable">
+    <tr>
+    @for (int i = 0; i < Model.Columns.Count; i++)
+    {
+        if (Model.Columns.Contains("ddate"))
+        { <th style = "width:80px" > @Model.Columns[i].Caption </th> }
+        else
+        {  <th>@Model.Columns[i].Caption</th> }
+    }
+    </tr>
+    @if (Model.Rows.Count > 0)
+    {   for (int j = 0; j < Model.Rows.Count; j++)
+        {
+            <tr>
+                @{ 
+                    var row = Model.Rows[j]; DateTime d;decimal dec;
+                    for (int k = 0; k < row.ItemArray.Count(); k++)
+                    {
+                        <td>@row.ItemArray[k].ToString()</td>
+                        @*if (DateTime.TryParse(row.ItemArray[k].ToString(), out d))
+                        { <td> @d.ToString("yyyy-MM-dd")</td> }
+                        else
+                        { <td> @if (decimal.TryParse(row.ItemArray[k].ToString(), out dec))
+                                { <label>@dec.ToString("0.00")</label> }
+                                else
+                                { <label>@row.ItemArray[k].ToString()</label> }
+                            </td>
+                        }*@
+                    }
+                }
+            </tr>
+        }
+    }
+</table>
+

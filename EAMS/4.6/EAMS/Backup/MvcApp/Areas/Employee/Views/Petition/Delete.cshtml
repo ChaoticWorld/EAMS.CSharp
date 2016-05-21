@@ -1,0 +1,19 @@
+﻿    <div>
+        @TempData["deleteMsg"]
+    </div>
+    <div>@if ((bool)TempData["canDelete"])
+         {  @*@Html.ActionLink("确认删除", "sureMainDelete", new { id = TempData["ID"].ToString() })*@
+            <input type="button" value="确认删除" title='@TempData["ID"].ToString()' id="sureDelete" />
+         }
+     <br />
+    @Html.ActionLink("返回", "Index", new { }, new { id="return"})
+    </div>
+       <script type="text/javascript">
+       $("#sureDelete").on("click",function () {
+               var url = "/Employee/Petition/sureMainDelete/" + $(this).attr("title");               
+               $.get(url, function (date) {
+                   alert("删除签呈内容记录："+date.di+"条;\n删除签呈"+date.mi+"条.");
+                   $("#return")[0].click();
+               });
+           });
+       </script>

@@ -1,0 +1,45 @@
+﻿@model SystemDB.Role
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>角色编辑</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Role</legend>
+
+        @Html.HiddenFor(model => model.iRoleId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cRoleName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cRoleName)
+            @Html.ValidationMessageFor(model => model.cRoleName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cRoleDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cRoleDescription)
+            @Html.ValidationMessageFor(model => model.cRoleDescription)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("角色列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

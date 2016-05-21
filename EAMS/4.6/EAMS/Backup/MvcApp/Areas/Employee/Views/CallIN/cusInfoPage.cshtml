@@ -1,0 +1,32 @@
+﻿@model DataDB.ModelBase.Customer
+@{ 
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml";}
+@{
+    ViewBag.Title = "cusInfoPage";
+}
+
+<div style="text-align:center"> <h3>客户资料</h3> </div>
+
+<div id="tb">
+<table>
+<tr>
+<td>@Html.LabelFor(m=>m.cCusCode):@Html.DisplayFor(m=>m.cCusCode)</td>
+<td>@Html.LabelFor(m=>m.cCusName):@Html.DisplayFor(m=>m.cCusName)</td>
+<td>@Html.LabelFor(m=>m.ContactName):@Html.DisplayFor(m=>m.ContactName)</td>
+</tr><tr>
+<td>@Html.LabelFor(m=>m.cPhone):@Html.DisplayFor(m=>m.cPhone)</td>
+<td>@Html.LabelFor(m=>m.cMobile):@Html.DisplayFor(m=>m.cMobile)</td>
+<td>@Html.LabelFor(m=>m.District):@Html.DisplayFor(m=>m.District)</td>
+</tr><tr>
+<td>@Html.LabelFor(m=>m.cAddress):@Html.DisplayFor(m=>m.cAddress)</td>
+<td colspan='2'>@Html.LabelFor(m=>m.cShipAddress):@Html.DisplayFor(m=>m.cShipAddress)</td>
+</tr><tr>
+<td>@Html.LabelFor(m=>m.cusClass):@Html.DisplayFor(m=>m.cusClass)</td>
+<td>@Html.LabelFor(m=>m.devDate):@Html.DisplayFor(m=>m.devDate)</td>
+<td>@Html.LabelFor(m=>m.employeeName):@Html.DisplayFor(m=>m.employeeName)</td>
+</tr>
+<tr><td colspan='3'>
+@Html.LabelFor(m=>m.Memo):@Html.DisplayText(Model.Memo)</td></tr>
+</table>
+
+</div>

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HWATTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="HWATTModelStoreContainer">
+          <EntitySet Name="KQZ_Card" EntityType="HWATTModel.Store.KQZ_Card" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KQZ_Employee" EntityType="HWATTModel.Store.KQZ_Employee" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="KQZ_Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="bigint" Nullable="false" />
+          <Property Name="CardTime" Type="datetime" Nullable="false" />
+          <Property Name="CardTypeID" Type="smallint" Nullable="false" />
+          <Property Name="DevID" Type="bigint" Nullable="false" />
+          <Property Name="DevClass" Type="smallint" Nullable="false" />
+          <Property Name="cVerify" Type="char" MaxLength="32" />
+          <Property Name="ImgID" Type="bigint" Nullable="false" />
+          <Property Name="ImgStatus" Type="smallint" Nullable="false" />
+          <Property Name="IsValidate" Type="smallint" Nullable="false" />
+          <Property Name="FaceIDNo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifyUser" Type="int" Nullable="false" />
+          <Property Name="ModifyType" Type="smallint" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KQZ_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BrchID" Type="bigint" Nullable="false" />
+          <Property Name="BrchName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="EmployeeCode" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="EmployeeName" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Gender" Type="smallint" Nullable="false" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Nation" Type="varchar" MaxLength="50" />
+          <Property Name="NATIVEPLACE" Type="varchar" MaxLength="50" />
+          <Property Name="ZhengZhi" Type="varchar" MaxLength="50" />
+          <Property Name="MARITALSTATUS" Type="varchar" MaxLength="20" />
+          <Property Name="Health" Type="varchar" MaxLength="20" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="APOSITION" Type="varchar" MaxLength="50" />
+          <Property Name="EDUCATION" Type="varchar" MaxLength="50" />
+          <Property Name="School" Type="varchar" MaxLength="100" />
+          <Property Name="Graduation" Type="datetime" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="20" />
+          <Property Name="EnrollDate" Type="datetime" />
+          <Property Name="Privilege" Type="smallint" Nullable="false" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="IDCard" Type="varchar" MaxLength="20" />
+          <Property Name="AddrHome" Type="varchar" MaxLength="200" />
+          <Property Name="CardCode" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="IsCheck" Type="smallint" Nullable="false" />
+          <Property Name="OnRule" Type="smallint" Nullable="false" />
+          <Property Name="OffRule" Type="smallint" Nullable="false" />
+          <Property Name="CanOvertime" Type="smallint" Nullable="false" />
+          <Property Name="HaveFesta" Type="smallint" Nullable="false" />
+          <Property Name="DevType" Type="smallint" Nullable="false" />
+          <Property Name="HDCPInfo" Type="image" />
+          <Property Name="RegisterType" Type="smallint" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="250" />
+          <Property Name="EmployeeLogPwd" Type="varchar" MaxLength="64" />
+          <Property Name="CheckType" Type="varchar" MaxLength="30" />
+          <Property Name="OpendoorType" Type="varchar" MaxLength="30" />
+          <Property Name="ModelNum" Type="smallint" Nullable="false" />
+          <Property Name="HavePwd" Type="smallint" Nullable="false" />
+          <Property Name="StaffStatus" Type="smallint" />
+          <Property Name="LastCardID" Type="bigint" />
+          <Property Name="Reserved1" Type="varchar" MaxLength="200" />
+          <Property Name="Reserved2" Type="varchar" MaxLength="200" />
+          <Property Name="Reserved3" Type="varchar" MaxLength="200" />
+          <Property Name="Reserved4" Type="varchar" MaxLength="200" />
+          <Property Name="DEVTYPESTR" Type="varchar" MaxLength="50" />
+          <Property Name="BEGINATTDATE" Type="datetime" />
+          <Property Name="ENDATTDATE" Type="datetime" />
+          <Property Name="RealEmployeeCode" Type="varchar" MaxLength="16" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HWATTModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="HWATTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KQZ_Card" EntityType="HWATTModel.KQZ_Card" />
+          <EntitySet Name="KQZ_Employee" EntityType="HWATTModel.KQZ_Employee" />
+        </EntityContainer>
+        <EntityType Name="KQZ_Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Type="Int64" Name="CardID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="EmployeeID" Nullable="false" />
+          <Property Type="DateTime" Name="CardTime" Nullable="false" />
+          <Property Type="Int16" Name="CardTypeID" Nullable="false" />
+          <Property Type="Int64" Name="DevID" Nullable="false" />
+          <Property Type="Int16" Name="DevClass" Nullable="false" />
+          <Property Type="String" Name="cVerify" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Type="Int64" Name="ImgID" Nullable="false" />
+          <Property Type="Int16" Name="ImgStatus" Nullable="false" />
+          <Property Type="Int16" Name="IsValidate" Nullable="false" />
+          <Property Type="String" Name="FaceIDNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ModifyUser" Nullable="false" />
+          <Property Type="Int16" Name="ModifyType" Nullable="false" />
+          <Property Type="DateTime" Name="ModifyTime" />
+        </EntityType>
+        <EntityType Name="KQZ_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Type="Int64" Name="EmployeeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="BrchID" Nullable="false" />
+          <Property Type="String" Name="BrchName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployeeCode" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="Gender" Nullable="false" />
+          <Property Type="DateTime" Name="Birthday" />
+          <Property Type="String" Name="Nation" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NATIVEPLACE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZhengZhi" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MARITALSTATUS" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Health" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="APOSITION" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EDUCATION" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="School" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Graduation" />
+          <Property Type="String" Name="WorkPhone" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="EnrollDate" />
+          <Property Type="Int16" Name="Privilege" Nullable="false" />
+          <Property Type="Binary" Name="Photo" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="IDCard" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AddrHome" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CardCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Mobile" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="IsCheck" Nullable="false" />
+          <Property Type="Int16" Name="OnRule" Nullable="false" />
+          <Property Type="Int16" Name="OffRule" Nullable="false" />
+          <Property Type="Int16" Name="CanOvertime" Nullable="false" />
+          <Property Type="Int16" Name="HaveFesta" Nullable="false" />
+          <Property Type="Int16" Name="DevType" Nullable="false" />
+          <Property Type="Binary" Name="HDCPInfo" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int16" Name="RegisterType" Nullable="false" />
+          <Property Type="String" Name="Comment" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployeeLogPwd" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CheckType" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OpendoorType" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ModelNum" Nullable="false" />
+          <Property Type="Int16" Name="HavePwd" Nullable="false" />
+          <Property Type="Int16" Name="StaffStatus" />
+          <Property Type="Int64" Name="LastCardID" />
+          <Property Type="String" Name="Reserved1" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Reserved2" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Reserved3" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Reserved4" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DEVTYPESTR" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="BEGINATTDATE" />
+          <Property Type="DateTime" Name="ENDATTDATE" />
+          <Property Type="String" Name="RealEmployeeCode" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HWATTModelStoreContainer" CdmEntityContainer="HWATTEntities">
+          <EntitySetMapping Name="KQZ_Card">
+            <EntityTypeMapping TypeName="HWATTModel.KQZ_Card">
+              <MappingFragment StoreEntitySet="KQZ_Card">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="ModifyType" ColumnName="ModifyType" />
+                <ScalarProperty Name="ModifyUser" ColumnName="ModifyUser" />
+                <ScalarProperty Name="FaceIDNo" ColumnName="FaceIDNo" />
+                <ScalarProperty Name="IsValidate" ColumnName="IsValidate" />
+                <ScalarProperty Name="ImgStatus" ColumnName="ImgStatus" />
+                <ScalarProperty Name="ImgID" ColumnName="ImgID" />
+                <ScalarProperty Name="cVerify" ColumnName="cVerify" />
+                <ScalarProperty Name="DevClass" ColumnName="DevClass" />
+                <ScalarProperty Name="DevID" ColumnName="DevID" />
+                <ScalarProperty Name="CardTypeID" ColumnName="CardTypeID" />
+                <ScalarProperty Name="CardTime" ColumnName="CardTime" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KQZ_Employee">
+            <EntityTypeMapping TypeName="HWATTModel.KQZ_Employee">
+              <MappingFragment StoreEntitySet="KQZ_Employee">
+                <ScalarProperty Name="RealEmployeeCode" ColumnName="RealEmployeeCode" />
+                <ScalarProperty Name="ENDATTDATE" ColumnName="ENDATTDATE" />
+                <ScalarProperty Name="BEGINATTDATE" ColumnName="BEGINATTDATE" />
+                <ScalarProperty Name="DEVTYPESTR" ColumnName="DEVTYPESTR" />
+                <ScalarProperty Name="Reserved4" ColumnName="Reserved4" />
+                <ScalarProperty Name="Reserved3" ColumnName="Reserved3" />
+                <ScalarProperty Name="Reserved2" ColumnName="Reserved2" />
+                <ScalarProperty Name="Reserved1" ColumnName="Reserved1" />
+                <ScalarProperty Name="LastCardID" ColumnName="LastCardID" />
+                <ScalarProperty Name="StaffStatus" ColumnName="StaffStatus" />
+                <ScalarProperty Name="HavePwd" ColumnName="HavePwd" />
+                <ScalarProperty Name="ModelNum" ColumnName="ModelNum" />
+                <ScalarProperty Name="OpendoorType" ColumnName="OpendoorType" />
+                <ScalarProperty Name="CheckType" ColumnName="CheckType" />
+                <ScalarProperty Name="EmployeeLogPwd" ColumnName="EmployeeLogPwd" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RegisterType" ColumnName="RegisterType" />
+                <ScalarProperty Name="HDCPInfo" ColumnName="HDCPInfo" />
+                <ScalarProperty Name="DevType" ColumnName="DevType" />
+                <ScalarProperty Name="HaveFesta" ColumnName="HaveFesta" />
+                <ScalarProperty Name="CanOvertime" ColumnName="CanOvertime" />
+                <ScalarProperty Name="OffRule" ColumnName="OffRule" />
+                <ScalarProperty Name="OnRule" ColumnName="OnRule" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+                <ScalarProperty Name="AddrHome" ColumnName="AddrHome" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+                <ScalarProperty Name="EnrollDate" ColumnName="EnrollDate" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="EDUCATION" ColumnName="EDUCATION" />
+                <ScalarProperty Name="APOSITION" ColumnName="APOSITION" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="MARITALSTATUS" ColumnName="MARITALSTATUS" />
+                <ScalarProperty Name="ZhengZhi" ColumnName="ZhengZhi" />
+                <ScalarProperty Name="NATIVEPLACE" ColumnName="NATIVEPLACE" />
+                <ScalarProperty Name="Nation" ColumnName="Nation" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="BrchName" ColumnName="BrchName" />
+                <ScalarProperty Name="BrchID" ColumnName="BrchID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model2">
+        <EntityTypeShape EntityType="HWATTModel.KQZ_Card" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3084114583333335" />
+        <EntityTypeShape EntityType="HWATTModel.KQZ_Employee" Width="1.5" PointX="2.75" PointY="0.75" Height="9.2101041666666674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

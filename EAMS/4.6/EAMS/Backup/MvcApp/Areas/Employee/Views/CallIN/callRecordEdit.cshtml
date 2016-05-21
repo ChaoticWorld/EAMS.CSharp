@@ -1,0 +1,71 @@
+﻿@model CallInfo.Phone_Records
+@{ 
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml";}
+@{
+    ViewBag.Title = "callRecordEdit";
+}
+
+<h2>callRecordEdit</h2>
+<div id="btnDiv">
+<input type="button" id="btnAddNew" name="btnAddName" value="新增" />
+</div>
+<div id="EditDiv">
+<fieldset><form method="post" id="callRecordEdit" action="/Employee/CallIn/callRecordEdit" >
+
+<table><tr><td>
+ID </td><td><label id="lblID" >@Model.ID</label>@Html.Hidden("ID",Model.ID)</td><td>
+日期 </td><td>@Html.TextBox("callDate", (Model.callDate ?? DateTime.Now).ToString())</td></tr>
+<tr><td>
+号码 </td><td>@Html.TextBox("callPhone", Model.callPhone)</td><td>
+呼出否? </td><td>@Html.CheckBox("chk_callInOut", (Model.ID>0)?Model.callInOut:false) @Html.Hidden("callInOut",Model.callInOut)</td></tr>
+<tr><td>
+客户信息 </td><td><label id="lbldwCode" >@Model.dwCode</label>@Html.Hidden("dwCode",Model.dwCode) <br />
+<label id="lbldwName" >@Model.dwName</label>@Html.Hidden("dwName",Model.dwName)</td><td>
+联系人 </td><td>@Html.TextBox("dwContact", Model.dwContact)</td></tr>
+<tr><td>
+内容</td><td colspan='3'> @Html.TextArea("callContent", Model.callContent, new { style = "width:100%;" })</td>
+</tr>
+</table>
+</form></fieldset>
+<input type="button" id="editDivSubmit" value="保存" />
+<a id="lnkcallRecordPage" href="" >返回记录列表</a>
+</div>
+<script type="text/javascript" >
+    $(function () {
+        $("#btnAddNew").on("click", function () {
+            $("#recordID").val(-1);
+        });
+        $("#editDivSubmit").on("click", function () {
+            //验证
+            $("#ID").val($("#lblID").text());
+            $("#callInOut").val($("#chk_callInOut").prop("checked").toString())
+            //$("#dwCode").val($(window.parent.document).find("#topCode").val());
+            //$("#dwName").val($(window.parent.document).find("#cusName").text()); 
+            document.forms["callRecordEdit"].submit();
+        });
+    });
+</script>
+<script type="text/javascript">
+    function loaded() {
+        var id = $("#lblID").text();
+        if (id < 1) {
+            $("#lbldwCode").text($(window.parent.document).find("#topCode").val());
+            $("#lbldwName").text($(window.parent.document).find("#cusName").text());
+            $("#dwCode").val($(window.parent.document).find("#topCode").val());
+            $("#dwName").val($(window.parent.document).find("#cusName").text());
+
+            $("#dwContact").val($(window.parent.document).find("#cusContact").text());
+            var phone = $(window.parent.document).find("#callPhone").text();
+            if (phone)
+                $("#callPhone").val(phone);
+            else
+                $.get("/Employee/Petition/cusInfoJson/" + $("#lbldwCode").text(), function (cus) {
+                    $("#callPhone").val(cus.cPhone);
+                });
+        } 
+        $("#lnkcallRecordPage").attr("href", "/Employee/CallIn/callRecordPage/" + $("#lbldwCode").text());
+
+    }
+</script>
+<script type="text/javascript">
+    loaded();</script>

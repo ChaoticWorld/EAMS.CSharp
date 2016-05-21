@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="InventoryClassStdRate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clsCode" Type="nvarchar" MaxLength="8" />
+    <Property Name="clsName" Type="nvarchar" MaxLength="64" />
+    <Property Name="iOrderId" Type="int" />
+    <Property Name="cName" Type="nvarchar" MaxLength="128" />
+    <Property Name="cValue" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="priceRate" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="strategy">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dwCode" Type="nvarchar" MaxLength="128" />
+    <Property Name="dwName" Type="nvarchar" MaxLength="255" />
+    <Property Name="dwcontect" Type="nvarchar" MaxLength="64" />
+    <Property Name="invCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="invName" Type="nvarchar" MaxLength="255" />
+    <Property Name="invStd" Type="nvarchar" MaxLength="512" />
+    <Property Name="topPrice" Type="money" />
+    <Property Name="bottomPrice" Type="money" />
+    <Property Name="effDate" Type="datetime" />
+    <Property Name="expDate" Type="datetime" />
+    <Property Name="vouchCode" Type="nvarchar" MaxLength="64" />
+    <Property Name="vouchType" Type="nvarchar" MaxLength="255" />
+    <Property Name="bizType" Type="nvarchar" MaxLength="255" />
+    <Property Name="memo" Type="nvarchar" MaxLength="1024" />
+    <Property Name="area" Type="nvarchar" MaxLength="128" />
+    <Property Name="sCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sSource" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="strategyInvConvertRate">
+    <Key>
+      <PropertyRef Name="autoId" />
+    </Key>
+    <Property Name="autoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="invName" Type="nvarchar" MaxLength="255" />
+    <Property Name="invStd" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="invClass" Type="nvarchar" MaxLength="255" />
+    <Property Name="priceRate" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="AppDataModelStoreContainer">
+    <EntitySet Name="InventoryClassStdRate" EntityType="Self.InventoryClassStdRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="strategy" EntityType="Self.strategy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="strategyInvConvertRate" EntityType="Self.strategyInvConvertRate" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

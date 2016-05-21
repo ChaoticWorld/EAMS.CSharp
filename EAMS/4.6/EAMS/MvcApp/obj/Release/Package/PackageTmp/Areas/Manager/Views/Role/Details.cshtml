@@ -1,0 +1,107 @@
+﻿@using UserInfo
+@{
+    ViewBag.Title = "Details";
+}
+
+<style type="text/css">
+    #column1 {
+        float: left;
+        border: 2px solid lightgreen;
+    }
+
+    #column2 {
+        float: left;
+        border: 2px solid lightYellow;
+    }
+
+    #column3 {
+        float: left;
+        border: 2px solid lightgreen;
+    }
+
+    select {
+        min-height: 320px;
+        height: auto;
+    }
+</style>
+<h2>角色帐户分配</h2>
+<div>
+    <div>
+        <legend>用户角色分配</legend>
+        <div id="Role">
+            当前角色:
+            <input id="roleID" name="roleID" type="hidden" value='@TempData["RoleID"].ToString()' />
+            <input id="roleName" name="roleName" type="text" readonly="readonly" value='@TempData["RoleName"].ToString()' />
+        </div>
+        <div id="wrap">
+            <div id="column1">
+                <div id="UserList">
+                    待分配用户<br />
+                    @Html.ListBox("UnSelectUserList", new MultiSelectList(ViewBag.UnSelectUsers as List<UserModel>, dataTextField: "cUserName", dataValueField: "iUserID"))
+                </div>
+            </div>
+            <div id="column2">
+                <div>
+                    操作按钮<br />
+                    <input id="AddToRole" name="AddToRole" type="button" value="增加&gt;" onclick="addToRole()" />
+                    <br />
+                    <input id="SubToRole" name="SubToRole" type="button" value="&lt;减少" onclick="subToRole()" />
+                </div>
+            </div>
+            <div id="column3">
+                <div id="UserListSelected">
+                    已分配用户<br />
+                    @Html.ListBox("SelectedUserList", new MultiSelectList(ViewBag.SelectedUsers as List<UserModel>, dataTextField: "cUserName", dataValueField: "iUserID"))
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;">
+        <button onclick="submit()">保存</button> | @Html.ActionLink("角色列表", "Index")
+    </div>
+</div>
+<script type="text/javascript">
+    function submit() {
+        var url = "/Manager/Role/Details";
+        var seled = "";
+        $("#SelectedUserList").children("option").each(function () { seled = seled + $(this).val() + "," });
+        seled = seled.substring(0, seled.length - 1);
+        var unsel = "";
+        $("#UnSelectUserList").children("option").each(function () { unsel = unsel + $(this).val() + "," });
+        unsel = unsel.substring(0, unsel.length - 1);
+        $.post(url, { "roleID": $("#roleID").val(), "roleName": $("#roleName").val(), "SelectedUserList": seled, "UnSelectUserList": unsel },
+            function () { window.location.reload(); });
+    }
+</script>
+<script type="text/javascript">
+    //ListBox间数据移动以下是代码片段
+    function ListBox_Move(listfrom, listto) {
+        var size = $("#" + listfrom + " option").size();
+        var selsize = $("#" + listfrom + " option:selected").size();
+        if (size > 0 && selsize > 0) {
+            $.each($("#" + listfrom + " option:selected"), function (i, own) {
+                $(own).appendTo($("#" + listto));
+            });
+        }
+        $("#submit").removeAttr('disabled');
+    }
+
+
+    function addToRole() {
+        //从UnSelectUserList将选中的项移到SelectedUserList
+        ListBox_Move("UnSelectUserList", "SelectedUserList");
+    }
+    function subToRole() {
+        //从SelectedUserList将选中的项移到UnSelectUserList
+        ListBox_Move("SelectedUserList", "UnSelectUserList");
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#SelectedUserList").on("dblclick", function () {
+            subToRole();
+        });
+        $("#UnSelectUserList").on("dblclick", function () {
+            addToRole();
+        });
+    });</script>

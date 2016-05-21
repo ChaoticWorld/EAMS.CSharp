@@ -1,0 +1,198 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using strategyLib
+@using MvcApp.Areas.Employee.Models
+@model  strategyEditModel
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    .linein {
+    display:inline;
+    }
+
+</style>
+<div id="Main">
+    @{ Main m = Model.Main;
+       }
+    <div >
+        <div class="linein">
+            <label>序号:</label><input style="width:40px" type="number" id='ID' name="ID" value="@m.ID" readonly="readonly" />
+        </div>
+        <div class="linein">
+            <label>地区:</label><input style="width:60px" id='cDCName' name="cDCName" value="@m.cDCName" />
+        </div>
+        <div class="linein">
+            <label>单位名称:</label><input style="width:260px" id='cDWName' name="cDWName" title="@m.cDWCode" value="@m.cDWName" onblur="refCusInfo(this)" />
+        <button onclick="refCustomer()">参照</button>
+        </div><div class="linein">
+            <label>联系人:</label><input style="width:80px" id='cDWContact' name="cDWContact" value="@m.cDWContact" />
+        </div>
+        </DIV>
+    <div >
+        <div class="linein">
+            <label>有效期:</label><input style="width:160px; height:24px" type="date" id='dEffDate' name="dEffDate" value='@m.dEffDate.ToString("yyyy-MM-dd")' />
+            - <input style="width: 160px; height:24px " type="date" id='dExpDate' name="dExpDate" value='@m.dExpDate.ToString("yyyy-MM-dd")' />
+        </div>
+        <div class="linein">
+            <label>限单类型:</label>
+            @*<input style="width:160px" id='cVouchType' name="cSourceType" value="@m.cVouchType" />*@
+            @Html.DropDownList("cVouchType",(SelectList) TempData["listERP"], new { width="160px"})
+        </div>
+        <div class="linein">
+            <label>限单单号:</label><input style="width:160px" id='cVouchCode' name="cSourceType" value="@m.cVouchCode" />
+        </div>
+        <div class="linein">
+            <label>策略级别:</label><input style="width:40px" id='cLevel' name="cLevel" value="@m.cLevel" />
+        </div>
+    </div>
+    <div>
+    <div class="linein">
+        <label>来源类型:</label>
+        @*<input style="width:160px" id='cSourceType' name="cSourceType" value="@m.cSourceType" />*@
+        @Html.DropDownList("cSourceType", (SelectList)TempData["listEAMS"], new { width = "160px",onblue="goLevel()" })
+    </div>
+    <div class="linein">
+        <label>来源编号:</label><input style="width:160px" id='cSourceCode' name="cSourceCode" value="@m.cSourceCode" />
+    </div>
+        <div class="linein" style="float:right">
+        <button id="SaveAll" class="btn btn-default btn-group"  onclick="saveHead()">保存</button>
+            <button id="Valid" class="btn btn-default btn-group" onclick="checkErpVouch()">验证</button>
+        </div>
+</div>
+</div>
+
+<div id="Details">
+    <div id="List">@Html.Partial("strategyDetails", Model)</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+</div>
+<script type="text/javascript">
+    function saveHead() {
+        var head = new Object();
+        head.ID = $("#ID").val();
+        head.cDCName = $("#cDCName").val();
+        head.cDWName = $("#cDWName").val();
+        head.cDWCode = $("#cDWName").attr("title");
+        head.cDWContact = $("#cDWContact").val();
+        head.dEffDate = $("#dEffDate").val();
+        head.dExpDate = $("#dExpDate").val();
+        head.cVouchType = $("#cVouchType").val();
+        head.cVouchCode = $("#cVouchCode").val();
+        head.cSourceType = $("#cSourceType").val();
+        head.cSourceCode = $("#cSourceCode").val();
+        head.cLevel = $("#cLevel").val();
+
+        alert($.toJSON(head));
+
+        var url = '/Employee/strategy/saveHead';
+
+        $.ajax({
+            async: false,
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: head,
+            success: function (data) {
+                $("#ID").val(data);
+                saveRowAll();
+            },
+            error: function(err)
+            {
+                alert(err);
+        }
+        });
+    }
+    function checkErpVouch() {
+        var ID = $("#ID").val();
+        var url = "/Employee/strategy/checkErpVouch";
+        $.ajax({
+            async: false,
+            url: url+"/"+ID,
+            type: 'POST',
+            dataType: 'json',
+            data: ID,
+            success: function (chk) {
+                alert(chk);
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function callbackDialog(p) {
+        JqueryDialog.Close();
+        if (p) {
+            var jsonp;
+            switch (typeof (p)){
+                case "object": jsonp = p;break;
+                case "string":jsonp = eval("(" + p + ")"); break;
+                default:jsonp =undefined;break;
+            }
+            var info;
+            //alert(jsonp.dataClass);
+            switch (jsonp.dataClass) {
+                case 'inventory':
+                    info = jsonp.rows[0];
+                    //refInvCell
+                    if (info) {
+                        $(refInvCell).children("input:eq(0)").val(decodeURI(info.cInvCode));
+                        $(refInvCell).next().children("input:eq(0)").val(decodeURI(info.cInvName));
+                        $(refInvCell).next().next().children("input:eq(0)").val(decodeURI(info.cInvStd));
+                    }
+                    break;
+                case 'customer':
+                    info = jsonp.code;
+
+                    getcusInfo(info);
+                    break;
+                default:
+                    info = undefined;
+                    break;
+            }
+            //addclass(jsonp);
+        }
+        else alert("无选择结果");
+    }
+    function getcusInfo(code) {
+        $.ajax({
+            url: "/Common/RefCustomer/cusInfoJson/" + code,
+            type: "GET",
+            dataType: "json",
+            data: { id: code },
+            success: function (data) {
+                //alert(data.cCusName + ";" + data.ContactName + ";" + data.employeeName);
+                $('#cDWName').attr("title", data.cCusCode);
+                $('#cDWName').val(data.cCusName);
+                $('#cDWContact').val(data.ContactName);
+                //$('#cCusManager').val(data.employeeName);
+            }
+        });
+    }
+
+</script>
+
+<script type="text/javascript">
+    function goLevel() {
+        var idx = $("#cSourceType").selectedIndex;
+        $("#cLevel").val(idx);
+    }
+</script>
+<script type="text/javascript">
+    function refCustomer() {
+        var dw = $("#cDWName").val();
+        //alert(dw);
+        var url = "/Common/RefCustomer/searchGo";
+        if (!dw) {
+            JqueryDialog.Open1('搜索参照', encodeURI(url), 800, 440);
+        }
+        else {
+            url = url + "/" + dw;
+            JqueryDialog.Open1('搜索参照', encodeURI(url), 800, 440);
+        }
+    }
+    function refCusInfo(c) {
+        var code = $(c).val();
+        getcusInfo(code);
+    }
+</script>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HWATTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="HWATTModelStoreContainer">
+    <EntitySet Name="KQZ_Card" EntityType="HWATTModel.Store.KQZ_Card" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KQZ_Employee" EntityType="HWATTModel.Store.KQZ_Employee" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="KQZ_Card">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="bigint" Nullable="false" />
+    <Property Name="CardTime" Type="datetime" Nullable="false" />
+    <Property Name="CardTypeID" Type="smallint" Nullable="false" />
+    <Property Name="DevID" Type="bigint" Nullable="false" />
+    <Property Name="DevClass" Type="smallint" Nullable="false" />
+    <Property Name="cVerify" Type="char" MaxLength="32" />
+    <Property Name="ImgID" Type="bigint" Nullable="false" />
+    <Property Name="ImgStatus" Type="smallint" Nullable="false" />
+    <Property Name="IsValidate" Type="smallint" Nullable="false" />
+    <Property Name="FaceIDNo" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ModifyUser" Type="int" Nullable="false" />
+    <Property Name="ModifyType" Type="smallint" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KQZ_Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BrchID" Type="bigint" Nullable="false" />
+    <Property Name="BrchName" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="EmployeeCode" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="EmployeeName" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Gender" Type="smallint" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Nation" Type="varchar" MaxLength="50" />
+    <Property Name="NATIVEPLACE" Type="varchar" MaxLength="50" />
+    <Property Name="ZhengZhi" Type="varchar" MaxLength="50" />
+    <Property Name="MARITALSTATUS" Type="varchar" MaxLength="20" />
+    <Property Name="Health" Type="varchar" MaxLength="20" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="APOSITION" Type="varchar" MaxLength="50" />
+    <Property Name="EDUCATION" Type="varchar" MaxLength="50" />
+    <Property Name="School" Type="varchar" MaxLength="100" />
+    <Property Name="Graduation" Type="datetime" />
+    <Property Name="WorkPhone" Type="varchar" MaxLength="20" />
+    <Property Name="EnrollDate" Type="datetime" />
+    <Property Name="Privilege" Type="smallint" Nullable="false" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="IDCard" Type="varchar" MaxLength="20" />
+    <Property Name="AddrHome" Type="varchar" MaxLength="200" />
+    <Property Name="CardCode" Type="varchar" MaxLength="20" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="IsCheck" Type="smallint" Nullable="false" />
+    <Property Name="OnRule" Type="smallint" Nullable="false" />
+    <Property Name="OffRule" Type="smallint" Nullable="false" />
+    <Property Name="CanOvertime" Type="smallint" Nullable="false" />
+    <Property Name="HaveFesta" Type="smallint" Nullable="false" />
+    <Property Name="DevType" Type="smallint" Nullable="false" />
+    <Property Name="HDCPInfo" Type="image" />
+    <Property Name="RegisterType" Type="smallint" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="250" />
+    <Property Name="EmployeeLogPwd" Type="varchar" MaxLength="64" />
+    <Property Name="CheckType" Type="varchar" MaxLength="30" />
+    <Property Name="OpendoorType" Type="varchar" MaxLength="30" />
+    <Property Name="ModelNum" Type="smallint" Nullable="false" />
+    <Property Name="HavePwd" Type="smallint" Nullable="false" />
+    <Property Name="StaffStatus" Type="smallint" />
+    <Property Name="LastCardID" Type="bigint" />
+    <Property Name="Reserved1" Type="varchar" MaxLength="200" />
+    <Property Name="Reserved2" Type="varchar" MaxLength="200" />
+    <Property Name="Reserved3" Type="varchar" MaxLength="200" />
+    <Property Name="Reserved4" Type="varchar" MaxLength="200" />
+    <Property Name="DEVTYPESTR" Type="varchar" MaxLength="50" />
+    <Property Name="BEGINATTDATE" Type="datetime" />
+    <Property Name="ENDATTDATE" Type="datetime" />
+    <Property Name="RealEmployeeCode" Type="varchar" MaxLength="16" />
+  </EntityType>
+</Schema>

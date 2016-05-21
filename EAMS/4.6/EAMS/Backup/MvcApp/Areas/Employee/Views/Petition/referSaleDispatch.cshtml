@@ -1,0 +1,108 @@
+﻿@model IEnumerable<DataDB.ModelBase.Dispatch>
+
+@{
+    ViewBag.Title = "referSaleDispatch>";
+}
+
+<h2>参照销售发货单</h2>
+<script type="text/javascript">
+<!--
+    //注：每个嵌入页必须定义该方法，供父窗口调用
+    function Ok(code) {
+        window.parent.callbackDialog(code);
+    }
+//-->
+</script>
+
+<div style="width:100%; height:320px; overflow:scroll">
+<table id="grid">
+    <tr role="head">
+    <th>选择</th>
+        <th sort="true">日期</th>        
+        <th sort="true">单号</th>
+        <th sort="true">存货编码</th>
+        <th sort="true">名称</th>
+        <th sort="true">型号</th>
+        <th sort="true">单位</th>
+        <th sort="true">数量</th>
+        <th sort="true">件数</th>
+        <th sort="true">单价</th>
+        <th sort="true">金额</th>
+        <th style=" display:none"></th>
+    </tr>
+
+@foreach (var mitem in Model)
+{
+    foreach (var ditem in mitem.Details)
+    {
+    <tr>
+        <td><input type="checkbox" /></td>
+        <td><label name="dDate">@mitem.Main.dDate.ToShortDateString()</label></td>        
+        <td title="@mitem.Main.Memo"><label name="Code">@mitem.Main.Code</label></td>
+        <td><label name="cInvCode" >@ditem.inventory.cInvCode</label></td>
+        <td><label name="cInvName" >@ditem.inventory.cInvName</label></td>
+        <td><label name="cInvStd" >@ditem.inventory.cInvStd</label></td>
+        <td><label name="cUnit" >@ditem.inventory.cUnit</label></td>
+        <td><label name="iQuantity" >@ditem.quantity.iQuantity.ToString()</label></td>
+        <td><label name="iNum" >@ditem.quantity.iNum.ToString("0.00")</label></td>
+        <td><label name="iPrice" >@ditem.iPrice.ToString()</label></td>
+        <td><label name="iSum" >@ditem.iSum.ToString()</label></td>
+        <td style=" display:none"><label name="cMemo">@mitem.Main.Memo</label></td>
+    </tr>
+    }
+}
+</table>
+</div>
+<input id="submit" type="button" value="提交" />
+<script type="text/javascript">
+    //给按钮定义
+    $(document).ready(function () {
+        $("#submit").on("click", function () {
+            //整理数据，生成json
+            var djson = {};
+            var td = {};
+            var tr = [];
+            var trs = [];
+            var checkboxs = $("tr input:checked");
+            checkboxs.each(function (i) {
+                var row = this.parentElement.parentElement;
+                //var ritem = new Object();
+                //ritem.dDate = $(row.cells[1].children[0]).text();
+                $(row.cells).each(function (j) {
+                    td = "\"" + row.cells[j].children[0].name + "\":\"" + encodeURI($(row.cells[j].children[0]).text()) + "\"";
+                    tr.push(td);
+                })
+                trs.push("{" + tr + "}");
+                tr = [];
+            });
+            djson = "{\"rows\":[" + trs + "]}";
+
+            Ok(djson);
+        });
+    });
+</script>
+    <script type="text/javascript">
+        $(function () {
+            $("#grid").sorttable({
+                ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                ascImgSize: "8px",
+                descImgSize: "8px",
+                onSorted: function (cell) {
+                    alert(cell.index() + " -- " + cell.text());
+                }
+            });
+        });
+    </script>
+@*{
+    "rows": [
+        {
+            "r11": "r11",
+            "r12": "r12"
+        },
+        {
+            "r21": "r21",
+            "r22": "r22"
+        }
+    ]
+}*@

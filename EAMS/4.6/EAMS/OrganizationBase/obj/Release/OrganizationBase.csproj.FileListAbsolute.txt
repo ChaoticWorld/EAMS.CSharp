@@ -1,0 +1,32 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\OrganizationBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\OrganizationBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\UserInfo.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\Logs.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\UserInfo.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\bin\Release\Logs.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\obj\Release\OrganizationBase.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\obj\Release\OrganizationBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\OrganizationBase\obj\Release\OrganizationBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\OrganizationBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\OrganizationBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\UserInfo.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\Logs.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\UserInfo.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\bin\Release\Logs.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\obj\Release\OrganizationBase.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\obj\Release\OrganizationBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\OrganizationBase\obj\Release\OrganizationBase.pdb

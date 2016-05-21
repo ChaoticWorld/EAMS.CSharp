@@ -1,0 +1,398 @@
+﻿@model IEnumerable<Petition.QC_Details>
+
+@{
+    ViewBag.Title = "RecordEdit";
+}
+
+<h2>签呈内容编辑</h2>
+
+<style type="text/css">
+    input { font-family:宋体; font-size:small;}
+    th  { font-family:宋体; font-size:small;}
+ td { word-break: break-all; word-wrap:break-word;}
+ .col0 { width:20px; overflow:visible;}
+ .col1 { width:60px; overflow:auto; }
+ .col2 { width:40px; overflow:auto; display:table-cell;}
+ .col3 { width:40px;}
+ .col4 { width:72px;}
+ .col5 { width:72px;}
+ .col6 { width:30px;}
+ .col7 { width:40px;}
+ .col8 { width:40px;}
+ .col9 { width:40px;}
+ .col10 { width:40px;}
+</style>
+
+<form id="editForm" name="editForm"  method="post"  onsubmit="submitVerify()" >
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>QC_Details</legend>
+        客户名称：@TempData["cusName"] &nbsp &nbsp &nbsp &nbsp
+        @Html.Hidden("QC_MainID", (Model.Count()==0) ? ViewData["mid"].ToString() : Model.First().QC_MainID.Value.ToString()) 
+        @Html.Hidden("cCusCode", (Model.Count() == 0) ? TempData["cusCode"].ToString() : Model.First().QC_Main.cCusCode)
+        @Html.DropDownList("Class", TempData["SelectRC"] as SelectList)
+        <input  type="button" value="新增参照" title="新增参照" onclick="openReferDialog()" />
+        <input  type="button" value="新增空行" title="新增空行" onclick="addNewline()" />
+        &nbsp &nbsp &nbsp &nbsp 签呈编号:<span>@((Model.Count()==0)? "" :@Model.First().QC_Main.cCode)</span>
+<script type="text/javascript">
+    function openReferDialog() {    //参照对话框定义
+        var selClass = $("#Class");
+        //alert($(selClass).find("option:selected").text());
+        switch ($(selClass).find("option:selected").text()) {
+            case "销售订单": //订单，参照ERP销售订单
+                var url = "/Employee/Petition/referSaleOrder/" + $("#cCusCode").val() + "/10";
+                JqueryDialog.Open1('参照订单信息', url, 900, 450);
+                break;
+            case "配赠内容": //配赠，参照ERP存货信息
+                var url = "/Employee/Petition/referInventory/";
+                JqueryDialog.Open1('参照存货信息', url, 900, 450);
+                break;
+                //调试
+            case "销售发货单": //发货单，参照ERP销售发货单
+                var url = "/Employee/Petition/referSaleDispatch/" + $("#cCusCode").val() + "/10";
+                JqueryDialog.Open1('参照订单信息', url, 900, 450);
+                break;
+            case "累计销售": //累计销售，参照ERPE存货信息
+                var url = "/Employee/Petition/referInventory/";
+                JqueryDialog.Open1('参照订单信息', url, 900, 450);
+                break;
+            default:
+                addNewline();
+                break;
+        }
+    }
+    function addNewline() { //增加空行
+        //this成员 "dDate" "Code""cInvCode""cInvName""cInvStd""cUnit""iQuantity""iNum""iPrice" "iSum" "cMemo"
+        var jsonstr = '{"rows":[{ "row": { '
+                 + '"dDate":"","Code":"","cInvCode":"","cInvName":"","cInvStd":"","cUnit":"",'
+                 + '"iQuantity":"","iNum":"","iSum":"","cMemo":"","bDaiShouKuan":"false","dSaleSumStartDate":"","dSaleSumFinishDate":""'
+                 + '}}]}';
+        addclass(eval("(" + jsonstr + ")"));
+    }
+    </script>
+    <script type="text/javascript">
+        function addclass(jsonp) {
+            var cls = $("#Class option:selected")[0];
+            $(jsonp.rows).each(function (r) {
+                //alert($("table#grid")[0].rows.length);
+                AddRow();
+                var trow
+                var trows = $("table#grid")[0].rows;
+                trow = trows[trows.length - 1];
+                //alter(trow.innerHTML);
+                $(trow.cells[0].children[1]).val(""); //autoid
+                $(trow.cells[0].children[2]).val($("#QC_MainID").val()); //mainid
+                $(trow.cells[1].children[0]).text(cls.value);
+                $(trow.cells[1].children[1]).text(cls.text);
+                $(trow.cells[1].children[2]).val(cls.value);
+                $(trow.cells[2].children[0]).val((this.Code) ? decodeURI(this.Code) : "");
+                $(trow.cells[3].children[0]).val((this.cInvCode) ? decodeURI(this.cInvCode) : "");
+                $(trow.cells[4].children[0]).text((this.cInvName) ? decodeURI(this.cInvName) : "");
+                $(trow.cells[4].children[1]).val((this.cInvName) ? decodeURI(this.cInvName) : "");
+                $(trow.cells[5].children[1]).val((this.cInvStd) ? decodeURI(this.cInvStd) : "");
+                $(trow.cells[5].children[0]).text((this.cInvStd) ? decodeURI(this.cInvStd) : "");
+                $(trow.cells[6].children[0]).val((this.iQuantity) ? this.iQuantity : "");
+                $(trow.cells[7].children[0]).val((this.iPrice) ? this.iPrice : "");
+                $(trow.cells[8].children[0]).val((this.iSum) ? this.iSum : "");
+                $(trow.cells[9].children[0]).val((this.cMemo) ? decodeURI(this.cMemo) : "");
+                $(trow.cells[10].children[0]).prop("checked", ((this.bDaiShouKuan) ? this.bDaiShouKuan : false));
+                $(trow.cells[10].children[1]).prop("checked", ((this.bDaiShouKuan) ? this.bDaiShouKuan : false));
+                $(trow.cells[11].children[0]).val((this.dSaleSumStartDate) ? this.dSaleSumStartDate : "");
+                $(trow.cells[11].children[1]).val((this.dSaleSumFinishDate) ? this.dSaleSumFinishDate : "");
+
+                switch ($(cls).text()) {
+                    case "累计销售":
+                        //整理累计销售起止日期
+                        var txtboxCode = trow.cells[2].children[0];
+                        toSumSale(txtboxCode);
+                        break;
+                    case "代收货款":
+//                        if (this.bDaiShouKuan && this.bDaiShouKuan == true) {
+//                            $(trow.cells[10].children[0]).prop("checked", true);
+//                            $(trow.cells[10].children[1]).prop("checked", true);
+//                        }
+                        break;
+                }
+                clearTable(trow)
+            });
+            //this成员 "dDate" "Code""cInvCode""cInvName""cInvStd""cUnit""iQuantity""iNum""iPrice" "iSum" "cMemo" "dEffDate" "dExpDate"
+        }
+        function clearTable(trow) {//整理表显示格式
+            var cls = $(trow.cells[1].children[1]).text();
+            $(trow.cells[10].children[0]).attr("disabled", "disabled");
+            $(trow.cells[10].children[1]).attr("disabled", "disabled");
+            switch (cls) {
+                case "累计销售": 
+                    break;
+                case "代收货款":
+                    $(trow.cells).each(function () {
+                        $(this).find("input").each(function () {
+                            $(this).attr("READONLY", "readonly");
+                        });
+                    });
+                    $(trow.cells[10].children[0]).removeAttr("READONLY");
+                    $(trow.cells[10].children[1]).removeAttr("READONLY");
+                    $(trow.cells[10].children[0]).removeAttr("disabled");
+                    $(trow.cells[10].children[1]).removeAttr("disabled");
+                    break;
+                case "运费":
+                    $(trow.cells).each(function () {
+                        $(this).find("input").each(function () {
+                            $(this).attr("READONLY", "readonly");
+                            //$(this).attr("disabled", "disabled");
+                        });
+                    });
+                    $(trow.cells[8].children[0]).removeAttr("READONLY");
+                    //$(trow.cells[8].children[0]).removeAttr("disabled");
+                    break;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function toSumSale(t) {    //累计销售整理;新增累计销售时，起止日期处理；默认起：当前日期，止当月最后一天。
+            var txtboxCode = t;
+            var trow = $(t).parent().parent()[0];
+            var dsssd = $(trow.cells[11].children[0]).val();
+            var dssfd = $(trow.cells[11].children[1]).val();
+            //alert(_dsssd);
+            var txtbox1 = $("<INPUT style='WIDTH: 70px' type=text name='dstart' onblur='toStartDate(this)'>");
+            var txtbox2 = $("<INPUT style='WIDTH: 70px' type=text name='dfinish' onblur='toFinishDate(this)'>");
+
+            var d = new Date();
+            var dstart = d.Format("yyyy-MM-dd");
+            //d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+            //设置日期为本月最后一天
+            d.setMonth(d.getMonth() + 1, 1);
+            d.setDate(d.getDate() - 1);
+            var dfinish = d.Format("yyyy-MM-dd");
+            if (dsssd) {
+                $(txtbox1).val(dsssd);
+            }
+            else {
+                $(txtbox1).val(dstart);
+                $(trow.cells[11].children[0]).val(dstart);
+            }
+            if (dssfd) {
+                $(txtbox2).val(dssfd);
+            }
+            else {
+                $(txtbox2).val(dfinish);
+                $(trow.cells[11].children[1]).val(dfinish);
+            }
+
+            $(txtboxCode).attr("name", "noneCode");
+            $(txtboxCode).val("");
+            $(txtboxCode).remove();
+            $(trow.cells[2]).append("起"); $(trow.cells[2]).append($(txtbox1));
+            //$(trow.cells[2]).append(" - ");
+            $(trow.cells[2]).append("止"); $(trow.cells[2]).append($(txtbox2));
+
+            $(function () {
+                $(txtbox1).on("blur", function () { toStartDate(this) });
+                $(txtbox2).on("blur", function () { toFinishDate(this) });
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function toStartDate(dcell) {
+            var row = $(dcell).parent().parent()[0];
+            $(row.cells[11].children[0]).val($(dcell).val());
+        }
+        function toFinishDate(dcell) {
+            var row = $(dcell).parent().parent()[0];
+            $(row.cells[11].children[1]).val($(dcell).val());
+        }
+        function toInventoryInfo(dcell) {
+            var invcode = $(dcell).val();
+            //alert(invcode);
+            var trow = $(dcell).parent().parent()[0];
+            //$(trow.cells[4].children[0]).text("aa");
+            if (invcode){
+                $.get("/Employee/Petition/referInventoryInfo/" + invcode, function (data) {
+                    $(trow.cells[4].children[1]).val(data.cInvName);
+                    $(trow.cells[5].children[1]).val(data.cInvStd);
+                    $(trow.cells[4].children[0]).text(data.cInvName);
+                    $(trow.cells[5].children[0]).text(data.cInvStd);
+                });
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    function callbackDialog(p) {
+        JqueryDialog.Close();
+        if (p) {
+            //alert(p);
+            //销售订单参照            
+            var jsonp = eval("("+p+")");
+            addclass(jsonp);
+        }
+        else alert("无选择结果");
+    }
+
+        </script>
+        <input type="hidden" value="新增一行" onclick="AddRow()" />
+        <div style="width:100%; height:400px; overflow:scroll;">
+        <table id="grid" style=" font-family:宋体; font-size:small;">
+        <tr role="head">
+        <th>序号</th>
+        <th sort="true">项目名称</th>
+        <th sort="true">单据号</th>
+        <th sort="true">商品编码</th>
+        <th sort="true">商品名称</th>
+        <th sort="true">型号</th>
+        <th sort="true">数量</th>
+        <th sort="true">单价</th>
+        <th sort="true">金额</th>
+        <th sort="true">备注</th>
+        <th sort="true">货运代收</th>
+        <th style=" display:none"></th>
+        </tr>
+        <tr style="display:none">
+        <td class="col0"><a href="#" onclick="deleteRow(this)" >删除</a> 
+        @Html.Hidden("[0].QC_Autoid") @Html.Hidden("[0].QC_MainID")  </td>
+        <td class="col1"><label  name="QC_RCID"></label> <label name="QC_RCName"></label>
+        @Html.Hidden("[0].QC_RCID")
+        </td>
+        <td class="col2">@Html.TextBox("[0].QC_OrderCode", "", new { style = "width:70px" })</td>
+        <td class="col3">@Html.TextBox("[0].cInvCode","", new { style = "width:50px",onblur="toInventoryInfo(this)" })</td>
+        <td class="col4"><label></label>@Html.Hidden("[0].cInvName")</td>
+        <td class="col5"><label></label>@Html.Hidden("[0].cInvStd")</td>
+        <td class="col6">@Html.TextBox("[0].iQuentity","", new { style = "width:30px" })</td>
+        <td class="col7">@Html.TextBox("[0].iPrice","", new { style = "width:50px" })</td>
+        <td class="col8">@Html.TextBox("[0].iSum", "",new { style = "width:50px" })</td>
+        <td class="col9">@Html.TextArea("[0].cMemo", "",new { style = "width:70px" })</td>
+        <td class="col10">@Html.CheckBox("[0].bDaiShouKuan")</td>        
+        <td style="display:none;"> 
+        @Html.Hidden("[0].dSaleSumStartDate")
+        @Html.Hidden("[0].dSaleSumFinishDate")
+         </td>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var d in Model)
+            {
+        <tr>
+        <td class="col0"><a href="#" onclick="deleteRow(this)" >删除 @d.QC_Autoid</a> 
+        @Html.Hidden("[0].QC_Autoid", d.QC_Autoid) @Html.Hidden("[0].QC_MainID", d.QC_MainID) </td>
+        <td class="col1">@Html.Label("QC_RCID",d.QC_RCID.Value.ToString()) 
+        @Html.Label("QC_RCName" ,d.QC_DetailClass.QC_RCName) 
+        @Html.Hidden("[0].QC_RCID", d.QC_RCID)</td>
+        @{if (d.dSaleSumStartDate == null || d.dSaleSumFinishDate == null){
+        <td class="col2">@Html.TextBox("[0].QC_OrderCode", d.QC_OrderCode, new { style = "width:80px;" })</td>
+            }
+            else
+            {<td class ="col2">
+            起<input type="text" style="width:70px" value="@d.dSaleSumStartDate.Value.ToShortDateString()" onblur="toStartDate(this)" />
+            止<input type="text" style="width:70px" value="@d.dSaleSumFinishDate.Value.ToShortDateString()" onblur="toFinishDate(this)" />
+            </td>}
+            }
+        <td class="col3">@Html.TextBox("[0].cInvCode", d.cInvCode, new { style = "width:50px", onblur = "toInventoryInfo(this)" })</td>
+        <td class="col4"><label>@d.cInvName</label>
+        @Html.Hidden("[0].cInvName",d.cInvName)
+        </td>
+        <td class="col5"><label>@d.cInvStd</label>
+        @Html.Hidden("[0].cInvStd",d.cInvStd)
+        </td>
+        <td class="col6">@Html.TextBox("[0].iQuentity", (d.iQuentity.HasValue?d.iQuentity.Value.ToString("#0.00"):""), new { style = "width:30px" })</td>
+        <td class="col7">@Html.TextBox("[0].iPrice", (d.iPrice.HasValue? d.iPrice.Value.ToString("#0.00"):""), new { style = "width:50px" })</td>
+        <td class="col8">@Html.TextBox("[0].iSum",( d.iSum.HasValue? d.iSum.Value.ToString("#0.00"):""), new { style = "width:50px" })</td>
+        <td class="col9">@Html.TextArea("[0].cMemo", d.cMemo, new { style = "width:80px" })</td>
+        <td class="col10">@Html.CheckBox("[0].bDaiShouKuan", d.bDaiShouKuan.HasValue?d.bDaiShouKuan.Value:false)</td>        
+        <td style=" display:none" >
+        @Html.Hidden("[0].dSaleSumStartDate", d.dSaleSumStartDate)
+        @Html.Hidden("[0].dSaleSumFinishDate", d.dSaleSumFinishDate)
+        </td>
+        </tr>
+            }
+        }
+        </table>
+        </div>
+        <script type="text/javascript">
+            function repairCallAttrName() {
+                var table = $("table#grid")[0];
+                var rcount = table.rows.length;
+                var rows = table.rows;
+                var row = null;
+                var name2 = '';
+                var name = '';
+                var startidx = 0;
+                for (var j = 1; j < table.rows.length; j++) {
+                    row = table.rows[j];
+                    //整理提交名称（系统生成sumbitName属性）的数组号
+                    for (var i = 0; i < row.cells.length; i++) {
+                        $(row.cells[i].children).each(function () {
+                            name2 = this.name;
+                            //alert(name2);
+                            if (name2) {
+                                //alert(j + "(name2):" + name2);
+                                startidx = name2.indexOf("].") + 2;
+                                if (name.indexOf("[") > -1)
+                                    name = "[" + (j - 1) + "]." + name2.substr(startidx, name2.length - startidx);
+                                else name = name2;
+                                //alert('new name : ' + name);
+                                this.name = name;
+                                //if (!this.submitName)
+                                //    $(this).attr("submitName", name);
+                            }
+                        });
+                    }
+                    //整理条目类别数据格式
+                    clearTable(row);
+                }
+            }
+            function AddRow() {
+                var table = $("table#grid")[0];
+                var rcount = table.rows.length;
+                var row0 = table.rows[1];
+                var newrow = $(row0).clone()[0];
+                $(newrow).removeAttr('style');
+//                for (var i = 1; i < newrow.cells.length; i++) {
+//                    $(newrow.cells[i].children[0]).attr('value', rcount - 1);
+//                }
+                $(table).append(newrow);
+                repairCallAttrName();
+            }
+            function deleteRow(r) {
+                var tr = r.parentElement.parentElement;
+                var autoid = $(tr.cells[0].children[1]).val();
+                if (confirm("是否删除? \n AutoID:" + autoid +";")) {
+                    $.get("/Employee/Petition/RecordItemDelete/" + autoid);
+                    $(tr).remove();
+                }
+            repairCallAttrName();
+            }
+        </script>
+        <p> <input id='submit' name='submit' type="submit" value="保存"  /> </p>
+        <script type="text/javascript">
+            function submitVerify() {
+                //var t = $("#grid");
+                //alert(Verify);
+            }
+            </script>
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("返回", "Edit", new { id = (Model.Count()==0)?ViewData["mid"].ToString():Model.First().QC_MainID.Value.ToString() })
+<div style="display:none">@ViewData.Remove("mid")</div>
+</div>
+<script type="text/javascript">
+    repairCallAttrName();</script>
+    <script type="text/javascript">
+        $(function () {
+            $("#grid").sorttable({
+                ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                ascImgSize: "8px",
+                descImgSize: "8px",
+                onSorted: function (cell) {
+                    //alert(cell.index() + " -- " + cell.text());
+                }
+            });
+        });
+    </script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

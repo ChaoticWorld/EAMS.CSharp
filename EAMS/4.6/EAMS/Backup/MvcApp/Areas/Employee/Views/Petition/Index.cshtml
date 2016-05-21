@@ -1,0 +1,100 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model  PagedList<Petition.QC_Main>
+
+@{
+    ViewBag.MainTitle = "签呈首页";
+    ViewBag.Title = "Index Petition ver20150311 Beta";
+}
+<style type="text/css">
+
+
+    input[type="date"] {
+        height: 25px;
+    }</style>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+            <fieldset>
+                @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } },
+      new AjaxOptions { UpdateTargetId = "petitionLists", InsertionMode = InsertionMode.Replace },
+      new RouteValueDictionary { { "id", "searchForm" } }))
+{
+    <div style="display:inline-block">
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td style="width: 110px;" >签呈关键字:
+                        <input type="text" id="searchKey" placeholder="签呈号，客户名称，客户编码，客户联系人" style="width: 100px;" name="searchKey" />
+                    </td>
+                    <td style ="width: 120px;">
+                        创建/修改员工:
+                        <input type="text" id="Memployee" placeholder="客户经理，创建人，修改人" name="Memployee" style="width: 100px;" />
+                    </td>
+                    <td style="width: 300px;">
+                        创建/修改日期范围:<br />起
+                        <input id="MstartDate" style="width: 120px;" placeholder="yyyy-mm-dd" name="MstartDate" type="date" />
+                        止
+                        <input id="MfinishDate" name="MfinishDate" style="width: 120px;" type="date" placeholder="yyyy-mm-dd" />
+                    </td>
+                    @*<td style="width: 120px;">
+                        提交/审批员工:
+                        <input type="text" id="Remployee" name="Remployee" placeholder="审批人，提交人" style="width: 100px;" />
+                    </td>
+                    <td style="width: 200px;">
+                        提交/审批日期范围:<br />起
+                        <input id="RstartDate" name="RstartDate" style="width: 70px;" type="text" placeholder="yyyy-mm-dd" />
+                        止
+                        <input id="RfinishDate" name="RfinishDate" style="width: 70px;" type="text" placeholder="yyyy-mm-dd" />
+                    </td>*@
+                </tr>
+            </table>
+        </div>
+        <div class="btn btn-group" style="float:right">
+            <input type="submit" class="btn btn-default" id="btnSearch" value="查寻" />
+                @Html.ActionLink("创建", "Edit", new { id = -1 }, new { @class = "btn btn-default" })
+                @*@if ((bool)TempData["enableDetailsClassEdit"])
+                { @Html.ActionLink("明细分类管理", "DetailsClassEdit", new { }, new { @class = "btn btn-default" }); }*@
+            <a class="btn btn-default" href="@Url.Action("EditClass")">管理分类</a></div>
+    </div>
+}
+            </fieldset>
+    </div>
+    <div class="row-fluid">
+        <div id='petitionLists'>@Html.Partial("List", Model) </div>
+    </div>
+
+<div class="row-fluid">
+        <input type="button" value="输出结果" id="btnOutput" />|<a href="/Employee/Petition/OutputListWithHtmlTable/">输出结果</a>
+</div>
+    </div>
+<script type="text/javascript" src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#tb").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+        $("#btnOutput").on("click", function () {
+            var k = $("#searchKey").val();
+            var me = $("#Memployee").val();
+            var ms = $("#MstartDate").val();
+            var mf = $("#MfinishDate").val();
+            var re = $("#Remployee").val();
+            var rs = $("#RstartDate").val();
+            var rf = $("#RfinishDate").val();
+            //test
+            //k = "董富海";
+            var url = "/Employee/Petition/OutputList/";
+            var params = "searchKey," + k + ";Memployee," + me + ";MstartDate," + ms + ";MfinishDate," + mf + ";Remployee," + re + ";RstartDate," + rs + ";RfinishDate," + rf;
+            window.frames['downloadFrame'].document.location.href = url + params;
+        });
+    });
+</script>
+<iframe id="downloadFrame" height='0' width='0' src="#" style="display:none"></iframe>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+

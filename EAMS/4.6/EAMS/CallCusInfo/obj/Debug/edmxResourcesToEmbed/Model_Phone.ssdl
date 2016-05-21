@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataPhoneModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="AppDataPhoneModelStoreContainer">
+    <EntitySet Name="Phone_CallContent" EntityType="AppDataPhoneModel.Store.Phone_CallContent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phone_ContectClass" EntityType="AppDataPhoneModel.Store.Phone_ContectClass" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phone_Records" EntityType="AppDataPhoneModel.Store.Phone_Records" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Phone_CallContent">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" />
+    <Property Name="contectClass" Type="int" />
+    <Property Name="contectText" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Phone_ContectClass">
+    <Key>
+      <PropertyRef Name="clsID" />
+    </Key>
+    <Property Name="clsID" Type="int" Nullable="false" />
+    <Property Name="clsName" Type="nvarchar" MaxLength="255" />
+    <Property Name="clsDescription" Type="nvarchar" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="Phone_Records">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dwCode" Type="nvarchar" MaxLength="64" />
+    <Property Name="dwName" Type="nvarchar" MaxLength="255" />
+    <Property Name="dwContact" Type="nvarchar" MaxLength="64" />
+    <Property Name="callPhone" Type="nvarchar" MaxLength="128" />
+    <Property Name="callInOut" Type="bit" />
+    <Property Name="callDate" Type="datetime" />
+    <Property Name="callContent" Type="nvarchar(max)" />
+  </EntityType>
+</Schema>

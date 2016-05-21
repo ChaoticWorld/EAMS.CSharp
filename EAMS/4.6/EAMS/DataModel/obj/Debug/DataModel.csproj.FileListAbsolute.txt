@@ -1,0 +1,21 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataModel\bin\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataModel\bin\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataModel\obj\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DataModel\obj\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\bin\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\bin\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\obj\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\obj\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\bin\Debug\System.Net.Http.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\bin\Debug\System.Net.Http.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DataModel\bin\Debug\zh-Hans\System.Net.Http.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\bin\Debug\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\bin\Debug\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\bin\Debug\System.Net.Http.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\bin\Debug\System.Net.Http.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\bin\Debug\zh-Hans\System.Net.Http.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\obj\Debug\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DataModel\obj\Debug\DataModel.pdb

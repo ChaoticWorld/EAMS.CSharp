@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Petition.QC_Replys>
+
+<div id="qcReplysPage">
+<p>审批列表</p>
+    <table id='qcReplys'>
+        <tr role="head">
+            <th sort="true" >序号</th>
+            <th sort="true" >签呈号</th>
+            <th sort="true" >提交人</th>
+            <th sort="true" >提交日期</th>
+            <th sort="true" >审批人</th>
+            <th sort="true" >审批日期</th>
+            <th sort="true" >批示内容</th>
+            <th sort="true" >结果</th>
+            <th>NextID</th>
+        </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QC_MainID)
+            </td>
+            <td>                
+            @Html.Hidden("SubmitUserId", item.QC_SubmitMan)
+                @Html.DisplayFor(modelItem =>
+         SystemBLL.UserBLL.getUser(int.Parse(item.QC_SubmitMan)).cUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QC_SubmitDate)
+            </td>
+            <td>
+            @Html.Hidden("ReplyUserId", item.QC_ReplyMan)
+                @Html.DisplayFor(modelItem =>
+            SystemBLL.UserBLL.getUser(int.Parse(item.QC_ReplyMan)).cUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QC_ReplyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QC_ReplyContent)
+            </td>
+            <td>
+            @{if (item.QC_ReplyPass != null)
+              {   <span>@(item.QC_ReplyPass.Value ? "同意" : "不同意")
+                  </span>}
+              else { <span>未处理</span>}
+              }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QC_NextID)
+            </td>
+        </tr>
+
+    }
+    <tr><td colspan='2'>最新审批地址：</td><td colspan='7'>
+        <div id="ReplyAddress">
+    @if (Model !=null && Model.Count()>0){
+    <span>内网-http://@HttpContext.Current.Request.Url.Host:@HttpContext.Current.Request.Url.Port/Employee/Petition/ReplySumbit/@Model.First().QC_MainID.ToString()</span>
+    <br/>
+    <span>外网-http://defulong.3322.org:@HttpContext.Current.Request.Url.Port/Employee/Petition/ReplySumbit/@Model.First().QC_MainID.ToString()</span>}
+     </div>
+</td></tr>
+    </table>
+    </div>

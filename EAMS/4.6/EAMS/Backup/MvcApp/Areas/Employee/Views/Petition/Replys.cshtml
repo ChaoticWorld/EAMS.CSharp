@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Petition.QC_Replys>
+
+@{
+    ViewBag.Title = "Replys";
+}
+
+<h2>审批列表</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_MainID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_SubmitMan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_SubmitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_ReplyMan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_ReplyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_ReplyContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_ReplyPass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QC_NextID)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>    
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_MainID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_SubmitMan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_SubmitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_ReplyMan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_ReplyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_ReplyContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_ReplyPass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QC_NextID)
+        </td>
+    </tr>
+}
+
+</table>
+        
+        <div>    @{
+            Html.ActionLink("处理", "Replying", new { id = (Model == null) ? Model.Last().AutoId : -1 }); }
+        </div>

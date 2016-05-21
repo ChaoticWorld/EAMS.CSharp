@@ -1,0 +1,68 @@
+﻿@using UserInfo
+@model IEnumerable<UserModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>用户列表</h4>
+<p>当前用户:@User.Identity.Name</p>
+<p>
+    @Html.ActionLink("创建新用户", "Register")
+</p>
+<table>
+    <tr>
+        <th>
+            编码
+        </th>
+        <th>
+            名字
+        </th>
+        <th>
+            EMail
+        </th>
+        <th>
+            移动电话
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.cUserCode
+        </td>
+        <td>
+            @item.cUserName
+        </td>
+        <td>
+            @item.cUserEMail
+        </td>
+        <td>
+            @item.cUserMobile
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id=item.iUserId }) |
+            @Html.ActionLink("角色", "Details", new { id=item.iUserId }) |
+        <a href="#" onclick="deleteUser(@item.iUserId)">删除</a>
+        </td>
+    </tr>
+}
+</table>
+
+<p>@Html.ActionLink("返回用户管理", "../ManagerHome")</p>
+
+<script type="text/javascript">
+    function deleteUser(id)
+    {
+        var url = "@Url.Action("Delete","Account")/" + id;
+        //alert(url);
+        $.post(url, { id: id }, function (msg) {
+            if (msg > 0) {
+                alert("删除成功!");
+                location.reload();
+            }
+            else alert("删除失败!员工不存在或者有关联项未处理.");
+        });
+    }
+    </script>

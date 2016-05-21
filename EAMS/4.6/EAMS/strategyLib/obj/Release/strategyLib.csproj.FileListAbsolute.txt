@@ -1,0 +1,53 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\strategyLib.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\strategyLib.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\strategyLib.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\obj\Release\strategyLib.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\obj\Release\strategyLib.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\obj\Release\strategyLib.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\strategyLib\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\strategyLib.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\strategyLib.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\strategyLib.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.U8.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\ERPFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.U8.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\ERPFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\obj\Release\strategyLib.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\obj\Release\strategyLib.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\strategyLib\obj\Release\strategyLib.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\strategyLib.dll.config
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\strategyLib.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\strategyLib.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.U8.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\ERPFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.U8.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\ERPFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\obj\Release\strategyLib.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\obj\Release\strategyLib.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\strategyLib\obj\Release\strategyLib.pdb

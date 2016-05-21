@@ -1,0 +1,41 @@
+﻿
+@{ 
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml";}
+@{
+    ViewBag.Title = "saleRecordPage";
+}
+<div style="text-align:center; font-family:黑体; font-size:larger;"> 交易记录 </div>
+<div>
+<input id="dwcode" name="dwcode" type="hidden" value='@ViewData["dwcode"]' />
+最后交易记录数：<input type="text" name="lstRecordNum" id="lstRecordNum" value='@ViewData["lastNum"]' />
+<input id="loadTable" type="button" name="更改" value="更改" />
+
+</div>
+
+<div id="recorderTable"></div>
+
+<script type="text/javascript">
+    //给按钮定义
+    $(document).ready(function () {
+        $("#loadTable").on("click", function () {
+            $("#recorderTable").load("/Employee/CallIN/saleRecordTable"
+                , { dwcode: '@ViewData["dwcode"]', lstRecordNum: $("#lstRecordNum").val() }
+                , function () {
+                    $("#grid").sorttable({
+                        ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                        descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                        ascImgSize: "8px",
+                        descImgSize: "8px",
+                        onSorted: function (cell) {
+                            return true;
+                        }
+                    });
+                    //$("[title]").tooltip({ position: "top right" });
+                }
+                );
+        });
+    });    
+</script>
+<script type="text/javascript">
+    $(document).ready(function () { $("#loadTable").click(); });
+</script>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Petition.QC_Details>
+<style type="text/css">
+.col0{ width:30px;}
+.col1{ width:30px;}
+.col2{ width:70px;}
+.col3{ width:30px;}
+.col4{ width:30px;}
+.col5{ width:30px;}
+.col6{ width:30px;}
+.col7{ width:30px;}
+.col8{ width:30px;}
+.col9{ width:30px;}
+.col10{ width:30px;}
+</style>
+<div id='qcRecords'>
+<p>明细列表</p>
+    <p> @{if (!(bool)TempData["isReplied"]){
+        @Html.ActionLink("编辑", "RecordEdit", new { id = TempData["QC_MainID"] }, new { id="edit" })}}
+        @Html.ActionLink("提交", "ReplySumbit", new { id = TempData["QC_MainID"] }, new { id="sumbit"})
+        @Html.Hidden("MainID", TempData["QC_MainID"])            
+    </p>
+    <table id='qcDetails'>
+        <tr role="head">
+            <th sort="true">序号</th>
+            <th sort="true">类别</th>
+            <th sort="true">订单号</th>
+            <th sort="true">存货编码</th>
+            <th sort="true">存货名称</th>
+            <th sort="true">型号</th>
+            <th sort="true">数量</th>
+            <th sort="true">单价</th>
+            <th sort="true">金额</th>
+            <th sort="true">备注</th>
+            <th sort="true">代收款</th>
+        </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+        <tr>
+            <td class='col0'>
+                @Html.DisplayFor(modelItem => item.QC_Autoid)
+            </td>
+            <td class='col1'>@Html.DisplayFor(modelItem => item.QC_RCID).
+                @Html.DisplayFor(modelItem => item.QC_DetailClass.QC_RCName)
+            </td>
+            <td class='col2'>
+            @{  if (item.QC_OrderCode != null)
+                    {@Html.DisplayFor(modelItem => item.QC_OrderCode)}
+                else
+                    if(item.dSaleSumStartDate != null && item.dSaleSumFinishDate != null)
+                    {   <span>起:@item.dSaleSumStartDate.Value.ToShortDateString()
+                        <br/> 止:@item.dSaleSumFinishDate.Value.ToShortDateString()</span> }
+             }
+            </td>
+            <td class='col3'>
+                @Html.DisplayFor(modelItem => item.cInvCode)
+            </td>
+            <td class='col4'>
+                @Html.DisplayFor(modelItem => item.cInvName)
+            </td>
+            <td class='col5'>
+                @Html.DisplayFor(modelItem => item.cInvStd)
+            </td>
+            <td class='col6'>
+                @Html.DisplayFor(modelItem => item.iQuentity)
+            </td>
+            <td class='col7'>
+                @Html.DisplayFor(modelItem => item.iPrice)
+            </td>
+            <td class='col8'>
+                @Html.DisplayFor(modelItem => item.iSum)
+            </td>
+            <td class='col9'>
+                @Html.DisplayFor(modelItem => item.cMemo)
+            </td>
+            <td class='col10'>
+            @if (item.bDaiShouKuan.HasValue && item.bDaiShouKuan.Value)
+                { <span>是</span> }
+            else
+                { <span>否</span> }
+            
+            </td>
+        </tr>
+        }
+    }
+    </table>
+    </div>

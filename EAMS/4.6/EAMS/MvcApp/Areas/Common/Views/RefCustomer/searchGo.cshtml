@@ -1,0 +1,130 @@
+﻿@model List<DataModel.Customer>
+@{
+    //Layout = "~/Areas/Common/Views/Shared/_LayoutPageCallInfo.cshtml";
+    //Layout = "~/Areas/Common/Views/Shared/_Layout.cshtml";
+    Layout = null;
+    }
+@{
+    ViewBag.Title = "searchGo";
+}
+
+<script type="text/javascript">
+<!--
+    //注：每个嵌入页必须定义该方法，供父窗口调用
+    function Ok(code) {
+        window.parent.callbackDialog(code);
+    }
+//-->
+</script>
+<style>
+    table {
+        table-layout: fixed;
+    }
+
+    tbody td {
+        width: 30px;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    .col0 {
+        width: 80px;
+    }
+
+    .col1 {
+    }
+
+    .col2 {
+        width: 80px;
+    }
+
+    .col3 {
+        width: 60px;
+    }
+
+    .col4 {
+        width: 60px;
+    }
+
+    .col5 {
+        width: 40px;
+    }
+
+    .col6 {
+        width: 40px;
+        display:none;
+    }
+</style>
+<link href="~/Content/jquery.Table.css" rel="stylesheet" type="text/css" />
+<h4>参照客户</h4>&nbsp &nbsp<button id='sumbit' type='button' onclick='sumbitclick()' value='确定'>确定</button>
+<div style="overflow:scroll; height:300px">
+    @if (Model != null)
+    {
+        <table id="grid" style="width:96%; height:360px; text-align:center; overflow:scroll">
+            <thead>
+                <tr role="head">
+                    <th sort="true">客户简称</th>
+                    <th sort="true">联系人</th>
+                    <th sort="true">发货地址</th>
+                    <th sort="true">手机</th>
+                    <th sort="true">固话</th>
+                    <th sort="true">客户编码</th>
+                    <th class="col6" sort="true">上级客户编码</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataModel.Customer c in Model)
+                {
+                    var contactInfo = c.contactInfos.Find(f => f.isdefault);
+                    var contactMan = c.contacts.Find(f => f.isDefault);
+                    <tr ondblclick="dblclick('@c.Code')" onclick="trclick(this,'@c.Code')" title='@c.Code'>
+                        <td class='col0'>@c.Name</td>
+                        <td class='col1'>@contactMan.Name</td>
+                        <td class='col2'>@contactInfo.shipAddress</td>
+                        <td class='col3'>@contactInfo.mobile</td>
+                        <td class='col4'>@contactInfo.phone</td>
+                        <td class='col5'>@c.Code</td>
+                        <td class='col6'>@c.Code</td>
+                    </tr>
+                        }
+                    
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            //ondblclick="dblclick('topCusCode')"
+            function dblclick(code) {
+                var c = new Object();
+                c.dataClass = 'customer';
+                c.code = code;
+                Ok(c);
+            }
+            function trclick(tr, code) {
+                $("#sumbit").attr("title", code);
+                $("td").css("background-color", "White");
+                $(tr).children().css("background-color", "Aquamarine");
+            }
+            function sumbitclick() {
+                var code = $("#sumbit").attr("title");
+                var c = new Object();
+                c.dataClass = 'customer';
+                c.code = code;
+                Ok(c);
+            }
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $("[title]").tooltip({ position: "top right" });
+                $("#grid").sorttable({
+                    ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                    descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                    ascImgSize: "8px",
+                    descImgSize: "8px",
+                    onSorted: function (cell) {
+                        //alert(cell.index() + " -- " + cell.text());
+                    }
+                });
+            });</script>
+    }
+    else
+    { <div>查询无数据！</div>}
+</div>

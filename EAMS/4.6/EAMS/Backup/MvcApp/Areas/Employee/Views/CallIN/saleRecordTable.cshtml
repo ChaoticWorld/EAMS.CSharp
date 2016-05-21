@@ -1,0 +1,86 @@
+﻿@model CallInfo.callVouchModel
+
+@{ 
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml";}
+@{
+    ViewBag.Title = "saleRecordTable";
+}
+
+@if (Model.dispatchLists.Count > 0)
+{
+<table id = "grid"> 
+<tr role="head">
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Main.Code)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Main.dDate)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].inventory.cInvName)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].inventory.cInvStd)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].inventory.cUnit)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].quantity.iQuantity)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].quantity.iNum)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].iPrice)
+</th>
+<th sort="true">
+@Html.DisplayNameFor(m => m.dispatchLists[0].Details[0].iSum)
+</th>
+</tr>
+@{
+        foreach (DataDB.ModelBase.Dispatch d in Model.dispatchLists)
+        {
+            foreach (DataDB.ModelBase.DispatchDetail dd in d.Details)
+            {
+<tr>
+<td title="@Html.DisplayNameFor(m => m.dispatchLists[0].Main.Maker):@d.Main.Maker|
+@Html.DisplayNameFor(m => m.dispatchLists[0].Main.Verifier):@d.Main.Verifier|
+@Html.DisplayNameFor(m => m.dispatchLists[0].Main.cShipAddress):@d.Main.cShipAddress|
+@Html.DisplayNameFor(m => m.dispatchLists[0].Main.Memo):@d.Main.Memo|
+物流:get物流
+">
+@d.Main.Code
+</td>
+<td>
+@d.Main.dDate.ToShortDateString()
+</td>
+<td>
+@dd.inventory.cInvName
+</td>
+<td>
+@dd.inventory.cInvStd
+</td>
+<td>
+@dd.inventory.cUnit
+</td>
+<td>
+@dd.quantity.iQuantity.ToString()
+</td>
+<td>
+@dd.quantity.iNum.ToString()
+</td>
+<td>
+@dd.iPrice.ToString()
+</td>
+<td>
+@dd.iSum.ToString()
+</td>
+</tr>
+            }
+        }
+    }
+    </table>
+}
+else
+{ <div>无交易记录！</div>}

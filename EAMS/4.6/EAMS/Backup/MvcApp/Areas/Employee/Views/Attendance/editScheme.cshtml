@@ -1,0 +1,137 @@
+﻿@using Attendance
+@model IEnumerable<Attendance_Scheme>
+
+@{
+    ViewBag.MainTitle = "考勤 管理";
+    ViewBag.Title = "编辑方案";
+}
+<div id="TitleBar">
+    </div>
+<div class="col-md-1"></div>
+<div class="col-md-10">
+    <table class="table table-condensed">
+        <tr>
+            <th>操作</th>
+            <th>方案名</th>
+            <th>方案描述</th>
+            <th>周期数</th>
+            <th>班次数</th>
+        </tr>
+        @{
+if (Model != null)
+  {
+      foreach (Attendance_Scheme atts in Model)
+      {
+        <tr>
+            <td>
+                <input class="btn btn-default btn-xs" type="button" style="display:block" value="编辑" onclick="edit(this)" />
+                <input class="btn btn-default btn-xs" type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+                <input class ="btn btn-default btn-xs" type="button" style="display:none" onclick="delRowClick(this)" value="删除" />
+                <a class="btn btn-default btn-xs" href="~/Employee/Attendance/editSchemeClass/@atts.schemeID">班次</a>
+                <input type="hidden" id="autoid" value="@atts.schemeID" />
+            </td>
+            <td> <input type="text" readonly="readonly" value="@atts.schemeName" /></td>
+            <td> <input type="text" readonly="readonly" value="@atts.schemeDescription" /> </td>
+            <td> <input type="text" readonly="readonly" value="@atts.periods" /> </td>
+            <td> <input type="text" readonly="readonly" value="@atts.classs" /> </td>
+        </tr>
+      }
+  }
+        }
+        <tr>
+            <td>
+                <input class="btn btn-default btn-xs" type="button" value="新增" onclick="edit(this)" />
+                <input class="btn btn-default btn-xs" type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+                <input class="btn btn-default btn-xs" type="button" style="display:none" value="删除" onclick="delRowClick(this)" />
+                <input type="hidden" value="-1" />
+            </td>
+            <td><input type="text" readonly="readonly" /></td>
+            <td><input type="text" readonly="readonly" /></td>
+            <td><input type="text" readonly="readonly" /></td>
+            <td><input type="text" readonly="readonly" /></td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-1"></div>
+<div> &nbsp;
+    <input class="btn btn-default" type="button" value="保存本页所有行" onclick="saveAllRows()" />
+    <input class="btn btn-default" type="button" value="删除本页所有行" onclick="delAllRows()" />
+    <a class="btn btn-default" href="~/Employee/Attendance">返回考勤页</a>
+@if (SystemBLL.UserBLL.getUser(int.Parse(User.Identity.Name)).RoleNames.Contains("AttendanceManager"))
+{<a class="btn btn-default" href="~/Employee/Attendance/ManagerPage">返回管理页</a>}
+</div>
+
+<script type="text/javascript">
+    function edit(c) {
+        var newrow = $(c).parent().parent();
+        $(c).next().css("display", "block");
+        $(c).next().next().css("display", "block");
+        $(c).css("display", "none");
+        $(newrow[0]).children().children(":text").removeAttr("readOnly");
+    };
+</script>
+<script type="text/javascript">
+    function saveRowClick(c) {
+        if (doRow(c, "SaveRow"))
+            reflushPage();
+    }
+    function delRowClick(c) {
+        if (doRow(c, "DeleteRow"))
+            reflushPage();
+    }
+//schemeID,schemeName,schemeDescription,periods,classs
+    function doRow(c, operation) {
+        var row = $(c).parent().parent()[0];        
+        var id = $(row.children[0]).children("input:last").val();
+        var name = $(row.children[1]).children("input:first").val();
+        var description = $(row).children("td:eq(2)").children("input:first").val();
+        var periods = $(row).children("td:eq(3)").children("input:first").val();
+        var classs = $(row).children("td:eq(4)").children("input:first").val();
+        if (true) {
+            $.ajax({
+                type: "post",
+                url: "/Employee/Attendance/editScheme/" + id,
+                data: { id: id, Name: name, description: description, periods: periods, classs: classs,Operation:operation},
+                async: false,
+                success: function (DoMsg) {
+                    if (DoMsg) alert(DoMsg);
+                },
+                error: function (msg) { alert(msg); }
+            });
+            return true;
+        }
+        else { //alert('日期无效，请重新输入。'); 
+        return false; }
+    }
+    function reflushPage() {
+        //刷新当前页面
+        location.reload()
+    }
+</script>
+<script type="text/javascript">
+    function saveAllRows() {
+        var rows = $("table tr");
+        $(rows).each(function (index) {
+            if (index > 0) {
+                var c = $(this).children("td:first").children("input:visible")[0];
+                if ($(c).val() == "保存") {
+                    doRow(c, "SaveALL");
+                }
+            }
+        });
+        reflushPage();
+    }
+    function delAllRows() {
+        var rows = $("table tr");
+        if (confirm("将删除本年所有节假日设定！")) {
+            $(rows).each(function (index) {
+                if (index > 0) {
+                    var c = $(this).children("td:first").children("input:first");
+                    doRow(c, "DeleteALL");
+                }
+            });
+            reflushPage();
+        }
+    }
+</script>
+

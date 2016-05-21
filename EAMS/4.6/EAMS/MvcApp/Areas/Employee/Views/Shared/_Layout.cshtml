@@ -1,0 +1,71 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 管理系统</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/jquery.Table.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div style="margin:5px;">
+                    <a style="color:white;" href="@Url.Action("Index", "Home")">
+                        <img src="/Content/Images/DFL-LOGO_web_96x38.jpg" id="AppLogo" alt="Logo" style="margin:2px;" width="96" height="38" />
+                        <strong>综合管理系统</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav  nav-tabs navbar-inverse ">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">客户<strong class="caret"></strong></a>
+
+                        <ul class="dropdown-menu">
+                            <li>菜单1a</li>
+                            <li>菜单1b</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">员工<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Employee/Attendance/">考勤</a></li>
+                            <li><a href="~/Employee/strategy/">销售政策</a></li>
+                            <li><a href="~/Employee/report/">报表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/Manager/Home" )">管理</a>
+                    </li>
+                    <li><a href="">关于</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <div class="container body-content">
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - EAMS Defulong Co.,Ltd.</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

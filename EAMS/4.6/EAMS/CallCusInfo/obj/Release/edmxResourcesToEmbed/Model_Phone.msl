@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDataPhoneModelStoreContainer" CdmEntityContainer="AppDataPhoneEntities">
+    <EntitySetMapping Name="Phone_CallContent">
+      <EntityTypeMapping TypeName="AppDataPhoneModel.Phone_CallContent">
+        <MappingFragment StoreEntitySet="Phone_CallContent">
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="contectClass" ColumnName="contectClass" />
+          <ScalarProperty Name="contectText" ColumnName="contectText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phone_ContectClass">
+      <EntityTypeMapping TypeName="AppDataPhoneModel.Phone_ContectClass">
+        <MappingFragment StoreEntitySet="Phone_ContectClass">
+          <ScalarProperty Name="clsID" ColumnName="clsID" />
+          <ScalarProperty Name="clsName" ColumnName="clsName" />
+          <ScalarProperty Name="clsDescription" ColumnName="clsDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phone_Records">
+      <EntityTypeMapping TypeName="AppDataPhoneModel.Phone_Records">
+        <MappingFragment StoreEntitySet="Phone_Records">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="dwCode" ColumnName="dwCode" />
+          <ScalarProperty Name="dwName" ColumnName="dwName" />
+          <ScalarProperty Name="dwContact" ColumnName="dwContact" />
+          <ScalarProperty Name="callPhone" ColumnName="callPhone" />
+          <ScalarProperty Name="callInOut" ColumnName="callInOut" />
+          <ScalarProperty Name="callDate" ColumnName="callDate" />
+          <ScalarProperty Name="callContent" ColumnName="callContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

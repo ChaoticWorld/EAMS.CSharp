@@ -1,0 +1,251 @@
+Port:8066
+[仓库远程]
+需求者：办公与仓库分离的单位；
+目标：	1.实现在办公室开发货单，在仓库打印发货单，并记录发货单打印次数；
+		2.查ERP现存量；
+		3.录入送货信息，发货信息，办公室查销售询物流信息；
+		
+[EAMS Report 20160425]
+透视表完成，并发布。
+实现透视表基本功能
+实现透视表行小计
+
+[EAMS 20160330]
+修改Bug!
+1.密码相关页面缺少加密js
+2.用户角色分配，页面排版问题；增/删/改 算法优化
+3.报表翻页 GO按钮 tagName大小写敏感 
+4.考勤 管理 员工班次指定
+5.ERP用友访问权限
+
+[EAMS Report 20160330]
+明细表可用，发货明细表完成
+ERP客户访问权限
+报表访问权限
+
+[Employee strategy 20151209]
+EDIT页面
+策略级别改为只读，并与来源类型联动
+
+[Manager Vouch 20151209]
+软件单据列表编辑
+
+[strategy 20151204]
+编辑销售策略
+select * from vw_strategy where 1=1
+order by cLevel desc,cVouchCode desc,cDWCode desc,cDCName desc,dEffDate,dExpDate desc
+
+[Common 20151204]
+ERP参照OK
+
+[Attendance ver20151028]
+基本测试完成，已部署
+
+[EAMS_Frame ver20150728]
+Account模块增加外部认证方法
+LogonEx(LogonModel)LogonModel-{string ID,string PW,bool RememberMe,bool logoned}
+Role模块增加外部确定方法
+Exists(uid,roleName) int User.id->uid, string Role.cRoleName->roleName
+
+[DataDB 20150526]
+为[税票2ERP]修改
+实现接口
+[Attendance ver20151020]
+考勤数据层使用fluendDate,算法重构
+特例:周六下午值班问题；
+解决:不填写加班申请.
+方案:（现在不实现）数据库增加值班表,及读写算法。当加班时间超过2小时判断是否为值班，值班费10元/次。
+
+[strategyLib]
+策略库:销售签呈传为策略
+
+[Attendance ver20150507]
+Index页面改版,增加考勤事件及费用计算.
+打印一张表解决考勤问题.方便财务做账.
+增加日志位置
+
+[AsyncCmd]
+数据库触发器 调用;
+异步执行命令后关闭自身!
+
+[EAMS_Frame ver20150403]
+日志数据字段更新,
+日志可用,方法参见AccountControler
+
+[Petition ver 20150331 Beta]
+编码页面再次调整,暂无问题,2015-4-1启用.
+
+[Petition ver 20150311 Beta Bug]
+签呈编辑页面修改为原Word文档格式
+
+[CallInfo ver20141226]
+forSSWX 屏蔽权限管理
+来电号码正则表达式和判断有问题:不能正确处理7位以下的来电号码.Ok
+
+[EAMS_Frame ver20141224]
+用户删除,关联检查.ok
+角色删除为空,Bug.OK
+
+[EAMS_Frame ver20141223]
+删除用户记录
+
+[Attendance ver20141203]
+完善导入考勤记录功能.
+弃用进度条功能.待以后再开发.
+修正员工参照有重复的问题.
+*离职员工,要及时在考勤机软件里标记离职.否则将有无用计算.
+
+[Attendance ver20141103]
+修复Bug:jquery-unbo...-ajax.js 微软ajax库,必须增加支持AjaxBeginForm()
+修复Bug:Chrome打印不显示,升级PrintArea版本2.4.0
+20141114 修复Bug:打开页面不更新考勤,问题-HWATT.DAL.getLastDate(),其中if条件判断员工名字未加!
+
+[Attendance ver20141101]
+bug:删除考勤事件;
+改BootStrap,不合适的外观代码
+
+[Attendance ver20141008]
+CSS改用BootStrap
+编辑考勤事件页,考勤事件删除,alter("undefined");
+考勤缺勤事件,时长:-9999的,时间段改为全天;
+
+[EAMS_Frame ver20140811+ ]
+需求:实现服务器端与客户端实现消息推送,学习 SignalR;
+.Net FrameWork 4.0 对应 SignalR 1.1.3 安装命令:
+install-package Microsoft.AspNet.SignalR -Version 1.1.4
+
+[EAMS_Frame ver20140811 ]
+任务加锁,OK
+
+[Attendance ver20140811]
+考勤更新时对任务加锁,OK
+缺勤事件列表,OK
+
+[Attendance ver20140802 bate]
+BLL-AttendanceBll.DoOnce,新员工,无周期号时有Bug,
+加班事件列表,加班判断Bug,OK.
+
+
+[EAMS_Frame ver20140619]
+增加用户组(或者叫部门)
+
+[Attendance ver20140619 beta]
+bug:新员工入职日期为开始计算日期,已解决.
+在员工班次计划表中,增加员工姓名字段.
+需求:打印迟到列表 OK;
+需求:事件申请表，加员工名字,自动计算加班费。 OK
+加班费规则:一天一次，0>时长>=30 5元/次；30>时长>=60 10元/次；60>时长 15元/次；周日20元/次 OK；
+时间四舍五入。如果59分加班时长为0;9:00:00时长为-1 ; OK;
+bug:审核无法实现，需EAMS_Frame中实现用户组或部门; OK
+
+[Attendance ver20140529 beta]
+bug:考勤事件列表显示不全,filter过滤问题，已修复。
+
+[Attendance ver20140528 alpha]
+修改显示，打印。提交崔珊测试
+
+[Attendance ver20140527 alpha]
+数据库重写,支持班次,倒班
+将考勤加入系统
+特例:周六下午值班及加班处理
+
+[CallInfo ver Next beta]
+通话记录导出？
+通话记录分类，查寻；暂不实现
+
+[EAMS_Frame ver20140404]
+修复用户管理，用户列表，创建新用户的连接。OK
+
+[CallInfo ver20140404 beta]
+本次通话记录保存时，callInOut取值有问题,改为$("#chk_callInOut").prop("checked"),取值正确。OK
+通话记录，页面打不开;已修复。OK
+电话号码使用正则表达式判断。OK
+bug:来电号码的客户资料为空时，发生对象为空错误，将&&改为||.
+bug:布局页批向出错，正确为完整路径如下：OK
+@{Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml";}
+
+
+[CallInfo ver20140403beta]
+[瑞来需求]通话记录,处理BLL
+为销售列表提示增加物流信息位置
+bug:在已有客户信息页面查询新关键字出错;已修改OK
+来电号码不能处理,判断条件已改正则表达式，OK
+
+[CallInfo ver20140327beta]
+发布
+{来电显示可以正常运行了.
+所有人都可以使用,用户名为您的用友ID,初始密码:123.
+A在页面中输入以下关键字之一即可进行客户查询:
+客户来电号码
+客户名称(可以不全)
+客户编码(可以不全)
+客户联系人
+B最近N次(默认次数:5可修改)发货单查询
+}
+
+比高呼叫中心拼接字符(t=13306408796&c=26270)进行号码提取:
+1.在Web.Config中配置;2.在Index中修整.ok
+增加排序
+修改客户参数显示格式
+修改重新参照
+增强Index/id,id的判断,增加效率.
+关键字为空的判断
+增加权限,增加角色判断
+
+[CallInInfo ver alpha]
+用于sswx
+
+[Petition verNextbeta]
+签呈输出Word
+
+[Petition ver20140327alpha]
+签呈列表输出Excel,已实现.OK
+
+[Petition ver20140326alpha]
+Index 查寻有BUG;处理数据库增加视图v_petitionList,在Petition.DB.cs的filter函数重写.OK.
+
+[Petition ver20140322alpha]
+增加数据库字段:AppDate.QC_Replys.[submitMan,replyMan];为查寻提交人,审批人; Bug下版本中处理.
+数据表格分页,mvcPager,at Index.cshtml ok;
+手机浏览器双击选中无法操作,改为单击选中,确定提交.OK
+
+[Petition ver20140317alpha]
+增加审批者角色控制
+获得用户列表UserBLL.Lists()函数,增加列表中用户设置角色处理
+更新页面样式:签呈提交,签呈编辑-累计销售
+签呈项目默认排序:AutoID
+修正用户角色分配,提交时的bug ok
+
+[ver20140315alpha]
+查询，bug:ok
+查寻条件增加日期范围:page ok,提交未测试:ok
+签呈编辑，新增空行:ok
+签呈编辑，新增对照 bug:ok
+签呈编辑，新增累计销售:ok
+打印,审批日期为空,查检审批保存,bug修正,OK
+打印，加备注:ok
+打印页面。OK
+
+[ver20140311alpha]
+签呈分类增加
+　　销售发货单
+　　累计销售
+　　其它信息
+　　修改配购－配送商品
+修改底层sqlcommand关连的reader未关闭
+签呈单页中内容提示
+签呈编辑，客户资料自动带出
+签呈编辑，有效期
+获取最新审批地址:在编辑页面表格下方，手工复制粘贴到易信。ok
+
+[ver20140227]
+基本功能
+签呈分类编辑
+签呈增加
+签呈分类
+　　销售订单
+　　配购
+　　折扣
+　　运费
+　　代收货款
+审批

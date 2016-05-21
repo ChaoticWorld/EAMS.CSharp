@@ -1,0 +1,80 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Petition.QC_Main>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>签呈列表</h2>
+<div id="petitionList">
+<table id='tb'>
+    <tr role="head">
+        <th sort="true">编号</th>
+        <th sort="true">客户经理</th>
+        <th sort="true">修改人</th>
+        <th sort="true">修改日期</th>
+        <th sort="true">客户名称</th>
+        <th sort="true">联系人</th>
+        <th sort="true">结果</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+        <tr>
+        <td class='tip' title="签呈编号：@item.cCode; @item.remark " >
+            @Html.DisplayFor(modelItem => item.cCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cCusManager)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cModifyMan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dModifyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cCusName)
+        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cCusPerson)
+            </td>
+        <td>@Html.DisplayFor(modelItem => item.cResult)</td>
+        @*<td class='tip' id="resultTitle" title="审批结果：@item.result <br/> 审批过程：<br/>@item.resultTitle">
+            @{  if (string.IsNullOrEmpty(item.result))
+                    { <span>未提交</span> }
+                else { <span>@item.result</span>}
+              }
+        </td>*@
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id = item.Id }) @*|
+            @Html.ActionLink("审批", "ReplySumbit", new { id = item.Id }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.Id })*@
+        </td>
+    </tr>
+}
+
+</table>
+<div><div style="float:left;width:50%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div> 
+@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "petitionLists", HttpMethod = "Post", DataFormId = "searchForm" }, new { style = "float:right" })
+</div> 
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).tooltip();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#tb").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+    });
+    </script>

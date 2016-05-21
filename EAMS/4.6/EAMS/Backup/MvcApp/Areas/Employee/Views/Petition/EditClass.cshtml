@@ -1,0 +1,98 @@
+﻿@using Petition
+@model IEnumerable<QC_Class>
+@{
+    ViewBag.Title = "EditClass";
+}
+
+<h2>签呈分类</h2>
+
+<table id="EditClassTable">
+    <tr>
+        <th>操作</th>
+        <th>分类名称</th>
+        <th>分类标识</th>
+    </tr>
+    @if (Model != null && Model.Count()>0)
+    {
+        foreach (QC_Class c in Model)
+        {
+            <tr>
+                <td onclick="delRow(this)" title="@c.iClsAutoId" style="color:blue;"><u>删除</u></td>
+                <td><input title="@c.cClsName"  value="@c.cClsName" /></td>
+                <td><input title="@c.cClsFlag"  value="@c.cClsFlag" /></td>
+            </tr>
+        }
+    }
+    <tr><td onclick="addRow(this)" style="color:blue;"><u>新增</u></td><td colspan="2"></td></tr>
+</table>
+<div class="btn btn-group" >
+    <button class="btn btn-default" onclick="save()">保存</button><a class="btn btn-default" href="@Url.Action("Index")">返回签呈首页</a>
+</div>
+<script type="text/javascript">
+    function addRow(c) {
+        var thisrow = $(c).parent();
+
+        var newrow = "<tr><td title='-1' onclick='delRow(this)' style='color:blue;'><u>删除</u></td><td><input /></td><td><input /></td></tr>";
+        $(thisrow).before(newrow);
+
+    }
+    function delRow(c) {
+        var thisrow = $(c).parent();
+        var id = $(c).attr("title");
+        
+        var ClassUsed = isdeleterow(id);
+        if (ClassUsed) { alert("分类已使用，无法删除!"); }
+        else {
+            $(thisrow).attr("title", "Deleted");
+            $(thisrow).hide();
+        }
+    }
+    function isdeleterow(id) {
+        var r = false;
+        var url = '@Url.Action("isClassUsed")';
+        $.ajaxSetup({ async:false })
+        $.post(url, { id: id }, function (Used) { r = Used; });
+        $.ajaxSetup({ async: true })
+        return r;
+    }
+
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("tr input").live("click",function () { this.focus();});
+        $("tr input").live("blur",function () {
+            var ctitle = $(this).attr("title");
+            var cval = $(this).val();
+            var tr = $(this).parent().parent()[0];
+            if (ctitle != cval) {
+                $(tr).attr("title", "Modified");
+                $(this).attr("title", cval);
+            }
+        })
+    });
+    function save() {
+        var rows = $("#EditClassTable tr");
+        var autoid, name, flag,state,tds;
+        var Classs = new Object();
+        var j = 0;
+        if (rows)
+            for (var i = 1; i < rows.length-1;i++)
+            {
+                tds = $(rows[i]).children();
+                autoid = $(tds).eq(0).attr("title");
+                name = $(tds).eq(1).children(0).val().trim();
+                flag = $(tds).eq(2).children(0).val().trim();
+                state = $(rows[i]).attr("title");
+                if (name) {
+                    Classs["clss[" + (j) + "].iClsAutoid"] = autoid;
+                    Classs["clss[" + (j) + "].cClsName"] = name;
+                    Classs["clss[" + (j) + "].cClsFlag"] = flag;
+                    Classs["clss[" + (j) + "].saveState"] = state;
+                    j++;
+                }
+            }
+        var url = '@Url.Action("saveClass")';
+        $.post(url, Classs, function () { window.location.reload(true); });
+    }
+</script>
+

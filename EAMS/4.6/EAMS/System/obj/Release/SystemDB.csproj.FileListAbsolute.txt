@@ -1,0 +1,156 @@
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.AspNet.SignalR.Core.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.AspNet.SignalR.Owin.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.Owin.Host.SystemWeb.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Newtonsoft.Json.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Owin.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.AspNet.SignalR.Core.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.AspNet.SignalR.Owin.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Microsoft.Owin.Host.SystemWeb.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\Newtonsoft.Json.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.AspNet.SignalR.Core.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.AspNet.SignalR.Owin.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.Owin.Host.SystemWeb.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Newtonsoft.Json.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Owin.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.AspNet.SignalR.Core.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.AspNet.SignalR.Owin.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Microsoft.Owin.Host.SystemWeb.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\Newtonsoft.Json.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\System\obj\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\System\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\SystemDB.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\obj\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\System\obj\Release\SystemDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\SystemDB.dll.config
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\SystemDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\SystemDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\EntityFramework.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\WebCommon.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\WebCommon.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\EntityFramework.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\obj\Release\SystemDB.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\obj\Release\SystemDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\System\obj\Release\SystemDB.pdb

@@ -1,0 +1,9 @@
+﻿@if(Request.IsAuthenticated) 
+{
+    <text>欢迎使用&nbsp <b>@Html.ActionLink(SystemBLL.UserBLL.getUser(int.Parse(Context.User.Identity.Name)).cUserName, "Edit", "../Manager/Account", new { id = Context.User.Identity.Name }, new { })</b>
+    |[ <a href="~/Manager/Account/LogOff">注销</a> ]</text>
+    }
+ else 
+ {    <text>[ @Html.ActionLink("注册", "Register", "~/Manager/Account")]
+        |[ @Html.ActionLink("登录", "LogOn", "~/Manager/Account") ]</text>
+    }

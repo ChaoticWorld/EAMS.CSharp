@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDataModelStoreContainer" CdmEntityContainer="AppDataEntities">
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="AppDataModel.Log">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="iLogId" ColumnName="iLogId" />
+          <ScalarProperty Name="dLogDate" ColumnName="dLogDate" />
+          <ScalarProperty Name="iUserID" ColumnName="iUserID" />
+          <ScalarProperty Name="cWorkStation" ColumnName="cWorkStation" />
+          <ScalarProperty Name="cIP" ColumnName="cIP" />
+          <ScalarProperty Name="iFuncationId" ColumnName="iFuncationId" />
+          <ScalarProperty Name="iActionId" ColumnName="iActionId" />
+          <ScalarProperty Name="cLastValue" ColumnName="cLastValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sqlQueries">
+      <EntityTypeMapping TypeName="AppDataModel.sqlQuery">
+        <MappingFragment StoreEntitySet="sqlQuery">
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+          <ScalarProperty Name="sQueryName" ColumnName="sQueryName" />
+          <ScalarProperty Name="sQueryMain" ColumnName="sQueryMain" />
+          <ScalarProperty Name="sQueryWhere" ColumnName="sQueryWhere" />
+          <ScalarProperty Name="sQueryGroup" ColumnName="sQueryGroup" />
+          <ScalarProperty Name="sQueryOrder" ColumnName="sQueryOrder" />
+          <ScalarProperty Name="sMemo" ColumnName="sMemo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

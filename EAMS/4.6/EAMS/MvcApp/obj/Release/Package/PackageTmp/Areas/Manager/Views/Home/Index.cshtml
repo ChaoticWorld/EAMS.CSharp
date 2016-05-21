@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>用户管理首页</h2>
+<table>
+<tr>
+<td><a href="~/Manager/Account">用户</a></td>
+<td><a href="~/Manager/Role">角色</a></td>
+<td><a href="~/Manager/Log">日志</a></td>
+</tr>
+<tr>
+<td><a href="~/Manager/Group">组(部门)</a></td>
+<td><a href='@("http://"+ Request.Url.Host+":8067")' >动态IP服务</a></td>
+<td><a href="~/Manager/Vouch">单据列表</a></td>
+</tr></table>

@@ -1,0 +1,10 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IAttendanceDevice\bin\Release\IAttendanceDevice.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IAttendanceDevice\bin\Release\IAttendanceDevice.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IAttendanceDevice\obj\Release\IAttendanceDevice.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IAttendanceDevice\obj\Release\IAttendanceDevice.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IAttendanceDevice\obj\Release\IAttendanceDevice.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IAttendanceDevice\bin\Release\IAttendanceDevice.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IAttendanceDevice\bin\Release\IAttendanceDevice.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IAttendanceDevice\obj\Release\IAttendanceDevice.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IAttendanceDevice\obj\Release\IAttendanceDevice.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IAttendanceDevice\obj\Release\IAttendanceDevice.pdb

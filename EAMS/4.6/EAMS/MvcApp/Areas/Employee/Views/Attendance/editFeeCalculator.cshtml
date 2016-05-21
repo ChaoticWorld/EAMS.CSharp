@@ -1,0 +1,204 @@
+﻿@using Attendance.Model
+@model List<FeeCalculatorModel>
+
+@{
+    ViewBag.MainTitle = "考勤 管理";
+    ViewBag.Title = "编辑方案班次费用参数";
+}
+
+
+<style>
+    table{width:100%}
+.col0{width:40px;}
+.col1{width:30px;}
+.col2{width:30px;}
+.col3{width:80px;}
+.col4{width:80px;}
+</style>
+<div id="TitleBar">
+<div>
+@{SchemeModel atts = ViewBag.scheme;
+    SchemeClassModel asc = ViewBag.schemeClass;
+    if (atts != null)
+    {
+    <input type="hidden" id="schemeID" value="@atts.schemeID"  />
+    <span>方案名：</span><label id="schemeName">@atts.schemeName</label>
+    <span>周期数：</span><label id="schemePeriods">@atts.periods</label>
+    <span>班次数：</span><label id="schemeClasss">@atts.classs</label>
+    <span style="color:#A00; font-weight:800">&nbsp;&nbsp;当前班次名：
+    <label id="className">@asc.className</label>
+    <input type="hidden" id="classId" value="@asc.classId" /></span>
+    <br />
+    <span>方案描述：</span><label id="schemeDescription">@atts.schemeDescription</label>
+  }
+  else
+  { <label>无方案，请返回检查数据!</label> }
+}
+</div>
+    </div>
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<table class="table">
+<tr> 
+<th>操作</th>
+<th>日期类型</th>
+<th>单位时长</th>
+<th>单位费用</th>
+<th>最大费用</th>
+</tr>
+@{
+    if (Model != null && Model.Count()>0)
+    {
+        foreach (FeeCalculatorModel afc in Model)
+        {
+            <tr><td class="col0"> <input class="btn btn-default btn-xs" type="button" style="display:block" value="编辑" onclick="edit(this)" />
+                    <input class="btn btn-default btn-xs" type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+                    <input class="btn btn-default btn-xs" type="button" style="display:none" onclick="delRowClick(this)" value="删除" /> 
+            <input type="hidden" id="autoid" value="@afc.id" /></td>
+            <td class="col1"><input type="text" style="width:60px" readonly="readonly" disabled="disabled" value="@FeeCalculatorModel.cnDayState[afc.dateEnum]" onclick="clickSelect(this)" /></td>
+            <td class="col2"><input type="text" style="width:40px" readonly="readonly" disabled="disabled" value="@afc.Unit" /></td>
+            <td class="col3"><input type="text" style="width:40px" readonly="readonly" disabled="disabled" value="@afc.UnitFee" /></td>
+            <td class="col4"><input type="text" style="width:60px" readonly="readonly" disabled="disabled" value="@afc.MaxFee" /></td>
+            </tr>
+        }
+    }
+}
+<tr>
+ <td class="col0"> <input class="btn btn-default btn-xs" type="button" value="新增" onclick="edit(this)" /> 
+     <input class="btn btn-default btn-xs" type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+     <input class="btn btn-default btn-xs" type="button" style="display:none" value="删除" onclick="delRowClick(this)" /> 
+    <input type="hidden" value="-1" /></td>
+    <td  class="col1"><input type="text" style="width:60px" readonly="readonly"  disabled="disabled" onclick="clickSelect(this)" /></td>
+    <td  class="col2"><input type="text" style="width:40px" readonly="readonly"  disabled="disabled"/></td>
+    <td  class="col3"><input type="text" style="width:40px" readonly="readonly"  disabled="disabled"/></td>
+    <td  class="col4"><input type="text" style="width:60px" readonly="readonly"  disabled="disabled"/></td>
+</tr>
+</table>
+</div>
+<div class="col-md-1"></div>
+<div>
+    <input class="btn btn-default" type="button" value="保存本页所有行" onclick="saveAllRows()" />
+    <input class="btn btn-default" type="button" value="删除本页所有行" onclick="delAllRows()" />
+    <a class="btn btn-default" href="~/Employee/Attendance">返回考勤页</a>
+@if (ViewBag.currUserRoleNames.Contains("AttendanceManager"))
+{<a class="btn btn-default" href="~/Employee/Attendance/ManagerPage">返回管理页</a>}
+</div>
+
+<script type="text/javascript">
+    function clickSelect(cs, sw) {
+        $("#Selecter").remove();
+        var suposition = $(cs).position();
+        $(cs).after('<div id="Selecter" style="z-index:9999;"></div>');
+        //border:2px solid #a1a1a1;background:#230;
+        $("#Selecter").css("position", "absolute");
+        $("#Selecter").css("height", "100px");
+        $("#Selecter").css("left", suposition.left);
+        $("#Selecter").css("top", suposition.top);
+        var ds = "<select id='sel'> <option value=-1>  </option> ";
+        ds +="@foreach (SelectListItem sli in (SelectList)ViewBag.dateEnum)
+                { <option value='@sli.Value'>@sli.Text</option> }";
+                
+        ds +="</select>";
+        $("#Selecter").append(ds);
+        $("#sel").css("width", $(cs).css("width"));
+        $("#sel").change(function () {
+            r = new Object();
+            r.t = $(this).find('option:selected').text(); 
+            r.v = $(this).val();
+            //alert(r.t+";"+r.v);
+            var textInput = $(this).parent().prev();
+            $(textInput).val(r.t);
+            $(textInput).attr("title",r.v);
+            $(this).parent().remove();
+        });
+        
+        var textInput = $(cs);           
+        $(textInput).val($("#sel").find('option:selected').text());
+    }
+</script>
+<script type="text/javascript">
+    function edit(c) {
+        var newrow = $(c).parent().parent();
+        $(c).next().css("display", "block");
+        $(c).next().next().css("display", "block");
+        $(c).css("display", "none");
+        $(newrow[0]).children().children(":text").removeAttr("readOnly");
+        $(newrow[0]).children().children(":text").removeAttr("disabled");
+    };
+</script>
+<script type="text/javascript">
+    function saveRowClick(c) {
+        if (doRow(c, "SaveRow"))
+            reflushPage();
+    }
+    function delRowClick(c) {
+        if (doRow(c, "DeleteRow"))
+            reflushPage();
+    }
+
+    function reflushPage() {
+        //刷新当前页面
+        location.reload()
+    }
+</script>
+<script type="text/javascript">    //SELECT autoid,classId,periodNo,bTime,eTime,upTime
+    function doRow(c, operation) {
+        /*SELECT id,Unit,UnitFee,MaxFee,classId,dateEnum FROM Attendance_FeeCalculator
+        <th>日期类型</th><th>单位时长</th><th>单位费用</th><th>最大费用</th>*/
+        var row = $(c).parent().parent()[0];
+        var id = $(row.children[0]).children("input:last").val();
+        var classId = $("#classId").val();
+        var dateEnum = $(row).children("td:eq(1)").children("input:first").attr("title");
+        var Unit = $(row).children("td:eq(2)").children("input:first").val();
+        var UnitFee = $(row).children("td:eq(3)").children("input:first").val();
+        var MaxFee = $(row).children("td:eq(4)").children("input:first").val();
+        var r = true;
+
+        if (r) {
+            $.ajax({
+                type: "post",
+                url: "/Employee/Attendance/editFeeCalculator/" + id,
+                data: { id: id, classId: classId, dateEnum: dateEnum, Unit: Unit, UnitFee: UnitFee, MaxFee: MaxFee, operation: operation },
+                async: false,
+                cache: false,
+                success: function (DoMsg) {
+                    if (DoMsg) alert(DoMsg);
+                },
+                error: function (msg) { alert(msg.data); }
+            });
+            return true;
+        }
+        else {
+            alert('False');
+            return false;
+
+        }
+    }
+    </script>
+<script type="text/javascript">
+    function saveAllRows() {
+        var rows = $("table tr");
+        $(rows).each(function (index) {
+            if (index > 0) {
+                var c = $(this).children("td:first").children("input:visible")[0];
+                if ($(c).val() == "保存") {
+                    doRow(c, "SaveALL");
+                }
+            }
+        });
+        reflushPage();
+    }
+    function delAllRows() {
+        var rows = $("table tr");
+        if (confirm("将删除本页所有参数设定！")) {
+            $(rows).each(function (index) {
+                if (index > 0) {
+                    var c = $(this).children("td:first").children("input:first");
+                    doRow(c, "DeleteALL");
+                }
+            });
+            reflushPage();
+        }
+    }
+</script>
+

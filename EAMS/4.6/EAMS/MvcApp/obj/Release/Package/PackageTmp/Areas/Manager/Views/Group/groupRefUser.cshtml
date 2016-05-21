@@ -1,0 +1,145 @@
+﻿@using OrganizationBase
+@using UserInfo
+@model groupModel
+
+@{
+    ViewBag.Title = "groupRefUser";
+}
+
+<h2>groupRefUser</h2>
+
+@if (Model != null)
+{
+<style type="text/css">
+　　#wrap{ width:90%; height:200px; border:2 solid green;}
+　　#column{ float:left; width:60%;}
+　　#column1{ float:left; width:45%; height:190px; border:2 solid Maroon ; }
+　　#column2{ float:left; width:10%; height:190px;border:2 solid Blue;}
+　　#column3{ float:right; width:45%;height:190px; border:2 solid Orange;}
+　　select { height:180px; }
+　　.clear{ clear:both;}
+</style>
+<h2>组 用户 分配</h2>
+<form method="post"  action="~/Manager/Group/groupRefUser" onsubmit="verify()">
+<fieldset>
+    <legend>组 用户 分配</legend>
+    当前组:
+    <input id="groupId" name="id" type="hidden" value='@Model.groupId' />
+    <input id="groupName" name="name" type="text" readonly="readonly" value='@Model.groupName' />
+    <input id="groupDescription" name="description" type="text" readonly="readonly" value='@Model.groupDescription' />
+    <div id="wrap" >
+    <div id="column1">
+    <div id="unSelUserList">
+    待分配用户<br />
+    @Html.ListBox("UnSelUserList", new MultiSelectList(@ViewBag.UnSelUsers as List<UserModel>, dataTextField: "cUserName", dataValueField: "iUserId"))
+    </div>
+    </div>
+    <div id="colunm2">
+    <div>
+    操作按钮<br />
+    <input id="AddToGroup" name = "AddToGroup" type="button" value="增加>" onclick="addToGroup()" />
+    <br />
+    <input id="SubToGroup" name = "SubToGroup" type="button" value="<减少" onclick="subToGroup()" />
+    </div>
+    </div>
+    <div id="colunm3">
+    <div id="GroupListSelected">
+    已分配用户<br /> <!--as List<UserModel>-->
+    @Html.ListBox("SeledUserList", new MultiSelectList(@Model.Users.AsEnumerable(), dataTextField: "cUserName", dataValueField: "iUserId"))
+</div>
+    </div></div>
+
+    <div>指定主管：  <input id="AdminIdtext"
+    value="@(Model.adminId >0? UserBLL.userBLL.getUser(Model.adminId ).cUserName:"")"  />
+    <input id="AdminIdval" name="AdminId" type="hidden" value="@(ViewBag.AdminUserID>0?ViewBag.AdminUserID:-1)" />
+    </div>
+</fieldset>
+
+<p>
+    <input id="submit" type="submit" value="保存" disabled="disabled" /> |
+    <a href="../">组列表</a>|<a href="~/Manager/Home/">管理页</a>
+</p>
+</form>
+}
+<script type="text/javascript">
+    function verify() {
+        $("#SeledUserList").children().attr("selected", true);
+        //alert($("#SeledUserList").val());
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#AdminIdtext").on("focus", function () {
+            $("#AdminIdtext").attr("data-text0", $("#AdminIdtext").text());
+            var sel = "<select id='sel'><option value='-1'></option>";
+            var seled = $("#SeledUserList").children("option");
+            seled.each(function () {
+                sel += "<option value='" + $(this).val() + "'>" + $(this).text() + "</option>"
+            });
+
+            sel += "</select>";
+            $(this).after(sel);
+
+            $("#sel").css("position", "absolute");
+            $("#sel").css("left", $(this).position().left);
+            $("#sel").css("top", $(this).position().top);
+            $("#sel").css("width", $(this).css("width"));
+            $("#sel").css("height", $(this).css("height"));
+            
+            //sel事件
+            $("#sel").change(function () {
+                $("#AdminIdtext").val($(this).find('option:selected').text());
+                $("#AdminIdval").val($(this).val());
+            });
+            $("#sel").blur(function () { $(this).remove(); });
+
+            //默认值
+            $("#sel").val($("#AdminIdval").val());
+        });
+        $("#AdminIdtext").on("blur", function () {
+            var datatext0 = $("#AdminIdtext").attr("data-text0");
+            if (datatext0 != $("#AdminIdtext").text()) {
+                $("#submit").removeAttr('disabled');
+                $("#AdminIdtext").removeAttr("data-text0");
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#SeledUserList").on("dblclick", function () {
+            subToGroup();
+        });
+        $("#UnSelUserList").on("dblclick", function () {
+            addToGroup();
+        });
+    });</script>
+<script type="text/javascript">
+    //ListBox间数据移动以下是代码片段
+    function ListBox_Move(listfrom, listto) {
+        var size = $("#" + listfrom + " option").size();
+        var selsize = $("#" + listfrom + " option:selected").size();
+        if (size > 0 && selsize > 0) {
+            $.each($("#" + listfrom + " option:selected"), function (i, own) {
+                // var sText = $(own).text(); 
+                // var sValue = $(own).val(); 
+                // $("#" + listto).append("<option value=\"" + sValue + "\">" + sText + "</option>"); 
+                // $(own).remove(); 
+                $(own).appendTo($("#" + listto));
+                $("#" + listfrom + "").children("option:first").attr("selected", true);
+            });
+        }
+        $("#submit").removeAttr('disabled');
+    }
+
+
+    function addToGroup() {
+        //从UnSelectRoleList将选中的项移到SelectedRoleList
+        ListBox_Move("UnSelUserList", "SeledUserList");
+    }
+    function subToGroup() {
+        //从SelectedRoleList将选中的项移到UnSelectRoleList
+        ListBox_Move("SeledUserList", "UnSelUserList");
+    }
+</script>

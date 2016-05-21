@@ -1,0 +1,12 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\obj\Release\IDataAccess.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\obj\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\IDataAccess\obj\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\obj\Release\IDataAccess.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\obj\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\IDataAccess\obj\Release\IDataAccess.pdb

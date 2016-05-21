@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppSystemModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AppSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actions" EntityType="AppSystemModel.Actions" />
+    <EntitySet Name="Functions" EntityType="AppSystemModel.Functions" />
+    <EntitySet Name="Logs" EntityType="AppSystemModel.Logs" />
+    <EntitySet Name="User" EntityType="AppSystemModel.User" />
+    <AssociationSet Name="FK_Logs_Actions" Association="AppSystemModel.FK_Logs_Actions">
+      <End Role="Actions" EntitySet="Actions" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Functions" Association="AppSystemModel.FK_Logs_Functions">
+      <End Role="Functions" EntitySet="Functions" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_User" Association="AppSystemModel.FK_Logs_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <EntitySet Name="UserExt" EntityType="AppSystemModel.UserExt" />
+    <AssociationSet Name="FK_UserExt_User" Association="AppSystemModel.FK_UserExt_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserExt" EntitySet="UserExt" />
+    </AssociationSet>
+    <EntitySet Name="Roles" EntityType="AppSystemModel.Role" />
+    <EntitySet Name="UserRoleRefs" EntityType="AppSystemModel.UserRoleRef" />
+    <AssociationSet Name="UserRoleRefRoleId" Association="AppSystemModel.UserRoleRefRoleId">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRoleRef" EntitySet="UserRoleRefs" />
+    </AssociationSet>
+    <AssociationSet Name="UserRoleRefUserId" Association="AppSystemModel.UserRoleRefUserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRoleRef" EntitySet="UserRoleRefs" />
+    </AssociationSet>
+    <EntitySet Name="Permissions" EntityType="AppSystemModel.Permission" />
+    <AssociationSet Name="FK_RolePermissions_Actions" Association="AppSystemModel.FK_RolePermissions_Actions">
+      <End Role="Actions" EntitySet="Actions" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_Functions" Association="AppSystemModel.FK_RolePermissions_Functions">
+      <End Role="Functions" EntitySet="Functions" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissions__iId__2B3F6F97" Association="AppSystemModel.FK__Permissions__iId__2B3F6F97">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissions__iId__2C3393D0" Association="AppSystemModel.FK__Permissions__iId__2C3393D0">
+      <End Role="User" EntitySet="User" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <EntitySet Name="Groups" EntityType="AppSystemModel.Group" />
+    <EntitySet Name="UserGroupRefs" EntityType="AppSystemModel.UserGroupRef" />
+    <AssociationSet Name="UGRgroupId" Association="AppSystemModel.UGRgroupId">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="UserGroupRef" EntitySet="UserGroupRefs" />
+    </AssociationSet>
+    <EntitySet Name="Locks" EntityType="AppSystemModel.Lock" />
+    <EntitySet Name="Messages" EntityType="AppSystemModel.Message" />
+  </EntityContainer>
+  <EntityType Name="Actions">
+    <Key>
+      <PropertyRef Name="iActionId" />
+    </Key>
+    <Property Name="iActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cActionName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="cActionDescription" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Logs" Relationship="AppSystemModel.FK_Logs_Actions" FromRole="Actions" ToRole="Logs" />
+    <NavigationProperty Name="Permissions" Relationship="AppSystemModel.FK_RolePermissions_Actions" FromRole="Actions" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="Functions">
+    <Key>
+      <PropertyRef Name="iFunctionId" />
+    </Key>
+    <Property Name="iFunctionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cFunctionLevel" Type="String" Nullable="false" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="cFunctionName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="cFunctionDescription" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="cFunctionCommandGo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="bLog" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Logs" Relationship="AppSystemModel.FK_Logs_Functions" FromRole="Functions" ToRole="Logs" />
+    <NavigationProperty Name="Permissions" Relationship="AppSystemModel.FK_RolePermissions_Functions" FromRole="Functions" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="iLogId" />
+    </Key>
+    <Property Name="iLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dLogDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="iUserID" Type="Int32" />
+    <Property Name="cWorkStation" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="cIP" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="iFunctionId" Type="Int32" />
+    <Property Name="iActionId" Type="Int32" />
+    <Property Name="cLastValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Actions" Relationship="AppSystemModel.FK_Logs_Actions" FromRole="Logs" ToRole="Actions" />
+    <NavigationProperty Name="Functions" Relationship="AppSystemModel.FK_Logs_Functions" FromRole="Logs" ToRole="Functions" />
+    <NavigationProperty Name="User" Relationship="AppSystemModel.FK_Logs_User" FromRole="Logs" ToRole="User" />
+    <Property Name="cModule" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="cFunction" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="cParams" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="cClass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="cReturn" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="cException" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="cUserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="iUserId" />
+    </Key>
+    <Property Name="iUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cUserCode" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="cUserName" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="cUserPassWord" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="cUserEMail" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="cUserMobile" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Logs" Relationship="AppSystemModel.FK_Logs_User" FromRole="User" ToRole="Logs" />
+    <NavigationProperty Name="UserExt" Relationship="AppSystemModel.FK_UserExt_User" FromRole="User" ToRole="UserExt" />
+    <NavigationProperty Name="UserRoleRefs" Relationship="AppSystemModel.UserRoleRefUserId" FromRole="User" ToRole="UserRoleRef" />
+    <NavigationProperty Name="Permissions" Relationship="AppSystemModel.FK__Permissions__iId__2C3393D0" FromRole="User" ToRole="Permission" />
+  </EntityType>
+  <Association Name="FK_Logs_Actions">
+    <End Role="Actions" Type="AppSystemModel.Actions" Multiplicity="0..1" />
+    <End Role="Logs" Type="AppSystemModel.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actions">
+        <PropertyRef Name="iActionId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="iActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Functions">
+    <End Role="Functions" Type="AppSystemModel.Functions" Multiplicity="0..1" />
+    <End Role="Logs" Type="AppSystemModel.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Functions">
+        <PropertyRef Name="iFunctionId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="iFunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_User">
+    <End Role="User" Type="AppSystemModel.User" Multiplicity="0..1" />
+    <End Role="Logs" Type="AppSystemModel.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="iUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserExt">
+    <Key>
+      <PropertyRef Name="iUserId" />
+    </Key>
+    <Property Type="Int32" Name="iUserId" Nullable="false" />
+    <Property Type="String" Name="cUserAddress" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cUserPhone" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cUserIM" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cUserMasterPage" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="AppSystemModel.FK_UserExt_User" FromRole="UserExt" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_UserExt_User">
+    <End Type="AppSystemModel.User" Role="User" Multiplicity="1" />
+    <End Type="AppSystemModel.UserExt" Role="UserExt" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="UserExt">
+        <PropertyRef Name="iUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="iRoleId" />
+    </Key>
+    <Property Type="Int32" Name="iRoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="cRoleName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="cRoleDescription" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoleRefs" Relationship="AppSystemModel.UserRoleRefRoleId" FromRole="Role" ToRole="UserRoleRef" />
+    <NavigationProperty Name="Permissions" Relationship="AppSystemModel.FK__Permissions__iId__2B3F6F97" FromRole="Role" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="UserRoleRef">
+    <Key>
+      <PropertyRef Name="iURRefId" />
+    </Key>
+    <Property Type="Int32" Name="iRoleId" Nullable="false" />
+    <Property Type="Int32" Name="iUserId" Nullable="false" />
+    <Property Type="Int32" Name="iURRefId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Role" Relationship="AppSystemModel.UserRoleRefRoleId" FromRole="UserRoleRef" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="AppSystemModel.UserRoleRefUserId" FromRole="UserRoleRef" ToRole="User" />
+  </EntityType>
+  <Association Name="UserRoleRefRoleId">
+    <End Type="AppSystemModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AppSystemModel.UserRoleRef" Role="UserRoleRef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="iRoleId" />
+      </Principal>
+      <Dependent Role="UserRoleRef">
+        <PropertyRef Name="iRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRoleRefUserId">
+    <End Type="AppSystemModel.User" Role="User" Multiplicity="1" />
+    <End Type="AppSystemModel.UserRoleRef" Role="UserRoleRef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="UserRoleRef">
+        <PropertyRef Name="iUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="iPermissionId" />
+    </Key>
+    <Property Type="Int32" Name="iPermissionId" Nullable="false" />
+    <Property Type="Int32" Name="iActionId" Nullable="false" />
+    <Property Type="Int32" Name="iFunctionId" Nullable="false" />
+    <Property Type="Int32" Name="iId" Nullable="false" />
+    <Property Type="String" Name="cType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Action" Relationship="AppSystemModel.FK_RolePermissions_Actions" FromRole="Permission" ToRole="Actions" />
+    <NavigationProperty Name="Function" Relationship="AppSystemModel.FK_RolePermissions_Functions" FromRole="Permission" ToRole="Functions" />
+    <NavigationProperty Name="Role" Relationship="AppSystemModel.FK__Permissions__iId__2B3F6F97" FromRole="Permission" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="AppSystemModel.FK__Permissions__iId__2C3393D0" FromRole="Permission" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_RolePermissions_Actions">
+    <End Type="AppSystemModel.Actions" Role="Actions" Multiplicity="1" />
+    <End Type="AppSystemModel.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actions">
+        <PropertyRef Name="iActionId" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="iActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_Functions">
+    <End Type="AppSystemModel.Functions" Role="Functions" Multiplicity="1" />
+    <End Type="AppSystemModel.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Functions">
+        <PropertyRef Name="iFunctionId" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="iFunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissions__iId__2B3F6F97">
+    <End Type="AppSystemModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AppSystemModel.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="iRoleId" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="iId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissions__iId__2C3393D0">
+    <End Type="AppSystemModel.User" Role="User" Multiplicity="1" />
+    <End Type="AppSystemModel.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="iUserId" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="iId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="groupid" />
+    </Key>
+    <Property Type="Int32" Name="groupid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="groupName" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="groupDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserGroupRefs" Relationship="AppSystemModel.UGRgroupId" FromRole="Group" ToRole="UserGroupRef" />
+  </EntityType>
+  <EntityType Name="UserGroupRef">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="groupId" />
+    <Property Type="Int32" Name="UserId" />
+    <Property Type="Boolean" Name="isManager" />
+    <NavigationProperty Name="Group" Relationship="AppSystemModel.UGRgroupId" FromRole="UserGroupRef" ToRole="Group" />
+  </EntityType>
+  <Association Name="UGRgroupId">
+    <End Type="AppSystemModel.Group" Role="Group" Multiplicity="0..1" />
+    <End Type="AppSystemModel.UserGroupRef" Role="UserGroupRef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupid" />
+      </Principal>
+      <Dependent Role="UserGroupRef">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Lock">
+    <Key>
+      <PropertyRef Name="autoId" />
+    </Key>
+    <Property Name="autoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="module" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="locker" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="key" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="receiver" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="markRead" Type="Boolean" />
+    <Property Name="sendDate" Type="DateTime" Precision="3" />
+    <Property Name="receivDate" Type="DateTime" Precision="3" />
+    <Property Name="contenType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="module" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

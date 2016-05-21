@@ -1,0 +1,146 @@
+﻿@using report
+@model Report
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<style>
+    .linein {
+        display: inline;
+    }
+
+    .divclare {
+        display: block;
+        clear: both;
+        margin-top: 10px;
+    }
+
+        .divclare::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+    input {
+    }
+</style>
+<div class="btn btn-default btn-group">
+    <button class="btn btn-default" onclick="save()">保存</button>
+</div>
+<div>
+    <div>
+        <div style="float:none;width:100%">
+            <div style="float:left;width:80%" class="linein">
+                <label>模块</label><select id="module" data-cls="@(Model.moduleID < 0 ? -1 : Model.moduleID)" value="@(Model.moduleID < 0 ? -1 : Model.moduleID)">
+                    @if (ViewBag.modules != null)
+                    {
+                        foreach (Module m in ViewBag.modules)
+                        {
+                            if (Model.moduleID == m.ID)
+                            {
+                <option value="@m.ID" selected="selected">@m.Name</option>}
+                            else
+                            {
+                <option value="@m.ID">@m.Name</option>}
+                        }
+                    }
+                </select>
+            </div>
+            <div style="float:right;width:20%" class="linein">
+                <label>类别</label><select id="classs" onchange="clsChange(this)" data-cls='@(Model.clsID < 0 ? -1 : Model.clsID)'>
+                    @if (ViewBag.classs != null)
+                    {
+                        foreach (Class c in ViewBag.classs)
+                        {
+                            if (Model.clsID == c.ID)
+                            {
+                <option value="@c.ID" selected="selected">@c.ClassName</option>}
+                            else
+                            {
+                <option value="@c.ID">@c.ClassName</option>}
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div style="float:none;width:100%">
+            <div style="float:left;width:25%" class="linein">
+                <label>名字</label><input id="cName" value='@(Model.Name == null ? "" : Model.Name)' />
+            </div><div style="float:left;width:25%" class="linein">
+                <label>标题</label><input id="cTitle" value='@(Model.Title == null ? "" : Model.Title)' />
+            </div><div style="float:right;;width:20%" class="linein">
+                <label>ID</label><input id="cReportID" style="max-width:80px" readonly="readonly" value="@(Model.reportID < 0 ? -1 : Model.reportID)" />
+            </div>
+        </div>
+        <div style="float:left;width:100%" class="linein">
+            <label>描述</label><textarea id="cDescription" rows="2" cols="160">@Model.Description</textarea>
+        </div>
+        <div style="float:left;width:100%" class="linein">
+            <label>基本查询语句</label><textarea id="cQueryBase" rows="3" cols="160">@Model.QueryBase</textarea>
+        </div>
+    </div>
+    <label hidden="hidden" id="isDefault"></label>
+    <div id="setupField" class="divclare">
+        @*@Html.Partial("fieldTable", Model)*@
+        @Html.Action("getFieldTable", new { id = Model.reportID })
+    </div>
+    <div>
+        <label id="defaultFilter">默认查询条件</label>
+        <div>@Html.Action("ViewFilter", new { id = Model.reportID, isDefault = true })</div>
+    </div>
+    <div id="defaultOrder">
+        <label>默认排序</label>
+        <div> @Html.Action("ViewOrder", new { id = Model.reportID, isDefault = true })</div>
+    </div>
+
+    <div id="defaultPivot">
+        <label> 默认透视表设置 </label>
+        @Html.Action("pivotView", new { id = Model.reportID, isPreview = true })
+    </div>
+    <div class="divclare">
+        <label>"@Model.clsID" 分组Having</label><input id="cls" value="@Model.Fields" />
+    </div>
+</div>
+<div style="float:left;width:30%" class="btn-group">
+    <a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default" href="~/employee/report/">返回</a>
+</div>
+<script type="text/javascript">
+    function save() {
+        var reportObject = new Object();
+        reportObject.reportID = $("#cReportID").val();
+        reportObject.Title = $("#cTitle").val();
+        reportObject.Name = $("#cName").val();
+        reportObject.Description = $("#cDescription").val();
+        reportObject.moduleID = $("#module").val();
+        reportObject.clsID = $("#classs").val();
+        reportObject.QueryBase = $("#cQueryBase").val();
+
+        var url = "/employee/Report/save/" + reportObject.reportID;
+        $.post(url, reportObject, function (data) {
+            $("#cReportID").val(data);
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        clsChange($("#classs:first"));
+    });
+</script>
+<script type="text/javascript">
+    function clsChange(c) {
+        var cls = $(c).val();
+        switch (cls) {
+            case "1":
+                $("#defaultOrder").css("display", "block");
+                $("#defaultPivot").css("display", "none");
+                break;
+            case "2":
+                $("#defaultOrder").css("display", "none");
+                $("#defaultPivot").css("display", "block");
+                break;
+            default:
+                break;
+        }
+    }
+</script>

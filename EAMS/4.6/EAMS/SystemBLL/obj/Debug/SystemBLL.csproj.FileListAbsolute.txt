@@ -1,0 +1,179 @@
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\SystemBLL.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\SystemBLL.pdb
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\DBAccessBase.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\SystemDB.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\WebCommon.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\DBAccessBase.pdb
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\SystemDB.pdb
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\bin\Debug\WebCommon.pdb
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\obj\Debug\ResolveAssemblyReference.cache
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\obj\Debug\SystemBLL.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\System.Web.Mvc.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\System.Web.Mvc.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\System.Web.Mvc.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\System.Web.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\SystemBLL\bin\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\obj\Debug\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\obj\Debug\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.Razor.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\Microsoft.Web.Infrastructure.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.Razor.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.WebPages.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemBLL.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\WebCommon.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.Razor.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\SystemDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\WebCommon.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.Razor.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\Microsoft.Web.Infrastructure.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.Razor.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.WebPages.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\bin\Debug\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\obj\Debug\SystemBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\SystemBLL\obj\Debug\SystemBLL.pdb

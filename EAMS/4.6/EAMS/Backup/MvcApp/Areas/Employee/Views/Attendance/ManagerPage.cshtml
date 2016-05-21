@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.MainTitle = "考勤";
+    ViewBag.Title = "管理页";
+}
+
+<div class="row-fluid">
+    <div class="container-fluid ">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <td><a class="btn btn-default" href="~/Employee/Attendance/editHoliday">节假日</a></td>
+                    <td><a class="btn btn-default" href="~/Employee/Attendance/editScheme">编辑方案，班次，时间计划</a></td>
+                    <td><a class="btn btn-default" href="~/Employee/Attendance/editEmpRefSchemeClass">员工对应班次</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="importAtts()" @*onclick="getEmployees()"*@>
+                            导入所有员工考勤
+                        </button>
+                    @*<input class="btn btn-default" type="button" value="导入所有员工考勤" id="importAtts" onclick="importAtts()" />*@
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="container-fluid ">
+        <a class="btn btn-default col-md-offset-2" href="/Employee/Attendance">返回考勤页</a>
+    </div>
+</div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">员工处理进度</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row-fluid">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            @*<span>
+                                员工处理进度:&nbsp;<span id="enum"></span>/
+                                <span id="esum"></span>
+                            </span>
+                            <div class="progress">
+                                <div id="bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                </div>
+                            </div>*@
+                            导入员工考勤处理<span id="doState">中...</span><img id="runingGif" height="50" width="50" src="/Content/Images/runing.gif" />
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" style="display:none" id="btnCloseModalWindow" value="关闭"/>
+                    @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script type="text/javascript">
+        function importAtts() {
+            $.ajax({
+                url: "/Employee/Attendance/prevImportAtts",
+                type: "Get",
+                data: { isAll: true },
+                success: function (msg) {
+                    $("#doState").text("完成!");
+                    $("#runingGif").css('display', 'none');
+                    $("#btnCloseModalWindow").css('display', 'block');
+                    alert('导入考勤记录 ' + msg + ' 条');
+                },
+                error: function (msg) {
+                    alert("错误：" + msg);
+                }
+            });
+        }
+        function getEmployees() {
+            $("#enum").text(0);
+            $("#esum").text(0);
+            //获得员工列表,每个员工计算未导入考勤的天数做为员工处理进度的分母;
+            $.ajax({
+                url: "/Employee/Attendance/getEmployees",
+                type: "Post",
+                data: {},
+                //async: false,
+                success: function (msg) {
+                    $("#esum").text(msg.length);
+                    $(msg).each(function () {
+                        getEmployeeAttDays(this);
+                    });
+                    $("#doState").text("完成!");
+                    $("#runingGif").css('display', 'none');
+                    $("#btnCloseModalWindow").css('display', 'block');
+                },
+                error: function (msg) {
+                    alert("错误：" + msg);
+                }
+            });
+        }
+        function getEmployeeAttDays(emp) {
+            //获得员工未导入考勤的日期列表,做为进度条的分母,
+            //以每个日期为参数, 调用考勤导入处理函数;
+            //<div id="bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            $.ajax({                
+                url: "/Employee/Attendance/getEmployeeAttDays/"+emp,
+                type: "Post",
+                data: {},
+                async: false,
+                success: function (msg) {
+                    $(msg).each(function () {
+                        $("#bar").attr("aria-valuemax", msg.length);
+                        $("#bar").attr("aria-valuenow", 0);
+                        $("#bar").css("width", "0%");
+                        doDay(emp, this);
+                        });
+                },
+                error: function (msg) {
+                    alert("错误：" + msg);
+                },
+                complete: function () {
+                    var en = new Number($("#enum").text()) + 1;
+                    $("#enum").text(en);
+                    //$("#doState").text("完成!");
+                    //$("#btnCloseModalWindow").removeAttr("disabled");
+                }
+            });
+        }
+        function doDay(empid, date) {
+            //alert("Emp:" + empid + ";Date:" + date);
+            //考勤导入处理函数,员工ID,考勤日期
+            //<div id="bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            $.ajax({
+                url: "/Employee/Attendance/doDay",
+                type: "Post",
+                data: { empid: empid, date: date },
+                async: false,
+                success: function (msgDo) {
+                    //return msgDo;
+                    //alert(this);
+                },
+                error: function (msgDo) {
+                    alert("错误：" + msgDo);
+                },
+                complete: function () {
+                    //var vn = $("#bar").attr("aria-valuenow");
+                    //var vmax = $("#bar").attr("aria-valuemax");
+                    //$("#bar").attr("aria-valuenow", vn + 1);
+                    //$("#bar").css("width", Math.floor((vn + 1) / vmax * 100).toString() + "%");
+                }
+            });
+        }
+    </script>

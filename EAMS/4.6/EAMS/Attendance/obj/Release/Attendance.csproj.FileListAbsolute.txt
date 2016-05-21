@@ -1,0 +1,204 @@
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\EntityFramework5.Extended.NET4.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\HWATT.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\HWATT.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\EntityFramework5.Extended.NET4.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\Attendance\obj\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\EntityFramework5.Extended.NET4.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\HWATT.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\HWATT.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\EntityFramework5.Extended.NET4.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\Attendance\obj\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\HWATT.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\HWATT.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\Attendance\obj\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\HWATT.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\SystemBLL.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\HWATT.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\SystemBLL.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\4.0\EAMS_20141101(BootStrap,去除EF.Exend,修整外观)\Attendance\obj\Release\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\HWATT.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\HWATT.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\obj\Release\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.Mvc.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.Mvc.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\System.Web.Mvc.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\HWATT.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\System.Web.Mvc.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\HWATT.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\EntityFramework.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\System.Web.Mvc.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\bin\Release\zh-Hans\System.Web.Mvc.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS_20150311(签呈编辑改版为打印模板)\Attendance\obj\Release\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\EntityFramework.SqlServer.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\EntityFramework.SqlServer.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.WebPages.Razor.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.WebPages.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.WebPages.Deployment.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.Razor.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.WebPages.Razor.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.WebPages.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\System.Web.WebPages.Deployment.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\System.Web.Razor.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\System.Web.WebPages.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\Attendance\bin\Release\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Attendance.dll.config
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Attendance.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\AttendanceDeviceFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\IAttendanceDevice.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Locks.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Logs.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Newtonsoft.Json.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\OrganizationBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\SystemBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\SystemDB.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\UserBLL.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\UserInfo.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\WebCommon.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\AttendanceDeviceFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\IAttendanceDevice.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Locks.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Logs.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\OrganizationBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\SystemBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\SystemDB.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\UserBLL.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\UserInfo.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\Newtonsoft.Json.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\WebCommon.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\bin\Release\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\obj\Release\Attendance.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\Attendance\obj\Release\Attendance.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Attendance.dll.config
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Attendance.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Attendance.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\AttendanceDeviceFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\IAttendanceDevice.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Locks.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Logs.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Newtonsoft.Json.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\OrganizationBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\SystemBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\SystemDB.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\UserBLL.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\UserInfo.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\WebCommon.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\AttendanceDeviceFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\IAttendanceDevice.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Locks.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Logs.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\OrganizationBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\SystemBLL.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\SystemDB.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\UserBLL.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\UserInfo.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\Newtonsoft.Json.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\WebCommon.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\bin\Release\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\obj\Release\Attendance.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\obj\Release\Attendance.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\Attendance\obj\Release\Attendance.pdb

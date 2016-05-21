@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="vpnAppDataModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="vpn_Register">
+      <EntityTypeMapping TypeName="vpnAppDataModel.vpn_Register">
+        <MappingFragment StoreEntitySet="vpn_Register">
+          <ScalarProperty Name="KEY" ColumnName="KEY" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="vpnID" ColumnName="vpnID" />
+          <ScalarProperty Name="vpnPW" ColumnName="vpnPW" />
+          <ScalarProperty Name="vpnIP" ColumnName="vpnIP" />
+          <ScalarProperty Name="vpnEncryptionType" ColumnName="vpnEncryptionType" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="modifyDate" ColumnName="modifyDate" />
+          <ScalarProperty Name="enable" ColumnName="enable" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+          <ScalarProperty Name="vpnMac" ColumnName="vpnMac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,35 @@
+﻿@using OrganizationBase
+@model IEnumerable<roleModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>角色首页</h2>
+<div>@Html.ActionLink("创建","Create")</div>
+<div>
+<table>
+<tbody>
+<tr>
+<th>编码</th>
+<th>名称</th>
+<th>描述</th>
+<th>操作</th>
+</tr>
+@foreach (var mb in Model)
+{
+    <tr>
+    <td>@mb.iRoleId.ToString()</td>
+    <td>@mb.cRoleName</td>
+    <td>@mb.cRoleDescription</td>
+    <td>@Html.ActionLink("修改", "Edit", new { id = mb.iRoleId })
+    ｜@Html.ActionLink("删除", "Delete", new { id = mb.iRoleId })
+    ｜@Html.ActionLink("分配", "Details", new { id = mb.iRoleId })
+    </td>
+    </tr> 
+}
+</tbody>
+</table>
+</div>
+
+<div><a href="~/Manager/Home/">返回管理页</a></div>

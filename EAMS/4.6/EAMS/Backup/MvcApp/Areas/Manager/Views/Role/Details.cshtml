@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+<style type="text/css">
+　　#wrap{ width:90%; height:200px; border:2 solid green;}
+　　#column{ float:left; width:60%;}
+　　#column1{ float:left; width:45%; height:190px; border:2 solid Maroon ; }
+　　#column2{ float:left; width:10%; height:190px;border:2 solid Blue;}
+　　#column3{ float:right; width:45%;height:190px; border:2 solid Orange;}
+　　select { height:180px; }
+　　.clear{ clear:both;}
+</style>
+<h2>角色帐户分配</h2>
+<form method="post" action="~/Manager/Role/Details" onsubmit="verify()">
+<fieldset>
+    <legend>用户角色分配</legend>
+    <legend id="Role">
+    当前角色:
+    <input id="roleID" name="roleID" type="hidden" value='@TempData["RoleID"].ToString()' />
+    <input id="roleName" name="roleName" type="text" readonly="readonly" value='@TempData["RoleName"].ToString()' />
+    </legend>
+    <div id="wrap" >
+    <div id="column1">
+    <div id="UserList">
+    待分配用户<br />
+    @Html.ListBox("UnSelectUserList", new MultiSelectList(@ViewBag.UnSelectUsers as List<SystemDB.User>, dataTextField: "cUserName", dataValueField: "iUserID"))
+    </div>
+    </div>
+    <div id="colunm2">
+    <div>
+    操作按钮<br />
+    <input id="AddToRole" name = "AddToRole" type="button" value="增加>" onclick="addToRole()" />
+    <br />
+    <input id="SubToRole" name = "SubToRole" type="button" value="<减少" onclick="subToRole()" />
+    </div>
+    </div>
+    <div id="colunm3">
+    <div id="UserListSelected">
+    已分配用户<br />
+    @Html.ListBox("SelectedUserList", new MultiSelectList(@ViewBag.SelectedUsers as List<SystemDB.User>, dataTextField: "cUserName", dataValueField: "iUserID"))
+    </div>
+    </div>
+    </div>
+</fieldset>
+<p>
+    <input id="submit" type="submit" value="保存" disabled="disabled" /> |
+    @Html.ActionLink("角色列表", "Index")
+</p>
+<script type="text/javascript">
+    function verify() {
+        $("#SelectedUserList").children().attr("selected", true);
+    }</script>
+</form>
+<script type="text/javascript">
+//ListBox间数据移动以下是代码片段
+    function ListBox_Move(listfrom, listto) {
+        var size = $("#" + listfrom + " option").size();
+        var selsize = $("#" + listfrom + " option:selected").size();
+        if (size > 0 && selsize > 0) {
+            $.each($("#" + listfrom + " option:selected"), function (i, own) {
+                // var sText = $(own).text(); 
+                // var sValue = $(own).val(); 
+                // $("#" + listto).append("<option value=\"" + sValue + "\">" + sText + "</option>"); 
+                // $(own).remove(); 
+                $(own).appendTo($("#" + listto));
+                $("#" + listfrom + "").children("option:first").attr("selected", true);
+            });
+        }
+        $("#submit").attr('disabled', false); 
+    }
+
+
+    function addToRole() {
+        //从UnSelectUserList将选中的项移到SelectedUserList
+        ListBox_Move("UnSelectUserList","SelectedUserList");
+    }
+    function subToRole() {
+        //从SelectedUserList将选中的项移到UnSelectUserList
+        ListBox_Move("SelectedUserList", "UnSelectUserList");
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#SelectedRoleList").on("dbclick", function () {
+            subToRole();
+        });
+        $("#UnSelectRoleList").on("dbclick", function () {
+            addToRole();
+        });
+    });</script>

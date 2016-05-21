@@ -1,0 +1,170 @@
+﻿@model Petition.QC_Main
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style type="text/css">
+#qcDetails .col0{ width:12px;}
+#qcDetails .col1{ width:40px;}
+#qcDetails .col2{ width:50px;}
+#qcDetails .col3{ width:20px;}
+#qcDetails .col4{ width:30px;}
+#qcDetails .col5{ width:30px;}
+#qcDetails .col6{ width:30px;}
+#qcDetails .col7{ width:30px;}
+#qcDetails .col8{ width:30px;}
+#qcDetails .col9{ width:80px;}
+#qcDetails .col10{ width:16px;}
+</style>
+
+<h2>编辑</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend >签呈</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        <table id='qcMain'>
+        <tr>
+        <td>签呈编号：
+            @Html.EditorFor(model => model.cCode)
+        </td>
+        <td>
+        &nbsp &nbsp 客户：&nbsp &nbsp @Html.EditorFor(model => model.cCusCode)
+    <input type="button" value="参照" title="参照" onclick="opensearchResultDialog()"  />
+</td>
+<td>起止日期：@Html.EditorFor(model=>model.dEffDate)
+@*@Html.TextBox("dEffDate", Model.dEffDate.HasValue ? Model.dEffDate.Value.ToShortDateString() : "")*@
+    到 @Html.TextBox("dExpDate", Model.dExpDate.HasValue ? Model.dExpDate.Value.ToShortDateString() : "")</td></tr>
+<tr><td>客户经理：@Html.EditorFor(model => model.cCusManager)
+</td>
+<td>客户名称：@Html.EditorFor(model => model.cCusName)
+</td>
+<td>&nbsp 联系人：&nbsp @Html.EditorFor(model => model.cCusPerson)           
+</td></tr>
+        </table>
+        <script type="text/javascript">
+            function opensearchResultDialog() {    //对话框定义
+                var key = $("#cCusCode").val();
+                var url = "";
+                if (!key) {
+                    url = "/Employee/CallIn/searchGo";
+                    //alert(encodeURI(url));
+                    JqueryDialog.Open1('搜索参照', encodeURI(url), 800, 400);
+                }
+                else {
+                    url = "/Employee/CallIn/searchGo/" + key;
+                    JqueryDialog.Open1('搜索参照', url, 800, 400);
+                }
+            }
+            function callbackDialog(p) {
+                JqueryDialog.Close();
+                if (p) {
+                    $("#cCusCode").val(p);
+                    getcusInfo(p);
+                }
+                else alert("无选择结果");
+            }
+            function getcusInfo(code) {
+                $.ajax({
+                    url: "/Employee/Petition/cusInfoJson/" + code,
+                    type: "GET",
+                    dataType: "json",
+                    data: { id: code },
+                    success: function (data) {
+                        //alert(data.cCusName + ";" + data.ContactName + ";" + data.employeeName);
+                        $('#cCusName').val(data.cCusName);
+                        $('#cCusPerson').val(data.ContactName);
+                        $('#cCusManager').val(data.employeeName);
+                    }
+                });
+            }
+
+        </script>
+
+        <p>
+            <input id="MainSubmit" type="submit" value="保存继续"  />
+        </p>
+
+    </fieldset>
+    <div style="display:none">
+    <input id='btnRecordList' type="button" value="记录列表" />    
+    <input id='btnReplyRecords' type="button" value="审批列表" />
+    </div>
+            <hr />
+        
+        <div id="recordList">
+        记录项列表
+        </div>
+        <hr />
+        <div id="ReplyRecords" >
+        审批列表
+        </div>
+}
+<script type="text/javascript">
+    //给按钮定义
+    $(document).ready(function () {
+        $("[name='dEffDate']").dateinput({ lang: 'CN',
+            format: 'yyyy/mm/dd',
+            offset: [0, -100],
+            selectors: true
+        });
+        $("[name='dExpDate']").dateinput({ lang: 'CN',
+            format: 'yyyy/mm/dd',
+            offset: [0, -200],
+            selectors: true
+        });
+        $("#cCusCode").on("blur", function () {
+            var code = $(this).val();
+            getcusInfo(code);
+        });
+        $("#btnRecordList").on("click", function () {
+            $('#recordList').load('/Employee/Petition/RecordList/' + $('#Id').val() + " #qcRecords",
+            function () {
+                $("[title]").tooltip({ position: "top right" });
+                $("#qcDetails").sorttable({
+                    ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                    descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                    ascImgSize: "8px",
+                    descImgSize: "8px",
+                    onSorted: function (cell) {
+                        //alert(cell.index() + " -- " + cell.text());
+                    }
+                });
+            });
+        });
+        $("#btnReplyRecords").on("click", function () {
+            $('#ReplyRecords').load('/Employee/Petition/ReplyRecords/' + $('#Id').val() + " #qcReplysPage",
+                function () {
+                    $("[title]").tooltip({ position: "top right" });
+                    $("#qcReplys").sorttable({
+                        ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                        descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                        ascImgSize: "8px",
+                        descImgSize: "8px",
+                        onSorted: function (cell) {
+                            //alert(cell.index() + " -- " + cell.text());
+                        }
+                    });
+                });
+        });
+        var i = $('#Id').val();
+        //alert(i);
+        if (i > 0) {
+            $("#btnRecordList").click();
+            $("#btnReplyRecords").click();
+        }
+        if (!$("#cCusCode").val()) $("#edit").hide();
+    });
+</script>
+<br />
+<div>
+    @Html.ActionLink("返回", "Index")|
+    @Html.ActionLink("输出", "Output", new { id=Model.Id })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

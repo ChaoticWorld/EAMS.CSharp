@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HWATTModelStoreContainer" CdmEntityContainer="HWATTEntities">
+    <EntitySetMapping Name="KQZ_Card">
+      <EntityTypeMapping TypeName="HWATTModel.KQZ_Card">
+        <MappingFragment StoreEntitySet="KQZ_Card">
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="ModifyType" ColumnName="ModifyType" />
+          <ScalarProperty Name="ModifyUser" ColumnName="ModifyUser" />
+          <ScalarProperty Name="FaceIDNo" ColumnName="FaceIDNo" />
+          <ScalarProperty Name="IsValidate" ColumnName="IsValidate" />
+          <ScalarProperty Name="ImgStatus" ColumnName="ImgStatus" />
+          <ScalarProperty Name="ImgID" ColumnName="ImgID" />
+          <ScalarProperty Name="cVerify" ColumnName="cVerify" />
+          <ScalarProperty Name="DevClass" ColumnName="DevClass" />
+          <ScalarProperty Name="DevID" ColumnName="DevID" />
+          <ScalarProperty Name="CardTypeID" ColumnName="CardTypeID" />
+          <ScalarProperty Name="CardTime" ColumnName="CardTime" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KQZ_Employee">
+      <EntityTypeMapping TypeName="HWATTModel.KQZ_Employee">
+        <MappingFragment StoreEntitySet="KQZ_Employee">
+          <ScalarProperty Name="RealEmployeeCode" ColumnName="RealEmployeeCode" />
+          <ScalarProperty Name="ENDATTDATE" ColumnName="ENDATTDATE" />
+          <ScalarProperty Name="BEGINATTDATE" ColumnName="BEGINATTDATE" />
+          <ScalarProperty Name="DEVTYPESTR" ColumnName="DEVTYPESTR" />
+          <ScalarProperty Name="Reserved4" ColumnName="Reserved4" />
+          <ScalarProperty Name="Reserved3" ColumnName="Reserved3" />
+          <ScalarProperty Name="Reserved2" ColumnName="Reserved2" />
+          <ScalarProperty Name="Reserved1" ColumnName="Reserved1" />
+          <ScalarProperty Name="LastCardID" ColumnName="LastCardID" />
+          <ScalarProperty Name="StaffStatus" ColumnName="StaffStatus" />
+          <ScalarProperty Name="HavePwd" ColumnName="HavePwd" />
+          <ScalarProperty Name="ModelNum" ColumnName="ModelNum" />
+          <ScalarProperty Name="OpendoorType" ColumnName="OpendoorType" />
+          <ScalarProperty Name="CheckType" ColumnName="CheckType" />
+          <ScalarProperty Name="EmployeeLogPwd" ColumnName="EmployeeLogPwd" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="RegisterType" ColumnName="RegisterType" />
+          <ScalarProperty Name="HDCPInfo" ColumnName="HDCPInfo" />
+          <ScalarProperty Name="DevType" ColumnName="DevType" />
+          <ScalarProperty Name="HaveFesta" ColumnName="HaveFesta" />
+          <ScalarProperty Name="CanOvertime" ColumnName="CanOvertime" />
+          <ScalarProperty Name="OffRule" ColumnName="OffRule" />
+          <ScalarProperty Name="OnRule" ColumnName="OnRule" />
+          <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+          <ScalarProperty Name="AddrHome" ColumnName="AddrHome" />
+          <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+          <ScalarProperty Name="EnrollDate" ColumnName="EnrollDate" />
+          <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+          <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="EDUCATION" ColumnName="EDUCATION" />
+          <ScalarProperty Name="APOSITION" ColumnName="APOSITION" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Health" ColumnName="Health" />
+          <ScalarProperty Name="MARITALSTATUS" ColumnName="MARITALSTATUS" />
+          <ScalarProperty Name="ZhengZhi" ColumnName="ZhengZhi" />
+          <ScalarProperty Name="NATIVEPLACE" ColumnName="NATIVEPLACE" />
+          <ScalarProperty Name="Nation" ColumnName="Nation" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="BrchName" ColumnName="BrchName" />
+          <ScalarProperty Name="BrchID" ColumnName="BrchID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

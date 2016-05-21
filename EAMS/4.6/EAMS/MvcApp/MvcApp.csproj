@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6A12517A-0587-4A83-ADEB-A872DA2BB3F8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcApp</RootNamespace>
+    <AssemblyName>MvcApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPager, Version=2.0.0.1, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\bullet_arrow_down.png" />
+    <Content Include="Content\Images\bullet_arrow_up.png" />
+    <Content Include="Content\Images\DFL-LOGOout.gif" />
+    <Content Include="Content\Images\DFL-LOGO_web_96x38.jpg" />
+    <Content Include="Content\Images\h300.dateinput.jquerytools.png" />
+    <Content Include="Content\Images\h80.dateinput.jquerytools.png" />
+    <Content Include="Content\Images\next.dateinput.jquerytools.gif" />
+    <Content Include="Content\Images\prev.dateinput.jquerytools.gif" />
+    <Content Include="Content\Images\runing.gif" />
+    <Content Include="Content\jquery.dialog.css" />
+    <Content Include="Content\jquery.Table.css" />
+    <Content Include="Content\PrintPage.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Manager\Views\web.config" />
+    <Content Include="Areas\Manager\Views\Account\Details.cshtml" />
+    <Content Include="Areas\Manager\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Account\Logon.cshtml" />
+    <Content Include="Areas\Manager\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Manager\Views\Account\ReSecurity.cshtml" />
+    <Content Include="Areas\Manager\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Manager\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Manager\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Manager\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Group\groupList.cshtml" />
+    <Content Include="Areas\Manager\Views\Group\groupRefUser.cshtml" />
+    <Content Include="Areas\Manager\Views\Group\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Log\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Details.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Employee\Views\web.config" />
+    <Content Include="Areas\Employee\Views\Attendance\AttendanceList.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editClassPlan.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editEmpRefSchemeClass.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editEvent.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editFeeCalculator.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editHoliday.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editScheme.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\editSchemeClass.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\eventAbsenceList.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\eventOverList.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\Index.cshtml" />
+    <Content Include="Areas\Employee\Views\Attendance\ManagerPage.cshtml" />
+    <Content Include="Areas\Employee\Views\EmployeeHome\Index.cshtml" />
+    <Content Include="Areas\Employee\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Employee\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Employee\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Employee\Views\strategy\Edit.cshtml" />
+    <Content Include="Areas\Employee\Views\strategy\Index.cshtml" />
+    <Content Include="Areas\Employee\Views\strategy\InvStdList.cshtml" />
+    <Content Include="Areas\Employee\Views\strategy\InvStdRatePrice.cshtml" />
+    <Content Include="Areas\Employee\Views\strategy\List.cshtml" />
+    <Content Include="Areas\Employee\Views\strategy\strategyDetails.cshtml" />
+    <Content Include="Areas\Common\Views\web.config" />
+    <Content Include="Areas\Common\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Common\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Common\Views\RefCustomer\searchGo.cshtml" />
+    <Content Include="Areas\Common\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Common\Views\RefInventory\referInventory.cshtml" />
+    <Content Include="Areas\Manager\Views\Vouch\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Vouch\List.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\Index.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\Edit.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\mxReport.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\getFieldTable.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\getOrderFields.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\MXView.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\ViewList.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\ViewFilter.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\reportPermissions.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\ViewOrder.cshtml" />
+    <Content Include="Areas\Employee\Views\Report\pivotView.cshtml" />
+    <None Include="Properties\PublishProfiles\web.Server1.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.base64.js" />
+    <Content Include="Scripts\jquery.DateExt.js" />
+    <Content Include="Scripts\jquery.dialog.js" />
+    <Content Include="Scripts\jquery.json.min.js" />
+    <Content Include="Scripts\jquery.md5.js" />
+    <Content Include="Scripts\jquery.PrintArea.js" />
+    <Content Include="Scripts\jquery.table.rowcolor.js" />
+    <Content Include="Scripts\jquery.table.sort.js" />
+    <Content Include="Scripts\jquery.Tools.dateinput.location.cn.js" />
+    <Content Include="Scripts\jquery.tools.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Content\pivot.min.css" />
+    <Content Include="Scripts\pivot\c3.min.css" />
+    <Content Include="Scripts\pivot\c3.min.js" />
+    <Content Include="Scripts\pivot\c3_renderers.min.js" />
+    <Content Include="Scripts\pivot\d3.min.js" />
+    <Content Include="Scripts\pivot\d3_renderers.min.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\pivot\jquery.csv-0.71.min.js" />
+    <Content Include="Scripts\pivot\pivot.js" />
+    <Content Include="Scripts\pivot\pivot.min.css" />
+    <Content Include="Scripts\pivot\pivot.min.js" />
+    <Content Include="Scripts\pivot\pivot.zh.min.js" />
+    <Content Include="Scripts\pivot\show_code.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Common\Controllers\RefCustomerController.cs" />
+    <Compile Include="Areas\Common\Controllers\RefInventoryController.cs" />
+    <Compile Include="Areas\Common\Models\ExtRef.cs" />
+    <Compile Include="Areas\Employee\Controllers\AttendanceController.cs" />
+    <Compile Include="Areas\Employee\Controllers\EmployeeHomeController.cs" />
+    <Compile Include="Areas\Employee\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Employee\Controllers\strategyController.cs" />
+    <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
+    <Compile Include="Areas\Employee\Models\reportModels.cs" />
+    <Compile Include="Areas\Employee\Models\strategyEditModel.cs" />
+    <Compile Include="Areas\Manager\Controllers\GroupController.cs" />
+    <Compile Include="Areas\Manager\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Manager\Controllers\LogController.cs" />
+    <Compile Include="Areas\Manager\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Manager\Controllers\VouchController.cs" />
+    <Compile Include="Areas\Manager\ManagerAreaRegistration.cs" />
+    <Compile Include="Areas\Manager\Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuthorizeExAttribute.cs" />
+    <Compile Include="Models\LogonModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Logon.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ReSecurity.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Manager\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AttendanceDevice.HWATT\AttendanceDevice.HWATT.csproj">
+      <Project>{90c6af4c-346e-4439-b55e-0cae8efb5062}</Project>
+      <Name>AttendanceDevice.HWATT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AttendanceDeviceFactory\AttendanceDeviceFactory.csproj">
+      <Project>{e21308cd-e958-456e-ae65-6404b2037de3}</Project>
+      <Name>AttendanceDeviceFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attendance\Attendance.csproj">
+      <Project>{3cdd4898-b8bb-4d93-babb-1d69004085e9}</Project>
+      <Name>Attendance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess.U8\DataAccess.U8.csproj">
+      <Project>{784be030-501b-4bdf-a604-aee0a9b67de1}</Project>
+      <Name>DataAccess.U8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fb887690-5fe9-453c-95e4-e85312714da6}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{beea297c-9875-4b61-b075-0b2d007df276}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERPFactory\ERPFactory.csproj">
+      <Project>{fd6b862a-c6c6-4b67-8ea3-01154fe937c5}</Project>
+      <Name>ERPFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAttendanceDevice\IAttendanceDevice.csproj">
+      <Project>{ed1a4305-2281-4615-97b9-5a4ffe10a80b}</Project>
+      <Name>IAttendanceDevice</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataAccess\IDataAccess.csproj">
+      <Project>{f6bbfab4-23cf-45e1-a974-994896818167}</Project>
+      <Name>IDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locks\Locks.csproj">
+      <Project>{1dd5ed22-c240-4d79-b977-647c7ded1368}</Project>
+      <Name>Locks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logs\Logs.csproj">
+      <Project>{df50aa05-53f4-4c1d-b39d-07f9b3d812c0}</Project>
+      <Name>Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrganizationBase\OrganizationBase.csproj">
+      <Project>{a87ea7d2-fde1-442f-8615-72b01a05111f}</Project>
+      <Name>OrganizationBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\report\report.csproj">
+      <Project>{17870678-59c6-4d47-bba7-355a2a5f8483}</Project>
+      <Name>report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\strategyLib\strategyLib.csproj">
+      <Project>{be5b2298-5b6c-41b5-945a-c39fc0a75f3d}</Project>
+      <Name>strategyLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBLL\UserBLL.csproj">
+      <Project>{e72c0419-0b53-428b-8df4-5afd88348922}</Project>
+      <Name>UserBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserInfo\UserInfo.csproj">
+      <Project>{32e8b390-c57a-41e1-a280-fc6c385da4bd}</Project>
+      <Name>UserInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VouchType\VouchType.csproj">
+      <Project>{b6e6dd54-f4a3-4ffa-aa90-a6d3f4660dc8}</Project>
+      <Name>VouchType</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55388</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55388/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

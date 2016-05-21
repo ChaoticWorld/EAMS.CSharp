@@ -1,0 +1,80 @@
+﻿@using Webdiyer.WebControls.Mvc
+<!--列表部分显图,model类型请更改-->>
+@model  PagedList<strategyLib.InventoryClassStdRate>
+
+@{
+    ViewBag.Title = "InvStdList";
+}
+<h2>InvStdList</h2>
+
+<div id="List">
+    <table id='tb'>
+        <tr role="head">
+            <th sort="true">操作</th>
+            <th sort="true">分类编码</th>
+            <th sort="true">分类名称</th>
+            <th sort="true">属性序号</th>
+            <th sort="true">属性名称</th>
+            <th sort="true">属性值</th>
+            <th sort="true">价格转换率</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class='tip' title="签呈编号：@item.ID ">
+                    <button class="btn btn-default" onclick="saveRow(this)">保存</button>
+                    <button class="btn btn-default" onclick="deleteRow(this)">删除</button>
+                </td>
+                <td> @Html.TextBoxFor(modelItem => item.clsCode,  new RouteValueDictionary { { "onblue","blueClsCode(this)"} }) </td>
+                <td> @Html.TextBoxFor(modelItem => item.clsName) </td>
+                <td> @Html.TextBoxFor(modelItem => item.iOrderId) </td>
+                <td> @Html.TextBoxFor(modelItem => item.cName) </td>
+                <td> @Html.TextBoxFor(modelItem => item.cValue) </td>
+                <td> @Html.TextBoxFor(modelItem => item.priceRate) </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        <div style="float:left;width:50%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div>
+        @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "Lists", HttpMethod = "Post", DataFormId = "searchForm" }, new { style = "float:right" })
+    </div>
+</div>
+<script type="text/javascript">
+    function saveRow(c) {
+        var row = $(c).parent().parent();
+        
+        
+    }
+    function deleteRow(c) {
+        var row = $(c).parent().parent();
+        
+        $(row).remove();
+    }
+    function blueClsCode(c) {
+        var row = $(c).parent().parent();
+
+        $($(row).children(2).children("#clsName")[0]).val("");
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(document).tooltip();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#tb").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+    });
+</script>
+

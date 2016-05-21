@@ -1,0 +1,134 @@
+﻿@using SystemDB;
+@model IEnumerable<Group>
+
+@{
+    ViewBag.Title = "groupList";
+}
+@{Layout = null;}
+<style>
+table{width:648px;}
+tr{height:20px;}
+.col0{width:90px;}
+.col1{width:70px;}
+.col2{width:40px;}
+.col3{width:40px;}
+</style>
+<table>
+<tr>
+<th class="col0">操作</th>
+<th class="col1">名称</th>
+<th class="col2">描述</th>
+<th class="col3">扩展</th>
+</tr>
+
+@if (Model != null)
+{
+    foreach (Group g in Model)
+    { 
+<tr>
+<td class="col0"> <input type="button" style="display:block" value="编辑" onclick="edit(this)" />
+    <input type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+    <input type="button" style="display:none" onclick="delRowClick(this)" value="删除" /> 
+    <input type="hidden" id="id" value="@g.groupid" /></td>
+    <td class="col1"> <input type="text" readonly="readonly" disabled="disabled" value="@g.groupName" /> </td>
+    <td class="col2"> <input type="text" readonly="readonly" disabled="disabled" value="@g.groupDescription" /> </td>
+    <td class="col3"><a href="~/Manager/Group/groupRefUser/@g.groupid" title="@((g.Users!=null)?g.Users.Count:0)">成员</a></td>
+</tr>    
+    } 
+}
+<tr >
+    <td class="col0"> <input type="button" value="新增" onclick="edit(this)"/> 
+    <input type="button" style="display:none" value="保存" onclick="saveRowClick(this)" />
+    <input type="button" style="display:none" value="删除" onclick="delRowClick(this)" /> 
+    <input type="hidden" value="-1" /></td>
+    <td class="col1"><input type="text" readonly="readonly" disabled="disabled" /></td>
+    <td class="col2"><input type="text" readonly="readonly" disabled="disabled" /></td>
+    <td class="col3"><a disabled="disabled" href="~/Manager/Group/groupRefUser/-1">成员</a></td>
+</tr>
+</table>
+
+<div>
+<input type="button" value="保存本页所有行" onclick="saveAllRows()" />
+<input type="button" value="删除本页所有行" onclick="delAllRows()" />
+<br /><a href="~/">返回首页</a>
+@if (SystemBLL.UserBLL.getUser(int.Parse(User.Identity.Name)).RoleNames.Contains("AttendanceManager"))
+{<a href="~/Manager/ManagerHome">返回用户管理页</a>}
+</div>
+
+<script type="text/javascript">
+    function edit(c) {
+        var newrow = $(c).parent().parent();
+        $(c).next().css("display", "block");
+        $(c).next().next().css("display", "block");
+        $(c).css("display", "none");
+        $(newrow[0]).children().children(":text").removeAttr("readOnly");
+        $(newrow[0]).children().children(":text").removeAttr("disabled");
+    }
+</script>
+
+
+<script type="text/javascript">
+    function doRow(c, operation) {
+        var row = $(c).parent().parent()[0];
+
+        var id = $(row.children[0]).children("input:last").val();
+        var name = $(row.children[1]).children("input:first").val();
+        var description = $(row).children("td:eq(2)").children("input:first").val();
+
+        if (true) {
+            $.ajax({
+                type: "post",
+                url: "/Manager/Group/Save/" + id,
+                data: { id: id, name:name, description: description, Operation: operation },
+                async: false,
+                success: function (DoMsg) {
+                    if (DoMsg) alert(DoMsg);
+                },
+                error: function (msg) { alert(msg); }
+            });
+            return true;
+        }
+        else { alert('日期无效，请重新输入。'); return false; }
+    }
+    </script>
+
+<script type="text/javascript">
+    function saveRowClick(c) {
+        if (doRow(c, "SaveRow"))
+            reflushPage();
+    }
+    function delRowClick(c) {
+        if (doRow(c, "DeleteRow"))
+            reflushPage();
+    }
+    function reflushPage() {
+        //刷新当前页面
+        location.reload()
+    }
+</script>
+<script type="text/javascript">
+    function saveAllRows() {
+        var rows = $("table tr");
+        $(rows).each(function (index) {
+            if (index > 0) {
+                var c = $(this).children("td:first").children("input:visible")[0];
+                if ($(c).val() == "保存") {
+                    doRow(c, "SaveALL");
+                }
+            }
+        });
+        reflushPage();
+    }
+    function delAllRows() {
+        var rows = $("table tr");
+        if (confirm("将删除本年所有节假日设定！")) {
+            $(rows).each(function (index) {
+                if (index > 0) {
+                    var c = $(this).children("td:first").children("input:first");
+                    doRow(c, "DeleteALL");
+                }
+            });
+            reflushPage();
+        }
+    }
+</script>

@@ -1,0 +1,123 @@
+﻿@using DataDB.ModelBase
+@model List<VouchType>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>单据类型列表</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>操作</th>
+            <th>名称</th>
+            <th>分类</th>
+            <th>类型</th>
+            <th>关键字</th>
+            <th>排序号</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (VouchType vt in Model) { 
+        <tr>
+            <td ><button onclick="saveRow(this)">保存</button>
+                <button onclick="deleteRow(this)">删除</button></td>
+            <td ><input title="@vt.id" value="@vt.vouchName" /></td>
+            <td ><input value="@vt.vouchClass" /></td>
+            <td ><input value="@vt.vouchType" /></td>
+            <td ><input value="@vt.Key" /></td>
+            <td ><input value="@vt.vouchOrder" /></td>
+        </tr>
+        }
+        <tr><td><button onclick="saveRow(this)">保存</button>
+                <button onclick="deleteRow(this)">删除</button></td>
+            <td><input title="-1" /></td>
+            <td><input  /></td>
+            <td><input  /></td>
+            <td><input  /></td>
+            <td><input  /></td></tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    function AddRow(r) {
+        var nr = "<tr><td><button onclick='saveRow(this)'>保存</button><button onclick='deleteRow(this)'>删除</button></td>"
+                + "<td><input title='-1' /></td>"
+                + "<td><input  /></td>"
+                + "<td><input  /></td>"
+                + "<td><input  /></td>"
+                + "<td><input  /></td></tr>";
+        $(r).after(nr);
+    }
+    function saveRow(c) {
+        var vt = new Object();
+        var row = $(c).parent().parent();
+        var cell = $(row).children('td').eq(1);
+        vt.id = $(cell).children('input').eq(0).attr("title");
+        vt.vouchName = $(cell).children('input').eq(0).val();
+        cell = cell.next();
+        vt.vouchClass = $(cell).children('input').eq(0).val();
+        cell = cell.next();
+        vt.vouchType = $(cell).children('input').eq(0).val();
+        cell = cell.next();
+        vt.Key = $(cell).children('input').eq(0).val();
+        cell = cell.next();
+        vt.vouchOrder = $(cell).children('input').eq(0).val();
+        var isNew = vt.id;
+        var newid = saveVt(vt);
+        if (isNew <= 0) {
+            $(row).children('td').eq(1).children('input').eq(0).attr('title', newid);
+            AddRow(row);
+        }
+    }
+    function deleteRow(c) {
+        var row = $(c).parent().parent();
+        var cell = $(row).children('td').eq(1);
+        var id = $(cell).children('input').eq(0).attr("title");
+        if (id > 0)
+        {
+            var rv = deleteVt(id);
+            if (rv > 0) $(row).remove();
+            else alert("删除失败！");
+            }
+        else { AddRow(row); $(row).remove(); }
+    }
+    function saveVt(data) {
+        var url = "/Manager/BizVouchType/saveVouchType";
+        var ajaxReturnVal;
+        $.ajax({
+            async: false,
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function (newID) {
+                ajaxReturnVal = newID;
+                //alert(chk);
+            },
+            error: function (err) {
+                alert("err:"+err);
+            }
+        });
+        return ajaxReturnVal;
+    }
+    function deleteVt(data) {
+        var url = "/Manager/BizVouchType/deleteVouchType";
+        var ajaxReturnVal;
+        $.ajax({
+            async: false,
+            url: url+"/"+data,
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function (newID) {
+                ajaxReturnVal = newID;
+                //alert(chk);
+            },
+            error: function (err) {
+                alert("err:" + err);
+            }
+        });
+        return ajaxReturnVal;
+    }
+
+</script>

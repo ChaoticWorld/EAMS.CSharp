@@ -1,0 +1,34 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\ERPFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\ERPFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.U8.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.U8.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\obj\Release\ERPFactory.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\obj\Release\ERPFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\obj\Release\ERPFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\System.Net.Http.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\System.Net.Http.xml
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\ERPFactory\bin\Release\zh-Hans\System.Net.Http.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\ERPFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\ERPFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.U8.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\System.Net.Http.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.U8.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\System.Net.Http.xml
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\bin\Release\zh-Hans\System.Net.Http.resources.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\obj\Release\ERPFactory.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\obj\Release\ERPFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\ERPFactory\obj\Release\ERPFactory.pdb

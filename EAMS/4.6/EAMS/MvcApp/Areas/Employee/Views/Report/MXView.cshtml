@@ -1,0 +1,91 @@
+﻿@using System.Data
+@{
+    ViewBag.Title = "View";
+}
+<style>
+    div input {
+        width: 40px;
+    }
+    #viewParam :after{ content:'';display:block;clear:both; }
+</style>
+<h2>Report @TempData["rptTitle"]</h2><label id="rptID" hidden="hidden">@ViewData["rptID"]</label>
+
+    <div id="ViewParams" class="collapse">
+        <div id='ViewFilters' style="float:left" >@Html.Action("ViewFilter", ViewData["rptID"])</div>
+        <div style="float:left; min-width:10px;min-height:10px"></div>
+        <div id='ViewOrders' style="float:left" >@Html.Action("ViewOrder", ViewData["rptID"])</div>
+    </div>
+        <div id="viewParam"><a href="#ViewParams" class="btn btn-primary"  data-toggle="collapse">查寻参数 &dArr;</a>
+            <a href="/employee/report/pivotView/@ViewData["rptID"]">透视表测试</a>
+    </div>
+
+
+
+
+<div class="row-fluid">
+    <div id='ViewLists'>@Html.Action("ViewList", ViewData["rptID"])</div>
+    <div style="display:inline-block; width:100%">
+        <div style="float:left;width:30%" class="btn-group">
+            <a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default" href="~/employee/report/">返回</a>
+        </div>
+        <div style="float:left;width:40%">
+            第 <span id="currPageIdx">1</span> 页 / 共 <span id="pageEnd">@ViewData["pages"]</span> 页;共 @ViewData["records"] 条记录。数据查询日期：@ViewData["DataTime"] 
+            | 每页记录数量：<input id="pageRecords" value='@ViewData["pageNums"]' /><button onclick="setPageNums()">设置</button>
+        </div>
+        <div style="float:right">
+            <a id="first" title="1" onclick="pageGo(this)">首页 &nbsp;</a><a id="prev" title="1" onclick="pageGo(this)"> 前页 &nbsp; </a>
+            <input id="pageIdx" title="-1" value="1" /><button id="go" onclick="pageGo(this)">go</button> &nbsp;
+            <a id="next" title="@((int)ViewData["pages"]<2?1:2)" onclick="pageGo(this)"> 后页 &nbsp; </a><a id="end" title='@ViewData["pages"]' onclick="pageGo(this)">尾页</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function setPageNums() {
+        var pageRecords = $("#pageRecords").val();
+        var Url = "/employee/report/setPageNums/" + pageRecords;
+        $.post(Url, function () {  window.location.reload(); });
+
+    }
+</script>
+<script type="text/javascript">
+    function pageGo(page) {
+        var end = $("#end").attr("title");
+        if (end < 1) { alert("无数据！"); return; }
+        var idx = 0;
+        var oldIdx = $("#pageIdx").attr("title");
+        if ($(page)[0].tagName == "BUTTON") {//tagName大小写敏感
+            idx = $("#pageIdx").val();
+            if (idx == oldIdx) return;
+            if (idx > end) { alert("超出最大页数！"); return;}
+        }
+        else {
+            idx = $(page).attr("title");
+            if (idx == oldIdx) return;
+        }
+        loadtable(parseInt(idx));
+    }
+    function LoadTableSuccess(idx) {
+        var endIdx = $("#pageEnd").text();
+        var prev = (idx < 2) ? 1 : (idx - 1);
+        var next = (idx > endIdx - 2) ? endIdx : (idx + 1);
+        $("#prev").attr("title", prev);
+        $("#next").attr("title", next);
+        $("#pageIdx").val(idx);
+        $("#pageIdx").attr("title", idx);
+        $("#currPageIdx").text(idx);
+    }
+    function loadtable(pageidx) {
+        var rptID = $("#rptID").text();
+        var rptUrl = "/employee/report/ViewList/" + rptID + "/";
+        var rptView = rptUrl + pageidx + " #viewListTable";
+        //alert(rptView);
+        $("#ViewLists").load(rptView, function (response, status, xhr) {
+            /*response - 包含来自请求的结果数据,status - 包含请求的状态（"success", "notmodified", "error", "timeout" 或 "parsererror"）,xhr - 包含 XMLHttpRequest 对象*/
+            //alert(response);
+            if (status == "success") {
+                LoadTableSuccess(parseInt(pageidx));
+            }
+        });
+    }
+</script>

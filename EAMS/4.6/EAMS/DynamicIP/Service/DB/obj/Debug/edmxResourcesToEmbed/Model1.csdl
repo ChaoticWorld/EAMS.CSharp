@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VPNAppDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="vpn_Register">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="KEY" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="vpnID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vpnPW" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vpnIP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="vpnEncryptionType" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="modifyDate" Type="DateTime" Precision="3" />
+    <Property Name="enable" Type="Boolean" />
+    <Property Name="autoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vpnMac" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="vpn_Register" EntityType="Self.vpn_Register" />
+  </EntityContainer>
+</Schema>

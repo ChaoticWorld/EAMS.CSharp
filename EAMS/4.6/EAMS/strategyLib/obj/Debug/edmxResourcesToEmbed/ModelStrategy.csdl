@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="StrategyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="strategies" EntityType="AppDataModel.strategy" />
+    <EntitySet Name="strategyInvConvertRates" EntityType="AppDataModel.strategyInvConvertRate" />
+    <EntitySet Name="InventoryClassStdRates" EntityType="AppDataModel.InventoryClassStdRate" />
+  </EntityContainer>
+  <EntityType Name="strategy">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dwCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="dwName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="dwcontect" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="invCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="invName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="invStd" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="topPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="bottomPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="effDate" Type="DateTime" Precision="3" />
+    <Property Name="expDate" Type="DateTime" Precision="3" />
+    <Property Name="vouchCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="vouchType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="bizType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="memo" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="area" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="sCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sSource" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="strategyInvConvertRate">
+    <Key>
+      <PropertyRef Name="autoId" />
+    </Key>
+    <Property Name="autoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="invName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="invStd" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="invClass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="priceRate" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+  </EntityType>
+  <EntityType Name="InventoryClassStdRate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clsCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="clsName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="iOrderId" Type="Int32" />
+    <Property Name="cName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="cValue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="priceRate" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+  </EntityType>
+</Schema>

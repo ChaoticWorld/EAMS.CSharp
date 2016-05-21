@@ -1,0 +1,122 @@
+﻿@model IEnumerable<DataDB.ModelBase.Customer>
+@{
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutPageCallInfo.cshtml";}
+@{
+    ViewBag.Title = "searchGo";
+}
+
+<script type="text/javascript">
+<!--
+    //注：每个嵌入页必须定义该方法，供父窗口调用
+    function Ok(code) {
+        window.parent.callbackDialog(code);
+    }
+//-->
+</script>
+<style>
+    table {
+        table-layout: fixed;
+    }
+
+    tbody td {
+        width: 30px;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    .col0 {
+        width: 80px;
+    }
+
+    .col1 {
+    }
+
+    .col2 {
+        width: 80px;
+    }
+
+    .col3 {
+        width: 60px;
+    }
+
+    .col4 {
+        width: 60px;
+    }
+
+    .col5 {
+        width: 40px;
+    }
+
+    .col6 {
+        width: 40px;
+    }
+</style>
+<h4>参照客户</h4>&nbsp &nbsp<button id='sumbit' type='button' onclick='sumbitclick()' value='确定'>确定</button>
+<div style="overflow:scroll; height:300px">
+    @if (Model != null)
+    {
+        <table id="grid" style="width:96%; height:360px; text-align:center; overflow:scroll">
+            <thead>
+                <tr role="head">
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().cCusAbbName)</th>
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().ContactName)</th>
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().cShipAddress)</th>
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().cMobile)</th>
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().cPhone)</th>
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().cCusCode)</th>
+                    <th sort="true">@Html.DisplayNameFor(m => m.First().topCusCode)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataDB.ModelBase.Customer c in Model)
+                {
+                    <tr ondblclick="dblclick('@c.topCusCode')" onclick="trclick(this,'@c.topCusCode')" title='@c.topCusCode'>
+                        <td class='col0'>@c.cCusAbbName</td>
+                        <td class='col1'>@c.ContactName</td>
+                        <td class='col2'>@c.cShipAddress</td>
+                        <td class='col3'>@c.cMobile</td>
+                        <td class='col4'>@c.cPhone</td>
+                        <td class='col5'>@c.cCusCode</td>
+                        <td class='col6'>@c.topCusCode</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            //ondblclick="dblclick('topCusCode')"
+            function dblclick(code) {
+                var c = new Object();
+                c.dataClass = 'customer';
+                c.code = code;
+                Ok(c);
+            }
+            function trclick(tr, code) {
+                $("#sumbit").attr("title", code);
+                $("td").css("background-color", "White");
+                $(tr).children().css("background-color", "Aquamarine");
+            }
+            function sumbitclick() {
+                var code = $("#sumbit").attr("title");
+                var c = new Object();
+                c.dataClass = 'customer';
+                c.code = code;
+                Ok(c);
+            }
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $("[title]").tooltip({ position: "top right" });
+                $("#grid").sorttable({
+                    ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                    descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                    ascImgSize: "8px",
+                    descImgSize: "8px",
+                    onSorted: function (cell) {
+                        //alert(cell.index() + " -- " + cell.text());
+                    }
+                });
+            });</script>
+    }
+    else
+    { <div>查询无数据！</div>}
+</div>

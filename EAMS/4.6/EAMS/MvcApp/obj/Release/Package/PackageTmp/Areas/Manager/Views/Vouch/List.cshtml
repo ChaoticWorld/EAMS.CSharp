@@ -1,0 +1,136 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model  PagedList<VouchType.VouchType>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>单据类型列表</h2>
+<div id="List">
+<table id='tb'>
+    <tr role="head">
+        <th sort="true">操作</th>
+        <th sort="true">分类</th>
+        <th sort="true">类型</th>
+        <th sort="true">名称</th>
+        <th sort="true">Key</th>
+        <th sort="true">排序号</th>
+        @*<th></th>*@
+    </tr>
+
+@foreach(var item in Model)
+{ 
+    <tr>
+        <td class='tip' title="@item.id " >
+            <button class="btn btn-default" onclick="Save(this)">保存</button>   
+            <button class="btn btn-default" onclick="Delete(this)">删除</button>        
+        </td>
+        <td > @Html.DropDownList("vtClass",TempData["vtClass"] as SelectList,new { datadefault= item.vouchClass ,onchange ="vtClassChange(this)" }) </td>
+        <td > @Html.DropDownList("vtType", TempData["vtType"] as SelectList, new { datadefault = item.vouchType }) </td>
+        <td> <input id="vtName" value="@item.vouchName" /> </td>
+        <td> <input id="vtKey" value="@item.Key" /> </td>
+        <td> <input id="vtOrder" value="@item.vouchOrder" /> </td>
+    </tr>
+}
+    <tr>
+        <td class='tip' title="-1">
+            <button class="btn btn-default" onclick="Save(this)">保存</button>
+            <button class="btn btn-default" onclick="Delete(this)">删除</button>
+        </td>
+        <td > @Html.DropDownList("vtClass", TempData["vtClass"] as SelectList,  new {datadefault="", onchange = "vtClassChange(this)" }) </td>
+        <td > @Html.DropDownList("vtType", TempData["vtType"] as SelectList, new { datadefault = "" }) </td>
+        <td> <input id="vtName" /> </td>
+        <td> <input id="vtKey" /> </td>
+        <td> <input id="vtOrder" /> </td>
+    </tr>
+</table>
+<div><div style="float:left;width:30%" class="btn-group"><a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default hide" href="~/Manager/VouchType/">返回</a></div>
+    <div style="float:left;width:30%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div> 
+@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "Lists", HttpMethod = "Post", DataFormId = "searchForm" }, new { style = "float:right" })
+</div> 
+</div>
+<script type="text/javascript">
+    function Save(c) {
+        var row = $(c).parent().parent();
+        var rownew = "";
+        var cell = $(row).children("td");
+        var id = $(cell[0]).attr("title");
+        if (id <0)//复制新增行模板
+            rownew = $(row).prop("outerHTML");
+        var url = "/Manager/Vouch/Save/" + id;
+        var vt = new Object();;
+        vt.vouchClass = $(cell[1]).children().first().val();
+        vt.vouchType = $(cell[2]).children().first().val();
+        vt.vouchName = $(cell[3]).children().first().val();
+        vt.Key = $(cell[4]).children().first().val();
+        vt.vouchOrder = $(cell[5]).children().first().val();
+        $.post(url, vt, function (data) {
+            //alert(data);
+            $(cell[0]).attr("title", data);
+            if (id < 0) $(row).after(rownew);
+        });
+    }
+    function Delete(c) {
+        var row = $(c).parent().parent();
+        var cell = $(row).children("td");
+        var id = $(cell[0]).attr("title");
+        var url = "/Manager/Vouch/Delete/" + id;
+        $.post(url, {id:id}, function (data) {
+            //alert(data);
+            $(row).remove();
+        });
+    }
+    function vtClassChange(c) {
+        var tdClass = $(c).parent();
+        var tdType = $(tdClass).next();
+        var droplist = $(tdType).children("select").eq(0);
+        var classvalue = $(c).val();
+        var url = "/Manager/Vouch/getTypeWithClass/" + classvalue;
+        $.post(url, { id: classvalue }, function (data) {
+            if (data && data.length > 0) {
+                $(droplist).remove();
+                var dropstr = '<select name="vtType" datadefault = ""><option></option>';
+                $(data).each(function () {
+                    //alert(this);
+                    dropstr += ("<option value='" + this + "'>" + this + "</option>");
+                });
+                dropstr += "</select>";
+                $(tdType).html(dropstr);
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(document).tooltip();
+        $("select").each(function (){
+            $(this).children("option").eq(0).before("<option></option>");
+        });
+        $("select").each(function () {
+            var defaultValue = $(this).attr("datadefault");
+            //alert(defaultValue);
+                if (defaultValue == "")
+                    $(this).children("option").eq(0).attr("selected", "selected");
+                else
+                    $(this).children("option").each(function () {                      
+                        $(this).removeAttr("selected");
+                        //alert($(this).text()+"<t:v>"+defaultValue)
+                        if ($(this).text() == defaultValue)
+                            $(this).attr("selected", "selected");
+                    });
+            });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#tb").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+    });
+    </script>

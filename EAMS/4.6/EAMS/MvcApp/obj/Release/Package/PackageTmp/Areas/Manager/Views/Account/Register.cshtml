@@ -1,0 +1,93 @@
+﻿@using System.Web.Optimization
+@model MvcApp.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>帐户注册</h2>
+
+@using (Html.BeginForm())
+{
+    @ViewData["registerSeccess"]
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Code)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Code)
+            @Html.ValidationMessageFor(model => model.Code)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pw)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pw)
+            @Html.ValidationMessageFor(model => model.pw)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConfirmPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mobile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mobile)
+            @Html.ValidationMessageFor(model => model.Mobile)
+        </div>
+
+        <p>
+            <input type="submit" value="创建" />
+        </p>
+    </fieldset>
+}
+<script src="/Scripts/jquery.md5.js"></script>
+<script src="/Scripts/jquery.base64.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#pw").on("blur", function () {
+            var pwkey = $("#pw").val();
+            var crypt = $.md5($.base64.btoa(pwkey));
+            $("#pw").val(crypt);
+        });
+        $("#ConfirmPassword").on("blur", function () {
+            var pwkey = $("#ConfirmPassword").val();
+            var crypt = $.md5($.base64.btoa(pwkey));
+            $("#ConfirmPassword").val(crypt);
+        });
+    })
+</script>
+<div>
+    @Html.ActionLink("用户列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,335 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using strategyLib
+@model MvcApp.Areas.Employee.Models.strategyEditModel
+@{
+    ViewBag.Title = "strategyDetails";
+}
+<style>
+    .col1 { width :60px; }
+    .col2 { width :60px; }
+    .col3 { width :60px; }
+    .col4 { width :60px; }
+    .col5 { width :60px; }
+    .col6 { width :60px; }
+    .col7 { width :60px; }
+</style>
+<div>
+
+    <table id="detailsTable">
+        <thead>
+            <tr>
+                <th class="col1"> 操作 </th>
+                <th class="col2"> 标质 </th>
+                <th class="col3"> 存货编码 </th>
+                <th class="col4"> 存货名称 </th>
+                <th class="col5"> 存货型号 </th>
+                <th class="col6"> 存货数量 </th>
+                <th class="col7"> 存货价格 </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{if (Model != null && Model.Details != null)
+                {
+                    foreach (Detail d in Model.Details)
+                    {
+                        <tr title="@d.autoid">
+                            <td class="col1">
+                                <button class="btn btn-default btn-block" data-caption="save" onclick="saveRow(this)">保存</button>
+                                <button class="btn btn-default btn-block" data-caption="delete" onclick="deleteRow(this)">删除</button>
+                            </td>
+                            <td colspan="6">
+                                <table>
+                                    <tr>
+                                        <td class="col2">A<a onclick="aRowClick(this)"><img src="/Content/Images/bullet_arrow_down.png" /></a> </td>
+                                        <td class="col3" title="请输入ERP存货编码或点击参照按钮选择。"> <input type="text" title='@d.cinvACode' value='@d.cinvACode' onblur="refInvInfo(this)" /><button data-caption="ref" onclick="refInventory(this)">参照</button> </td>
+                                        <td class="col4"> <input type="text" title='@d.cinvAName' value='@d.cinvAName' /> </td>
+                                        <td class="col5"> <input type="text" title='@d.cinvAStd' value='@d.cinvAStd' /> </td>
+                                        <td class="col6"> <input type="text" title='@d.invAQuantity' value='@d.invAQuantity' /> </td>
+                                        <td class="col7"> <input type="text" title='@d.invAPrice' value='@d.invAPrice' /> </td>
+                                    </tr>
+                                    <tr style='display:@(string.IsNullOrEmpty(d.cinvBCode)?"none":"block")'>
+                                        <td class="col2"> B<a onclick="bRowClick(this)"><img src="/Content/Images/bullet_arrow_up.png" /></a></td>
+                                        <td class="col3"><input type="text" title='@d.cinvBCode' value='@d.cinvBCode' onblur="refInvInfo(this)" /><button data-caption="ref" onclick="refInventory(this)">参照</button>  </td>
+                                        <td class="col4"><input type="text" title='@d.cinvBName' value='@d.cinvBName' /> </td>
+                                        <td class="col5"><input type="text" title='@d.cinvBStd' value='@d.cinvBStd' /> </td>
+                                        <td class="col6"><input type="text" title='@d.invBQuantity' value='@d.invBQuantity' /> </td>
+                                        <td class="col7"><input type="text" title='@d.invBPrice' value='@d.invBPrice' /> </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    }
+                }}
+            <tr title="-1">
+                <td class="col1">
+                    <button class="btn btn-default btn-block" data-caption="save" onclick="saveRow(this)">保存</button>
+                    <button class="btn btn-default btn-block" data-caption="delete" onclick="deleteRow(this)">删除</button>
+                    <button class="btn btn-default btn-block" data-caption="newrow" onclick="AddRowButton(this)">新行</button>
+                </td>
+                <td colspan="6">
+                    <table>
+                        <tr>
+                            <td class="col2"> A<a onclick="aRowClick(this)"><img src="/Content/Images/bullet_arrow_down.png" /></a> </td>
+                            <td class="col3"> <input type="text" onblur="refInvInfo(this)" /><button data-caption="ref" onclick="refInventory(this)">参照</button> </td>
+                            <td class="col4"> <input type="text" /> </td>
+                            <td class="col5"> <input type="text" /> </td>
+                            <td class="col6"> <input type="text" /> </td>
+                            <td class="col7"> <input type="text" /> </td>
+                        </tr>
+                        <tr  style="display:none">
+                            <td class="col2"> B<a onclick="bRowClick(this)"><img src="/Content/Images/bullet_arrow_up.png" /></a> </td>
+                            <td class="col3"> <input type="text" onblur="refInvInfo(this)" /><button data-caption="ref" onclick="refInventory(this)">参照</button>  </td>
+                            <td class="col4"> <input type="text" /> </td>
+                            <td class="col5"> <input type="text" /> </td>
+                            <td class="col6"> <input type="text" /> </td>
+                            <td class="col7"> <input type="text" /> </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+            </table>
+        </div>
+<div>
+    @if (Model.Details != null && Model.Details.Count > 0)
+    { 
+      <div style="float:left;width:30%">共 @Model.Details.TotalPageCount 页 @Model.Details.TotalItemCount 条记录，当前为第 @Model.Details.CurrentPageIndex 页</div>
+    @Ajax.Pager(Model.Details, new PagerOptions { PageIndexParameterName = "pageIdx", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", Url = "~/Employee/strategy/Edit/" + Model.Main.ID + "/" }, new { style = "float:right" })
+    }
+    <div style="float:left;width:30%" class="btn-group"><a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default" id="returnStrategy" href="~/employee/strategy/">返回</a></div>
+    </div>
+
+<script src="~/Scripts/jquery.json.min.js"></script>
+<script type="text/javascript">
+    var refInvCell;
+    function refInventory(c) {
+        var cell = $(c).parent();
+        var invcode = $(c).prev().val();
+        //ajax success: cell.next().children("input")
+        //alert('InvCode:' + invcode);
+        var url = "/Common/RefInventory/referInventory";//"/Employee/CallIn/searchGo"
+        var refInfo;// = new Object();
+        if (!invcode) {
+            refInfo = JqueryDialog.Open1('搜索参照', encodeURI(url), 800, 440);
+        }
+        else {
+            url = url + "/" + invcode;
+            refInfo = JqueryDialog.Open1('搜索参照', encodeURI(url), 800, 440);
+        }
+        refInvCell = cell;       
+    }
+    function refInvInfo(c) {
+        var invcode = $(c).val();
+        //alert('InvCode:' + invcode);
+        var cell = $(c).parent().next();
+        if (invcode) {
+            $.get("/Common/RefInventory/referInventoryInfo/" + invcode, function (data) {
+                $(cell).children("input:eq(0)").val(data.InvName);
+                $(cell).next().children("input:eq(0)").val(data.InvStd);
+            });
+        }
+        else {
+            $(cell).children("input:eq(0)").val(null);
+            $(cell).next().children("input:eq(0)").val(null);
+        }
+    }
+</script>
+<script type="text/javascript">
+    function saveRowNew(r) {
+        var detailval = new Object();
+        detailval.ID = $("#ID").val();
+        var isModify = 1;
+    }
+</script>
+<script type="text/javascript">
+    function deleteRow(r) {
+        var ra = $(r).parent().parent();
+        var autoid = $(ra).attr('title');
+        if (autoid > 0) {
+            //ajax delete details with autoid
+            var url = '/Employee/strategy/deleteDetail/'+autoid;
+            $.ajax({
+                async: false,
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: autoid,
+                success: function (data) {
+                    if (data > 0) {
+                        $(ra).next().remove();
+                        $(ra).remove();
+                    }
+                }
+            });
+        }
+        else {
+            AddRow(ra);
+            $(ra).next().remove();
+            $(ra).remove();
+        }
+    }
+    function saveRow(r) {
+        var detailval = new Object();
+        detailval.ID = $("#ID").val();
+        if (detailval.ID < 0) { saveHead();return; }
+        var isModify = 0;
+        //分析r
+        var ra = $(r).parent().parent();
+        detailval.autoid = $(ra).attr('title');
+        //A Row
+        var cell = $(ra).children('td').eq(1);//.first('table').first(' tr').first('td');
+        alert($(cell).html());
+        var cellrstr = getCellVal(cell).split(",");
+        detailval.cinvAcode = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+        cell = $(cell).next();
+
+        cellrstr = getCellVal(cell).split(",");
+        detailval.cinvAName = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.cinvAStd = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.invAQuantity = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.invAPrice = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+
+        //B Row
+        var rb = $(ra).next();
+        cell = $(rb).children('td').eq(1);
+        cellrstr = getCellVal(cell).split(",");
+        detailval.cinvBcode = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.cinvBName = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.cinvBStd = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.invBQuantity = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+        cell = $(cell).next();
+        cellrstr = getCellVal(cell).split(",");
+        detailval.invBPrice = cellrstr[0];
+        isModify += Number(cellrstr[1]);
+
+        //alert(isModify);
+        //alert($.toJSON(detailval));
+        //AJAX SAVE ROW
+	var saveNum = 0;
+        if (isModify > 0) { //已修改，ajax-update,succes:更新<tr title='autoid'>
+
+            var url = '/Employee/strategy/saveDetail';
+
+            $.ajax({
+                async: false,
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: detailval,
+                success: function (data) {
+                    //alert(data);
+                    if (data > 0) {
+                        var isnew = $(ra).attr("title");
+                        $(ra).attr('title', data);
+                        //if (isnew < 0)
+                            //AddRow(ra);
+			saveNum=1;
+                    }
+		    else saveNum =0;
+                },
+		error:function(data){saveNum=0;}
+            });
+        }
+	return saveNum;
+    }
+    function getCellVal(c)
+    {
+        var rstr = '';
+        var cellval, celltitle;
+        cellval = $(c).children('input:eq(0)').val();
+        cellval = (cellval ? $.trim(cellval) : "");
+        celltitle = $(c).children('input:eq(0)').attr("title");
+        celltitle = (celltitle ? $.trim(celltitle) : "");
+        rstr = cellval + "," + ((celltitle == cellval) ? 0 : 1);
+
+        return rstr;
+    }
+</script>
+<script type="text/javascript">
+    function AddRowButton(c) {
+        var thisrow = $(c).parent().parent();
+        AddRow(thisrow);
+    }
+    function AddRow(ra) {
+        var r = 
+         '<tr title="-1">'
+            + '<td class="col1">'
+            + '<button class="btn btn-default btn-block" data-caption="save" onclick="saveRow(this)">保存</button>'
+            + '<button class="btn btn-default btn-block" data-caption="delete" onclick="deleteRow(this)">删除</button>'
+            + '<button class="btn btn-default btn-block" data-caption="newrow" onclick="AddRowButton(this)">新行</button>'
+            +'</td><td colspan="6"><table><tr>'
+            + '  <td class="col2"> A<a onclick="aRowClick(this)"><img src="/Content/Images/bullet_arrow_down.png" /></a> </td>'
+            + '  <td class="col3"> <input type="text" onblur="refInvInfo(this)"/><button data-caption="ref" onclick="refInventory(this)">参照</button>  </td>'
+            + '  <td class="col4"> <input type="text" /> </td>'
+            + '  <td class="col5"> <input type="text" /> </td>'
+            + '  <td class="col6"> <input type="text" /> </td>'
+            + '  <td class="col7"> <input type="text" /> </td>'
+            +'</tr><tr style="display:none">'
+            + '  <td class="col2"> B<a onclick="bRowClick(this)"><img src="/Content/Images/bullet_arrow_up.png" /></a> </td>'
+            + '  <td class="col3"> <input type="text" onblur="refInvInfo(this)"/><button data-caption="ref" onclick="refInventory(this)">参照</button>  </td>'
+            + '  <td class="col4"> <input type="text" /> </td>'
+            + '  <td class="col5"> <input type="text" /> </td>'
+            + '  <td class="col6"> <input type="text" /> </td>'
+            + '  <td class="col7"> <input type="text" /> </td>'
+            + '</tr></table></td></tr>';
+
+        $(ra).after(r);        
+    }
+    function aRowClick(c) {
+        var row = $(c).parent().parent();
+        var d = $(row).next();
+        $(d).css("display", "table-row");
+    }
+    function bRowClick(c) {
+        var row = $(c).parent().parent();
+        var tds = $(row).prev().children("td");
+        var bInv = $(row).children("td").eq(1).children("input").first().val();
+        //alert(bInv);
+        if (bInv != "")
+            $(tds).eq(0).attr("title", "有配比项");
+        else
+            $(tds).eq(0).attr("title", "");
+        $(row).css("display", "none");
+    }
+</script>
+<script type="text/javascript">
+    function saveRowAll() {
+        var buttons = $("#detailsTable tbody tr td button");
+        var s = 0, i = 0;
+        $(buttons).each(function () {
+            var caption = $(this).attr("data-caption");
+
+            if (caption == 'save') {
+                s++;
+                i += saveRow(this);
+                //$(this).click();
+            }
+        });
+        var r = i + "/" + s;
+        return r;
+    }
+</script>

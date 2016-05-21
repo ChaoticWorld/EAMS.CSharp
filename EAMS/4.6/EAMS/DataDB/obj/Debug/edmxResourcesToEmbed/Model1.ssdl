@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="AppDataModelStoreContainer">
+    <EntitySet Name="Logs" EntityType="AppDataModel.Store.Logs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sqlQuery" EntityType="AppDataModel.Store.sqlQuery" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="iLogId" />
+    </Key>
+    <Property Name="iLogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dLogDate" Type="datetime" Nullable="false" />
+    <Property Name="iUserID" Type="int" />
+    <Property Name="cWorkStation" Type="nvarchar" MaxLength="128" />
+    <Property Name="cIP" Type="nvarchar" MaxLength="24" />
+    <Property Name="iFuncationId" Type="int" />
+    <Property Name="iActionId" Type="int" />
+    <Property Name="cLastValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sqlQuery">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sQueryName" Type="nvarchar" MaxLength="128" />
+    <Property Name="sQueryMain" Type="nvarchar(max)" />
+    <Property Name="sQueryWhere" Type="nvarchar(max)" />
+    <Property Name="sQueryGroup" Type="nvarchar(max)" />
+    <Property Name="sQueryOrder" Type="nvarchar(max)" />
+    <Property Name="sMemo" Type="nvarchar(max)" />
+  </EntityType>
+</Schema>

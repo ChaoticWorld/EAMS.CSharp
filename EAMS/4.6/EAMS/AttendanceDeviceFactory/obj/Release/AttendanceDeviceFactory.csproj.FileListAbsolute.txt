@@ -1,0 +1,14 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\AttendanceDeviceFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\AttendanceDeviceFactory.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\IAttendanceDevice.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\IAttendanceDevice.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\obj\Release\AttendanceDeviceFactory.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\obj\Release\AttendanceDeviceFactory.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDeviceFactory\obj\Release\AttendanceDeviceFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\AttendanceDeviceFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\AttendanceDeviceFactory.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\IAttendanceDevice.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\bin\Release\IAttendanceDevice.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\obj\Release\AttendanceDeviceFactory.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\obj\Release\AttendanceDeviceFactory.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDeviceFactory\obj\Release\AttendanceDeviceFactory.pdb

@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "ReplySumbit";
+}
+<style type="text/css">
+#qcDetails .col0{ width:12px;}
+#qcDetails .col1{ width:40px;}
+#qcDetails .col2{ width:50px;}
+#qcDetails .col3{ width:20px;}
+#qcDetails .col4{ width:30px;}
+#qcDetails .col5{ width:30px;}
+#qcDetails .col6{ width:20px;}
+#qcDetails .col7{ width:20px;}
+#qcDetails .col8{ width:20px;}
+#qcDetails .col9{ width:80px;}
+#qcDetails .col10{ width:16px;}
+</style>
+<h2>审批提交</h2>
+<div>@Html.Hidden("QCID",TempData["mid"]) </div>
+
+<div id="QCContentMain" ></div>
+<div id="QCContentDetails" ></div>
+<hr />
+<div id="QCReplyRecords" ></div>
+<hr /><div id="QCReplyDo" ></div>
+<div>
+提交给：@Html.DropDownList("sumbiTo", (SelectList) ViewData["ReplyEmployees"])
+<input type="button" id="Replysumbit" value="提交"  />
+<input type="button" id="ReplyDo" value="审批"  />
+<script type="text/javascript">
+    var currentUserid = "@Context.User.Identity.Name";
+//$(document).ready()==$().ready()==$();
+    $(function () {
+        $("#Replysumbit").on("click", function () {
+            //post提交准备
+            var uid = $("#qcReplys").find("td #SubmitUserId").val();
+            var aid = $("#qcReplys").find("td:first").text();
+            var mid = $("#QCID").val();
+            var man = $("#sumbiTo").val();
+            //alert("post提交准备,审批号:" + aid + ',签呈号：' + mid + "，提交给审批人：" + uid + ":" + man + ";当前用户：" + currentUserid);
+            if (!aid) aid = -1;
+            if (uid && uid != currentUserid)
+                alert("您不是提交人，不能进行修改提交！");
+            else
+                $.post("/Employee/Petition/ReplySumbit/" + mid,
+                { aid: aid, mid: mid, man: $("#sumbiTo").val() },
+                function (data, status) {
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    reloadReplyRecords();
+                });
+        });
+
+        $("#ReplyDo").on("click", function () {
+            var uid = $("#qcReplys").find("td #ReplyUserId").val();
+            var aid = $("#qcReplys").find("td:first").text();
+            var url = "/Employee/Petition/ReplyDo/" + aid;
+            //alert(url);
+            if (uid == currentUserid)
+                JqueryDialog.Open1('审批', url, 400, 300);
+            else alert("您不是审批人，不能进行审批！");
+        });
+        $("#sumbiTo").prepend("<option value='-1' selected='selected'></option>");  //为Select插入一个Option(第一个位置)
+        $("#sumbiTo").val(-1);
+    });
+</script>
+    <script type="text/javascript">
+        function callbackDialog(p) {
+            //alert(_p.nextman);
+            $.post("/Employee/Petition/ReplyDo/" + p.aid,
+            { aid: p.aid, mid: p.mid, content: p.content, pass: p.pass, nextman: p.nextman },
+             function (data, status) {
+                 //alert(data);
+             });
+            reloadReplyRecords();
+            JqueryDialog.Close();
+        }
+        </script>
+</div>
+<div>
+    @Html.ActionLink("返回", "Index")
+</div>
+<script type="text/javascript">
+    $("#QCContentMain").load("/Employee/Petition/Edit/" + $("#QCID").val() + " #qcMain");
+    $("#QCContentDetails").load("/Employee/Petition/RecordList/" + $("#QCID").val() + " #qcDetails",
+    function () {
+        $("#qcDetails").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+    });
+    function reloadReplyRecords() {
+        $("#QCReplyRecords").load("/Employee/Petition/ReplyRecords/" + $("#QCID").val() + " #qcReplysPage",
+        function () {
+            $("#qcReplys").sorttable({
+                ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                descImgUrl: "/Content/Images/bullet_arrow_down.png",
+                ascImgSize: "8px",
+                descImgSize: "8px",
+                onSorted: function (cell) {
+                    //alert(cell.index() + " -- " + cell.text());
+                }
+            });
+        });        
+    }
+    reloadReplyRecords();
+</script>

@@ -1,0 +1,69 @@
+﻿@using Logs
+@model IEnumerable<LogModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table {    
+table-layout: fixed;
+word-wrap:break-word; }
+    td {
+        text-wrap: normal;
+        text-overflow: ellipsis;
+    }
+    td .col0 {  width: 60px;  }
+    td .col1 {  width: 60px;  }
+    td .col2 {  width: 60px;  }
+    td .col3 {  width: 60px;  }
+    td .col4 {  width: 60px;  }
+    td .col5 {  width: 60px;  }
+    td .col6 {  width: 60px;  }
+    td .col7 {  width: 60px;  }
+    td .col8 {  width: 60px;  }
+    td .col9 {  width: 60px;  }
+    td .col10 {  width: 60px;  }
+</style>
+<h2>日志首页</h2>
+<div style="display:inline">
+    <div style="float:left">@Html.ActionLink("新建", "Create")</div>
+    <div style="float:right"><a href="~/Manager/Home/">返回管理页</a></div>
+</div>
+<div>
+<table>
+<tbody>
+<tr>
+    <th>用户名</th>
+    <th>IP</th>
+    <th class="col2">工作站</th>
+    <th class="col3">时间</th>
+    <th class="col4">模块</th>
+    <th class="col5">功能</th>
+    <th class="col6">类</th>
+    <th class="col7">参数</th>
+    <th class="col8">返回值</th>
+    <th class="col9">异常</th>
+    <th class="col10">改前数据</th>
+</tr>
+@if (null != Model)
+{
+    foreach (var m in Model)
+    {
+    <tr>
+        <td class="col0">@m.cUserName</td>
+        <td class="col1">@m.cIP</td>
+        <td class="col2">@m.cWorkStation</td>
+        <td class="col3">@m.dLogDate.ToString("yyyy-MM-dd hh:mm:ss")</td>
+        <td class="col4">@m.cModule</td>
+        <td class="col5">@m.cFunction</td>
+        <td class="col6">@m.cClass</td>
+        <td class="col7">@m.cParams</td>
+        <td class="col8">@m.cReturn</td>
+        <td class="col9">@m.cException</td>
+        <td class="col10">@m.cBeforeValue</td>
+    </tr> 
+    }
+}
+</tbody>
+</table>
+</div>

@@ -1,0 +1,113 @@
+﻿@using Webdiyer.WebControls.Mvc
+<!--列表部分显图,model类型请更改-->
+@model  PagedList<strategyLib.InvClsStdConvertRate>
+
+@{
+    ViewBag.Title = "InvStdList";
+}
+<h2>InvStdList</h2>
+
+<div id="List">
+    <table id='tb'>
+        <tr role="head">
+            <th sort="true">操作</th>
+            <th sort="true">分类序号</th>
+            <th sort="true">分类名称</th>
+            <th sort="true">存货型号</th>
+            <th sort="true">价格转换率</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class='tip' title="@item.autoid">
+                    <button class="btn btn-default" onclick="saveRow(this)">保存</button>
+                    <button class="btn btn-default" onclick="deleteRow(this)">删除</button>
+                </td>
+                <td> @Html.TextBoxFor(modelItem => item.invClsID) </td>
+                <td> @Html.TextBoxFor(modelItem => item.invClsName) </td>
+                <td> @Html.TextBoxFor(modelItem => item.invStd) </td>
+                <td> @Html.TextBoxFor(modelItem => item.priceRate) </td>
+            </tr>
+        }
+        
+        <tr>
+            <td class="tip" title="-1">
+                <button class="btn btn-default" onclick="saveRow(this)">保存</button>
+                <button class="btn btn-default" onclick="deleteRow(this)">删除</button>
+            </td>
+            <td> <input id="invClsID"/> </td>
+            <td> <input id="invClsName" /> </td>
+            <td> <input id="invStd" /> </td>
+            <td> <input id="priceRate" /> </td>
+        </tr>
+    </table>
+    <div><div style="float:left;width:30%" class="btn-group"><a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default" href="~/employee/strategy/">返回</a></div>
+        <div style="float:left;width:30%;">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div>
+        @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "Lists", HttpMethod = "Post", DataFormId = "searchForm" }, new { style = "float:right" })
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/jquery.json.min.js" ></script>
+<script type="text/javascript">
+    function saveRow(c) {
+        var row = $(c).parent().parent();
+        var cells = $(row).children('td');
+        var rowid = $(cells).eq(0).attr("title");
+        var invStdRate = new Object();
+        invStdRate.invClsID = $(cells).eq(1).find('input').eq(0).val();
+        invStdRate.invClsName = $(cells).eq(2).find('input').eq(0).val();
+        invStdRate.invStd = $(cells).eq(3).find('input').eq(0).val();
+        invStdRate.priceRate = $(cells).eq(4).find('input').eq(0).val();
+        var url = "/employee/strategy/rateSave/" + rowid;
+        var jsonStr = $.toJSON(invStdRate);
+        $.post(url, invStdRate, function (msg) {
+            //msg返回保存记录的autoid号
+            if (msg > 0) {
+                $(cells).eq(0).attr("title", msg);
+                if (rowid < 0) AddRow(row);
+            }
+            else alert("保存失败！");
+            //alert(msg);
+        });
+    }
+    function deleteRow(c) {
+        var row = $(c).parent().parent();
+        var cells = $(row).children('td');
+        var rowid = $(cells).eq(0).attr("title");
+        var url = "/employee/strategy/rateDelete/" + rowid;
+        $.post(url, { 'id': rowid }, function (msg) { });
+        $(row).remove();
+    }
+    function AddRow(ra) {
+        var r = '<tr>'
+            + '  <td class="tip" title="-1 ">'
+            + '      <button class="btn btn-default" onclick="saveRow(this)">保存</button>'
+            + '      <button class="btn btn-default" onclick="deleteRow(this)">删除</button>'
+            + '  </td>'
+            + '  <td> <input id="invClsID" onblue="blueClsCode(this)"/> </td>'
+            + '  <td> <input id="invClsName" /> </td>'
+            + '  <td> <input id="invStd" /> </td>'
+            + '  <td> <input id="priceRate" />) </td>'
+            + ' </tr>';
+        $(ra).next().after(r);
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(document).tooltip();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#tb").sorttable({
+            ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+            descImgUrl: "/Content/Images/bullet_arrow_down.png",
+            ascImgSize: "8px",
+            descImgSize: "8px",
+            onSorted: function (cell) {
+                //alert(cell.index() + " -- " + cell.text());
+            }
+        });
+    });
+</script>
+

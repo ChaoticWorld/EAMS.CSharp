@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "采购";
+}
+
+<h2>采购首页</h2>
+<div><button onclick='getData()'>提取数据</button></div>
+<script type='text/javascript'>
+    function getData() {
+        var tbs = $(window.frames['frame1'].otherWindow);
+        alert($(tbs).html());
+        //alert($(tbs).lenght);
+    }
+</script>
+<iframe id='frame1' height='90%' width='100%' src="http://61.155.24.157/netbill/login"></iframe>
+
+</div>
+
+

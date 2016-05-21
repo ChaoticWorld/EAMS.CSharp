@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDataModelStoreContainer" CdmEntityContainer="StrategyEntities">
+    <EntitySetMapping Name="strategies">
+      <EntityTypeMapping TypeName="AppDataModel.strategy">
+        <MappingFragment StoreEntitySet="strategy">
+          <ScalarProperty Name="sSource" ColumnName="sSource" />
+          <ScalarProperty Name="sCode" ColumnName="sCode" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="memo" ColumnName="memo" />
+          <ScalarProperty Name="bizType" ColumnName="bizType" />
+          <ScalarProperty Name="vouchType" ColumnName="vouchType" />
+          <ScalarProperty Name="vouchCode" ColumnName="vouchCode" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="effDate" ColumnName="effDate" />
+          <ScalarProperty Name="bottomPrice" ColumnName="bottomPrice" />
+          <ScalarProperty Name="topPrice" ColumnName="topPrice" />
+          <ScalarProperty Name="invStd" ColumnName="invStd" />
+          <ScalarProperty Name="invName" ColumnName="invName" />
+          <ScalarProperty Name="invCode" ColumnName="invCode" />
+          <ScalarProperty Name="dwcontect" ColumnName="dwcontect" />
+          <ScalarProperty Name="dwName" ColumnName="dwName" />
+          <ScalarProperty Name="dwCode" ColumnName="dwCode" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="strategyInvConvertRates">
+      <EntityTypeMapping TypeName="AppDataModel.strategyInvConvertRate">
+        <MappingFragment StoreEntitySet="strategyInvConvertRate">
+          <ScalarProperty Name="priceRate" ColumnName="priceRate" />
+          <ScalarProperty Name="invClass" ColumnName="invClass" />
+          <ScalarProperty Name="invStd" ColumnName="invStd" />
+          <ScalarProperty Name="invName" ColumnName="invName" />
+          <ScalarProperty Name="autoId" ColumnName="autoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryClassStdRates">
+      <EntityTypeMapping TypeName="AppDataModel.InventoryClassStdRate">
+        <MappingFragment StoreEntitySet="InventoryClassStdRate">
+          <ScalarProperty Name="priceRate" ColumnName="priceRate" />
+          <ScalarProperty Name="cValue" ColumnName="cValue" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="iOrderId" ColumnName="iOrderId" />
+          <ScalarProperty Name="clsName" ColumnName="clsName" />
+          <ScalarProperty Name="clsCode" ColumnName="clsCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

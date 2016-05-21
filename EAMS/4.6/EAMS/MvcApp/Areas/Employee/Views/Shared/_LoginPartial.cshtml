@@ -1,0 +1,19 @@
+﻿<div>
+        @if (Request.IsAuthenticated)
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li><span class="nav navbar-text">你好 </span>  </li>
+                <li>
+                    @Html.ActionLink(UserBLL.userBLL.getUser(int.Parse(Context.User.Identity.Name)).cUserName, "Edit", "Manager/Account", new { id = Context.User.Identity.Name }, new { style = "font-weight:bold" })
+                </li>
+                <li><a href="/Manager/Account/LogOff">注销</a></li>
+               </ul>
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("注册", "Register", "Manager/Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("登录", "Logon", "Manager/Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+        }
+</div>

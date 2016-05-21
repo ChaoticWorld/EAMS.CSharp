@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppDataPhoneModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AppDataPhoneModelStoreContainer">
+          <EntitySet Name="Phone_CallContent" EntityType="AppDataPhoneModel.Store.Phone_CallContent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Phone_ContectClass" EntityType="AppDataPhoneModel.Store.Phone_ContectClass" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Phone_Records" EntityType="AppDataPhoneModel.Store.Phone_Records" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Phone_CallContent">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="autoid" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="contectClass" Type="int" />
+          <Property Name="contectText" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Phone_ContectClass">
+          <Key>
+            <PropertyRef Name="clsID" />
+          </Key>
+          <Property Name="clsID" Type="int" Nullable="false" />
+          <Property Name="clsName" Type="nvarchar" MaxLength="255" />
+          <Property Name="clsDescription" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Phone_Records">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dwCode" Type="nvarchar" MaxLength="64" />
+          <Property Name="dwName" Type="nvarchar" MaxLength="255" />
+          <Property Name="dwContact" Type="nvarchar" MaxLength="64" />
+          <Property Name="callPhone" Type="nvarchar" MaxLength="128" />
+          <Property Name="callInOut" Type="bit" />
+          <Property Name="callDate" Type="datetime" />
+          <Property Name="callContent" Type="nvarchar(max)" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppDataPhoneModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AppDataPhoneEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Phone_CallContent" EntityType="AppDataPhoneModel.Phone_CallContent" />
+          <EntitySet Name="Phone_ContectClass" EntityType="AppDataPhoneModel.Phone_ContectClass" />
+          <EntitySet Name="Phone_Records" EntityType="AppDataPhoneModel.Phone_Records" />
+        </EntityContainer>
+        <EntityType Name="Phone_CallContent">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="autoid" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="contectClass" Type="Int32" />
+          <Property Name="contectText" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Phone_ContectClass">
+          <Key>
+            <PropertyRef Name="clsID" />
+          </Key>
+          <Property Name="clsID" Type="Int32" Nullable="false" />
+          <Property Name="clsName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="clsDescription" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Phone_Records">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dwCode" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="dwName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dwContact" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="callPhone" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="callInOut" Type="Boolean" />
+          <Property Name="callDate" Type="DateTime" />
+          <Property Name="callContent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppDataPhoneModelStoreContainer" CdmEntityContainer="AppDataPhoneEntities">
+          <EntitySetMapping Name="Phone_CallContent"><EntityTypeMapping TypeName="AppDataPhoneModel.Phone_CallContent"><MappingFragment StoreEntitySet="Phone_CallContent">
+            <ScalarProperty Name="autoid" ColumnName="autoid" />
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="contectClass" ColumnName="contectClass" />
+            <ScalarProperty Name="contectText" ColumnName="contectText" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Phone_ContectClass"><EntityTypeMapping TypeName="AppDataPhoneModel.Phone_ContectClass"><MappingFragment StoreEntitySet="Phone_ContectClass">
+            <ScalarProperty Name="clsID" ColumnName="clsID" />
+            <ScalarProperty Name="clsName" ColumnName="clsName" />
+            <ScalarProperty Name="clsDescription" ColumnName="clsDescription" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Phone_Records"><EntityTypeMapping TypeName="AppDataPhoneModel.Phone_Records"><MappingFragment StoreEntitySet="Phone_Records">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="dwCode" ColumnName="dwCode" />
+            <ScalarProperty Name="dwName" ColumnName="dwName" />
+            <ScalarProperty Name="dwContact" ColumnName="dwContact" />
+            <ScalarProperty Name="callPhone" ColumnName="callPhone" />
+            <ScalarProperty Name="callInOut" ColumnName="callInOut" />
+            <ScalarProperty Name="callDate" ColumnName="callDate" />
+            <ScalarProperty Name="callContent" ColumnName="callContent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model_Phone">
+        <EntityTypeShape EntityType="AppDataPhoneModel.Phone_CallContent" Width="1.5" PointX="0.75" PointY="0.75" Height="1.622213541666667" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppDataPhoneModel.Phone_ContectClass" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4535937499999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppDataPhoneModel.Phone_Records" Width="1.5" PointX="4.75" PointY="0.75" Height="2.2966927083333335" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

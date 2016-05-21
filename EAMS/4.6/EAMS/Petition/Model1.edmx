@@ -1,0 +1,876 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AppDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="iLogId" />
+          </Key>
+          <Property Name="iLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dLogDate" Type="datetime" Nullable="false" />
+          <Property Name="iUserID" Type="int" />
+          <Property Name="cWorkStation" Type="nvarchar" MaxLength="128" />
+          <Property Name="cIP" Type="nvarchar" MaxLength="24" />
+          <Property Name="iFunctionId" Type="int" />
+          <Property Name="iActionId" Type="int" />
+          <Property Name="cLastValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="QC_Class">
+          <Key>
+            <PropertyRef Name="iClsAutoId" />
+          </Key>
+          <Property Name="iClsAutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cClsName" Type="nvarchar" MaxLength="64" />
+          <Property Name="cClsFlag" Type="nvarchar" MaxLength="8" />
+          <Property Name="dToDay" Type="datetime" />
+          <Property Name="iToDayMax" Type="int" />
+        </EntityType>
+        <EntityType Name="QC_CodeIdentity">
+          <Key>
+            <PropertyRef Name="autoID" />
+          </Key>
+          <Property Name="autoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cClsFlag" Type="varchar" MaxLength="2" />
+          <Property Name="dDate" Type="datetime" />
+          <Property Name="cManager" Type="nvarchar" MaxLength="20" />
+          <Property Name="iSN" Type="int" />
+        </EntityType>
+        <EntityType Name="QC_DetailClass">
+          <Key>
+            <PropertyRef Name="QC_RCID" />
+          </Key>
+          <Property Name="QC_RCName" Type="nvarchar" MaxLength="64" />
+          <Property Name="QC_RCDescription" Type="nvarchar" MaxLength="128" />
+          <Property Name="QC_RCIndex" Type="int" />
+          <Property Name="QC_RCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QC_Details">
+          <Key>
+            <PropertyRef Name="QC_Autoid" />
+          </Key>
+          <Property Name="QC_Autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QC_RCID" Type="int" />
+          <Property Name="QC_OrderCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cInvCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cInvName" Type="nvarchar" MaxLength="32" />
+          <Property Name="cInvStd" Type="nvarchar" MaxLength="64" />
+          <Property Name="iQuentity" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="iPrice" Type="money" />
+          <Property Name="iSum" Type="money" />
+          <Property Name="cMemo" Type="nvarchar" MaxLength="512" />
+          <Property Name="bDaiShouKuan" Type="bit" />
+          <Property Name="QC_MainID" Type="int" />
+          <Property Name="dSaleSumStartDate" Type="datetime" />
+          <Property Name="dSaleSumFinishDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QC_Main">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cCreateMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="dCreateDate" Type="datetime" />
+          <Property Name="cCusManager" Type="nvarchar" MaxLength="16" />
+          <Property Name="cModifyMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="dModifyDate" Type="datetime" />
+          <Property Name="cCusCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cCusName" Type="nvarchar" MaxLength="64" />
+          <Property Name="cCusPerson" Type="nvarchar" MaxLength="16" />
+          <Property Name="dExpDate" Type="datetime" />
+          <Property Name="dEffDate" Type="datetime" />
+          <Property Name="cMemo" Type="nvarchar" MaxLength="1024" />
+          <Property Name="cResult" Type="nvarchar" MaxLength="255" />
+          <Property Name="cSubject" Type="nvarchar" MaxLength="255" />
+          <Property Name="cVouchCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="cClsFlag" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="QC_Replys">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QC_MainID" Type="int" />
+          <Property Name="QC_SubmitMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="QC_SubmitDate" Type="datetime" />
+          <Property Name="QC_ReplyMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="QC_ReplyDate" Type="datetime" />
+          <Property Name="QC_ReplyContent" Type="nvarchar" MaxLength="128" />
+          <Property Name="QC_ReplyPass" Type="bit" />
+          <Property Name="QC_NextID" Type="int" />
+          <Property Name="submitMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="replyMan" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="QC_txtContent">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" />
+          <Property Name="plan" Type="nvarchar(max)" />
+          <Property Name="order" Type="int" />
+        </EntityType>
+        <EntityType Name="sqlQuery">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sQueryName" Type="nvarchar" MaxLength="128" />
+          <Property Name="sQueryMain" Type="nvarchar(max)" />
+          <Property Name="sQueryWhere" Type="nvarchar(max)" />
+          <Property Name="sQueryGroup" Type="nvarchar(max)" />
+          <Property Name="sQueryOrder" Type="nvarchar(max)" />
+          <Property Name="sMemo" Type="nvarchar(max)" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“AppData.dbo.v_petitionList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_petitionList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="cCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cCreateMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="dCreateDate" Type="datetime" />
+          <Property Name="cCusManager" Type="nvarchar" MaxLength="16" />
+          <Property Name="cModifyMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="dModifyDate" Type="datetime" />
+          <Property Name="cCusCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cCusName" Type="nvarchar" MaxLength="64" />
+          <Property Name="cCusPerson" Type="nvarchar" MaxLength="16" />
+          <Property Name="dExpDate" Type="datetime" />
+          <Property Name="dEffDate" Type="datetime" />
+          <Property Name="mainMemo" Type="nvarchar" MaxLength="1024" />
+          <Property Name="QC_RCID" Type="int" />
+          <Property Name="QC_OrderCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cInvCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cInvName" Type="nvarchar" MaxLength="32" />
+          <Property Name="cInvStd" Type="nvarchar" MaxLength="64" />
+          <Property Name="iQuentity" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="iPrice" Type="money" />
+          <Property Name="iSum" Type="money" />
+          <Property Name="detailsMemo" Type="nvarchar" MaxLength="512" />
+          <Property Name="bDaiShouKuan" Type="bit" />
+          <Property Name="dSaleSumStartDate" Type="datetime" />
+          <Property Name="dSaleSumFinishDate" Type="datetime" />
+          <Property Name="QC_SubmitMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="QC_SubmitDate" Type="datetime" />
+          <Property Name="QC_ReplyMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="QC_ReplyDate" Type="datetime" />
+          <Property Name="QC_ReplyContent" Type="nvarchar" MaxLength="128" />
+          <Property Name="QC_ReplyPass" Type="bit" />
+          <Property Name="QC_NextID" Type="int" />
+          <Property Name="submitMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="replyMan" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“AppData.dbo.v_petitionTxtList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_petitionTxtList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="cCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cCreateMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="dCreateDate" Type="datetime" />
+          <Property Name="cCusManager" Type="nvarchar" MaxLength="16" />
+          <Property Name="cModifyMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="dModifyDate" Type="datetime" />
+          <Property Name="cCusCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="cCusName" Type="nvarchar" MaxLength="64" />
+          <Property Name="cCusPerson" Type="nvarchar" MaxLength="16" />
+          <Property Name="dExpDate" Type="datetime" />
+          <Property Name="dEffDate" Type="datetime" />
+          <Property Name="mainMemo" Type="nvarchar" MaxLength="1024" />
+          <Property Name="plan" Type="nvarchar(max)" />
+          <Property Name="vouchCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="QC_SubmitMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="QC_SubmitDate" Type="datetime" />
+          <Property Name="QC_ReplyMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="QC_ReplyDate" Type="datetime" />
+          <Property Name="QC_ReplyContent" Type="nvarchar" MaxLength="128" />
+          <Property Name="QC_ReplyPass" Type="bit" />
+          <Property Name="QC_NextID" Type="int" />
+          <Property Name="submitMan" Type="nvarchar" MaxLength="16" />
+          <Property Name="replyMan" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <Association Name="FK__QC_Detail__QC_Ma__0F975522">
+          <End Role="QC_Main" Type="Self.QC_Main" Multiplicity="0..1" />
+          <End Role="QC_Details" Type="Self.QC_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_Main">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QC_Details">
+              <PropertyRef Name="QC_MainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QC_Detail__QC_RC__108B795B">
+          <End Role="QC_DetailClass" Type="Self.QC_DetailClass" Multiplicity="0..1" />
+          <End Role="QC_Details" Type="Self.QC_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_DetailClass">
+              <PropertyRef Name="QC_RCID" />
+            </Principal>
+            <Dependent Role="QC_Details">
+              <PropertyRef Name="QC_RCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QC_Replys__QC_Ma__117F9D94">
+          <End Role="QC_Main" Type="Self.QC_Main" Multiplicity="0..1" />
+          <End Role="QC_Replys" Type="Self.QC_Replys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_Main">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QC_Replys">
+              <PropertyRef Name="QC_MainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QC_txtConten__id__45F365D3">
+          <End Role="QC_Main" Type="Self.QC_Main" Multiplicity="0..1" />
+          <End Role="QC_txtContent" Type="Self.QC_txtContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_Main">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QC_txtContent">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppDataModelStoreContainer">
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_Class" EntityType="Self.QC_Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_CodeIdentity" EntityType="Self.QC_CodeIdentity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_DetailClass" EntityType="Self.QC_DetailClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_Details" EntityType="Self.QC_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_Main" EntityType="Self.QC_Main" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_Replys" EntityType="Self.QC_Replys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QC_txtContent" EntityType="Self.QC_txtContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sqlQuery" EntityType="Self.sqlQuery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_petitionList" EntityType="Self.v_petitionList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[v_petitionList].[Id] AS [Id], 
+[v_petitionList].[cCode] AS [cCode], 
+[v_petitionList].[cCreateMan] AS [cCreateMan], 
+[v_petitionList].[dCreateDate] AS [dCreateDate], 
+[v_petitionList].[cCusManager] AS [cCusManager], 
+[v_petitionList].[cModifyMan] AS [cModifyMan], 
+[v_petitionList].[dModifyDate] AS [dModifyDate], 
+[v_petitionList].[cCusCode] AS [cCusCode], 
+[v_petitionList].[cCusName] AS [cCusName], 
+[v_petitionList].[cCusPerson] AS [cCusPerson], 
+[v_petitionList].[dExpDate] AS [dExpDate], 
+[v_petitionList].[dEffDate] AS [dEffDate], 
+[v_petitionList].[mainMemo] AS [mainMemo], 
+[v_petitionList].[QC_RCID] AS [QC_RCID], 
+[v_petitionList].[QC_OrderCode] AS [QC_OrderCode], 
+[v_petitionList].[cInvCode] AS [cInvCode], 
+[v_petitionList].[cInvName] AS [cInvName], 
+[v_petitionList].[cInvStd] AS [cInvStd], 
+[v_petitionList].[iQuentity] AS [iQuentity], 
+[v_petitionList].[iPrice] AS [iPrice], 
+[v_petitionList].[iSum] AS [iSum], 
+[v_petitionList].[detailsMemo] AS [detailsMemo], 
+[v_petitionList].[bDaiShouKuan] AS [bDaiShouKuan], 
+[v_petitionList].[dSaleSumStartDate] AS [dSaleSumStartDate], 
+[v_petitionList].[dSaleSumFinishDate] AS [dSaleSumFinishDate], 
+[v_petitionList].[QC_SubmitMan] AS [QC_SubmitMan], 
+[v_petitionList].[QC_SubmitDate] AS [QC_SubmitDate], 
+[v_petitionList].[QC_ReplyMan] AS [QC_ReplyMan], 
+[v_petitionList].[QC_ReplyDate] AS [QC_ReplyDate], 
+[v_petitionList].[QC_ReplyContent] AS [QC_ReplyContent], 
+[v_petitionList].[QC_ReplyPass] AS [QC_ReplyPass], 
+[v_petitionList].[QC_NextID] AS [QC_NextID], 
+[v_petitionList].[submitMan] AS [submitMan], 
+[v_petitionList].[replyMan] AS [replyMan]
+FROM [dbo].[v_petitionList] AS [v_petitionList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_petitionTxtList" EntityType="Self.v_petitionTxtList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[v_petitionTxtList].[Id] AS [Id], 
+[v_petitionTxtList].[cCode] AS [cCode], 
+[v_petitionTxtList].[cCreateMan] AS [cCreateMan], 
+[v_petitionTxtList].[dCreateDate] AS [dCreateDate], 
+[v_petitionTxtList].[cCusManager] AS [cCusManager], 
+[v_petitionTxtList].[cModifyMan] AS [cModifyMan], 
+[v_petitionTxtList].[dModifyDate] AS [dModifyDate], 
+[v_petitionTxtList].[cCusCode] AS [cCusCode], 
+[v_petitionTxtList].[cCusName] AS [cCusName], 
+[v_petitionTxtList].[cCusPerson] AS [cCusPerson], 
+[v_petitionTxtList].[dExpDate] AS [dExpDate], 
+[v_petitionTxtList].[dEffDate] AS [dEffDate], 
+[v_petitionTxtList].[mainMemo] AS [mainMemo], 
+[v_petitionTxtList].[plan] AS [plan], 
+[v_petitionTxtList].[vouchCode] AS [vouchCode], 
+[v_petitionTxtList].[QC_SubmitMan] AS [QC_SubmitMan], 
+[v_petitionTxtList].[QC_SubmitDate] AS [QC_SubmitDate], 
+[v_petitionTxtList].[QC_ReplyMan] AS [QC_ReplyMan], 
+[v_petitionTxtList].[QC_ReplyDate] AS [QC_ReplyDate], 
+[v_petitionTxtList].[QC_ReplyContent] AS [QC_ReplyContent], 
+[v_petitionTxtList].[QC_ReplyPass] AS [QC_ReplyPass], 
+[v_petitionTxtList].[QC_NextID] AS [QC_NextID], 
+[v_petitionTxtList].[submitMan] AS [submitMan], 
+[v_petitionTxtList].[replyMan] AS [replyMan]
+FROM [dbo].[v_petitionTxtList] AS [v_petitionTxtList]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__QC_Detail__QC_Ma__0F975522" Association="Self.FK__QC_Detail__QC_Ma__0F975522">
+            <End Role="QC_Main" EntitySet="QC_Main" />
+            <End Role="QC_Details" EntitySet="QC_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QC_Detail__QC_RC__108B795B" Association="Self.FK__QC_Detail__QC_RC__108B795B">
+            <End Role="QC_DetailClass" EntitySet="QC_DetailClass" />
+            <End Role="QC_Details" EntitySet="QC_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QC_Replys__QC_Ma__117F9D94" Association="Self.FK__QC_Replys__QC_Ma__117F9D94">
+            <End Role="QC_Main" EntitySet="QC_Main" />
+            <End Role="QC_Replys" EntitySet="QC_Replys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QC_txtConten__id__45F365D3" Association="Self.FK__QC_txtConten__id__45F365D3">
+            <End Role="QC_Main" EntitySet="QC_Main" />
+            <End Role="QC_txtContent" EntitySet="QC_txtContent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppDataPetitionsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AppDataPetitionsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="QC_DetailClass" EntityType="AppDataPetitionsModel.QC_DetailClass" />
+          <EntitySet Name="QC_Details" EntityType="AppDataPetitionsModel.QC_Details" />
+          <EntitySet Name="QC_Main" EntityType="AppDataPetitionsModel.QC_Main" />
+          <EntitySet Name="QC_Replys" EntityType="AppDataPetitionsModel.QC_Replys" />
+          <AssociationSet Name="FK__QC_Detail__QC_RC__108B795B" Association="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B">
+            <End Role="QC_DetailClass" EntitySet="QC_DetailClass" />
+            <End Role="QC_Details" EntitySet="QC_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QC_Detail__QC_Ma__0F975522" Association="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522">
+            <End Role="QC_Main" EntitySet="QC_Main" />
+            <End Role="QC_Details" EntitySet="QC_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QC_Replys__QC_Ma__117F9D94" Association="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94">
+            <End Role="QC_Main" EntitySet="QC_Main" />
+            <End Role="QC_Replys" EntitySet="QC_Replys" />
+          </AssociationSet>
+          <EntitySet Name="Logs" EntityType="AppDataPetitionsModel.Log" />
+          <EntitySet Name="sqlQueries" EntityType="AppDataPetitionsModel.sqlQuery" />
+          <EntitySet Name="v_petitionList" EntityType="AppDataPetitionsModel.v_petitionList" />
+          <EntitySet Name="QC_txtContent" EntityType="AppDataPetitionsModel.QC_txtContent" />
+          <EntitySet Name="v_petitionTxtList" EntityType="AppDataPetitionsModel.v_petitionTxtList" />
+          <AssociationSet Name="FK__QC_txtConten__id__45F365D3" Association="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3">
+            <End Role="QC_Main" EntitySet="QC_Main" />
+            <End Role="QC_txtContent" EntitySet="QC_txtContent" />
+          </AssociationSet>
+          <EntitySet Name="QC_Class" EntityType="AppDataPetitionsModel.QC_Class" />
+          <EntitySet Name="QC_CodeIdentity" EntityType="AppDataPetitionsModel.QC_CodeIdentity" />
+        </EntityContainer>
+        <EntityType Name="QC_DetailClass">
+          <Key>
+            <PropertyRef Name="QC_RCID" />
+          </Key>
+          <Property Type="String" Name="QC_RCName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="QC_RCDescription" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="QC_RCIndex" />
+          <Property Type="Int32" Name="QC_RCID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="QC_Details" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B" FromRole="QC_DetailClass" ToRole="QC_Details" />
+        </EntityType>
+        <EntityType Name="QC_Details">
+          <Key>
+            <PropertyRef Name="QC_Autoid" />
+          </Key>
+          <Property Type="Int32" Name="QC_Autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="QC_RCID" />
+          <Property Type="String" Name="QC_OrderCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cInvCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cInvName" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cInvStd" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="iQuentity" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="iPrice" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="iSum" Precision="19" Scale="4" />
+          <Property Type="String" Name="cMemo" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="bDaiShouKuan" />
+          <Property Type="Int32" Name="QC_MainID" />
+          <NavigationProperty Name="QC_DetailClass" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B" FromRole="QC_Details" ToRole="QC_DetailClass" />
+          <NavigationProperty Name="QC_Main" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522" FromRole="QC_Details" ToRole="QC_Main" />
+          <Property Type="DateTime" Name="dSaleSumStartDate" Precision="3" />
+          <Property Type="DateTime" Name="dSaleSumFinishDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="QC_Main">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="cCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cCreateMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="dCreateDate" Precision="3" />
+          <Property Type="String" Name="cCusManager" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cModifyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="dModifyDate" Precision="3" />
+          <Property Type="String" Name="cCusCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cCusName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cCusPerson" MaxLength="16" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="QC_Details" Relationship="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522" FromRole="QC_Main" ToRole="QC_Details" />
+          <NavigationProperty Name="QC_Replys" Relationship="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94" FromRole="QC_Main" ToRole="QC_Replys" />
+          <Property Type="DateTime" Name="dExpDate" Precision="3" />
+          <Property Type="DateTime" Name="dEffDate" Precision="3" />
+          <Property Type="String" Name="cMemo" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="QC_txtContent" Relationship="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3" FromRole="QC_Main" ToRole="QC_txtContent" />
+          <Property Name="cResult" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="cSubject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="cVouchCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="cClsFlag" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QC_Replys">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Type="Int32" Name="AutoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="QC_MainID" />
+          <Property Type="String" Name="QC_SubmitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="QC_SubmitDate" Precision="3" />
+          <Property Type="String" Name="QC_ReplyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="QC_ReplyDate" Precision="3" />
+          <Property Type="String" Name="QC_ReplyContent" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="QC_ReplyPass" />
+          <Property Type="Int32" Name="QC_NextID" />
+          <NavigationProperty Name="QC_Main" Relationship="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94" FromRole="QC_Replys" ToRole="QC_Main" />
+          <Property Type="String" Name="submitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="replyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__QC_Detail__QC_RC__108B795B">
+          <End Type="AppDataPetitionsModel.QC_DetailClass" Role="QC_DetailClass" Multiplicity="0..1" />
+          <End Type="AppDataPetitionsModel.QC_Details" Role="QC_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_DetailClass">
+              <PropertyRef Name="QC_RCID" />
+            </Principal>
+            <Dependent Role="QC_Details">
+              <PropertyRef Name="QC_RCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QC_Detail__QC_Ma__0F975522">
+          <End Type="AppDataPetitionsModel.QC_Main" Role="QC_Main" Multiplicity="0..1" />
+          <End Type="AppDataPetitionsModel.QC_Details" Role="QC_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_Main">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QC_Details">
+              <PropertyRef Name="QC_MainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QC_Replys__QC_Ma__117F9D94">
+          <End Type="AppDataPetitionsModel.QC_Main" Role="QC_Main" Multiplicity="0..1" />
+          <End Type="AppDataPetitionsModel.QC_Replys" Role="QC_Replys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_Main">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QC_Replys">
+              <PropertyRef Name="QC_MainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="iLogId" />
+          </Key>
+          <Property Type="Int32" Name="iLogId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="dLogDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="iUserID" />
+          <Property Type="String" Name="cWorkStation" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cIP" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="iFunctionId" />
+          <Property Type="Int32" Name="iActionId" />
+          <Property Type="String" Name="cLastValue" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sqlQuery">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="sQueryName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sQueryMain" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sQueryWhere" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sQueryGroup" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sQueryOrder" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sMemo" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_petitionList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="cCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cCreateMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="dCreateDate" Precision="3" />
+          <Property Type="String" Name="cCusManager" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cModifyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="dModifyDate" Precision="3" />
+          <Property Type="String" Name="cCusCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cCusName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cCusPerson" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="dExpDate" Precision="3" />
+          <Property Type="DateTime" Name="dEffDate" Precision="3" />
+          <Property Type="String" Name="mainMemo" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="QC_RCID" />
+          <Property Type="String" Name="QC_OrderCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cInvCode" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cInvName" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cInvStd" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="iQuentity" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="iPrice" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="iSum" Precision="19" Scale="4" />
+          <Property Type="String" Name="detailsMemo" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="bDaiShouKuan" />
+          <Property Type="DateTime" Name="dSaleSumStartDate" Precision="3" />
+          <Property Type="DateTime" Name="dSaleSumFinishDate" Precision="3" />
+          <Property Type="String" Name="QC_SubmitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="QC_SubmitDate" Precision="3" />
+          <Property Type="String" Name="QC_ReplyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="QC_ReplyDate" Precision="3" />
+          <Property Type="String" Name="QC_ReplyContent" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="QC_ReplyPass" />
+          <Property Type="Int32" Name="QC_NextID" />
+          <Property Type="String" Name="submitMan" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="replyMan" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QC_txtContent">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="autoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" />
+          <Property Name="plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="QC_Main" Relationship="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3" FromRole="QC_txtContent" ToRole="QC_Main" />
+          <Property Name="order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_petitionTxtList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="cCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="cCreateMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="dCreateDate" Type="DateTime" Precision="3" />
+          <Property Name="cCusManager" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="cModifyMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="dModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="cCusCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="cCusName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="cCusPerson" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="dExpDate" Type="DateTime" Precision="3" />
+          <Property Name="dEffDate" Type="DateTime" Precision="3" />
+          <Property Name="mainMemo" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vouchCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="QC_SubmitMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="QC_SubmitDate" Type="DateTime" Precision="3" />
+          <Property Name="QC_ReplyMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="QC_ReplyDate" Type="DateTime" Precision="3" />
+          <Property Name="QC_ReplyContent" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="QC_ReplyPass" Type="Boolean" />
+          <Property Name="QC_NextID" Type="Int32" />
+          <Property Name="submitMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="replyMan" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__QC_txtConten__id__45F365D3">
+          <End Type="AppDataPetitionsModel.QC_Main" Role="QC_Main" Multiplicity="0..1" />
+          <End Type="AppDataPetitionsModel.QC_txtContent" Role="QC_txtContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QC_Main">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QC_txtContent">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="QC_Class">
+          <Key>
+            <PropertyRef Name="iClsAutoId" />
+          </Key>
+          <Property Name="cClsName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="cClsFlag" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="dToDay" Type="DateTime" Precision="3" />
+          <Property Name="iToDayMax" Type="Int32" />
+          <Property Name="iClsAutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="QC_CodeIdentity">
+          <Key>
+            <PropertyRef Name="autoID" />
+          </Key>
+          <Property Name="autoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cClsFlag" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="dDate" Type="DateTime" Precision="3" />
+          <Property Name="cManager" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="iSN" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppDataModelStoreContainer" CdmEntityContainer="AppDataPetitionsEntities">
+          <EntitySetMapping Name="QC_DetailClass">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_DetailClass">
+              <MappingFragment StoreEntitySet="QC_DetailClass">
+                <ScalarProperty Name="QC_RCID" ColumnName="QC_RCID" />
+                <ScalarProperty Name="QC_RCIndex" ColumnName="QC_RCIndex" />
+                <ScalarProperty Name="QC_RCDescription" ColumnName="QC_RCDescription" />
+                <ScalarProperty Name="QC_RCName" ColumnName="QC_RCName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QC_Details">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Details">
+              <MappingFragment StoreEntitySet="QC_Details">
+                <ScalarProperty Name="dSaleSumFinishDate" ColumnName="dSaleSumFinishDate" />
+                <ScalarProperty Name="dSaleSumStartDate" ColumnName="dSaleSumStartDate" />
+                <ScalarProperty Name="QC_MainID" ColumnName="QC_MainID" />
+                <ScalarProperty Name="bDaiShouKuan" ColumnName="bDaiShouKuan" />
+                <ScalarProperty Name="cMemo" ColumnName="cMemo" />
+                <ScalarProperty Name="iSum" ColumnName="iSum" />
+                <ScalarProperty Name="iPrice" ColumnName="iPrice" />
+                <ScalarProperty Name="iQuentity" ColumnName="iQuentity" />
+                <ScalarProperty Name="cInvStd" ColumnName="cInvStd" />
+                <ScalarProperty Name="cInvName" ColumnName="cInvName" />
+                <ScalarProperty Name="cInvCode" ColumnName="cInvCode" />
+                <ScalarProperty Name="QC_OrderCode" ColumnName="QC_OrderCode" />
+                <ScalarProperty Name="QC_RCID" ColumnName="QC_RCID" />
+                <ScalarProperty Name="QC_Autoid" ColumnName="QC_Autoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QC_Main">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Main">
+              <MappingFragment StoreEntitySet="QC_Main">
+                <ScalarProperty Name="cClsFlag" ColumnName="cClsFlag" />
+                <ScalarProperty Name="cVouchCode" ColumnName="cVouchCode" />
+                <ScalarProperty Name="cSubject" ColumnName="cSubject" />
+                <ScalarProperty Name="cResult" ColumnName="cResult" />
+                <ScalarProperty Name="cMemo" ColumnName="cMemo" />
+                <ScalarProperty Name="dEffDate" ColumnName="dEffDate" />
+                <ScalarProperty Name="dExpDate" ColumnName="dExpDate" />
+                <ScalarProperty Name="cCusPerson" ColumnName="cCusPerson" />
+                <ScalarProperty Name="cCusName" ColumnName="cCusName" />
+                <ScalarProperty Name="cCusCode" ColumnName="cCusCode" />
+                <ScalarProperty Name="dModifyDate" ColumnName="dModifyDate" />
+                <ScalarProperty Name="cModifyMan" ColumnName="cModifyMan" />
+                <ScalarProperty Name="cCusManager" ColumnName="cCusManager" />
+                <ScalarProperty Name="dCreateDate" ColumnName="dCreateDate" />
+                <ScalarProperty Name="cCreateMan" ColumnName="cCreateMan" />
+                <ScalarProperty Name="cCode" ColumnName="cCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QC_Replys">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Replys">
+              <MappingFragment StoreEntitySet="QC_Replys">
+                <ScalarProperty Name="replyMan" ColumnName="replyMan" />
+                <ScalarProperty Name="submitMan" ColumnName="submitMan" />
+                <ScalarProperty Name="QC_NextID" ColumnName="QC_NextID" />
+                <ScalarProperty Name="QC_ReplyPass" ColumnName="QC_ReplyPass" />
+                <ScalarProperty Name="QC_ReplyContent" ColumnName="QC_ReplyContent" />
+                <ScalarProperty Name="QC_ReplyDate" ColumnName="QC_ReplyDate" />
+                <ScalarProperty Name="QC_ReplyMan" ColumnName="QC_ReplyMan" />
+                <ScalarProperty Name="QC_SubmitDate" ColumnName="QC_SubmitDate" />
+                <ScalarProperty Name="QC_SubmitMan" ColumnName="QC_SubmitMan" />
+                <ScalarProperty Name="QC_MainID" ColumnName="QC_MainID" />
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="cLastValue" ColumnName="cLastValue" />
+                <ScalarProperty Name="iActionId" ColumnName="iActionId" />
+                <ScalarProperty Name="iFunctionId" ColumnName="iFunctionId" />
+                <ScalarProperty Name="cIP" ColumnName="cIP" />
+                <ScalarProperty Name="cWorkStation" ColumnName="cWorkStation" />
+                <ScalarProperty Name="iUserID" ColumnName="iUserID" />
+                <ScalarProperty Name="dLogDate" ColumnName="dLogDate" />
+                <ScalarProperty Name="iLogId" ColumnName="iLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sqlQueries">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.sqlQuery">
+              <MappingFragment StoreEntitySet="sqlQuery">
+                <ScalarProperty Name="sMemo" ColumnName="sMemo" />
+                <ScalarProperty Name="sQueryOrder" ColumnName="sQueryOrder" />
+                <ScalarProperty Name="sQueryGroup" ColumnName="sQueryGroup" />
+                <ScalarProperty Name="sQueryWhere" ColumnName="sQueryWhere" />
+                <ScalarProperty Name="sQueryMain" ColumnName="sQueryMain" />
+                <ScalarProperty Name="sQueryName" ColumnName="sQueryName" />
+                <ScalarProperty Name="autoid" ColumnName="autoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_petitionList">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.v_petitionList">
+              <MappingFragment StoreEntitySet="v_petitionList">
+                <ScalarProperty Name="replyMan" ColumnName="replyMan" />
+                <ScalarProperty Name="submitMan" ColumnName="submitMan" />
+                <ScalarProperty Name="QC_NextID" ColumnName="QC_NextID" />
+                <ScalarProperty Name="QC_ReplyPass" ColumnName="QC_ReplyPass" />
+                <ScalarProperty Name="QC_ReplyContent" ColumnName="QC_ReplyContent" />
+                <ScalarProperty Name="QC_ReplyDate" ColumnName="QC_ReplyDate" />
+                <ScalarProperty Name="QC_ReplyMan" ColumnName="QC_ReplyMan" />
+                <ScalarProperty Name="QC_SubmitDate" ColumnName="QC_SubmitDate" />
+                <ScalarProperty Name="QC_SubmitMan" ColumnName="QC_SubmitMan" />
+                <ScalarProperty Name="dSaleSumFinishDate" ColumnName="dSaleSumFinishDate" />
+                <ScalarProperty Name="dSaleSumStartDate" ColumnName="dSaleSumStartDate" />
+                <ScalarProperty Name="bDaiShouKuan" ColumnName="bDaiShouKuan" />
+                <ScalarProperty Name="detailsMemo" ColumnName="detailsMemo" />
+                <ScalarProperty Name="iSum" ColumnName="iSum" />
+                <ScalarProperty Name="iPrice" ColumnName="iPrice" />
+                <ScalarProperty Name="iQuentity" ColumnName="iQuentity" />
+                <ScalarProperty Name="cInvStd" ColumnName="cInvStd" />
+                <ScalarProperty Name="cInvName" ColumnName="cInvName" />
+                <ScalarProperty Name="cInvCode" ColumnName="cInvCode" />
+                <ScalarProperty Name="QC_OrderCode" ColumnName="QC_OrderCode" />
+                <ScalarProperty Name="QC_RCID" ColumnName="QC_RCID" />
+                <ScalarProperty Name="mainMemo" ColumnName="mainMemo" />
+                <ScalarProperty Name="dEffDate" ColumnName="dEffDate" />
+                <ScalarProperty Name="dExpDate" ColumnName="dExpDate" />
+                <ScalarProperty Name="cCusPerson" ColumnName="cCusPerson" />
+                <ScalarProperty Name="cCusName" ColumnName="cCusName" />
+                <ScalarProperty Name="cCusCode" ColumnName="cCusCode" />
+                <ScalarProperty Name="dModifyDate" ColumnName="dModifyDate" />
+                <ScalarProperty Name="cModifyMan" ColumnName="cModifyMan" />
+                <ScalarProperty Name="cCusManager" ColumnName="cCusManager" />
+                <ScalarProperty Name="dCreateDate" ColumnName="dCreateDate" />
+                <ScalarProperty Name="cCreateMan" ColumnName="cCreateMan" />
+                <ScalarProperty Name="cCode" ColumnName="cCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QC_txtContent">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_txtContent">
+              <MappingFragment StoreEntitySet="QC_txtContent">
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="plan" ColumnName="plan" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="autoid" ColumnName="autoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_petitionTxtList">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.v_petitionTxtList">
+              <MappingFragment StoreEntitySet="v_petitionTxtList">
+                <ScalarProperty Name="replyMan" ColumnName="replyMan" />
+                <ScalarProperty Name="submitMan" ColumnName="submitMan" />
+                <ScalarProperty Name="QC_NextID" ColumnName="QC_NextID" />
+                <ScalarProperty Name="QC_ReplyPass" ColumnName="QC_ReplyPass" />
+                <ScalarProperty Name="QC_ReplyContent" ColumnName="QC_ReplyContent" />
+                <ScalarProperty Name="QC_ReplyDate" ColumnName="QC_ReplyDate" />
+                <ScalarProperty Name="QC_ReplyMan" ColumnName="QC_ReplyMan" />
+                <ScalarProperty Name="QC_SubmitDate" ColumnName="QC_SubmitDate" />
+                <ScalarProperty Name="QC_SubmitMan" ColumnName="QC_SubmitMan" />
+                <ScalarProperty Name="vouchCode" ColumnName="vouchCode" />
+                <ScalarProperty Name="plan" ColumnName="plan" />
+                <ScalarProperty Name="mainMemo" ColumnName="mainMemo" />
+                <ScalarProperty Name="dEffDate" ColumnName="dEffDate" />
+                <ScalarProperty Name="dExpDate" ColumnName="dExpDate" />
+                <ScalarProperty Name="cCusPerson" ColumnName="cCusPerson" />
+                <ScalarProperty Name="cCusName" ColumnName="cCusName" />
+                <ScalarProperty Name="cCusCode" ColumnName="cCusCode" />
+                <ScalarProperty Name="dModifyDate" ColumnName="dModifyDate" />
+                <ScalarProperty Name="cModifyMan" ColumnName="cModifyMan" />
+                <ScalarProperty Name="cCusManager" ColumnName="cCusManager" />
+                <ScalarProperty Name="dCreateDate" ColumnName="dCreateDate" />
+                <ScalarProperty Name="cCreateMan" ColumnName="cCreateMan" />
+                <ScalarProperty Name="cCode" ColumnName="cCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QC_Class">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Class">
+              <MappingFragment StoreEntitySet="QC_Class">
+                <ScalarProperty Name="iClsAutoId" ColumnName="iClsAutoId" />
+                <ScalarProperty Name="iToDayMax" ColumnName="iToDayMax" />
+                <ScalarProperty Name="dToDay" ColumnName="dToDay" />
+                <ScalarProperty Name="cClsFlag" ColumnName="cClsFlag" />
+                <ScalarProperty Name="cClsName" ColumnName="cClsName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QC_CodeIdentity">
+            <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_CodeIdentity">
+              <MappingFragment StoreEntitySet="QC_CodeIdentity">
+                <ScalarProperty Name="iSN" ColumnName="iSN" />
+                <ScalarProperty Name="cManager" ColumnName="cManager" />
+                <ScalarProperty Name="dDate" ColumnName="dDate" />
+                <ScalarProperty Name="cClsFlag" ColumnName="cClsFlag" />
+                <ScalarProperty Name="autoID" ColumnName="autoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1" ZoomLevel="62">
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_DetailClass" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7908333333333335" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_Details" Width="1.5" PointX="3" PointY="4" Height="3.3084114583333322" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_Main" Width="1.5" PointX="0.75" PointY="4.125" Height="2.9711718749999996" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_Replys" Width="1.5" PointX="3" PointY="8.375" Height="2.6339322916666674" />
+        <AssociationConnector Association="AppDataPetitionsModel.FK__QC_Detail__QC_RC__108B795B" >
+          <ConnectorPoint PointX="2.25" PointY="2.5408333333333335" />
+          <ConnectorPoint PointX="2.625" PointY="2.9158333333333335" />
+          <ConnectorPoint PointX="2.625" PointY="4.9005058124999987" />
+          <ConnectorPoint PointX="3" PointY="4.9005058124999987" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppDataPetitionsModel.FK__QC_Detail__QC_Ma__0F975522" >
+          <ConnectorPoint PointX="2.25" PointY="5.6105859375" />
+          <ConnectorPoint PointX="3" PointY="5.6105859375" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppDataPetitionsModel.FK__QC_Replys__QC_Ma__117F9D94" >
+          <ConnectorPoint PointX="1.5" PointY="7.096171875" />
+          <ConnectorPoint PointX="1.5" PointY="9.6919661458333337" />
+          <ConnectorPoint PointX="3" PointY="9.6919661458333337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AppDataPetitionsModel.Log" Width="1.5" PointX="3.375" PointY="0.75" Height="2.2966927083333335" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.sqlQuery" Width="1.5" PointX="5.375" PointY="0.75" Height="2.1280729166666665" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.v_petitionList" Width="1.5" PointX="5.375" PointY="3.75" Height="6.6808072916666674" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_txtContent" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.v_petitionTxtList" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="AppDataPetitionsModel.FK__QC_txtConten__id__45F365D3" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_Class" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="AppDataPetitionsModel.QC_CodeIdentity" Width="1.5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

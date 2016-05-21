@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataAttendanceModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AppDataAttendanceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attendance_ClassPlan" EntityType="AppDataAttendanceModel.Attendance_ClassPlan" />
+    <EntitySet Name="Attendance_Holiday" EntityType="AppDataAttendanceModel.Attendance_Holiday" />
+    <EntitySet Name="Attendance_Scheme" EntityType="AppDataAttendanceModel.Attendance_Scheme" />
+    <EntitySet Name="Attendance_SchemeClass" EntityType="AppDataAttendanceModel.Attendance_SchemeClass" />
+    <EntitySet Name="v_Attendance" EntityType="AppDataAttendanceModel.v_Attendance" />
+    <AssociationSet Name="class2plan" Association="AppDataAttendanceModel.class2plan">
+      <End Role="Attendance_SchemeClass" EntitySet="Attendance_SchemeClass" />
+      <End Role="Attendance_ClassPlan" EntitySet="Attendance_ClassPlan" />
+    </AssociationSet>
+    <AssociationSet Name="scheme2class" Association="AppDataAttendanceModel.scheme2class">
+      <End Role="Attendance_Scheme" EntitySet="Attendance_Scheme" />
+      <End Role="Attendance_SchemeClass" EntitySet="Attendance_SchemeClass" />
+    </AssociationSet>
+    <EntitySet Name="Attendance_EventDeclared" EntityType="AppDataAttendanceModel.Attendance_EventDeclared" />
+    <EntitySet Name="Attendance_FeeCalculator" EntityType="AppDataAttendanceModel.Attendance_FeeCalculator" />
+    <EntitySet Name="Attendance_Records" EntityType="AppDataAttendanceModel.Attendance_Records" />
+    <AssociationSet Name="event2record" Association="AppDataAttendanceModel.event2record">
+      <End Role="Attendance_Records" EntitySet="Attendance_Records" />
+      <End Role="Attendance_EventDeclared" EntitySet="Attendance_EventDeclared" />
+    </AssociationSet>
+    <EntitySet Name="Attendance_EmployeeRefSchemeClass" EntityType="AppDataAttendanceModel.Attendance_EmployeeRefSchemeClass" />
+    <EntitySet Name="v_AttendanceEvent" EntityType="AppDataAttendanceModel.v_AttendanceEvent" />
+  </EntityContainer>
+  <EntityType Name="Attendance_ClassPlan">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" />
+    <Property Type="Int32" Name="classId" />
+    <Property Type="Int32" Name="periodNo" Nullable="false" />
+    <Property Type="String" Name="bTime" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="eTime" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="upTime" MaxLength="14" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Attendance_SchemeClass" Relationship="AppDataAttendanceModel.class2plan" FromRole="Attendance_ClassPlan" ToRole="Attendance_SchemeClass" />
+    <Property Type="DateTime" Name="sdate" Precision="3" />
+  </EntityType>
+  <EntityType Name="Attendance_Holiday">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="iYear" Nullable="false" />
+    <Property Type="DateTime" Name="sDate" Precision="3" />
+    <Property Type="String" Name="sName" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Attendance_Scheme">
+    <Key>
+      <PropertyRef Name="schemeID" />
+    </Key>
+    <Property Type="Int32" Name="schemeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="schemeName" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="schemeDescription" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="periods" />
+    <Property Type="Int32" Name="classs" />
+    <NavigationProperty Name="Attendance_SchemeClass" Relationship="AppDataAttendanceModel.scheme2class" FromRole="Attendance_Scheme" ToRole="Attendance_SchemeClass" />
+  </EntityType>
+  <EntityType Name="Attendance_SchemeClass">
+    <Key>
+      <PropertyRef Name="classId" />
+    </Key>
+    <Property Type="Int32" Name="classId" Nullable="false" />
+    <Property Type="Int32" Name="schemeId" />
+    <Property Type="String" Name="className" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Attendance_ClassPlan" Relationship="AppDataAttendanceModel.class2plan" FromRole="Attendance_SchemeClass" ToRole="Attendance_ClassPlan" />
+    <NavigationProperty Name="Attendance_Scheme" Relationship="AppDataAttendanceModel.scheme2class" FromRole="Attendance_SchemeClass" ToRole="Attendance_Scheme" />
+  </EntityType>
+  <EntityType Name="v_Attendance">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="EmployeeID" />
+    <Property Type="Int32" Name="periodNo" />
+    <Property Type="DateTime" Name="sDate" Precision="3" />
+    <Property Type="String" Name="bAttTimeStr" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="eAttTimeStr" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="bOffset" />
+    <Property Type="Int32" Name="eOffset" />
+    <Property Name="bOffsetFee" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="eOffsetFee" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="class2plan">
+    <End Type="AppDataAttendanceModel.Attendance_SchemeClass" Role="Attendance_SchemeClass" Multiplicity="0..1" />
+    <End Type="AppDataAttendanceModel.Attendance_ClassPlan" Role="Attendance_ClassPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendance_SchemeClass">
+        <PropertyRef Name="classId" />
+      </Principal>
+      <Dependent Role="Attendance_ClassPlan">
+        <PropertyRef Name="classId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scheme2class">
+    <End Type="AppDataAttendanceModel.Attendance_Scheme" Role="Attendance_Scheme" Multiplicity="0..1" />
+    <End Type="AppDataAttendanceModel.Attendance_SchemeClass" Role="Attendance_SchemeClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendance_Scheme">
+        <PropertyRef Name="schemeID" />
+      </Principal>
+      <Dependent Role="Attendance_SchemeClass">
+        <PropertyRef Name="schemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Attendance_EventDeclared">
+    <Key>
+      <PropertyRef Name="autoID" />
+    </Key>
+    <Property Type="Int32" Name="autoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="EventDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="FeeCar" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="FeeMeals" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="FeeOther" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="isCar" />
+    <Property Type="String" Name="Other" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Memo" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="checkMan" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Manager" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="recordID" Nullable="false" />
+    <Property Type="Boolean" Name="isBeginTime" Nullable="false" />
+    <NavigationProperty Name="Attendance_Records" Relationship="AppDataAttendanceModel.event2record" FromRole="Attendance_EventDeclared" ToRole="Attendance_Records" />
+  </EntityType>
+  <EntityType Name="Attendance_FeeCalculator">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Unit" />
+    <Property Type="Decimal" Name="UnitFee" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MaxFee" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="classId" />
+    <Property Type="String" Name="dateEnum" MaxLength="64" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Attendance_Records">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="EmployeeID" />
+    <Property Type="Int32" Name="classID" />
+    <Property Type="Int32" Name="periodNo" />
+    <Property Type="DateTime" Name="sDate" Precision="3" />
+    <Property Type="String" Name="bAttTimeStr" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="eAttTimeStr" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="bOffset" />
+    <Property Type="Int32" Name="eOffset" />
+    <Property Type="String" Name="dateType" MaxLength="63" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="bOffsetFee" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="eOffsetFee" Precision="18" Scale="2" />
+    <NavigationProperty Name="Attendance_EventDeclared" Relationship="AppDataAttendanceModel.event2record" FromRole="Attendance_Records" ToRole="Attendance_EventDeclared" />
+  </EntityType>
+  <Association Name="event2record">
+    <End Type="AppDataAttendanceModel.Attendance_Records" Role="Attendance_Records" Multiplicity="1" />
+    <End Type="AppDataAttendanceModel.Attendance_EventDeclared" Role="Attendance_EventDeclared" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendance_Records">
+        <PropertyRef Name="autoid" />
+      </Principal>
+      <Dependent Role="Attendance_EventDeclared">
+        <PropertyRef Name="recordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Attendance_EmployeeRefSchemeClass">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Type="Int32" Name="autoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserID" />
+    <Property Type="Int32" Name="EmployeeID" />
+    <Property Type="Int32" Name="classID" />
+    <Property Type="DateTime" Name="EffDate" Precision="3" />
+    <Property Type="Int32" Name="periodNo" />
+    <Property Type="Boolean" Name="isVaild" />
+    <Property Type="String" Name="EmployeeName" MaxLength="64" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="v_AttendanceEvent">
+    <Key>
+      <PropertyRef Name="autoID" />
+      <PropertyRef Name="recordID" />
+      <PropertyRef Name="isBeginTime" />
+    </Key>
+    <Property Name="autoID" Type="Int32" Nullable="false" />
+    <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FeeCar" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FeeMeals" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FeeOther" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="isCar" Type="Boolean" />
+    <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="checkMan" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Manager" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="recordID" Type="Int32" Nullable="false" />
+    <Property Name="isBeginTime" Type="Boolean" Nullable="false" />
+    <Property Name="periodNo" Type="Int32" />
+    <Property Name="bAttTimeStr" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="eAttTimeStr" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="bOffset" Type="Int32" />
+    <Property Name="eOffset" Type="Int32" />
+    <Property Name="sDate" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="bTime" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="eTime" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,50 @@
+﻿body {	padding:10px 15px;
+}
+.page .prnpage
+{
+/*A4 打印页边距设定为 19.05mm 时，网页内最大元素的分辨率：649×978 */
+/*Chrome 打印A4每页默认最大分辨率:?x964 */
+width:649px;
+height:964px;
+font-size:x-small;
+}
+div {
+font-size:smaller;
+display:table-row;
+}
+input {
+height:25px;
+}
+    input[type="date"] {
+        height: 25px;width:135px;
+    }
+    input[type="text"] {
+    width:60px;
+    }
+table tr th td
+{
+    border-width:thick;
+    border-color:Black;
+    font-size:smaller;
+}
+
+tr.alt td 
+  { word-break: break-all; word-wrap:break-word;
+  }
+ div.subTitle{ clear:both; font-family:宋体; font-size:24px; margin:8px;}
+div.pageContent
+ { border:1px solid green;
+   padding:4px 8px;
+   margin:1px 8px 4px 8px; 
+     }
+#QCsubject{
+    clear:both;font-size:20px;margin-top:8px;
+}
+ pre { text-align:left; word-wrap: break-word; 
+/*word-break设置强行换行;normal 亚洲语言和非亚洲语言的文本规则，允许在字内换行*/
+word-break: normal; 
+}
+
+.print {
+display:block;
+}

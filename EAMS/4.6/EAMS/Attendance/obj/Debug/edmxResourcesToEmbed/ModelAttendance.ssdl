@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataAttendanceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Attendance_ClassPlan">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="classId" Type="int" />
+    <Property Name="periodNo" Type="int" Nullable="false" />
+    <Property Name="bTime" Type="nvarchar" MaxLength="14" />
+    <Property Name="eTime" Type="nvarchar" MaxLength="14" />
+    <Property Name="upTime" Type="nvarchar" MaxLength="14" />
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Attendance_EmployeeRefSchemeClass">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="classID" Type="int" />
+    <Property Name="EffDate" Type="datetime" />
+    <Property Name="periodNo" Type="int" />
+    <Property Name="isVaild" Type="bit" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="Attendance_EventDeclared">
+    <Key>
+      <PropertyRef Name="autoID" />
+    </Key>
+    <Property Name="autoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventDescription" Type="nvarchar(max)" />
+    <Property Name="FeeCar" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FeeMeals" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FeeOther" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="isCar" Type="bit" />
+    <Property Name="Other" Type="nvarchar(max)" />
+    <Property Name="Memo" Type="nvarchar(max)" />
+    <Property Name="checkMan" Type="nvarchar" MaxLength="128" />
+    <Property Name="Manager" Type="nvarchar" MaxLength="128" />
+    <Property Name="recordID" Type="int" Nullable="false" />
+    <Property Name="isBeginTime" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Attendance_FeeCalculator">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="UnitFee" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MaxFee" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="classId" Type="int" />
+    <Property Name="dateEnum" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="Attendance_Holiday">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iYear" Type="int" Nullable="false" />
+    <Property Name="sDate" Type="datetime" />
+    <Property Name="sName" Type="nvarchar" MaxLength="128" />
+    <Property Name="sDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Attendance_Records">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="classID" Type="int" />
+    <Property Name="periodNo" Type="int" />
+    <Property Name="sDate" Type="datetime" />
+    <Property Name="bAttTimeStr" Type="nvarchar" MaxLength="16" />
+    <Property Name="eAttTimeStr" Type="nvarchar" MaxLength="16" />
+    <Property Name="bOffset" Type="int" />
+    <Property Name="eOffset" Type="int" />
+    <Property Name="dateType" Type="nvarchar" MaxLength="63" />
+    <Property Name="bOffsetFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="eOffsetFee" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Attendance_Scheme">
+    <Key>
+      <PropertyRef Name="schemeID" />
+    </Key>
+    <Property Name="schemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="schemeName" Type="nvarchar" MaxLength="256" />
+    <Property Name="schemeDescription" Type="nvarchar" MaxLength="512" />
+    <Property Name="periods" Type="int" />
+    <Property Name="classs" Type="int" />
+  </EntityType>
+  <EntityType Name="Attendance_SchemeClass">
+    <Key>
+      <PropertyRef Name="classId" />
+    </Key>
+    <Property Name="schemeId" Type="int" />
+    <Property Name="className" Type="nvarchar" MaxLength="255" />
+    <Property Name="classId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“AppData.dbo.v_Attendance”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="v_Attendance">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="periodNo" Type="int" />
+    <Property Name="sDate" Type="datetime" />
+    <Property Name="bAttTimeStr" Type="nvarchar" MaxLength="16" />
+    <Property Name="eAttTimeStr" Type="nvarchar" MaxLength="16" />
+    <Property Name="bOffset" Type="int" />
+    <Property Name="eOffset" Type="int" />
+    <Property Name="bOffsetFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="eOffsetFee" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“AppData.dbo.v_AttendanceEvent”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="v_AttendanceEvent">
+    <Key>
+      <PropertyRef Name="autoID" />
+      <PropertyRef Name="recordID" />
+      <PropertyRef Name="isBeginTime" />
+    </Key>
+    <Property Name="autoID" Type="int" Nullable="false" />
+    <Property Name="EventDescription" Type="nvarchar(max)" />
+    <Property Name="FeeCar" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FeeMeals" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FeeOther" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="isCar" Type="bit" />
+    <Property Name="Other" Type="nvarchar(max)" />
+    <Property Name="Memo" Type="nvarchar(max)" />
+    <Property Name="checkMan" Type="nvarchar" MaxLength="128" />
+    <Property Name="Manager" Type="nvarchar" MaxLength="128" />
+    <Property Name="recordID" Type="int" Nullable="false" />
+    <Property Name="isBeginTime" Type="bit" Nullable="false" />
+    <Property Name="periodNo" Type="int" />
+    <Property Name="bAttTimeStr" Type="nvarchar" MaxLength="16" />
+    <Property Name="eAttTimeStr" Type="nvarchar" MaxLength="16" />
+    <Property Name="bOffset" Type="int" />
+    <Property Name="eOffset" Type="int" />
+    <Property Name="sDate" Type="datetime" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="bTime" Type="nvarchar" MaxLength="14" />
+    <Property Name="eTime" Type="nvarchar" MaxLength="14" />
+  </EntityType>
+  <Association Name="class2plan">
+    <End Role="Attendance_SchemeClass" Type="Self.Attendance_SchemeClass" Multiplicity="0..1" />
+    <End Role="Attendance_ClassPlan" Type="Self.Attendance_ClassPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendance_SchemeClass">
+        <PropertyRef Name="classId" />
+      </Principal>
+      <Dependent Role="Attendance_ClassPlan">
+        <PropertyRef Name="classId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="event2record">
+    <End Role="Attendance_Records" Type="Self.Attendance_Records" Multiplicity="1" />
+    <End Role="Attendance_EventDeclared" Type="Self.Attendance_EventDeclared" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendance_Records">
+        <PropertyRef Name="autoid" />
+      </Principal>
+      <Dependent Role="Attendance_EventDeclared">
+        <PropertyRef Name="recordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scheme2class">
+    <End Role="Attendance_Scheme" Type="Self.Attendance_Scheme" Multiplicity="0..1" />
+    <End Role="Attendance_SchemeClass" Type="Self.Attendance_SchemeClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendance_Scheme">
+        <PropertyRef Name="schemeID" />
+      </Principal>
+      <Dependent Role="Attendance_SchemeClass">
+        <PropertyRef Name="schemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppDataAttendanceModelStoreContainer">
+    <EntitySet Name="Attendance_ClassPlan" EntityType="Self.Attendance_ClassPlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_EmployeeRefSchemeClass" EntityType="Self.Attendance_EmployeeRefSchemeClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_EventDeclared" EntityType="Self.Attendance_EventDeclared" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_FeeCalculator" EntityType="Self.Attendance_FeeCalculator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Holiday" EntityType="Self.Attendance_Holiday" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Records" EntityType="Self.Attendance_Records" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Scheme" EntityType="Self.Attendance_Scheme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_SchemeClass" EntityType="Self.Attendance_SchemeClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_Attendance" EntityType="Self.v_Attendance" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_Attendance].[autoid] AS [autoid], 
+[v_Attendance].[EmployeeID] AS [EmployeeID], 
+[v_Attendance].[periodNo] AS [periodNo], 
+[v_Attendance].[sDate] AS [sDate], 
+[v_Attendance].[bAttTimeStr] AS [bAttTimeStr], 
+[v_Attendance].[eAttTimeStr] AS [eAttTimeStr], 
+[v_Attendance].[bOffset] AS [bOffset], 
+[v_Attendance].[eOffset] AS [eOffset], 
+[v_Attendance].[bOffsetFee] AS [bOffsetFee], 
+[v_Attendance].[eOffsetFee] AS [eOffsetFee]
+FROM [dbo].[v_Attendance] AS [v_Attendance]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_AttendanceEvent" EntityType="Self.v_AttendanceEvent" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_AttendanceEvent].[autoID] AS [autoID], 
+[v_AttendanceEvent].[EventDescription] AS [EventDescription], 
+[v_AttendanceEvent].[FeeCar] AS [FeeCar], 
+[v_AttendanceEvent].[FeeMeals] AS [FeeMeals], 
+[v_AttendanceEvent].[FeeOther] AS [FeeOther], 
+[v_AttendanceEvent].[isCar] AS [isCar], 
+[v_AttendanceEvent].[Other] AS [Other], 
+[v_AttendanceEvent].[Memo] AS [Memo], 
+[v_AttendanceEvent].[checkMan] AS [checkMan], 
+[v_AttendanceEvent].[Manager] AS [Manager], 
+[v_AttendanceEvent].[recordID] AS [recordID], 
+[v_AttendanceEvent].[isBeginTime] AS [isBeginTime], 
+[v_AttendanceEvent].[periodNo] AS [periodNo], 
+[v_AttendanceEvent].[bAttTimeStr] AS [bAttTimeStr], 
+[v_AttendanceEvent].[eAttTimeStr] AS [eAttTimeStr], 
+[v_AttendanceEvent].[bOffset] AS [bOffset], 
+[v_AttendanceEvent].[eOffset] AS [eOffset], 
+[v_AttendanceEvent].[sDate] AS [sDate], 
+[v_AttendanceEvent].[EmployeeID] AS [EmployeeID], 
+[v_AttendanceEvent].[bTime] AS [bTime], 
+[v_AttendanceEvent].[eTime] AS [eTime]
+FROM [dbo].[v_AttendanceEvent] AS [v_AttendanceEvent]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="class2plan" Association="Self.class2plan">
+      <End Role="Attendance_SchemeClass" EntitySet="Attendance_SchemeClass" />
+      <End Role="Attendance_ClassPlan" EntitySet="Attendance_ClassPlan" />
+    </AssociationSet>
+    <AssociationSet Name="event2record" Association="Self.event2record">
+      <End Role="Attendance_Records" EntitySet="Attendance_Records" />
+      <End Role="Attendance_EventDeclared" EntitySet="Attendance_EventDeclared" />
+    </AssociationSet>
+    <AssociationSet Name="scheme2class" Association="Self.scheme2class">
+      <End Role="Attendance_Scheme" EntitySet="Attendance_Scheme" />
+      <End Role="Attendance_SchemeClass" EntitySet="Attendance_SchemeClass" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

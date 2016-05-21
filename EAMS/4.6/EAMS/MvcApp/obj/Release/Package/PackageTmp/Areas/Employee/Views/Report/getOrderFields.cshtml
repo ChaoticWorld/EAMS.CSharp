@@ -1,0 +1,178 @@
+﻿@using report
+@model List<OrderField>
+
+<div id="fieldTable">
+    <div>
+        <lable style="font-weight:bold">排序字段</lable><button onclick="saveOrderFields()">保存</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>操作</th>
+                    <th>字段</th>
+                    <th>顺序</th>
+                    <th>方向</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ if (Model != null && Model.Count() > 0)
+                    {
+                        foreach (OrderField f in Model)
+                        {
+                            <tr title="@f.orderID">
+                                <td>
+                                    <button class="btn btn-default btn-block" data-caption="save" onclick="saveOrderField(this)">保存</button>
+                                    <button class="btn btn-default btn-block" data-caption="delete" onclick="deleteOrderField(this)">删除</button>
+                                </td>
+                                <td><input type="text" title="@f.fieldstr" value="@f.fieldstr" /></td>
+                                <td><input type="text" title="@f.orderIndex" value="@f.orderIndex" /></td>
+                                <td>
+                                    <select title="@f.isAsc">
+                                        @if (f.isAsc)
+                                        {
+                                <option value="true" selected="selected">升序</option>
+                                <option value="false">降序</option> }
+                                        else
+                                        {
+                                <option value="true">升序</option>
+                                <option value="false" selected="selected">降序</option> }
+                                    </select>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                <tr title="-1">
+                    <td>
+                        <button class="btn btn-default btn-block" data-caption="newrow" onclick="AddOrderFieldButton(this)">+新行+</button>
+                    <td><input /></td>
+                    <td><input /></td>
+                    <td><input /></td>
+                    <td>
+                        <select>
+                            <option value="true" selected="selected">升序</option>
+                            <option value="false">降序</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function AddOrderFieldButton(c) {
+        var thisrow = $(c).parent().parent();
+        AddField(thisrow);
+    }
+    function AddOrderField(ra) {
+        var r =
+         '<tr title="-1">'
+            + '<td class="col1">'
+            + '<button class="btn btn-default btn-block" data-caption="save" onclick="saveField(this)">保存</button>'
+            + '<button class="btn btn-default btn-block" data-caption="delete" onclick="deleteField(this)">删除</button>'
+            + '<button class="btn btn-default btn-block" data-caption="newrow" onclick="AddFieldButton(this)">+新行+</button>'
+            + '</td>'
+            +  '<td><input /></td>'
+            +  '<td><input /></td>'
+            +  '<td><input /></td>'
+            + '<td> <select> <option value="true" selected="selected">升序</option> <option value="false">降序</option> </select> </td>'
+            +  '</tr>';
+
+        $(ra).next().after(r);
+    }
+</script>
+
+<script type="text/javascript">
+    function deleteOrderField(r) {
+        var ra = $(r).parent().parent();
+        var autoid = $(ra).attr('title');
+        if (autoid > 0) {
+            //ajax delete details with autoid
+            var url = '/Employee/report/deleteOrderField/' + autoid;
+            $.ajax({
+                async: false,
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: autoid,
+                success: function (data) {
+                    if (data > 0) {
+                        $(ra).remove();
+                    }
+                }
+            });
+        }
+        else {
+            AddRow(ra);
+            $(ra).remove();
+        }
+    }
+    function saveOrderField(r) {
+        var field = new Object();
+        field.reportID = $("#cReportID").val();
+        var isModify = 0;
+        //分析r
+        var cell = $(r).parent();
+        var row = $(cell).parent();
+        var cellval = new Object();
+        field.orderID = $(row).attr('title');
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.fieldstr = $(cellval).val();
+        if (field.fieldstr != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.orderIndex = $(cellval).val();
+        if (field.orderIndex != $(cellval).attr('title')) isModify = 1;
+        
+        cell = $(cell).next(); cellval = $(cell).children("select").eq(0);
+        field.isAsc = $(cellval).find("option :selected").val();
+        if (field.isAsc != $(cellval).attr('title')) isModify = 1;
+
+        //alert(isModify);
+        //alert($.toJSON(detailval));
+        //AJAX SAVE ROW
+	    var saveNum = 0;
+        if (isModify > 0) { //已修改，ajax-update,succes:更新<tr title='autoid'>
+
+            var url = '/Employee/report/saveOrderField';
+
+            $.ajax({
+                async: false,
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: field,
+                success: function (data) {
+                    //alert(data);
+                    if (data > 0) {
+                        //var isnew = $(row).attr("title");
+                        if ($(row).attr("title") < 0)
+                            $(row).attr('title', data);
+			            saveNum=1;
+                    }
+                    else saveNum = 0;
+                },
+		        error:function(data){saveNum=0;}
+                    });
+        }
+	return saveNum;
+    }
+</script>
+<script type="text/javascript">
+    function saveOrderFields() {
+        var buttons = $("#fieldTable table tbody tr td button");
+        var s = 0, i = 0;
+        $(buttons).each(function () {
+            var caption = $(this).attr("data-caption");
+            if (caption == 'save') {
+                s++;
+                i += saveRow(this);
+                //$(this).click();
+            }
+        });
+        var r = i + "/" + s;
+        alert("保存字段：" + r);
+        return r;
+    }
+</script>

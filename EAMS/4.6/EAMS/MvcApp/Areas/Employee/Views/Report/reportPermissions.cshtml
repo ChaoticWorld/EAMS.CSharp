@@ -1,0 +1,136 @@
+﻿@using report
+@using UserInfo
+@model List<Permission>
+
+<div style="display:inline">
+    选择员工：
+    <select id="userList">
+        @foreach (UserModel um in (List<UserModel>)ViewData["userLists"])
+            {
+        <option value="@um.iUserId">@um.cUserName</option>  }
+    </select>
+    选择报表：
+    <select id="permissionList">
+        @foreach (Report r in (List<Report>)ViewData["rptLists"])
+            {
+        <option value="@r.reportID">@r.Name</option>}
+    </select>
+    <button onclick="AddOnce()">单条加入</button><button onclick="AddwithUser()">员工所有报表</button><button onclick="AddwithReport()">报表所有员工</button>
+</div>
+<div style="display:inline;float:right"><button onclick="savePermission()">保存</button></div>
+<table id="PermissionTable">
+    <thead>
+        <tr>
+            <th>删除</th>
+            <th>员工</th>
+            <th>报表</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+            {
+                foreach (Permission item in Model)
+                {
+                <tr>
+                    <td title="@item.AutoID" data-index=""><button onclick="deletePermission(this)">删除</button></td>
+                    <td data-id="@item.UserID">@item.userName</td>
+                    <td data-id="@item.reportID">@item.reportName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div style="float:left;width:30%" class="btn-group">
+    <a class="btn btn-default" href="~/">返回首页</a><a class="btn btn-default" href="~/employee/report/">返回</a>
+</div>
+<script type="text/javascript">
+    function deletePermission(delbtn) {
+        var td = $(delbtn).parent();
+        var tdid = $(td).attr("title");
+        if (tdid < 0)
+            $(td).parent().remove();
+        else {
+            var url = "/employee/report/deletePermission/" + tdid;
+            $.post(url, function () { $(td).parent().remove(); });
+        }
+    }
+    function savePermission() {
+        var trs = $("#PermissionTable tbody tr");
+        var Permissions = new Array();
+        var Permission = new Object();
+        var idx = 0;
+
+        $(trs).each(function () {
+            Permission = new Object();
+            Permission.AutoID = $(this).children("td:eq(0)").attr("title");
+            Permission.UserID = $(this).children("td:eq(1)").attr("data-id");
+            Permission.reportID = $(this).children("td:eq(2)").attr("data-id");
+            Permission.index = idx;
+            $(this).children("td:first").attr("data-index", idx++);
+            Permissions.push(Permission);
+        });
+        var url = "/employee/report/savePermission/-1";
+        $.ajax({ async: false })
+        $.post(url, { "Permissions": Permissions }, function (rdata) {           
+            for (var i = 0; i < $(rdata).length; i++) {
+                //alert( $(trs).eq(i).children("td").length);
+                $(trs).eq(i).children("td:eq(0)").attr("title", rdata[i]);
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function AddOnce() {
+        var userID = $("#userList").children("option:selected").val();
+        var userName = $("#userList").children("option:selected").text();
+        var rptID = $("#permissionList").children("option:selected").val();
+        var rptName = $("#permissionList").children("option:selected").text();
+
+        var newTR = "<tr> <td title='-1' data-index=''><button onclick='deletePermission(this)'>删除</button></td>"
+        + "<td data-id='" + userID + "'>" + userName + "</td>"
+        + "<td data-id='" + rptID + "'>" + rptName + "</td></tr>";
+        var tbodyTrNums = $("#PermissionTable tbody tr:last").length;
+        if (tbodyTrNums > 0)
+            $("#PermissionTable tbody tr:last").after(newTR);
+        else
+            $("#PermissionTable tbody").append(newTR);
+    }
+    function AddwithUser() {
+        var userID = $("#userList").children("option:selected").val();
+        var userName = $("#userList").children("option:selected").text();
+        var rptID = "";
+        var rptName = "";
+        var newTR = "";
+        $("#permissionList option").each(function () {
+            rptID = $(this).val();
+            rptName = $(this).text();
+            newTR = "<tr> <td title='-1' data-index=''><button onclick='deletePermission(this)'>删除</button></td>"
+                    + "<td data-id='" + userID + "'>" + userName + "</td>"
+                    + "<td data-id='" + rptID + "'>" + rptName + "</td></tr>";
+            var tbodyTrNums = $("#PermissionTable tbody tr:last").length;
+            if (tbodyTrNums > 0)
+                $("#PermissionTable tbody tr:last").after(newTR);
+            else
+                $("#PermissionTable tbody").append(newTR);
+        });
+    }
+    function AddwithReport() {
+        var rptID = $("#permissionList").children("option:selected").val();
+        var rptName = $("#permissionList").children("option:selected").text();
+        var userID = "";
+        var userName = "";
+        var newTR = "";
+        $("#userList option").each(function () {
+            userID = $(this).val();
+            userName = $(this).text();
+            newTR = "<tr> <td title='-1' data-index=''><button onclick='deletePermission(this)'>删除</button></td>"
+                    + "<td data-id='" + userID + "'>" + userName + "</td>"
+                    + "<td data-id='" + rptID + "'>" + rptName + "</td></tr>";
+            var tbodyTrNums = $("#PermissionTable tbody tr:last").length;
+            if (tbodyTrNums > 0)
+                $("#PermissionTable tbody tr:last").after(newTR);
+            else
+                $("#PermissionTable tbody").append(newTR);
+        });
+    }
+</script>

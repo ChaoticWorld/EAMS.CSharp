@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataModel.humanBase" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAQgAAAAAAAAAEABAAAAEAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataModel.PersonBase" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABgAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.corporatioBase" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAEAgAAAAIAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataModel.Customer" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Vendor" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Employee" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Contact" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAEAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.ContactInfoBase" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACEAAAAAAAAAAAAAAAAAAAAiAAAAgAAABgA=</HashCode>
+      <FileName>IContact.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataModel.UnitBase">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAEAAAAAAIAAAAIAABAAAIAAAAgEAAAAAAA=</HashCode>
+      <FileName>UnitBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.InventoryClass">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAEEAAAABAAAAAAAABQAACIAAAgAAAAAAIA=</HashCode>
+      <FileName>InventoryClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Quantity">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAQAAAAA=</HashCode>
+      <FileName>Quantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.CurrentStock">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACiAAAAAAAAAAA=</HashCode>
+      <FileName>CurrentStock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Inventory">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAABAAAAAAAAIAEAAAAABAAGlAAAAAAAAAA=</HashCode>
+      <FileName>Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Warehouse">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Warehouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.District">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAQAAAAAAAAAAQBAAAAAAAAgAAAAAACA=</HashCode>
+      <FileName>District.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.corporatioClass">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAABgAAAQAAAgAAAEQAAA=</HashCode>
+      <FileName>corporatioClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.VouchMain">
+    <Position X="2" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAIAGCAQgAAgAIAIAAACAAABCAAAECA=</HashCode>
+      <FileName>VouchMain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataModel.VouchDetail">
+    <Position X="4.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBCAAAQAAgEAAAAAAAAAAAAACCAAAAAAgAAAA=</HashCode>
+      <FileName>VouchDetail.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DataModel.IOperatorBase" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAABAAAAEAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataModel.IContactInfoBase" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACEAAAAAAAAAAAAAAAAAAAAiAAAAgAAABgA=</HashCode>
+      <FileName>IContact.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

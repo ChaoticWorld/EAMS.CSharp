@@ -1,0 +1,19 @@
+﻿body {
+}
+
+
+    /* tooltip styling. by default the element to be styled is .tooltip  */
+  .tooltip {
+    display:none;
+    /*
+    background:transparent url(http://jquerytools.org/media/img/tooltip/black_arrow.png);
+    /*IE7
+    background-image:url(http://jquerytools.org/media/img/tooltip/black_arrow.gif);
+    */
+    background-color:Background;
+    font-size:12px;
+    /*width:300px;*/
+    padding:5px;
+    color:#eee;
+  }
+

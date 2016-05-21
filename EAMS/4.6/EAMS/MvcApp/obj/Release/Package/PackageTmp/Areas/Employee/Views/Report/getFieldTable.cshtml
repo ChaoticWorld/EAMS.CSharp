@@ -1,0 +1,211 @@
+﻿@using report
+@model List<Field>
+@{Layout = null;}
+
+<div>
+    <div>
+        <lable style="font-weight:bold">显示字段</lable><button onclick="saveFields()">保存</button>
+        <table id="fieldTable">
+            <thead>
+                <tr>
+                    <th>操作</th>
+                    <th>结果字段</th>
+                    <th>类型</th>
+                    <th>标题</th>
+                    <th>计算字段</th>
+                    <th>顺序</th>
+                    <th>显示</th>
+                    <th>ERP可访问</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ if (Model != null && Model.Count() > 0)
+                    {
+                        foreach (Field f in Model)
+                        {
+                            <tr title="@f.fieldID">
+                                <td width="110px">
+                                    <button data-caption="save" onclick="saveField(this)">保存</button>
+                                    <button data-caption="delete" onclick="deleteField(this)">删除</button>
+                                </td>
+                                <td><input type="text" title="@f.fieldName" value="@f.fieldName" /></td>
+                                <td>
+                                    <select title="@f.isErpEmployeeVisit">
+                                        <option value="string">文本</option>
+                                        <option value="decimal">数字</option>
+                                        <option value="date">日期</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" title="@f.fieldTitle" value="@f.fieldTitle" /></td>
+                                <td><input type="text" title="@f.fieldNameCompute" value="@f.fieldNameCompute" /></td>
+                                <td><input type="text" title="@f.fieldIndex" value="@f.fieldIndex" /></td>
+                                <td>
+                                    @if (f.isDisplay)
+                                    { <input type="checkbox" title="@f.isDisplay" value="@f.isDisplay" checked="checked" />}
+                                    else
+                                    { <input type="checkbox" title="@f.isDisplay" value="@f.isDisplay" />}
+                                </td>
+                                <td>
+                                    @if (f.isErpEmployeeVisit)
+                                    {<input type="checkbox" title="@f.isErpEmployeeVisit" value="@f.isErpEmployeeVisit" checked="checked" />}
+                                    else
+                                    {<input type="checkbox" title="@f.isErpEmployeeVisit" value="@f.isErpEmployeeVisit" />}
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                <tr title="-1">
+                    <td colspan="8">
+                        <button id="newField" class="btn btn-default btn-block" data-caption="newrow" onclick="AddFieldButton(this)">+新行+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var sels = $("#fieldTable tbody tr td select");
+        $(sels).each(function () {
+            var opsel = $(this).attr("title");
+            $(this).children("option").removeAttr("selected");
+            $(this).children("option[value='" + opsel + "']:first").attr("selected", "selected");
+        });
+    });
+</script>
+<script type="text/javascript">
+    function AddFieldButton(c) {
+        var thisrow = $("#newField").parent().parent(); // $(c).parent().parent();
+        AddField(thisrow);
+    }
+    function AddField(ra) {
+        var r =
+         '<tr title="-1">'
+            + '<td class="col1" width="110px">'
+            + '<button  data-caption="save" onclick="saveField(this)">保存</button>'
+            + '<button  data-caption="delete" onclick="deleteField(this)">删除</button>'
+            + '<button  data-caption="newrow" onclick="AddFieldButton(this)">+新行+</button>'
+            + '</td>'
+            + '<td><input id="fieldName" /></td>'
+            + '<td> <select title=""><option value="string">文本</option> <option value="decimal">数字</option> <option value="date">日期</option></select></td>'
+            + '<td><input id="fieldTitle" /></td>'
+            + '<td><input id="fieldNameCompute" /></td>'
+            + '<td><input id="fieldIndex" /></td>'
+            + '<td><input type="checkbox" title="1" value="1" checked="checked" /></td>'
+            + '<td><input type="checkbox" title="0" value="0" /></td>'
+            + '</tr>';
+
+        $(ra).before(r);
+    }
+</script>
+
+<script type="text/javascript">
+    function deleteField(r) {
+        var ra = $(r).parent().parent();
+        var autoid = $(ra).attr('title');
+        if (autoid > 0) {
+            //ajax delete details with autoid
+            var url = '/Employee/report/deleteField/' + autoid;
+            $.ajax({
+                async: false,
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: autoid,
+                success: function (data) {
+                    if (data > 0) {
+                        $(ra).remove();
+                    }
+                }
+            });
+        }
+        else {
+            $(ra).remove();
+        }
+    }
+    function saveField(r) {
+        var field = new Object();
+        field.reportID = $("#cReportID").val();
+        var isModify = 0;
+        //分析r
+        var cell = $(r).parent();
+        var row = $(cell).parent();
+        var cellval = new Object();
+        field.fieldID = $(row).attr('title');
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.fieldName = $(cellval).val();
+        if (field.fieldName != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("select").eq(0);
+        field.fieldType = $(cellval).children("option:selected").val();
+        if (field.fieldType != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.fieldTitle = $(cellval).val();
+        if (field.fieldTitle != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.fieldNameCompute = $(cellval).val();
+        if (field.fieldNameCompute != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.fieldIndex = $(cellval).val();
+        if (field.fieldIndex != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.isDisplay = $(cellval).is(":checked");
+        if (field.isDisplay != $(cellval).attr('title')) isModify = 1;
+
+        cell = $(cell).next(); cellval = $(cell).children("input").eq(0);
+        field.isErpEmployeeVisit = $(cellval).is(":checked");
+        if (field.isErpEmployeeVisit != $(cellval).attr('title')) isModify = 1;
+
+        //alert(isModify);
+        //alert($.toJSON(detailval));
+        //AJAX SAVE ROW
+        var saveNum = 0;
+        if (isModify > 0) { //已修改，ajax-update,succes:更新<tr title='autoid'>
+
+            var url = '/Employee/report/saveField';
+
+            $.ajax({
+                async: false,
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: field,
+                success: function (data) {
+                    //alert(data);
+                    if (data > 0) {
+                        //var isnew = $(row).attr("title");
+                        if ($(row).attr("title") < 0)
+                            $(row).attr('title', data);
+                        saveNum = 1;
+                    }
+                    else saveNum = 0;
+                },
+                error: function (data) { saveNum = 0; }
+            });
+        }
+        return saveNum;
+    }
+</script>
+<script type="text/javascript">
+    function saveFields() {
+        var buttons = $("#fieldTable tbody tr td button");
+        var s = 0, i = 0;
+        $(buttons).each(function () {
+            var caption = $(this).attr("data-caption");
+            if (caption == "save") {
+                s++;
+                i += saveField(this);
+                //$(this).click();
+            }
+        });
+        var r = i + "/" + s;
+        alert("保存字段：" + r);
+        return r;
+    }
+</script>

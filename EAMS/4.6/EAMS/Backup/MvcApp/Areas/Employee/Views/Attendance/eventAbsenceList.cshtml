@@ -1,0 +1,131 @@
+﻿@using Attendance;
+@model IEnumerable<v_AttendanceEvent>
+@{
+    ViewBag.MainTitle = "考勤 管理";
+    ViewBag.Title = "考勤缺勤事件列表";
+}
+    @Scripts.Render("~/bundles/jqueryPrintArea")
+<div id="page" class="container-fulid">
+<style>
+    .col0 { width: 70px; }
+    .col1 { width: 180px; }
+    .col2 {  width: auto;  }
+    .col3 {  width: 50px;  }
+    .col4 { width: 70px;  }
+    .col5 {  width: 70px;  }
+</style>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <h2>考勤缺勤列表</h2>
+        <div>员工：@ViewBag.AttendanceMan &nbsp&nbsp 年月：@ViewBag.YearMonth </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col0 printNoDisplay"><input id="selAll" type="checkbox" value="选择" onclick="chkAll(this)" />审核</th>
+                    <th>日期时间</th>
+                    <th>事件</th>
+                    <th>费用</th>
+                    <th>其它</th>
+                    <th>审核人</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (v_AttendanceEvent ae in Model)
+                    {
+                        <tr>
+                            <td class="col0 printNoDisplay">
+                                @if (string.IsNullOrEmpty(ae.checkMan))
+                                {<input type="checkbox" onclick="clickcheck(this)" />}
+                                else
+                                {<input type="checkbox" checked="checked" onclick="clickcheck(this)" />}
+                                <input type="hidden" value="@ae.autoID" />
+                            </td>
+                            <td class="col1">
+                                @if (ae.isBeginTime)
+                                {<span>@ae.sDate.Value.ToShortDateString() | 时长：@ae.bOffset<br /> 时间段：@(ae.bOffset == -9999 ? "全天" : @ae.bAttTimeStr + " - " + @ae.bTime)</span> }
+                                else
+                                {<span>@ae.sDate.Value.ToShortDateString() | 时长：@ae.eOffset<br /> 时间段：@(ae.eOffset == -9999 ? "全天" : @ae.eTime + " - " + @ae.eAttTimeStr)</span> }
+                            </td>
+                            <td class="col2">@ae.EventDescription</td>
+                            <td class="col3" title="@ae.FeeOther">@(string.IsNullOrEmpty(ae.checkMan) ? ae.FeeOther : 0)</td>
+                            <td class="col4">@ae.Memo</td>
+                            <td class="col5">@ae.checkMan</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div>
+            <input class="btn btn-default printNoDisplay" type="button" value="保存" onclick="saveAll()" />
+            <input class="btn btn-default printNoDisplay" type="button" value="打印" id="toPrint" />
+            <a class="btn btn-default printNoDisplay" href="~/Employee/Attendance">返回考勤页</a>
+        </div>
+    </div>
+<div class="col-lg-1"></div>
+</div>
+<script type="text/javascript">
+    function saveAll() {
+        var rows = $("table tbody tr"); var count = 0;
+        $(rows).each(function () {
+            var c = $(this).children().first().children().last();
+            //alert(err);
+            count += (saveRow(c) - 0);
+        });
+        alert("保存" + count + "条记录");
+    }
+    function saveRow(c) {
+        var id = $(c).val();
+        var chkMan = $(c).parent().parent().children(":last").text();
+        var r;
+        $.ajaxSetup({ async: false });
+        $.post("/Employee/Attendance/saveChecker", { id: id, chkMan: chkMan },
+            function (msg) { r = msg; });
+        return r;
+    }
+</script>
+<script type="text/javascript">
+    function clickcheck(c) {
+        var chkMan = $(c).parent().parent().children(":last");
+        var fee = $(c).parent().parent().children(":eq(3)");
+        if (!$(c).prop("checked")) { $(chkMan).text("");$(fee).text($(fee).attr("title")); }
+        else {
+            $(chkMan).text("@(SystemBLL.UserBLL.getUser(int.Parse(Context.User.Identity.Name)).cUserName)");
+            $(fee).text("0");
+        } 
+    }
+    function chkAll(c) {
+        var trs = $("table tbody tr");
+        if ($(c).prop("checked")) $("table *").children(":checkbox").attr("checked", "checked");
+        else $("table *").children(":checkbox").removeAttr("checked");
+        $(trs).each(function () {
+            var cell = $(this).children().first().children().first();
+            clickcheck(cell);
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        if (!eval("@((bool)ViewBag.isChecker)".toLowerCase()))
+            $(":checkbox").attr("disabled", "disabled");
+        else $(":checkbox").removeAttr("disabled");
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#toPrint").on("click", function () {
+            /*参数设置：
+            1、mode：模式，当点击打印按钮时触发模式，默认为iframe，当设置为popup则会新开一个窗口页面打印。
+            2、popTitle：设置新开窗口的标题，默认为空。
+            3、popClose：完成打印后是否关闭窗口，默认为false。ExtraCss:""外部CSS*/
+            var option = { mode: "popup", extraCss: "~/Content/PrintPage.css", popTitle: "Print", popClose: true };
+
+            //printNoDisplay
+            var pp = $("#page").clone();
+            $(pp).find(".printNoDisplay").css("display", "none");
+            $(pp).printArea(option);
+        });
+    });
+    </script>

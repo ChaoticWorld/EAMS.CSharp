@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    剩于条数：<span id="Balance"></span>
+    本次发送：<span id="SendNumber"></span>
+</div>
+<div id="SMSTable">
+    <table>
+        <tr>
+            <th>手机号</th>
+            <th>内容</th>
+            <th>状态</th>
+        </tr>
+
+        <tr><td colspan="3" onclick="addRow(this)">新增</td></tr>
+
+    </table>
+
+</div>
+<div id="buttonLine">
+    <button onclick="Import()">导入</button>
+    <button onclick="Putout()">导出</button>
+    <button onclick="Send()">发送</button>
+</div>
+<script type="text/javascript">
+    function addRow(c) {
+        var thisrow = $(c).parent();
+        //行序号:
+        //var rowcount = $(thisrow).parent().children().length;
+        //var neworder = rowcount - 1;
+
+        var newrow = "<tr><td><span onclick='delRow(this)'>删除</span><input /></td><td><input /></td><td></td></tr>";
+        $(thisrow).before(newrow);
+
+    }
+    function delRow(c) {
+        var thisrow = $(c).parent().parent();
+        $(thisrow).remove();
+    }
+</script>
+<script type="text/javascript">
+    function Import() { }
+    function Putout() { }
+</script>
+<script type="text/javascript">
+    function Send() {
+        var url = "http://sdk2.zucp.net/webservice.asmx/gxmt?sn=SDK-JMC-010-00043&pwd=56D48DBBD2D8FB8133D2E3B17612F190"
+        + "&mobile=1,2"//手机号
+        + "&Content=c1,c2"//内容
+        + "&Stime=2015-02-19 10:00:00"//定时时间
+        // + "&Rrid="//唯一标识
+        // + "&Ext="//扩展码
+        $.get(url, null, function (msg) { alert("数据已提交，返回消息：\n " + msg) });
+    }
+    function Balance() {
+        var url = "http://sdk2.zucp.net:8060/webservice.asmx/balance?sn=SDK-JMC-010-00043&pwd=56D48DBBD2D8FB8133D2E3B17612F190";
+        $.get(url, function (msg) {
+            $("#Balance").text(msg);
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        Balance();
+    });
+</script>

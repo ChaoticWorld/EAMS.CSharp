@@ -1,0 +1,35 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<CallInfo.Phone_Records>
+
+<style type="text/css">
+    table {width:100%;}
+    input { font-family:宋体; font-size:small;}
+    th  { font-family:宋体; font-size:small;}
+    td {  word-break: break-all; word-wrap:break-word;}
+    .col0 {width:55px;}
+    .col1 {width:80px;}
+    .col2 { width:600px; }
+    .col3 {width:35px;}
+</style>
+<div id="tb">
+<table id='callRecordTable'>
+<tr role="sort">
+<th sort="true" class="col0">日期</th>
+<th sort="true" class="col1">号码|联系人</th>
+<th sort="true" class="col2">内容</th>
+<th class="col3">编辑</th>
+</tr>
+@foreach (CallInfo.Phone_Records pr in Model)
+{<tr>
+<td>@pr.callDate.Value.ToShortDateString()</td>
+<td>@((pr.callInOut!=null && pr.callInOut.HasValue)? (pr.callInOut.Value?"Out:":"In:"):"??:") @pr.callPhone
+<br />@pr.dwContact</td>
+<td>@pr.callContent</td>
+<td>@Html.ActionLink("编辑" + pr.ID, "callRecordEdit", new { id = pr.ID })</td>
+</tr> 
+}
+</table>
+</div>
+<div><div style="float:left;width:50%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div> 
+@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "param", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "callRecordLists", HttpMethod = "Post", DataFormId = "searchForm" }, new { style = "float:right" })
+</div> 

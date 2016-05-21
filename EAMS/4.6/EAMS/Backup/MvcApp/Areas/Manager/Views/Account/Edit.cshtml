@@ -1,0 +1,79 @@
+﻿@model SystemDB.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>帐户编辑</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+    <input type="hidden" id="RUrl" name="RUrl" value='@TempData["returnUrl"]' />
+        <legend>User</legend>
+
+@*        <div class="editor-label">
+            @Html.LabelFor(model => model.RoleNames)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RoleNames)
+            @Html.ValidationMessageFor(model => model.RoleNames)
+        </div>*@
+
+        @Html.HiddenFor(model => model.iUserId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cUserCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cUserCode)
+            @Html.ValidationMessageFor(model => model.cUserCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cUserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cUserName)
+            @Html.ValidationMessageFor(model => model.cUserName)
+        </div>
+
+@*        <div class="editor-label">
+            @Html.LabelFor(model => model.cUserPassWord)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cUserPassWord)
+            @Html.ValidationMessageFor(model => model.cUserPassWord)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cUserEMail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cUserEMail)
+            @Html.ValidationMessageFor(model => model.cUserEMail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cUserMobile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cUserMobile)
+            @Html.ValidationMessageFor(model => model.cUserMobile)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+            <a href='~/Manager/Account/ReSecurity/@Model.iUserId' >重置密码</a>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("用户列表", "Index") | <a href="http://@Request.Url.Host:@Request.Url.Port" >网站首页</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

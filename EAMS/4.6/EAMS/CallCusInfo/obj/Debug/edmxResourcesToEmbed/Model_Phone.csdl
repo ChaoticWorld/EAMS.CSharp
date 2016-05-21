@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDataPhoneModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AppDataPhoneEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Phone_CallContent" EntityType="AppDataPhoneModel.Phone_CallContent" />
+    <EntitySet Name="Phone_ContectClass" EntityType="AppDataPhoneModel.Phone_ContectClass" />
+    <EntitySet Name="Phone_Records" EntityType="AppDataPhoneModel.Phone_Records" />
+  </EntityContainer>
+  <EntityType Name="Phone_CallContent">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="autoid" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" />
+    <Property Name="contectClass" Type="Int32" />
+    <Property Name="contectText" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Phone_ContectClass">
+    <Key>
+      <PropertyRef Name="clsID" />
+    </Key>
+    <Property Name="clsID" Type="Int32" Nullable="false" />
+    <Property Name="clsName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="clsDescription" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Phone_Records">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dwCode" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="dwName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="dwContact" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+    <Property Name="callPhone" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="callInOut" Type="Boolean" />
+    <Property Name="callDate" Type="DateTime" />
+    <Property Name="callContent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

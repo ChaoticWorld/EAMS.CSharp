@@ -1,0 +1,110 @@
+﻿@using report
+@using System.Data
+@model Report
+@{
+    ViewBag.Title = "mxReport - " + Model.Title;
+}
+<style media="print">
+    .noprint { display:none;
+    }
+</style>
+<style media="screen">
+    .noprint {
+        display: inline;
+    }
+</style>
+<div id ="filter" class="noprint collapse">报表条件
+    <div> <select>@{if (Model.Fields.Count > 0) {
+            foreach (Field f in Model.Fields)
+            { <option value="@f.fieldName">@f.fieldTitle</option> }
+        } }</select>
+    <select>
+        <option value="=">等于</option>
+        <option value=">">大于</option>
+        <option value="<">小于</option>
+        <option value=">=">大于等于</option>
+        <option value="<=">小于等于</option>
+        <option value="<>">不等于</option>
+        <option value="in">包括</option>
+        <option value="like">包含</option>
+    </select>
+    <input value="值" /><button onclick="filterAdd()">加入条件</button>
+    </div>
+    <table id="filterTable"><thead><tr><th></th><th>字段名</th><th>比较符</th><th>值</th></tr></thead>
+    <tbody>@{if (Model.filters != null && Model.filters.Count > 0)
+        {
+            foreach (FilterField ff in Model.filters)
+            {
+                <tr id="@ff.filterID" data-modify="0" data-sql="@ff.getFilterString()" onblur="blurFilterRow(this)" >
+                    <td><button onclick="filterDelete(this)">删除</button></td>
+                    <td>@ff.field.fieldTitle</td>
+                    <td data-default="@ff.comparisonOperator">    <select>
+                        <option value="=">等于</option>
+                        <option value=">">大于</option>
+                        <option value="<">小于</option>
+                        <option value=">=">大于等于</option>
+                        <option value="<=">小于等于</option>
+                        <option value="<>">不等于</option>
+                        <option value="in">包括</option>
+                        <option value="like">包含</option>
+                    </select>
+                    </td>
+                    <td><input value="@ff.Value" /></td>
+                </tr>
+            }
+        }
+    }</tbody>
+    </table>
+    <div style="float:right"><button onclick="goFilter()">查寻</button></div>
+</div>
+<div><a href="#filter" class="btn btn-primary " data-toggle="collapse">过滤条件</a></div>
+<div>
+    <table>
+        <thead>
+            <tr >
+                <td colspan="6">@Model.Title</td>
+            </tr><tr></tr>
+            <tr><td colspan="6"><label>过滤条件：</label><label id="filters"></label></td></tr>
+            <tr>
+                @for (int i = 0; i < Model.Fields.Count; i++)
+                { <th title="@Model.Fields[i].fieldName">@Model.Fields[i].fieldTitle</th>}
+            </tr>
+        </thead>
+        <tbody>
+            @{ if ((TempData["reportDetails"] as DataTable).Rows.Count > 0)
+                {
+                    foreach (DataRow r in (TempData["reportDetails"] as DataTable).Rows)
+                    {
+                        <tr>
+                            @for(int j=0;j< Model.Fields.Count;j++)
+                            <td>@(r.Field<string>(Model.Fields[j].fieldName))</td>
+                        </tr>
+                     }
+                 }
+              }
+        </tbody>
+        <tfoot>
+            <tr><td colspan="3"><div style="float:left"><label>制单人:@TempData["marker"].ToString()</label></div></td>
+            <td colspan="3"><div style="float:right"><label>日期：@DateTime.Now.ToShortDateString()</label></div></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var trs = $("#filterTable").children("tbody tr");
+        $(trs).each(function () {
+            var td = $(this).children("td").eq(2);
+            var selDefault = $(td).attr("data-default");
+            $(td).children("select option ").each(function () {
+                var optionVal = $(this).val();
+                if (optionVal == selDefault)
+                {
+                    $(this).attr("selected", "selected");
+                    return false;
+                }
+            });
+        });
+    });
+</script>
+

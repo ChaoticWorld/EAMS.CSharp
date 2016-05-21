@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HWATTModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="HWATTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KQZ_Card" EntityType="HWATTModel.KQZ_Card" />
+    <EntitySet Name="KQZ_Employee" EntityType="HWATTModel.KQZ_Employee" />
+  </EntityContainer>
+  <EntityType Name="KQZ_Card">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Type="Int64" Name="CardID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="EmployeeID" Nullable="false" />
+    <Property Type="DateTime" Name="CardTime" Nullable="false" />
+    <Property Type="Int16" Name="CardTypeID" Nullable="false" />
+    <Property Type="Int64" Name="DevID" Nullable="false" />
+    <Property Type="Int16" Name="DevClass" Nullable="false" />
+    <Property Type="String" Name="cVerify" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Type="Int64" Name="ImgID" Nullable="false" />
+    <Property Type="Int16" Name="ImgStatus" Nullable="false" />
+    <Property Type="Int16" Name="IsValidate" Nullable="false" />
+    <Property Type="String" Name="FaceIDNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ModifyUser" Nullable="false" />
+    <Property Type="Int16" Name="ModifyType" Nullable="false" />
+    <Property Type="DateTime" Name="ModifyTime" />
+  </EntityType>
+  <EntityType Name="KQZ_Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Type="Int64" Name="EmployeeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="BrchID" Nullable="false" />
+    <Property Type="String" Name="BrchName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EmployeeCode" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="Gender" Nullable="false" />
+    <Property Type="DateTime" Name="Birthday" />
+    <Property Type="String" Name="Nation" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NATIVEPLACE" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ZhengZhi" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MARITALSTATUS" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Health" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="APOSITION" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EDUCATION" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="School" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Graduation" />
+    <Property Type="String" Name="WorkPhone" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="EnrollDate" />
+    <Property Type="Int16" Name="Privilege" Nullable="false" />
+    <Property Type="Binary" Name="Photo" MaxLength="Max" FixedLength="false" />
+    <Property Type="String" Name="IDCard" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AddrHome" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CardCode" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Mobile" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="IsCheck" Nullable="false" />
+    <Property Type="Int16" Name="OnRule" Nullable="false" />
+    <Property Type="Int16" Name="OffRule" Nullable="false" />
+    <Property Type="Int16" Name="CanOvertime" Nullable="false" />
+    <Property Type="Int16" Name="HaveFesta" Nullable="false" />
+    <Property Type="Int16" Name="DevType" Nullable="false" />
+    <Property Type="Binary" Name="HDCPInfo" MaxLength="Max" FixedLength="false" />
+    <Property Type="Int16" Name="RegisterType" Nullable="false" />
+    <Property Type="String" Name="Comment" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EmployeeLogPwd" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CheckType" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OpendoorType" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="ModelNum" Nullable="false" />
+    <Property Type="Int16" Name="HavePwd" Nullable="false" />
+    <Property Type="Int16" Name="StaffStatus" />
+    <Property Type="Int64" Name="LastCardID" />
+    <Property Type="String" Name="Reserved1" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Reserved2" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Reserved3" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Reserved4" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEVTYPESTR" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="BEGINATTDATE" />
+    <Property Type="DateTime" Name="ENDATTDATE" />
+    <Property Type="String" Name="RealEmployeeCode" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

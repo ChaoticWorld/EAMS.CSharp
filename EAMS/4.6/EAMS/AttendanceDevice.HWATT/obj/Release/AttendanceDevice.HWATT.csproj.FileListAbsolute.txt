@@ -1,0 +1,28 @@
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\AttendanceDevice.HWATT.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\AttendanceDevice.HWATT.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\FluentData.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IAttendanceDevice.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IDataAccess.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataModel.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IAttendanceDevice.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IDataAccess.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataModel.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\obj\Release\AttendanceDevice.HWATT.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\obj\Release\AttendanceDevice.HWATT.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\AttendanceDevice.HWATT\obj\Release\AttendanceDevice.HWATT.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\AttendanceDevice.HWATT.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\AttendanceDevice.HWATT.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\FluentData.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IAttendanceDevice.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IDataAccess.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataModel.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IAttendanceDevice.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\IDataAccess.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\bin\Release\DataModel.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\obj\Release\AttendanceDevice.HWATT.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\obj\Release\AttendanceDevice.HWATT.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\AttendanceDevice.HWATT\obj\Release\AttendanceDevice.HWATT.pdb

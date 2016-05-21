@@ -1,0 +1,220 @@
+﻿@using System;
+@using System.Web.Mvc;
+
+@{
+    ViewBag.Title = "referInventory";
+}
+@{ Layout = null; }
+<script type="text/javascript" src="/Scripts/jquery-1.10.2.min.js"></script>
+<h2>参照存货信息</h2>
+<style type="text/css">
+    #wrap {
+        width: 95%;
+        height: 300px;
+        border: 2px solid Blue;
+    }
+
+       #column {
+        float: left;
+        width: 60%;
+        overflow: scroll;
+    }
+
+    #column1 {
+        float: left;
+        width: 44%;
+        height: 298px;
+        border: 2px solid Blue;
+    }
+
+    #column2 {
+        float: left;
+        width: 10%;
+        height: 298px;
+        border: 2px solid Blue;
+    }
+
+    #column3 {
+        float: right;
+        width: 44%;
+        height: 298px;
+        border: 2px solid Blue;
+    }
+
+      select {
+        height: 280px;
+    }
+
+       .clear {
+        clear: both;
+    }
+</style>
+<link href="~/Content/jquery.Table.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+<!--
+    //注：每个嵌入页必须定义该方法，供调用父窗口
+    function Ok(code) {
+        //code.dataClass = 'inventory';
+        //alert(code.dataClass);
+        window.parent.callbackDialog(code);
+    }
+    //-->
+    /*
+    父窗口方法
+    function callbackDialog(p) {
+        JqueryDialog.Close();
+        if (p) {
+            //alert(p);
+            //销售订单参照            
+            var jsonp = eval("("+p+")");
+            addclass(jsonp);
+        }
+        else alert("无选择结果");
+    }
+*/
+</script>
+<div id="referBox">
+    @Html.DropDownList("PX", TempData["px"] as SelectList, new { id="PX", onchange = "selPX()", style="width:60px;height:20px" })
+    <select id='PP' name='PP' style="width: 60px; height: 20px" onchange='selPP(this)'></select>
+</div>
+<script id='selClass' type="text/javascript">
+    function selPX() {
+        //alert("selPX");
+        var clsPX = $("#PX").children('option:selected').val();
+        alert(clsPX);
+        //var checkText = $("#PX").find("option:selected").text();  //获取Select选择的Text
+        //var checkValue = $("#PX").val();  //获取Select选择的Value
+        //alert("checkText:" + checkText + ";checkValue:" + checkValue+"|"+clsPX);
+        //AJAX
+        $.get("/Common/RefInventory/referInventoryPP/" + clsPX, function (data) {
+            if (data) {
+                //alert(data);
+                $("#PP").empty();
+                for (i = 0; i < data.length; i++) {
+                    $("#PP").append("<option value='" + data[i].invClsCode + "'>" + data[i].invClsName + "</option>");
+                }
+                selPP();
+            }
+        });
+    }
+    function selPP() {
+        var clsPP = $("#PP").children('option:selected').val();
+        //AJAX
+        //alert(clsPP);
+        $.get("/Common/RefInventory/referInventorys/" + clsPP, function (data) {
+            if (data) {
+                //alert(data);
+                $("#UnSelectUserList").empty();
+                for (i = 0; i < data.length; i++) {
+                    $("#UnSelectUserList").append("<option value='" + data[i].InvCode + "' title='" + data[i].InvCode + "'>" + data[i].InvName + ":" + data[i].InvStd + "</option>");
+                }
+            }
+        });
+    }
+</script>
+<div id="searchBox">
+    <input id="searchKey" type="text" /><input id="btnsearchGo" type="button" value="搜索" />
+</div>
+
+<div id="wrap">
+    <div id="column1">
+        <div id="UserList">
+            未选择：<br />
+            <select id='UnSelectUserList' name='UnSelectUserList' multiple='multiple'></select>
+        </div>
+    </div>
+    <div id="column2">
+        <div>
+            操作按钮<br />
+            <input id="Add" name="Add" type="button" value="增加>" onclick="addTo()" />
+            <br />
+            <input id="Sub" name="Sub" type="button" value="<减少" onclick="subTo()" />
+        </div>
+    </div>
+    <div id="column3">
+        <div id="UserListSelected">
+            已选中<br />
+            <select id='SelectedUserList' name='SelectedUserList' multiple='multiple'></select>
+        </div>
+    </div>
+</div>
+
+<div><input id='submit' name='submit' type='button' value='提交' /></div>
+<script id='ListBoxMove' type="text/javascript">
+    //ListBox间数据移动以下是代码片段
+    function ListBox_Move(listfrom, listto) {
+        var size = $("#" + listfrom + " option").size();
+        var selsize = $("#" + listfrom + " option:selected").size();
+        if (size > 0 && selsize > 0) {
+            $.each($("#" + listfrom + " option:selected"), function (i, own) {
+
+                $(own).appendTo($("#" + listto));
+                $("#" + listfrom + "").children("option:first").attr("selected", true);
+            });
+        }
+        $("#submit").attr('disabled', false);
+    }
+
+    function addTo() {
+        //从UnSelectUserList将选中的项移到SelectedUserList
+        ListBox_Move("UnSelectUserList", "SelectedUserList");
+    }
+    function subTo() {
+        //从SelectedUserList将选中的项移到UnSelectUserList
+        ListBox_Move("SelectedUserList", "UnSelectUserList");
+    }
+</script>
+
+<script id='ready' type="text/javascript">
+    var djson = {};
+    //给按钮定义
+    $(document).ready(function () {
+        $("#btnsearchGo").on("click", function () {
+            var key = $("#searchKey").val();
+            //alert(key);
+            $.get(encodeURI("/Common/RefInventory/referSearchInventorys/" + key), function (data) {
+                if (data) {
+                    //alert(data);
+                    $("#UnSelectUserList").empty();
+                    for (i = 0; i < data.length; i++) {
+                        $("#UnSelectUserList").append("<option value='" + data[i].InvCode + "'>" + data[i].InvName + ":" + data[i].InvStd + "</option>");
+                    }
+                }
+            });
+        });
+        $("#UnSelectUserList").on("dblclick", function () {
+            //alert("ondblclick!");
+            addTo();
+        });
+        $("#SelectedUserList").on("dblclick", function () {
+            subTo();
+        });
+        $("#submit").on("click", function () {
+            //整理数据，生成json
+            var option = {};
+            var Options = [];
+            var ns, name, std, code;
+            var size = $("#SelectedUserList option").size();
+            if (size > 0)
+                $.each($("#SelectedUserList option"), function (i, own) {
+                    ns = own.text.split(':');
+                    name = ns[0];
+                    std = ns[1];
+                    code = own.value
+                    option = '{"cInvCode":"' + encodeURI(code) + '","cInvName":"' + encodeURI(name) + '","cInvStd":"' + encodeURI(std) + '"}';
+                    Options.push(option);
+                    option = {};
+                });
+            djson = '{"rows":[' + Options + '],"dataClass":"inventory"}';
+
+            Ok(djson);
+        });
+
+ 
+    });
+    window.onload(function () {
+        $("#column2").css('width', ($('#warp').css("width")
+          - $('#column1').css("width")
+          - $('#column3').css("width")));
+    });
+</script>

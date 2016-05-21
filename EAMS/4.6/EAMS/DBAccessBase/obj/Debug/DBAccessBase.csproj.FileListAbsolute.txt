@@ -1,0 +1,53 @@
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\bin\Debug\DBAccessBase.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\bin\Debug\DBAccessBase.pdb
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\bin\Debug\EntityFramework.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\bin\Debug\EntityFramework.xml
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\bin\Debug\zh-Hans\EntityFramework.resources.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\obj\Debug\ResolveAssemblyReference.cache
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\obj\Debug\DBAccessBase.dll
+d:\my documents\visual studio 2010\Projects\EAMS_20130821\DBAccessBase\obj\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\obj\Debug\DBAccessBase.pdb
+d:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS_20140619(考勤ok)\DBAccessBase\obj\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS\DBAccessBase\obj\Debug\DBAccessBase.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\obj\Debug\DBAccessBase.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_updateFrameWork4.5\DBAccessBase\obj\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\bin\Debug\EntityFramework.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\bin\Debug\EntityFramework.xml
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio 2010\Projects\EAMS.OLDVER\4.0\EAMS_20140901\DBAccessBase\obj\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DBAccessBase\obj\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.0\EAMS\DBAccessBase\obj\Debug\DBAccessBase.csprojResolveAssemblyReference.cache
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DBAccessBase\obj\Debug\DBAccessBase.pdb
+D:\My Documents\Visual Studio Codes\Projects\EAMS\4.6\EAMS\DBAccessBase\obj\Debug\DBAccessBase.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DBAccessBase\bin\Debug\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DBAccessBase\bin\Debug\DBAccessBase.pdb
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DBAccessBase\obj\Debug\DBAccessBase.csprojResolveAssemblyReference.cache
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DBAccessBase\obj\Debug\DBAccessBase.dll
+D:\Code\Projects.2015\EAMS\4.6\EAMS\DBAccessBase\obj\Debug\DBAccessBase.pdb

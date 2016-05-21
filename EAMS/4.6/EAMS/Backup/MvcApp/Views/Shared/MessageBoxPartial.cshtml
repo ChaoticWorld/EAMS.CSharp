@@ -1,0 +1,12 @@
+﻿<div style="display:inline;">
+    <div style="float: left;">最后三条消息滚动</div>
+    <div style="float: right;width:40px">展开按钮</div>
+</div>
+<div id="messageBox">展开内容
+    <ul data-bind="foreach: items">
+        <li><span data-bind="text:sender">sender:</span><span data-bind="text:content">message</span></li>
+    </ul>
+</div>
+@Scripts.Render("~/bundles/signalR")
+<script type="text/javascript" src="signalr/hubs"></script>
+<script type="text/javascript" src="~/Scripts/messagePage.js"></script>

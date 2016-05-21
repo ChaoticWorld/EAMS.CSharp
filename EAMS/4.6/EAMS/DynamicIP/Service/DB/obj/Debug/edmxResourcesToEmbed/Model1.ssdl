@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VPNAppDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="vpn_Register">
+    <Key>
+      <PropertyRef Name="autoid" />
+    </Key>
+    <Property Name="KEY" Type="nvarchar" MaxLength="64" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" />
+    <Property Name="vpnID" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="vpnPW" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="vpnIP" Type="nvarchar" MaxLength="16" />
+    <Property Name="vpnEncryptionType" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="createDate" Type="datetime" Nullable="false" />
+    <Property Name="modifyDate" Type="datetime" />
+    <Property Name="enable" Type="bit" />
+    <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vpnMac" Type="nvarchar" MaxLength="18" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="VPNAppDataModelStoreContainer">
+    <EntitySet Name="vpn_Register" EntityType="Self.vpn_Register" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

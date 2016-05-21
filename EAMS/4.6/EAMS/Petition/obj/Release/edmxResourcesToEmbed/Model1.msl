@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDataModelStoreContainer" CdmEntityContainer="AppDataPetitionsEntities">
+    <EntitySetMapping Name="QC_DetailClass">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_DetailClass">
+        <MappingFragment StoreEntitySet="QC_DetailClass">
+          <ScalarProperty Name="QC_RCID" ColumnName="QC_RCID" />
+          <ScalarProperty Name="QC_RCIndex" ColumnName="QC_RCIndex" />
+          <ScalarProperty Name="QC_RCDescription" ColumnName="QC_RCDescription" />
+          <ScalarProperty Name="QC_RCName" ColumnName="QC_RCName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QC_Details">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Details">
+        <MappingFragment StoreEntitySet="QC_Details">
+          <ScalarProperty Name="dSaleSumFinishDate" ColumnName="dSaleSumFinishDate" />
+          <ScalarProperty Name="dSaleSumStartDate" ColumnName="dSaleSumStartDate" />
+          <ScalarProperty Name="QC_MainID" ColumnName="QC_MainID" />
+          <ScalarProperty Name="bDaiShouKuan" ColumnName="bDaiShouKuan" />
+          <ScalarProperty Name="cMemo" ColumnName="cMemo" />
+          <ScalarProperty Name="iSum" ColumnName="iSum" />
+          <ScalarProperty Name="iPrice" ColumnName="iPrice" />
+          <ScalarProperty Name="iQuentity" ColumnName="iQuentity" />
+          <ScalarProperty Name="cInvStd" ColumnName="cInvStd" />
+          <ScalarProperty Name="cInvName" ColumnName="cInvName" />
+          <ScalarProperty Name="cInvCode" ColumnName="cInvCode" />
+          <ScalarProperty Name="QC_OrderCode" ColumnName="QC_OrderCode" />
+          <ScalarProperty Name="QC_RCID" ColumnName="QC_RCID" />
+          <ScalarProperty Name="QC_Autoid" ColumnName="QC_Autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QC_Main">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Main">
+        <MappingFragment StoreEntitySet="QC_Main">
+          <ScalarProperty Name="cClsFlag" ColumnName="cClsFlag" />
+          <ScalarProperty Name="cVouchCode" ColumnName="cVouchCode" />
+          <ScalarProperty Name="cSubject" ColumnName="cSubject" />
+          <ScalarProperty Name="cResult" ColumnName="cResult" />
+          <ScalarProperty Name="cMemo" ColumnName="cMemo" />
+          <ScalarProperty Name="dEffDate" ColumnName="dEffDate" />
+          <ScalarProperty Name="dExpDate" ColumnName="dExpDate" />
+          <ScalarProperty Name="cCusPerson" ColumnName="cCusPerson" />
+          <ScalarProperty Name="cCusName" ColumnName="cCusName" />
+          <ScalarProperty Name="cCusCode" ColumnName="cCusCode" />
+          <ScalarProperty Name="dModifyDate" ColumnName="dModifyDate" />
+          <ScalarProperty Name="cModifyMan" ColumnName="cModifyMan" />
+          <ScalarProperty Name="cCusManager" ColumnName="cCusManager" />
+          <ScalarProperty Name="dCreateDate" ColumnName="dCreateDate" />
+          <ScalarProperty Name="cCreateMan" ColumnName="cCreateMan" />
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QC_Replys">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Replys">
+        <MappingFragment StoreEntitySet="QC_Replys">
+          <ScalarProperty Name="replyMan" ColumnName="replyMan" />
+          <ScalarProperty Name="submitMan" ColumnName="submitMan" />
+          <ScalarProperty Name="QC_NextID" ColumnName="QC_NextID" />
+          <ScalarProperty Name="QC_ReplyPass" ColumnName="QC_ReplyPass" />
+          <ScalarProperty Name="QC_ReplyContent" ColumnName="QC_ReplyContent" />
+          <ScalarProperty Name="QC_ReplyDate" ColumnName="QC_ReplyDate" />
+          <ScalarProperty Name="QC_ReplyMan" ColumnName="QC_ReplyMan" />
+          <ScalarProperty Name="QC_SubmitDate" ColumnName="QC_SubmitDate" />
+          <ScalarProperty Name="QC_SubmitMan" ColumnName="QC_SubmitMan" />
+          <ScalarProperty Name="QC_MainID" ColumnName="QC_MainID" />
+          <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.Log">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="cLastValue" ColumnName="cLastValue" />
+          <ScalarProperty Name="iActionId" ColumnName="iActionId" />
+          <ScalarProperty Name="iFunctionId" ColumnName="iFunctionId" />
+          <ScalarProperty Name="cIP" ColumnName="cIP" />
+          <ScalarProperty Name="cWorkStation" ColumnName="cWorkStation" />
+          <ScalarProperty Name="iUserID" ColumnName="iUserID" />
+          <ScalarProperty Name="dLogDate" ColumnName="dLogDate" />
+          <ScalarProperty Name="iLogId" ColumnName="iLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sqlQueries">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.sqlQuery">
+        <MappingFragment StoreEntitySet="sqlQuery">
+          <ScalarProperty Name="sMemo" ColumnName="sMemo" />
+          <ScalarProperty Name="sQueryOrder" ColumnName="sQueryOrder" />
+          <ScalarProperty Name="sQueryGroup" ColumnName="sQueryGroup" />
+          <ScalarProperty Name="sQueryWhere" ColumnName="sQueryWhere" />
+          <ScalarProperty Name="sQueryMain" ColumnName="sQueryMain" />
+          <ScalarProperty Name="sQueryName" ColumnName="sQueryName" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_petitionList">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.v_petitionList">
+        <MappingFragment StoreEntitySet="v_petitionList">
+          <ScalarProperty Name="replyMan" ColumnName="replyMan" />
+          <ScalarProperty Name="submitMan" ColumnName="submitMan" />
+          <ScalarProperty Name="QC_NextID" ColumnName="QC_NextID" />
+          <ScalarProperty Name="QC_ReplyPass" ColumnName="QC_ReplyPass" />
+          <ScalarProperty Name="QC_ReplyContent" ColumnName="QC_ReplyContent" />
+          <ScalarProperty Name="QC_ReplyDate" ColumnName="QC_ReplyDate" />
+          <ScalarProperty Name="QC_ReplyMan" ColumnName="QC_ReplyMan" />
+          <ScalarProperty Name="QC_SubmitDate" ColumnName="QC_SubmitDate" />
+          <ScalarProperty Name="QC_SubmitMan" ColumnName="QC_SubmitMan" />
+          <ScalarProperty Name="dSaleSumFinishDate" ColumnName="dSaleSumFinishDate" />
+          <ScalarProperty Name="dSaleSumStartDate" ColumnName="dSaleSumStartDate" />
+          <ScalarProperty Name="bDaiShouKuan" ColumnName="bDaiShouKuan" />
+          <ScalarProperty Name="detailsMemo" ColumnName="detailsMemo" />
+          <ScalarProperty Name="iSum" ColumnName="iSum" />
+          <ScalarProperty Name="iPrice" ColumnName="iPrice" />
+          <ScalarProperty Name="iQuentity" ColumnName="iQuentity" />
+          <ScalarProperty Name="cInvStd" ColumnName="cInvStd" />
+          <ScalarProperty Name="cInvName" ColumnName="cInvName" />
+          <ScalarProperty Name="cInvCode" ColumnName="cInvCode" />
+          <ScalarProperty Name="QC_OrderCode" ColumnName="QC_OrderCode" />
+          <ScalarProperty Name="QC_RCID" ColumnName="QC_RCID" />
+          <ScalarProperty Name="mainMemo" ColumnName="mainMemo" />
+          <ScalarProperty Name="dEffDate" ColumnName="dEffDate" />
+          <ScalarProperty Name="dExpDate" ColumnName="dExpDate" />
+          <ScalarProperty Name="cCusPerson" ColumnName="cCusPerson" />
+          <ScalarProperty Name="cCusName" ColumnName="cCusName" />
+          <ScalarProperty Name="cCusCode" ColumnName="cCusCode" />
+          <ScalarProperty Name="dModifyDate" ColumnName="dModifyDate" />
+          <ScalarProperty Name="cModifyMan" ColumnName="cModifyMan" />
+          <ScalarProperty Name="cCusManager" ColumnName="cCusManager" />
+          <ScalarProperty Name="dCreateDate" ColumnName="dCreateDate" />
+          <ScalarProperty Name="cCreateMan" ColumnName="cCreateMan" />
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QC_txtContent">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_txtContent">
+        <MappingFragment StoreEntitySet="QC_txtContent">
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="plan" ColumnName="plan" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="autoid" ColumnName="autoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_petitionTxtList">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.v_petitionTxtList">
+        <MappingFragment StoreEntitySet="v_petitionTxtList">
+          <ScalarProperty Name="replyMan" ColumnName="replyMan" />
+          <ScalarProperty Name="submitMan" ColumnName="submitMan" />
+          <ScalarProperty Name="QC_NextID" ColumnName="QC_NextID" />
+          <ScalarProperty Name="QC_ReplyPass" ColumnName="QC_ReplyPass" />
+          <ScalarProperty Name="QC_ReplyContent" ColumnName="QC_ReplyContent" />
+          <ScalarProperty Name="QC_ReplyDate" ColumnName="QC_ReplyDate" />
+          <ScalarProperty Name="QC_ReplyMan" ColumnName="QC_ReplyMan" />
+          <ScalarProperty Name="QC_SubmitDate" ColumnName="QC_SubmitDate" />
+          <ScalarProperty Name="QC_SubmitMan" ColumnName="QC_SubmitMan" />
+          <ScalarProperty Name="vouchCode" ColumnName="vouchCode" />
+          <ScalarProperty Name="plan" ColumnName="plan" />
+          <ScalarProperty Name="mainMemo" ColumnName="mainMemo" />
+          <ScalarProperty Name="dEffDate" ColumnName="dEffDate" />
+          <ScalarProperty Name="dExpDate" ColumnName="dExpDate" />
+          <ScalarProperty Name="cCusPerson" ColumnName="cCusPerson" />
+          <ScalarProperty Name="cCusName" ColumnName="cCusName" />
+          <ScalarProperty Name="cCusCode" ColumnName="cCusCode" />
+          <ScalarProperty Name="dModifyDate" ColumnName="dModifyDate" />
+          <ScalarProperty Name="cModifyMan" ColumnName="cModifyMan" />
+          <ScalarProperty Name="cCusManager" ColumnName="cCusManager" />
+          <ScalarProperty Name="dCreateDate" ColumnName="dCreateDate" />
+          <ScalarProperty Name="cCreateMan" ColumnName="cCreateMan" />
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QC_Class">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_Class">
+        <MappingFragment StoreEntitySet="QC_Class">
+          <ScalarProperty Name="iClsAutoId" ColumnName="iClsAutoId" />
+          <ScalarProperty Name="iToDayMax" ColumnName="iToDayMax" />
+          <ScalarProperty Name="dToDay" ColumnName="dToDay" />
+          <ScalarProperty Name="cClsFlag" ColumnName="cClsFlag" />
+          <ScalarProperty Name="cClsName" ColumnName="cClsName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QC_CodeIdentity">
+      <EntityTypeMapping TypeName="AppDataPetitionsModel.QC_CodeIdentity">
+        <MappingFragment StoreEntitySet="QC_CodeIdentity">
+          <ScalarProperty Name="iSN" ColumnName="iSN" />
+          <ScalarProperty Name="cManager" ColumnName="cManager" />
+          <ScalarProperty Name="dDate" ColumnName="dDate" />
+          <ScalarProperty Name="cClsFlag" ColumnName="cClsFlag" />
+          <ScalarProperty Name="autoID" ColumnName="autoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

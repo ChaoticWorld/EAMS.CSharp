@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Adds protocol-less google cdn reference -->
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    @Scripts.Render("~/bundles/jquery")
+    <script>window.jQuery || document.write('<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js">\x3C/script>')</script>
+    <script>window.jQuery || document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">\x3C/script>')</script>
+    <script>window.jQuery || document.write('<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.11.1.min.js">\x3C/script>')</script>
+    <!-- jQuery 1.11.1保持以前版本的兼容性 -->
+    @*<script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>*@
+    <script src="/Scripts/jquery-migrate-1.1.0.min.js"></script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
+
+    <!--Bootstrap 学习网址 http://v3.bootcss.com/css/#grid-example-wrapping -->
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式下加入下面一行标签 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <script src="/bootstrap/js/html5shiv.min.js"></script>
+      <script src="/bootstrap/js/respond.min.js"></script>
+      <![endif]-->
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    @*<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/jqueryDateExt")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jquery.Table")
+    @Styles.Render("~/Content/Dialog")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqueryTools")
+    @Scripts.Render("~/bundles/jqueryDialog")
+    @Scripts.Render("~/bundles/jqueryDateExt")
+    @Styles.Render("~/Content/Manager/css")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/dencrypt")
+
+    <script src="/Scripts/jquery.tools.min.js"></script>
+    @*<script src="~/Scripts/jquery.tools.dateinput.location.cn.js"></script>*@
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            cache: false //close AJAX cache
+        });
+    </script>
+</head>
+<body>
+    <div class="container-fulid">
+        <div class="rows-fulid">
+            <div class="container-fulid">
+                <ul class="nav nav-tabs navbar-inverse navbar-fixed-top">
+                    <li>
+                        <img id="AppLogo" alt="Logo" style="margin:2px;" width="96" height="38" src="/Content/Images/DFL-LOGO_web_96x38.jpg" />
+                    </li>
+                    <li class="active">
+                        <a href="">首页</a>
+                    </li>
+                    <li>
+                        <a href="/Employee/EmployeeHome">员工通道</a>
+                    </li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li><a href="/Manager/ManagerHome">帐户管理</a></li>
+                    }
+                    else
+                    {
+                        <li class="disabled"><a href="/Manager/ManagerHome">帐户管理</a></li>
+                    }
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">下拉<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">操作</a>
+                            </li>
+                            <li>
+                                <a href="#">设置栏目</a>
+                            </li>
+                            <li>
+                                <a href="#">更多设置</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#">分割线</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pull-right" style="color:#fff">
+                        msg @*@Html.Partial("MessageBoxPartial")*@ &nbsp; | &nbsp;
+                        <div id="logindisplay">@Html.Partial("_LogOnPartial")</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br>
+        <div class="row-fluid">
+            <div class="container-fulid">
+                <div class="page-header">
+                    <h1>
+                        @ViewBag.MainTitle <small>@ViewBag.Title</small>
+                    </h1>
+                </div>
+                <div class="row-fluid">
+                    <div class="container-fulid">
+                        @RenderBody()
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row-fluid">
+            <div class="container-fulid">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <p style=" text-align:center ">
+                        <label>Copyright &reg; 2014- Defulong CO.,LTD.</label>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jqueryTable")
+
+</body>
+</html>

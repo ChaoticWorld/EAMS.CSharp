@@ -1,0 +1,18 @@
+﻿[瑞来要求实现电话记录]
+1.所有人员要看到电话记录
+2.电话记录内容:单位,时间,联系人,记录内容
+3.电话记录内容要手工录入
+
+Table:
+1.Phone_Records 电话记录
+id,dwCode,dwName,dwContect,callPhone,callInOut,callDateTime,callContent
+序号,单位编码,单位名称,单位联系人,通话号码,来电去电,通话日期,通话内容(2实现后不再使用)
+2.Phone_CallContent 电话内容记录,后继版本支持
+autoid,id,contentClass,contectText
+自动序号,电话记录序号,内容分类,内容文本
+3.Phone_ContentClass 电话内容分类,后继版本支持
+clsId,clsName,clsDescription
+分类号,分类名,分类描述
+
+来电激活页面后自动增加一条记录,返回此次来电的autoid,显示历史电话记录列表
+

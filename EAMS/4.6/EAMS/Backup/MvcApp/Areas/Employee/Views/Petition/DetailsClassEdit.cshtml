@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Petition.QC_DetailClass>
+@{
+    ViewBag.Title = "DetailsClassEdit";
+}
+
+<h2>签呈明细分类编辑</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>明细分类</legend>
+                <input type="button" value="新增一行" onclick="AddRow()" />
+        <table id="grid">
+        <tr role="head">
+        <th></th>
+        <th sort="true">分类名称</th>
+        <th sort="true">分类描述</th>
+        <th sort="true">分类排序号</th>
+        </tr>
+        <tr style="display:none">
+        <td><input type="button" value="删除" onclick="deleteRow(this)" />
+        @Html.Hidden("[0].QC_RCID") </td>
+        <td>@Html.TextBox("[0].QC_RCName")</td>
+        <td>@Html.TextBox("[0].QC_RCDescription")</td>
+        <td>@Html.TextBox("[0].QC_RCIndex")</td>
+        </tr>
+        @foreach (var d in Model)
+        {
+        <tr>
+        <td><input type="button" value="删除" onclick="deleteRow(this)" /> 
+        @Html.Hidden("[0].QC_RCID", d.QC_RCID) </td>
+        <td>@Html.TextBox("[0].QC_RCName", d.QC_RCName)</td>
+        <td>@Html.TextBox("[0].QC_RCDescription", d.QC_RCDescription)</td>
+        <td>@Html.TextBox("[0].QC_RCIndex", d.QC_RCIndex.Value)</td>
+        </tr>        
+        }
+
+        </table>
+
+        <script type="text/javascript">
+            function repairCallAttrName() {
+                var table = $("table#grid")[0];
+                var rcount = table.rows.length;
+                var rows = table.rows;
+                var row = null;
+                var name2 = '';
+                var name = '';
+                var startidx = 0;
+                for (var j = 1; j < table.rows.length; j++) {
+                    row = table.rows[j];
+                    for (var i = 0; i < row.cells.length; i++) {
+                        $(row.cells[i].children).each(function () {
+                            name2 = this.name;
+                            //alert(name2);
+                            if (name2) {
+                                //alert(j + "(name2):" + name2);
+                                startidx = name2.indexOf("].") + 2;
+                                name = "[" + (j - 1) + "]." + name2.substr(startidx, name2.length - startidx);
+                                //alert('new name : ' + name);
+                                this.name = name;
+                            }
+                        });
+                    }
+                }
+            }
+            function AddRow() {
+                var table = $("table#grid")[0];
+                var rcount = table.rows.length;
+                var row0 = table.rows[1];
+                var newrow = $(row0).clone()[0];
+                $(newrow).removeAttr('style');
+                //                for (var i = 1; i < newrow.cells.length; i++) {
+                //                    $(newrow.cells[i].children[0]).attr('value', rcount - 1);
+                //                }
+                $(table).append(newrow);
+                repairCallAttrName();
+            }
+            function deleteRow(r) {
+                var tr = r.parentElement.parentElement;
+                var autoid = $(tr.cells[0].children[1]).val();
+                var name = $(tr.cells[1].children[0]).val();
+                if (confirm("是否删除? \n 序号:" + autoid + ";名称:"+name)) {
+                    $.get("/Employee/Petition/DetailClassDelete/" + autoid);
+                    $(tr).remove();
+                }
+                repairCallAttrName();
+            }
+        </script>
+        <p> <input id='submit' name='submit' type="submit" value="保存" /> </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回签呈首页", "Index")
+</div>
+<script type="text/javascript">
+    repairCallAttrName();</script>
+    <script type="text/javascript">
+        $(function () {
+            $("#grid").sorttable({
+                ascImgUrl: "/Content/Images/bullet_arrow_up.png",
+                descImgUrl: "/Content/mages/bullet_arrow_down.png",
+                ascImgSize: "8px",
+                descImgSize: "8px",
+                onSorted: function (cell) {
+                    alert(cell.index() + " -- " + cell.text());
+                }
+            });
+        });
+    </script>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="vpnAppDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="vpn_Register">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="KEY" Type="nvarchar" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="vpnID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="vpnPW" Type="nvarchar" MaxLength="64" />
+          <Property Name="vpnIP" Type="nvarchar" MaxLength="16" />
+          <Property Name="vpnEncryptionType" Type="nvarchar" MaxLength="64" />
+          <Property Name="createDate" Type="datetime" Nullable="false" />
+          <Property Name="modifyDate" Type="datetime" />
+          <Property Name="enable" Type="bit" />
+          <Property Name="autoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vpnMac" Type="nvarchar" MaxLength="18" />
+        </EntityType>
+        <EntityContainer Name="vpnAppDataModelStoreContainer">
+          <EntitySet Name="vpn_Register" EntityType="Self.vpn_Register" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vpnAppDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vpn_Register">
+          <Key>
+            <PropertyRef Name="autoid" />
+          </Key>
+          <Property Name="KEY" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vpnID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vpnPW" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="vpnIP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="vpnEncryptionType" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="createDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifyDate" Type="DateTime" Precision="3" />
+          <Property Name="enable" Type="Boolean" />
+          <Property Name="autoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vpnMac" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vpn_Register" EntityType="Self.vpn_Register" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vpnAppDataModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="vpn_Register">
+            <EntityTypeMapping TypeName="vpnAppDataModel.vpn_Register">
+              <MappingFragment StoreEntitySet="vpn_Register">
+                <ScalarProperty Name="KEY" ColumnName="KEY" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="vpnID" ColumnName="vpnID" />
+                <ScalarProperty Name="vpnPW" ColumnName="vpnPW" />
+                <ScalarProperty Name="vpnIP" ColumnName="vpnIP" />
+                <ScalarProperty Name="vpnEncryptionType" ColumnName="vpnEncryptionType" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="modifyDate" ColumnName="modifyDate" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="autoid" ColumnName="autoid" />
+                <ScalarProperty Name="vpnMac" ColumnName="vpnMac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
