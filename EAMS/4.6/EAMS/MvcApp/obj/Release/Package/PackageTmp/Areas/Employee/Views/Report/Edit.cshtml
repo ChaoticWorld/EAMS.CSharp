@@ -118,7 +118,8 @@
 
         var url = "/employee/Report/save/" + reportObject.reportID;
         $.post(url, reportObject, function (data) {
-            $("#cReportID").val(data);
+            if (data <= 0) alert("保存失败！");
+            else $("#cReportID").val(data);
         });
     }
 </script>

@@ -121,8 +121,11 @@ namespace report
         public long saveReport(Report _report)
         {
             long r = -1;
-            if (_report.reportID>0)
-                r = reportDA.Update(_report);
+            if (_report.reportID > 0)
+            { r = reportDA.Update(_report);
+                if (r > 0) r = _report.reportID;
+                else r = -1;
+            }
             else
                 r = reportDA.Create(_report);
             return r;
